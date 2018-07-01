@@ -1,11 +1,12 @@
 /*
- * Project: reclog
- * File: reclog.cpp
+ * Project: reslog
+ * File: reslog.cpp
  * Author: So Chigusa
  *
  * Created on 2018/6/30
  */
 
+#include "html.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -67,9 +68,11 @@ int main(int argc, char** argv) {
       return -1;
     }
     add_log(arg_type, arg_title, arg1, arg2);
-    // update_reslog();
+    HTML::update_reslog();
+    HTML::update_index();
   } else if(arg_opt == "update") {
-    // update_reslog();
+    HTML::update_reslog();
+    HTML::update_index();
   } else {
     errorMessage();
     return -1;
