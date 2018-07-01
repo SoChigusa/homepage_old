@@ -22,6 +22,7 @@ class HTML {
  public:
   static void split(std::vector<std::string> &, const std::string &buf, char sep);
   static std::string getYYYYMMDD(time_t);
+  static void insertFromFile(std::stringstream &, std::string &);
   static void update_index();
   static void update_reslog();
 };

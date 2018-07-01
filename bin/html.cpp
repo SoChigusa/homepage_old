@@ -24,6 +24,14 @@ std::string HTML::getYYYYMMDD(time_t t) {
   return std::to_string(yyyy) + "/" + std::to_string(mm) + "/" + std::to_string(dd);
 }
 
+void HTML::insertFromFile(std::stringstream &ss, std::string &bufline) {
+  std::string buf;
+  std::vector<std::string> val;
+  split(val, bufline, ' ');
+  std::ifstream ifs("../"+val[4]);
+  while(std::getline(ifs, buf)) ss << buf << std::endl;
+}
+
 void HTML::update_index() {
   std::ifstream ifs("../index_temp.html");
   std::ifstream iflog("../research/research.log");
@@ -34,6 +42,11 @@ void HTML::update_index() {
   while(std::getline(ifs, strBufferLine)) {
     ss << strBufferLine << std::endl;
 
+    // insert from files
+    if((int)strBufferLine.find("<!-- insertion below : ") != -1) {
+      insertFromFile(ss, strBufferLine);
+    }
+    
     // add recent activities
     if((int)strBufferLine.find("<!-- Recent Activities below -->") != -1) {
       ss << "<article>" << std::endl;
@@ -78,6 +91,11 @@ void HTML::update_reslog() {
   while(std::getline(ifs, strBufferLine)) {
     ss << strBufferLine << std::endl;
 
+    // insert from files
+    if((int)strBufferLine.find("<!-- insertion below : ") != -1) {
+      insertFromFile(ss, strBufferLine);
+    }
+    
     // add paper info
     if((int)strBufferLine.find("<!-- Papers below -->") != -1) {
       std::ifstream iflog("../research/research.log");
