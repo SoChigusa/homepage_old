@@ -1,0 +1,49 @@
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Tips</title>
+<link href="../css/normalize.css" rel="stylesheet">
+<link href="../css/github.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- insertion below : menu.html -->
+<header>
+    <a href="/"><h1>So Chigusa</h1></a>
+</header>
+<nav id="global-nav">
+  <ul>
+    <a href="#"><li>CV</li></a>
+    <a href="/research/"><li>Research</li></a>
+    <a href="/tips/"><li>Tips</li></a>
+    <a href="#"><li>Empty</li></a>
+  </ul>
+</nav>
+<!-- insertion above : menu.html -->
+  
+<div class="container">
+  <div class="box" id="tipsmenu">
+    <!-- Tips menu below -->
+    <nav>
+      <h3>Tips Menu</h3>
+      <ul>
+      <li><a href="markdown-mode.html">markdown-mode</a></li>
+      <li><a href="chrome-JavaScript.html">chrome-JavaScript</a></li>
+       </ul>
+    </nav>
+    <!-- Tips menu above -->
+  </div>
+  <div class="box" id="gfm">
+    <!-- Tips below -->
+    <h1 id="google-chrome-を用いて-javascript-のチェックが-local-で出来る環境を整える">Google Chrome を用いて JavaScript のチェックが local で出来る環境を整える</h1>
+    <p><code>--allow-file-access-from-files</code> オプションをつけて Chrome を立ち上げれば良い。 AppleScript Editor を用いて（ * は半角スペースを表す）、</p>
+    <pre class="applescript"><code>do shell script &quot;/Applications/Google*Chrome.app/Contents/MacOS/Google*Chrome --allow-file-access-from-files&quot;</code></pre>
+    <p>これを適当な名前でアプリとして保存する。 以降、このアプリから Chrome を呼び出すようにする。</p>
+    <!-- Tips above -->
+  </div>
+</div>
+<div id="footer"></div>
+</body>
+</html>

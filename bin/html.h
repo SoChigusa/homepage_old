@@ -25,6 +25,8 @@ class HTML {
   static void insertFromFile(std::stringstream &, std::string &);
   static void update_index();
   static void update_reslog();
+  static void update_tipslog(const std::string &, const std::string &);
+  static void update_tipslog();
 };
 
 #endif

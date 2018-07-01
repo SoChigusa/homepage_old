@@ -126,3 +126,58 @@ void HTML::update_reslog() {
   std::ofstream ofs("../research/index.html");
   ofs << ss.str();
 }
+
+void HTML::update_tipslog(const std::string &ofname, const std::string &cname) {
+  std::ifstream ifs("../tips/index_temp.html");
+  std::stringstream ss;
+  std::string strBufferLine;
+  std::vector<std::string> val;
+
+  while(std::getline(ifs, strBufferLine)) {
+    ss << strBufferLine << std::endl;
+
+    // insert from files
+    if((int)strBufferLine.find("<!-- insertion below : ") != -1) {
+      insertFromFile(ss, strBufferLine);
+    }
+
+    // add tips menu
+    if((int)strBufferLine.find("<!-- Tips menu below -->") != -1) {
+      ss << "    <nav>" << std::endl;
+      ss << "      <h3>Tips Menu</h3>" << std::endl;
+      ss << "      <ul>" << std::endl;
+      std::ifstream iflog("../tips/tips.log");
+      while(std::getline(iflog, strBufferLine)) {
+	split(val, strBufferLine, ';');
+	ss << "      <li><a href=\"" << val[1] << ".html\">"
+	   << val[1] << "</a></li>" << std::endl;
+      }
+      ss << "       </ul>" << std::endl;
+      ss << "    </nav>" << std::endl;
+    }
+    
+    // add tips
+    if((int)strBufferLine.find("<!-- Tips below -->") != -1) {
+      std::ifstream iftext("../tips/source/"+cname+".html");
+      while(std::getline(iftext, strBufferLine)) ss << "    " << strBufferLine << std::endl;
+    }
+  }
+  
+  std::ofstream ofs("../tips/"+ofname);
+  ofs << ss.str();
+}
+
+void HTML::update_tipslog() {
+  std::ifstream iflog("../tips/tips.log");
+  std::string strBufferLine;
+  std::vector<std::string> val;
+  bool firstLine = true;
+  while(std::getline(iflog, strBufferLine)) {
+    split(val, strBufferLine, ';');
+    if(firstLine) { // Preserve most recent as index.html
+      update_tipslog("index.html", val[1]);
+      firstLine = false;
+    }
+    update_tipslog(val[1]+".html", val[1]);
+  }
+}

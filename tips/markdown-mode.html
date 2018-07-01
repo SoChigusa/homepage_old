@@ -1,0 +1,58 @@
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Tips</title>
+<link href="../css/normalize.css" rel="stylesheet">
+<link href="../css/github.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- insertion below : menu.html -->
+<header>
+    <a href="/"><h1>So Chigusa</h1></a>
+</header>
+<nav id="global-nav">
+  <ul>
+    <a href="#"><li>CV</li></a>
+    <a href="/research/"><li>Research</li></a>
+    <a href="/tips/"><li>Tips</li></a>
+    <a href="#"><li>Empty</li></a>
+  </ul>
+</nav>
+<!-- insertion above : menu.html -->
+  
+<div class="container">
+  <div class="box" id="tipsmenu">
+    <!-- Tips menu below -->
+    <nav>
+      <h3>Tips Menu</h3>
+      <ul>
+      <li><a href="markdown-mode.html">markdown-mode</a></li>
+      <li><a href="chrome-JavaScript.html">chrome-JavaScript</a></li>
+       </ul>
+    </nav>
+    <!-- Tips menu above -->
+  </div>
+  <div class="box" id="gfm">
+    <!-- Tips below -->
+    <h1 id="emacs-で-markdown-mode-を使用した編集プレビュー環境を整える">Emacs で markdown-mode を使用した編集、プレビュー環境を整える</h1>
+    <hr />
+    <h2 id="markdown-mode-の導入">markdown-mode の導入</h2>
+    <p>Emacs のパッケージインストーラを利用する記事が多いけれど、markdown-mode が見つからなかったため、GitHub から clone した。</p>
+    <pre class="shell"><code>git clone git://jblevins.org/git/markdown-mode.git</code></pre>
+    <p><code>~/.emacs.el</code> に以下を追加する。</p>
+    <pre class="emacs-lisp"><code>(load &quot;path-to-markdown-mode/markdown-mode/markdown-mode.el&quot;)
+    (setq auto-mode-alist (cons &#39;(&quot;\\.md&quot; . gfm-mode) auto-mode-alist))</code></pre>
+    <h2 id="プレビュー環境の構築">プレビュー環境の構築</h2>
+    <p>pandoc を使用することにした。</p>
+    <pre class="shell"><code>brew install pandoc</code></pre>
+    <p>表示に使用するスタイルシートを見つけてくる。 GitHub Flavored Markdown (gfm) が見栄え良い。 今回は<code>~/.pandoc/github.css</code>に該当ファイルを置いている。 <code>~/.emacs.el</code> に以下を追加することで、<code>C-c C-c p</code> で html を自動生成し、プレビュー画面が立ち上がる。</p>
+    <pre class="emacs-lisp"><code>(setq markdown-command &quot;pandoc -s -c ~/.pandoc/github.css&quot;)</code></pre>
+    <!-- Tips above -->
+  </div>
+</div>
+<div id="footer"></div>
+</body>
+</html>

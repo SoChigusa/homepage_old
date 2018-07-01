@@ -10,6 +10,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <string>
 
 void errorMessage() {
   std::cout << "Accepts 1 option:" << std::endl;
