@@ -18,13 +18,18 @@ void errorMessage() {
   std::cout << "./tiplog update: update files using existing log" << std::endl;
 }
 
-void add_log(std::string arg_name) {
+void add_log(std::string &arg_name, std::ifstream &ifcont) {
+  std::string strBufferLine;
+  std::vector<std::string> val, val2;
+  std::getline(ifcont, strBufferLine);
+  HTML::split(val, strBufferLine, '>');
+  HTML::split(val2, val[1], '<');
+
   time_t now = std::time(nullptr);
   std::stringstream ss;
-  ss << now << ";" << arg_name << std::endl;
+  ss << now << ";" << arg_name << ";" << val2[0] << std::endl;
 
   std::ifstream ifs("../tips/tips.log");
-  std::string strBufferLine;
   while(std::getline(ifs, strBufferLine)) {
     ss << strBufferLine << std::endl;
   }
@@ -48,15 +53,17 @@ int main(int argc, char** argv) {
 
   if(arg_opt == "add") {
     std::string arg_name(argv[2]);
-    std::ifstream test("../tips/source/"+arg_name+".html");
-    if(!test.is_open()) {
+    std::ifstream ifcont("../tips/source/"+arg_name+".html");
+    if(!ifcont.is_open()) {
       std::cout << "File ../tips/source/" << arg_name << ".html isn't found" << std::endl;
       return -1;
     }
-    add_log(arg_name);
+    add_log(arg_name, ifcont);
     HTML::update_tipslog();
+    HTML::update_index();
   } else if(arg_opt == "update") {
-    HTML::update_tipslog();    
+    HTML::update_tipslog();
+    HTML::update_index();
   }
   return 0;
 }

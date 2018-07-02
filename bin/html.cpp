@@ -34,7 +34,6 @@ void HTML::insertFromFile(std::stringstream &ss, std::string &bufline) {
 
 void HTML::update_index() {
   std::ifstream ifs("../index_temp.html");
-  std::ifstream iflog("../research/research.log");
   std::stringstream ss;
   std::string strBufferLine;
   std::vector<std::string> val;
@@ -49,6 +48,7 @@ void HTML::update_index() {
     
     // add recent activities
     if((int)strBufferLine.find("<!-- Recent Activities below -->") != -1) {
+      std::ifstream iflog("../research/research.log");
       ss << "<article>" << std::endl;
       for(int i = 0; i < 4; i++) {
 	std::getline(iflog, strBufferLine);
@@ -72,6 +72,26 @@ void HTML::update_index() {
 	  ss << "    </p>" << std::endl;
 	}
 	
+	ss << "  </section>" << std::endl;
+      }
+      ss << "</article>" << std::endl;
+    }
+
+    // add recent tips
+    if((int)strBufferLine.find("<!-- Recent Tips below -->") != -1) {
+      std::ifstream iflog("../tips/tips.log");
+      ss << "<article>" << std::endl;
+      for(int i = 0; i < 2; i++) {
+	std::getline(iflog, strBufferLine);
+	split(val, strBufferLine, ';');
+	ss << "  <section>" << std::endl;
+	ss << "    <span class=\"date\">" // date
+	   << getYYYYMMDD((time_t)stol(val[0])) << "</span>" << std::endl;
+	ss << "    <h1><a href=\"tips/" << val[1] << ".html\">"
+	   << val[1] << "</a></h1>" << std::endl; // title
+	ss << "    <p>" << std::endl;
+	ss << "      " << val[2] << std::endl; // long title
+	ss << "    </p>" << std::endl;
 	ss << "  </section>" << std::endl;
       }
       ss << "</article>" << std::endl;
