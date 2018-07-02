@@ -32,8 +32,9 @@ void HTML::insertFromFile(std::stringstream &ss, std::string &bufline) {
   while(std::getline(ifs, buf)) ss << buf << std::endl;
 }
 
-void HTML::update_index() {
-  std::ifstream ifs("../index_temp.html");
+void HTML::update_html(const std::string &strtemp, const std::string &strout,
+		       const std::string &cname) {
+  std::ifstream ifs(strtemp);
   std::stringstream ss;
   std::string strBufferLine;
   std::vector<std::string> val;
@@ -96,26 +97,7 @@ void HTML::update_index() {
       }
       ss << "</article>" << std::endl;
     }
-  }
 
-  std::ofstream ofs("../index.html");
-  ofs << ss.str();
-}
-
-void HTML::update_reslog() {
-  std::ifstream ifs("../research/index_temp.html");
-  std::stringstream ss;
-  std::string strBufferLine;
-  std::vector<std::string> val;
-
-  while(std::getline(ifs, strBufferLine)) {
-    ss << strBufferLine << std::endl;
-
-    // insert from files
-    if((int)strBufferLine.find("<!-- insertion below : ") != -1) {
-      insertFromFile(ss, strBufferLine);
-    }
-    
     // add paper info
     if((int)strBufferLine.find("<!-- Papers below -->") != -1) {
       std::ifstream iflog("../research/research.log");
@@ -141,25 +123,6 @@ void HTML::update_reslog() {
 	}
       }
     }
-  }
-  
-  std::ofstream ofs("../research/index.html");
-  ofs << ss.str();
-}
-
-void HTML::update_tipslog(const std::string &ofname, const std::string &cname) {
-  std::ifstream ifs("../tips/index_temp.html");
-  std::stringstream ss;
-  std::string strBufferLine;
-  std::vector<std::string> val;
-
-  while(std::getline(ifs, strBufferLine)) {
-    ss << strBufferLine << std::endl;
-
-    // insert from files
-    if((int)strBufferLine.find("<!-- insertion below : ") != -1) {
-      insertFromFile(ss, strBufferLine);
-    }
 
     // add tips menu
     if((int)strBufferLine.find("<!-- Tips menu below -->") != -1) {
@@ -176,14 +139,14 @@ void HTML::update_tipslog(const std::string &ofname, const std::string &cname) {
       ss << "    </nav>" << std::endl;
     }
     
-    // add tips
-    if((int)strBufferLine.find("<!-- Tips below -->") != -1) {
-      std::ifstream iftext("../tips/source/"+cname+".html");
+    // add tips / diary
+    if((int)strBufferLine.find("<!-- Contents below -->") != -1) {
+      std::ifstream iftext(cname);
       while(std::getline(iftext, strBufferLine)) ss << "    " << strBufferLine << std::endl;
     }
   }
-  
-  std::ofstream ofs("../tips/"+ofname);
+
+  std::ofstream ofs(strout);
   ofs << ss.str();
 }
 
@@ -195,9 +158,11 @@ void HTML::update_tipslog() {
   while(std::getline(iflog, strBufferLine)) {
     split(val, strBufferLine, ';');
     if(firstLine) { // Preserve most recent as index.html
-      update_tipslog("index.html", val[1]);
+      update_html("../tips/index_temp.html", "../tips/index.html",
+		  "../tips/source/"+val[1]+".html");
       firstLine = false;
     }
-    update_tipslog(val[1]+".html", val[1]);
+    update_html("../tips/index_temp.html", "../tips/"+val[1]+".html",
+		"../tips/source/"+val[1]+".html");
   }
 }

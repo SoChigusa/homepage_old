@@ -60,10 +60,10 @@ int main(int argc, char** argv) {
     }
     add_log(arg_name, ifcont);
     HTML::update_tipslog();
-    HTML::update_index();
+    HTML::update_html("../index_temp.html", "../index.html");
   } else if(arg_opt == "update") {
     HTML::update_tipslog();
-    HTML::update_index();
+    HTML::update_html("../index_temp.html", "../index.html");
   }
   return 0;
 }

@@ -23,9 +23,8 @@ class HTML {
   static void split(std::vector<std::string> &, const std::string &buf, char sep);
   static std::string getYYYYMMDD(time_t);
   static void insertFromFile(std::stringstream &, std::string &);
-  static void update_index();
-  static void update_reslog();
-  static void update_tipslog(const std::string &, const std::string &);
+  static void update_html(const std::string &, const std::string &,
+			  const std::string &cname = "");
   static void update_tipslog();
 };
 
