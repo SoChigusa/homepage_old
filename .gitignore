@@ -3,3 +3,7 @@ reslog.dSYM
 reslog
 tipslog.dSYM
 tipslog
+cv.log
+*.aux
+*.out
+*/synctex.gz
