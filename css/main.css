@@ -312,11 +312,15 @@ footer small{
 
 /*****BOXSTRUCTURE*****/
 .box {
-	float: left;
+    float: left;
+}
+
+.centeredbox {
+    margin-left: 25%;
 }
 
 .container {
-	overflow: hidden;
+    overflow: hidden;
 }
 
 .container:before, .container:after {
