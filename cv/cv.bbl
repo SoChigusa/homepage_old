@@ -1,0 +1,32 @@
+
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
+
+\bibitem{Chigusa:2018uuj}
+S.~Chigusa, T.~Moroi and Y.~Shoji, \emph{{Decay Rate of Electroweak Vacuum in
+  the Standard Model and Beyond}},
+  \href{https://doi.org/10.1103/PhysRevD.97.116012}{\emph{Phys. Rev.}
+  {\bfseries D97} (2018) 116012},
+  [\href{https://arxiv.org/abs/1803.03902}{{\ttfamily 1803.03902}}].
+
+\bibitem{Chigusa:2017dux}
+S.~Chigusa, T.~Moroi and Y.~Shoji, \emph{{State-of-the-Art Calculation of the
+  Decay Rate of Electroweak Vacuum in the Standard Model}},
+  \href{https://doi.org/10.1103/PhysRevLett.119.211801}{\emph{Phys. Rev. Lett.}
+  {\bfseries 119} (2017) 211801},
+  [\href{https://arxiv.org/abs/1707.09301}{{\ttfamily 1707.09301}}].
+
+\bibitem{Chigusa:2017drd}
+S.~Chigusa and T.~Moroi, \emph{{Bottom-Tau Unification in Supersymmetric SU(5)
+  Models with Extra Matters}},
+  \href{https://doi.org/10.1093/ptep/ptx062}{\emph{PTEP} {\bfseries 2017}
+  (2017) 063B05}, [\href{https://arxiv.org/abs/1702.00790}{{\ttfamily
+  1702.00790}}].
+
+\bibitem{Chigusa:2016ody}
+S.~Chigusa and T.~Moroi, \emph{{Bottom-tau unification in a supersymmetric
+  model with anomaly-mediation}},
+  \href{https://doi.org/10.1103/PhysRevD.94.035016}{\emph{Phys. Rev.}
+  {\bfseries D94} (2016) 035016},
+  [\href{https://arxiv.org/abs/1604.02156}{{\ttfamily 1604.02156}}].
+
+\end{thebibliography}\endgroup

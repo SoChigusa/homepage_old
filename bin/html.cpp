@@ -150,6 +150,43 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
   ofs << ss.str();
 }
 
+void HTML::update_cv() {
+  std::ifstream ifs("../cv/cv_temp.tex");
+  std::stringstream ss;
+  std::string strBufferLine;
+  std::vector<std::string> val;
+
+  while(std::getline(ifs, strBufferLine)) {
+    ss << strBufferLine << std::endl;
+
+    // current age (at LO approximation)
+    if((int)strBufferLine.find("% Age below") != -1) {
+      struct tm birthdayStruct = { 0, 0, 0, 22, 5, 1992 - 1900 };
+      time_t birthday = std::mktime(&birthdayStruct);
+      time_t now = std::time(nullptr);
+      int ageLO = (int)((now - birthday) / (365. * 24 * 60 * 60));
+      ss << "  Age: & " << ageLO << " \\\\" << std::endl;
+    }
+      
+    // add talks    
+    if((int)strBufferLine.find("% Talks below") != -1) {
+      std::ifstream iflog("../research/research.log");
+      while(std::getline(iflog, strBufferLine)) {
+	split(val, strBufferLine, ';');
+	if(val[1] == "Talk") {
+	  auto pos = val[4].find(" @");
+	  if (pos != std::string::npos) val[4].replace(pos, 2, ",");
+	  ss << " \\item ``" << val[2] // title
+	     << "'', " << val[4] << std::endl; // conference
+	}
+      }
+    }
+  }
+
+  std::ofstream ofs("../cv/cv.tex");
+  ofs << ss.str();
+}
+
 void HTML::update_tipslog() {
   std::ifstream iflog("../tips/tips.log");
   std::string strBufferLine;

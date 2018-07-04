@@ -6,4 +6,5 @@ tipslog
 cv.log
 *.aux
 *.out
-*/synctex.gz
+*.synctex.gz
+*.blg

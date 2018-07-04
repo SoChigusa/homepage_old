@@ -71,9 +71,11 @@ int main(int argc, char** argv) {
     add_log(arg_type, arg_title, arg1, arg2);
     HTML::update_html("../research/index_temp.html", "../research/index.html");
     HTML::update_html("../index_temp.html", "../index.html");
+    HTML::update_cv();
   } else if(arg_opt == "update") {
     HTML::update_html("../research/index_temp.html", "../research/index.html");
     HTML::update_html("../index_temp.html", "../index.html");
+    HTML::update_cv();
   } else {
     errorMessage();
     return -1;
