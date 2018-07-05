@@ -43,10 +43,12 @@ void update_log(const std::string &comment) {
   HTML::update_html("../index_temp.html", "../index.html");
   HTML::update_cv();
   system("cp ../research/index.html ../../sochigusa.bitbucket.org/research/index.html");
+  system(("cd ../cv/ && latex cv && bibtex cv && latex cv && latex cv && dvipdfmx cv"));
+  system("cp ../cv/cv.pdf ../../sochigusa.bitbucket.org/cv/cv.pdf");
   system(("git commit -a -m \"auto commit by reslog : "+comment+"\" && "
-	  +"git push origin master").c_str());
+  	  +"git push origin master").c_str());
   system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit by reslog : "+comment+"\" && "
-	  +"git push origin master").c_str());
+  	  +"git push origin master").c_str());
 }
 
 int main(int argc, char** argv) {
