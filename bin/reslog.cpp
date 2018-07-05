@@ -38,6 +38,17 @@ void add_log(std::string arg_type, std::string arg_title, std::string arg1, std:
   ofs << ss.str();
 }
 
+void update_log(const std::string &comment) {
+  HTML::update_html("../research/index_temp.html", "../research/index.html");
+  HTML::update_html("../index_temp.html", "../index.html");
+  HTML::update_cv();
+  system("cp ../research/index.html ../../sochigusa.bitbucket.org/research/index.html");
+  system(("git commit -a -m \"auto commit by reslog : "+comment+"\" && "
+	  +"git push origin master").c_str());
+  system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit by reslog : "+comment+"\" && "
+	  +"git push origin master").c_str());
+}
+
 int main(int argc, char** argv) {
   if (argc != 2) {
     errorMessage();
@@ -72,14 +83,10 @@ int main(int argc, char** argv) {
       std::cout << "Unexpected research type" << std::endl;
       return -1;
     }
-    // add_log(arg_type, arg_title, arg1, arg2);
-    // HTML::update_html("../research/index_temp.html", "../research/index.html");
-    // HTML::update_html("../index_temp.html", "../index.html");
-    // HTML::update_cv();
+    add_log(arg_type, arg_title, arg1, arg2);
+    update_log("add "+arg_title);
   } else if(arg_opt == "update") {
-    HTML::update_html("../research/index_temp.html", "../research/index.html");
-    HTML::update_html("../index_temp.html", "../index.html");
-    HTML::update_cv();
+    update_log("update");
   } else {
     errorMessage();
     return -1;
