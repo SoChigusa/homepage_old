@@ -18,6 +18,16 @@ void errorMessage() {
   std::cout << "./tiplog update: update files using existing log" << std::endl;
 }
 
+void update_log(const std::string &comment) {
+  HTML::update_tipslog();
+  HTML::update_html("../index_temp.html", "../index.html");
+  system("cp ../tips/index.html ../../sochigusa.bitbucket.org/tips/index.html");
+  system(("git commit -a -m \"auto commit by reslog : "+comment+"\" && "
+	  +"git push origin master").c_str());
+  system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
+	  +"git push origin master").c_str());
+}
+
 void add_log(std::string &arg_name, std::ifstream &ifcont) {
   std::string strBufferLine;
   std::vector<std::string> val, val2;
@@ -59,11 +69,9 @@ int main(int argc, char** argv) {
       return -1;
     }
     add_log(arg_name, ifcont);
-    HTML::update_tipslog();
-    HTML::update_html("../index_temp.html", "../index.html");
+    update_log("add "+arg_name);
   } else if(arg_opt == "update") {
-    HTML::update_tipslog();
-    HTML::update_html("../index_temp.html", "../index.html");
+    update_log("update");
   }
   return 0;
 }
