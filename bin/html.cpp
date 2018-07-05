@@ -139,10 +139,15 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
       ss << "    </nav>" << std::endl;
     }
     
-    // add tips / diary
+    // add tips / git contents
     if((int)strBufferLine.find("<!-- Contents below -->") != -1) {
       std::ifstream iftext(cname);
-      while(std::getline(iftext, strBufferLine)) ss << "    " << strBufferLine << std::endl;
+      bool body = false;
+      while(std::getline(iftext, strBufferLine)) {
+	if((int)strBufferLine.find("</body>") != -1) body = false;
+	if(body) ss << "    " << strBufferLine << std::endl;
+	if((int)strBufferLine.find("<body>") != -1) body = true;
+      }
     }
   }
 
