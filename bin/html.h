@@ -26,6 +26,7 @@ class HTML {
   static void update_html(const std::string &, const std::string &,
 			  const std::string &cname = "");
   static void update_cv();
+  static void update_bibtex(const char *);
   static void update_tipslog();
 };
 

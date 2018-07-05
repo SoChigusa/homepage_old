@@ -47,7 +47,6 @@ int main(int argc, char** argv) {
   std::string arg_opt(argv[1]);
   if(arg_opt == "add") {
     std::string arg_type, arg_title, arg1, arg2;
-
     std::cout << "Research type: [p]aper or [t]alk: ";
     std::getline(std::cin, arg_type);
     if(arg_type == "p") {
@@ -57,6 +56,11 @@ int main(int argc, char** argv) {
       std::getline(std::cin, arg1);
       std::cout << "arXiv number: ";
       std::getline(std::cin, arg2);
+
+      char buffer[2048];
+      std::cout << "Copy and paste bibtex and input # and enter: " << std::endl;
+      scanf("%2047[^#]", buffer);
+      HTML::update_bibtex(buffer);
     } else if(arg_type == "t") {
       std::cout << "Talk title: ";
       std::getline(std::cin, arg_title);
@@ -68,10 +72,10 @@ int main(int argc, char** argv) {
       std::cout << "Unexpected research type" << std::endl;
       return -1;
     }
-    add_log(arg_type, arg_title, arg1, arg2);
-    HTML::update_html("../research/index_temp.html", "../research/index.html");
-    HTML::update_html("../index_temp.html", "../index.html");
-    HTML::update_cv();
+    // add_log(arg_type, arg_title, arg1, arg2);
+    // HTML::update_html("../research/index_temp.html", "../research/index.html");
+    // HTML::update_html("../index_temp.html", "../index.html");
+    // HTML::update_cv();
   } else if(arg_opt == "update") {
     HTML::update_html("../research/index_temp.html", "../research/index.html");
     HTML::update_html("../index_temp.html", "../index.html");

@@ -192,6 +192,16 @@ void HTML::update_cv() {
   ofs << ss.str();
 }
 
+void HTML::update_bibtex(const char *buffer) {
+  std::stringstream ss;
+  std::string strBufferLine;
+  std::ifstream ifs("../cv/cv.bib");
+  ss << buffer << std::endl << std::endl;
+  while(std::getline(ifs, strBufferLine)) ss << strBufferLine << std::endl;
+  std::ofstream ofs("../cv/cv.bib");
+  ofs << ss.str();
+}
+
 void HTML::update_tipslog() {
   std::ifstream iflog("../tips/tips.log");
   std::string strBufferLine;
