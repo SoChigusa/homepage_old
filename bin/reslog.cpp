@@ -42,6 +42,7 @@ void update_log(const std::string &comment) {
   HTML::update_html("../research/index_temp.html", "../research/index.html");
   HTML::update_html("../index_temp.html", "../index.html");
   HTML::update_cv();
+  system("cp ../index.html ../../sochigusa.bitbucket.org/index.html");
   system("cp ../research/index.html ../../sochigusa.bitbucket.org/research/index.html");
   system(("cd ../cv/ && latex cv && bibtex cv && latex cv && latex cv && dvipdfmx cv"));
   system("cp ../cv/cv.pdf ../../sochigusa.bitbucket.org/cv/cv.pdf");
