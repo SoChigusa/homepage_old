@@ -8,4 +8,5 @@ cv.log
 *.out
 *.synctex.gz
 *.blg
+*.dvi
 gitupdate
