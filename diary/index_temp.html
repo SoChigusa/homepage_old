@@ -1,0 +1,43 @@
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Diary</title>
+<link href="../css/normalize.css" rel="stylesheet">
+<link href="../css/github.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/infinite-scroll.pkgd.min.js"></script>
+<script>
+$(function(){
+  $('#content').infiniteScroll({
+    // options
+    path: '.navigation a',
+    append: '.article',
+    history: false,
+  });
+});
+</script>
+</head>
+
+<body>
+
+<!-- insertion below : menu.html -->
+<!-- insertion above : menu.html -->
+
+<div style="width:60%; margin-left:20%" id="gfm">
+  <div id="content">
+    <div class="article">
+      <!-- Contents below -->
+      <!-- Contents above -->
+    </div>
+    <div class="navigation">
+      <p><a href="page-2.html">Next</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- insertion below : footer.html -->
+<!-- insertion above : footer.html -->
+
+</body>
+</html>
