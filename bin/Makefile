@@ -1,7 +1,7 @@
 CXX := icpc
 CXXFLAGS := -g -Wall -Ofast -std=c++11
 
-all: html.o reslog tipslog gitupdate
+all: html.o reslog tipslog gitupdate diarylog
 
 html.o:	html.cpp
 	$(CXX) $(CXXFLAGS) -o html.o -c html.cpp
@@ -24,5 +24,11 @@ gitupdate.o:	gitupdate.cpp
 gitupdate:	gitupdate.o html.o
 	$(CXX) $(CXXFLAGS) -o gitupdate gitupdate.o html.o
 
+diarylog.o:	diarylog.cpp
+	$(CXX) $(CXXFLAGS) -o diarylog.o -c diarylog.cpp
+
+diarylog:	diarylog.o html.o
+	$(CXX) $(CXXFLAGS) -o diarylog diarylog.o html.o
+
 clean:
-	$(RM) *.o reslog tipslog gitupdate
+	$(RM) *.o reslog tipslog gitupdate diarylog

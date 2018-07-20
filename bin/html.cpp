@@ -218,3 +218,20 @@ void HTML::update_tipslog() {
 		"../tips/source/"+val[1]+".html");
   }
 }
+
+void HTML::update_diarylog() {
+  std::ifstream iflog("../diary/diary.log");
+  std::string strBufferLine;
+  std::vector<std::string> val;
+  bool firstLine = true;
+  while(std::getline(iflog, strBufferLine)) {
+    split(val, strBufferLine, ';');
+    if(firstLine) { // Preserve most recent as index.html
+      update_html("../diary/index_temp.html", "../diary/index.html",
+		  "../diary/source/"+val[1]+".html");
+      firstLine = false;
+    }
+    // update_html("../di/index_temp.html", "../tips/"+val[1]+".html",
+    // 		"../tips/source/"+val[1]+".html");
+  }
+}

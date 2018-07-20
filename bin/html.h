@@ -28,6 +28,7 @@ class HTML {
   static void update_cv();
   static void update_bibtex(const char *);
   static void update_tipslog();
+  static void update_diarylog();
 };
 
 #endif

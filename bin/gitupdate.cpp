@@ -1,6 +1,6 @@
 /*
  * Project: gitupdate
- * File: git.cpp
+ * File: gitupdate.cpp
  * Author: So Chigusa
  *
  * Created on 2018/7/5
