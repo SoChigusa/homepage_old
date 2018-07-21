@@ -172,6 +172,13 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
 	if((int)strBufferLine.find("<body>") != -1) body = true;
       }
     }
+
+    // add most recent diary
+    if((int)strBufferLine.find("<!-- Diary below -->") != -1) {
+      std::ifstream iftext(cname);
+      while(std::getline(iftext, strBufferLine))
+	ss << "    " << strBufferLine << std::endl;
+    }
   }
 
   std::ofstream ofs(strout);
