@@ -255,8 +255,8 @@ void HTML::update_diarylog() {
 		  "../diary/source/"+val[1]+".html");
       firstLine = false;
     } else {
-      extract_body("../diary/source/"+val[1]+".html",
-		   "../diary/page-"+std::to_string(npage)+".html");
+      system(("cp ../diary/source/"+val[1]+".html "
+	      +"../diary/page-"+std::to_string(npage)+".html").c_str());
     }
     npage++;
   }
