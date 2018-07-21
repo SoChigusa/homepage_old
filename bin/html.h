@@ -23,6 +23,7 @@ class HTML {
   static void split(std::vector<std::string> &, const std::string &buf, char sep);
   static std::string getYYYYMMDD(time_t);
   static void insertFromFile(std::stringstream &, std::string &);
+  static void extract_body(const std::string &, const std::string &);
   static void update_html(const std::string &, const std::string &,
 			  const std::string &cname = "");
   static void update_cv();

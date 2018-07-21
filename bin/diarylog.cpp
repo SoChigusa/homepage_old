@@ -20,11 +20,11 @@ void errorMessage() {
 
 void update_log(const std::string &comment) {
   HTML::update_diarylog();
-  system("cp ../diary/index.html ../../sochigusa.bitbucket.org/diary/index.html");
-  system(("git commit -a -m \"auto commit by diarylog : "+comment+"\" && "
-  	  +"git push origin master").c_str());
-  system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit by diarylog : "+comment+"\" && "
-  	  +"git push origin master").c_str());
+  // system("cp ../diary/index.html ../../sochigusa.bitbucket.org/diary/index.html");
+  // system(("git commit -a -m \"auto commit by diarylog : "+comment+"\" && "
+  // 	  +"git push origin master").c_str());
+  // system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit by diarylog : "+comment+"\" && "
+  // 	  +"git push origin master").c_str());
 }
 
 void add_log(std::string &arg_name, std::ifstream &ifcont) {
@@ -62,6 +62,8 @@ int main(int argc, char** argv) {
       std::cout << "File ../diary/source/" << arg_name << ".html isn't found" << std::endl;
       return -1;
     }
+    HTML::extract_body("../diary/source/"+arg_name+".html",
+		       "../diary/source/"+arg_name+".html");
     add_log(arg_name, ifcont);
     update_log("add "+arg_name);
   } else if(arg_opt == "update") {

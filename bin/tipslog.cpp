@@ -69,6 +69,8 @@ int main(int argc, char** argv) {
       std::cout << "File ../tips/source/" << arg_name << ".html isn't found" << std::endl;
       return -1;
     }
+    HTML::extract_body("../tips/source/"+arg_name+".html",
+		       "../tips/source/"+arg_name+".html");
     add_log(arg_name, ifcont);
     update_log("add "+arg_name);
   } else if(arg_opt == "update") {

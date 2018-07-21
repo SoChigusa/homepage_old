@@ -32,6 +32,23 @@ void HTML::insertFromFile(std::stringstream &ss, std::string &bufline) {
   while(std::getline(ifs, buf)) ss << buf << std::endl;
 }
 
+void HTML::extract_body(const std::string &strtemp, const std::string &strout) {
+  std::ifstream ifs(strtemp);
+  std::stringstream ss;
+  std::string strBufferLine;
+  std::vector<std::string> val;
+  bool isbody = false;
+  
+  while(std::getline(ifs, strBufferLine)) {
+    if((int)strBufferLine.find("</body>") != -1) { isbody = false; }
+    if(isbody) { ss << strBufferLine << std::endl; }
+    if((int)strBufferLine.find("<body>") != -1) { isbody = true; }
+  }
+
+  std::ofstream ofs(strout);
+  ofs << ss.str();
+}
+
 void HTML::update_html(const std::string &strtemp, const std::string &strout,
 		       const std::string &cname) {
   std::ifstream ifs(strtemp);
@@ -224,14 +241,17 @@ void HTML::update_diarylog() {
   std::string strBufferLine;
   std::vector<std::string> val;
   bool firstLine = true;
+  int npage = 1;
   while(std::getline(iflog, strBufferLine)) {
     split(val, strBufferLine, ';');
     if(firstLine) { // Preserve most recent as index.html
       update_html("../diary/index_temp.html", "../diary/index.html",
 		  "../diary/source/"+val[1]+".html");
       firstLine = false;
+    } else {
+      extract_body("../diary/source/"+val[1]+".html",
+		   "../diary/page-"+std::to_string(npage)+".html");
     }
-    // update_html("../di/index_temp.html", "../tips/"+val[1]+".html",
-    // 		"../tips/source/"+val[1]+".html");
+    npage++;
   }
 }
