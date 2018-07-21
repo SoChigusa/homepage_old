@@ -13,12 +13,12 @@
 また、ボンへ向けて、ライン川沿いにひた走る電車は、それ自体思いもかけない風情の
 連続で非常に楽しかった。
 
-<img src="pic/karlsruhe1.jpg">
+<img src="https://dl.dropboxusercontent.com/s/l2l7fp7w3qcjylz/karlsruhe1.jpg">
 
-<img src="pic/karlsruhe2.jpg">
+<img src="https://dl.dropboxusercontent.com/s/ifl5o355hhx3r58/karlsruhe2.jpg">
 
-<img src="pic/heidelberg1.jpg">
+<img src="https://dl.dropboxusercontent.com/s/9b6clwf5uqws8x1/heidelberg1.jpg">
 
-<img src="pic/heidelberg2.jpg">
+<img src="https://dl.dropboxusercontent.com/s/75bfupdqnn8z94v/heidelberg2.jpg">
 
-<img src="pic/bonn1.jpg">
+<img src="https://dl.dropboxusercontent.com/s/20g6x8bqa5bb3gp/bonn1.jpg">
