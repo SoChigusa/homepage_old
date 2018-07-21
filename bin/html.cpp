@@ -38,18 +38,22 @@ void HTML::extract_body(const std::string &strtemp, const std::string &strout) {
   std::string strBufferLine;
   std::vector<std::string> val;
   bool isbody = false;
-
-  ss << "<div id=\"content\">" << std::endl;
-  ss << "<div class=\"article\">" << std::endl;
   
   while(std::getline(ifs, strBufferLine)) {
-    if((int)strBufferLine.find("</body>") != -1) { isbody = false; }
+    if((int)strBufferLine.find("</body>") != -1) {
+      isbody = false;
+      ss << "</div>" << std::endl; // class = article
+      ss << "</div>" << std::endl; // id = content
+      ss << "</body>" << std::endl;
+    }
     if(isbody) { ss << strBufferLine << std::endl; }
-    if((int)strBufferLine.find("<body>") != -1) { isbody = true; }
+    if((int)strBufferLine.find("<body>") != -1) {
+      isbody = true;
+      ss << "<body>" << std::endl;
+      ss << "<div id=\"content\">" << std::endl;
+      ss << "<div class=\"article\">" << std::endl;
+    }
   }
-
-  ss << "</div>" << std::endl; // class = article
-  ss << "</div>" << std::endl; // id = content
   
   std::ofstream ofs(strout);
   ofs << ss.str();
@@ -172,13 +176,6 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
 	if((int)strBufferLine.find("<body>") != -1) body = true;
       }
     }
-
-    // add most recent diary
-    if((int)strBufferLine.find("<!-- Diary below -->") != -1) {
-      std::ifstream iftext(cname);
-      while(std::getline(iftext, strBufferLine))
-	ss << "    " << strBufferLine << std::endl;
-    }
   }
 
   std::ofstream ofs(strout);
@@ -262,8 +259,19 @@ void HTML::update_diarylog() {
 		  "../diary/source/"+val[1]+".html");
       firstLine = false;
     } else {
-      system(("cp ../diary/source/"+val[1]+".html "
-	      +"../diary/page-"+std::to_string(npage)+".html").c_str());
+      std::ifstream ifs("../diary/source/"+val[1]+".html");
+      std::stringstream ss;
+      std::string strBufferLine;
+      while(std::getline(ifs, strBufferLine)) {
+	if((int)strBufferLine.find("</body>") != -1) {
+	  ss << "<div class=\"navigation\">" << std::endl;
+	  ss << "<p><a href=\"page-"+std::to_string(npage+1)+".html\">Next</a></p>" << std::endl;
+	  ss << "</div>" << std::endl;
+	}
+	ss << strBufferLine << std::endl;
+      }
+      std::ofstream ofs("../diary/page-"+std::to_string(npage)+".html");
+      ofs << ss.str();
     }
     npage++;
   }
