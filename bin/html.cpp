@@ -38,6 +38,9 @@ void HTML::extract_body(const std::string &strtemp, const std::string &strout) {
   std::string strBufferLine;
   std::vector<std::string> val;
   bool isbody = false;
+
+  ss << "<div id=\"content\">" << std::endl;
+  ss << "<div class=\"article\">" << std::endl;
   
   while(std::getline(ifs, strBufferLine)) {
     if((int)strBufferLine.find("</body>") != -1) { isbody = false; }
@@ -45,6 +48,9 @@ void HTML::extract_body(const std::string &strtemp, const std::string &strout) {
     if((int)strBufferLine.find("<body>") != -1) { isbody = true; }
   }
 
+  ss << "</div>" << std::endl; // class = article
+  ss << "</div>" << std::endl; // id = content
+  
   std::ofstream ofs(strout);
   ofs << ss.str();
 }
