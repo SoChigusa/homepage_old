@@ -78,7 +78,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
     if((int)strBufferLine.find("<!-- Recent Activities below -->") != -1) {
       std::ifstream iflog("../research/research.log");
       ss << "<article>" << std::endl;
-      for(int i = 0; i < 4; i++) {
+      for(int i = 0; i < 6; i++) {
 	std::getline(iflog, strBufferLine);
 	split(val, strBufferLine, ';');
 	ss << "  <section>" << std::endl;
