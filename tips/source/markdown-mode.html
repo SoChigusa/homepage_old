@@ -1,25 +1,6 @@
-[WARNING] This document format requires a nonempty <title> element.
-  Please specify either 'title' or 'pagetitle' in the metadata.
-  Falling back to 'Untitled'
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Untitled</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/Users/SoChigusa/.pandoc/github.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
 <body>
+<div id="content">
+<div class="article">
 <h1 id="emacs-で-markdown-mode-を使用した編集プレビュー環境を整える">Emacs で markdown-mode を使用した編集、プレビュー環境を整える</h1>
 <hr />
 <h2 id="markdown-mode-の導入">markdown-mode の導入</h2>
@@ -33,5 +14,6 @@
 <pre class="shell"><code>brew install pandoc</code></pre>
 <p>表示に使用するスタイルシートを見つけてくる。 GitHub Flavored Markdown (gfm) が見栄え良い。 今回は<code>~/.pandoc/github.css</code>に該当ファイルを置いている。 <code>~/.emacs.el</code> に以下を追加することで、<code>C-c C-c p</code> で html を自動生成し、プレビュー画面が立ち上がる。</p>
 <pre class="emacs-lisp"><code>(setq markdown-command &quot;pandoc -s -c ~/.pandoc/github.css&quot;)</code></pre>
+</div>
+</div>
 </body>
-</html>

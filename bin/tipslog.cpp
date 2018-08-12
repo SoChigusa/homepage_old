@@ -21,12 +21,12 @@ void errorMessage() {
 void update_log(const std::string &comment) {
   HTML::update_tipslog();
   HTML::update_html("../index_temp.html", "../index.html");
-  // system("cp ../index.html ../../sochigusa.bitbucket.org/index.html");
-  // system("cp ../tips/index.html ../../sochigusa.bitbucket.org/tips/index.html");
-  // system(("git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
-  // 	  +"git push origin master").c_str());
-  // system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
-  // 	  +"git push origin master").c_str());
+  system("cp ../index.html ../../sochigusa.bitbucket.org/index.html");
+  system("cp ../tips/index.html ../../sochigusa.bitbucket.org/tips/index.html");
+  system(("git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
+  	  +"git push origin master").c_str());
+  system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
+  	  +"git push origin master").c_str());
 }
 
 int add_log(std::string &arg_name, std::ifstream &ifcont) {
