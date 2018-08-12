@@ -32,8 +32,13 @@ void HTML::insertFromFile(std::stringstream &ss, std::string &bufline) {
   while(std::getline(ifs, buf)) ss << buf << std::endl;
 }
 
-void HTML::extract_body(const std::string &strtemp, const std::string &strout) {
+int HTML::extract_body(const std::string &strtemp, const std::string &strout) {
   std::ifstream ifs(strtemp);
+  if(!ifs.is_open()) {
+    std::cout << "File " << strtemp << " isn't found" << std::endl;
+    return -1;
+  }
+  
   std::stringstream ss;
   std::string strBufferLine;
   std::vector<std::string> val;
@@ -57,6 +62,7 @@ void HTML::extract_body(const std::string &strtemp, const std::string &strout) {
   
   std::ofstream ofs(strout);
   ofs << ss.str();
+  return 0;
 }
 
 void HTML::update_html(const std::string &strtemp, const std::string &strout,

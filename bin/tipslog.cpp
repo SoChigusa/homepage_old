@@ -21,21 +21,28 @@ void errorMessage() {
 void update_log(const std::string &comment) {
   HTML::update_tipslog();
   HTML::update_html("../index_temp.html", "../index.html");
-  system("cp ../index.html ../../sochigusa.bitbucket.org/index.html");
-  system("cp ../tips/index.html ../../sochigusa.bitbucket.org/tips/index.html");
-  system(("git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
-	  +"git push origin master").c_str());
-  system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
-	  +"git push origin master").c_str());
+  // system("cp ../index.html ../../sochigusa.bitbucket.org/index.html");
+  // system("cp ../tips/index.html ../../sochigusa.bitbucket.org/tips/index.html");
+  // system(("git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
+  // 	  +"git push origin master").c_str());
+  // system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
+  // 	  +"git push origin master").c_str());
 }
 
-void add_log(std::string &arg_name, std::ifstream &ifcont) {
+int add_log(std::string &arg_name, std::ifstream &ifcont) {
   std::string strBufferLine;
   std::vector<std::string> val, val2;
-  std::getline(ifcont, strBufferLine);
+  bool exist_h1 = false;
+  while(std::getline(ifcont, strBufferLine)) {
+    if((int)strBufferLine.find("</h1>") != -1) {
+      exist_h1 = true;
+      break;
+    }
+  }
+  if(!exist_h1) return -1;
   HTML::split(val, strBufferLine, '>');
   HTML::split(val2, val[1], '<');
-
+  
   time_t now = std::time(nullptr);
   std::stringstream ss;
   ss << now << ";" << arg_name << ";" << val2[0] << std::endl;
@@ -48,6 +55,7 @@ void add_log(std::string &arg_name, std::ifstream &ifcont) {
   
   std::ofstream ofs("../tips/tips.log");
   ofs << ss.str();
+  return 0;
 }
 
 int main(int argc, char** argv) {
@@ -64,14 +72,13 @@ int main(int argc, char** argv) {
 
   if(arg_opt == "add") {
     std::string arg_name(argv[2]);
-    std::ifstream ifcont("../tips/source/"+arg_name+".html");
-    if(!ifcont.is_open()) {
-      std::cout << "File ../tips/source/" << arg_name << ".html isn't found" << std::endl;
-      return -1;
-    }
     HTML::extract_body("../tips/source/"+arg_name+".html",
 		       "../tips/source/"+arg_name+".html");
-    add_log(arg_name, ifcont);
+    std::ifstream ifcont("../tips/source/"+arg_name+".html");
+    if(add_log(arg_name, ifcont) == -1) {
+      std::cout << "Error: source html should contain <h1>...</h1> block" << std::endl;
+      return -1;
+    }
     update_log("add "+arg_name);
   } else if(arg_opt == "update") {
     update_log("update");
