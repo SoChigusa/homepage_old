@@ -6,8 +6,14 @@
 <link href="../css/github.css" rel="stylesheet">
 <link href="../css/main.css" rel="stylesheet">
 <script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/lazyload.min.js"></script>
 <script src="../js/infinite-scroll.pkgd.min.js"></script>
 <script>
+$(prop.deferredImage).lazyload({
+    threshold : 10,
+    effect: 'fadeIn',
+    effectspeed: 1000
+});
 $(function(){
   $('#content').infiniteScroll({
     // options

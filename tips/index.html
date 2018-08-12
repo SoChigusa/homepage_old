@@ -29,6 +29,8 @@
     <nav>
       <h3>Tips Menu</h3>
       <ul>
+      <li><a href="madgraph.html">madgraph</a></li>
+      <li><a href="madgraph.html">madgraph</a></li>
       <li><a href="markdown-mode.html">markdown-mode</a></li>
       <li><a href="chrome-JavaScript.html">chrome-JavaScript</a></li>
        </ul>
@@ -37,19 +39,39 @@
   </div>
   <div class="box" id="gfm">
     <!-- Contents below -->
-    <h1 id="emacs-で-markdown-mode-を使用した編集プレビュー環境を整える">Emacs で markdown-mode を使用した編集、プレビュー環境を整える</h1>
-    <hr />
-    <h2 id="markdown-mode-の導入">markdown-mode の導入</h2>
-    <p>Emacs のパッケージインストーラを利用する記事が多いけれど、markdown-mode が見つからなかったため、GitHub から clone した。</p>
-    <pre class="shell"><code>git clone git://jblevins.org/git/markdown-mode.git</code></pre>
-    <p><code>~/.emacs.el</code> に以下を追加する。</p>
-    <pre class="emacs-lisp"><code>(load &quot;path-to-markdown-mode/markdown-mode/markdown-mode.el&quot;)
-    (setq auto-mode-alist (cons &#39;(&quot;\\.md&quot; . gfm-mode) auto-mode-alist))</code></pre>
-    <h2 id="プレビュー環境の構築">プレビュー環境の構築</h2>
-    <p>pandoc を使用することにした。</p>
-    <pre class="shell"><code>brew install pandoc</code></pre>
-    <p>表示に使用するスタイルシートを見つけてくる。 GitHub Flavored Markdown (gfm) が見栄え良い。 今回は<code>~/.pandoc/github.css</code>に該当ファイルを置いている。 <code>~/.emacs.el</code> に以下を追加することで、<code>C-c C-c p</code> で html を自動生成し、プレビュー画面が立ち上がる。</p>
-    <pre class="emacs-lisp"><code>(setq markdown-command &quot;pandoc -s -c ~/.pandoc/github.css&quot;)</code></pre>
+    <div id="content">
+    <div class="article">
+    <h1 id="madgraph-の導入から計算まで">Madgraph の導入から計算まで</h1>
+    <p>何度くりかえしてもどこか違うエラーが出るので、今回の成功例を書いておく（2018/8/12） まず、現在のところ gfortran-8 が Madgraph 周りの compile に対応していないので、 <code>homebrew install gcc@7</code> 対応して、<code>input/mg5_configuration.txt</code>内のグローバル設定をいじる。</p>
+    <pre class="text"><code>fortran_compiler = gfortran-7
+    cpp_compiler = g++-7
+    automatic_html_opening = False
+    fastjet = None</code></pre>
+    <p>下二つは、<code>launch</code>時にブラウザが自動で立ち上がるのを防止するのと、 存在しない fastjet を jet algorithm に使おうとするのを禁止する。 （コンパイル時 fastjet::*** が存在しないと文句言われたので書き足した）</p>
+    <p>次に、<a href="http://ktobi.blogspot.com/2018/03/high-sierra.html" target="_blank">Tobiokande 様</a> を参考に、<code>bin/mg5_aMC</code>から dependency のインストール</p>
+    <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1">install boost</a>
+    <a class="sourceLine" id="cb2-2" data-line-number="2">install lhapdf6</a>
+    <a class="sourceLine" id="cb2-3" data-line-number="3">install zlib</a>
+    <a class="sourceLine" id="cb2-4" data-line-number="4">install hepmc</a>
+    <a class="sourceLine" id="cb2-5" data-line-number="5">install pythia8</a></code></pre></div>
+    <p>あとは普通に使用する。 <code>launch</code>時に要求される dependency code は基本的に何も考えず Enter を押す。</p>
+    <ol type="1">
+    <li>LO Drell-Yan</li>
+    </ol>
+    <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1">p <span class="op">=</span> p b b<span class="op">~</span></a>
+    <a class="sourceLine" id="cb3-2" data-line-number="2">generate p p <span class="op">&gt;</span> e<span class="op">+</span> e<span class="op">-</span></a>
+    <a class="sourceLine" id="cb3-3" data-line-number="3">output pp2ee</a>
+    <a class="sourceLine" id="cb3-4" data-line-number="4">launch</a></code></pre></div>
+    <ol start="2" type="1">
+    <li>NLO Drell-Yan</li>
+    </ol>
+    <div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="im">import</span> model sm<span class="op">-</span>no_b_mass</a>
+    <a class="sourceLine" id="cb4-2" data-line-number="2">generate p p <span class="op">&gt;</span> e<span class="op">+</span> e<span class="op">-</span> [QCD]</a>
+    <a class="sourceLine" id="cb4-3" data-line-number="3">output pp2ee</a>
+    <a class="sourceLine" id="cb4-4" data-line-number="4">launch</a></code></pre></div>
+    <p>等々。</p>
+    </div>
+    </div>
     <!-- Contents above -->
   </div>
 </div>
