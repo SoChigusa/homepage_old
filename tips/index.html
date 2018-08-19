@@ -44,56 +44,48 @@
     <hr />
     <h2 id="導入初期設定">導入、初期設定</h2>
     <p>何度くりかえしてもどこか違うエラーが出るので、今回の成功例を書いておく（2018/8/12） まず、現在のところ gfortran-8 が Madgraph 周りの compile に対応していないので、 <code>homebrew install gcc@7</code> 対応して、<code>input/mg5_configuration.txt</code>内のグローバル設定をいじる。</p>
-    <ul>
-    <li><code>fortran_compiler = gfortran-7</code></li>
-    <li><code>cpp_compiler = g++-7</code></li>
-    <li><code>automatic_html_opening = False</code></li>
-    <li><code>fastjet = None</code></li>
-    </ul>
+    <pre class="shell"><code>    fortran_compiler = gfortran-7
+        cpp_compiler = g++-7
+        automatic_html_opening = False
+        fastjet = None</code></pre>
     <p>下二つは、<code>launch</code>時にブラウザが自動で立ち上がるのを防止するのと、 存在しない fastjet を jet algorithm に使おうとするのを禁止する。 （コンパイル時 fastjet::*** が存在しないと文句言われたので書き足した）</p>
     <p>次に、<a href="http://ktobi.blogspot.com/2018/03/high-sierra.html" target="_blank">Tobiokande 様</a> を参考に、<code>bin/mg5_aMC</code>から dependency のインストール</p>
-    <ul>
-    <li><code>install boost</code></li>
-    <li><code>install lhapdf6</code></li>
-    <li><code>install zlib</code></li>
-    <li><code>install hepmc</code></li>
-    <li><code>install pythia8</code></li>
-    </ul>
+    <pre class="shell"><code>    install boost
+        install lhapdf6
+        install zlib
+        install hepmc
+        install pythia8</code></pre>
     <h2 id="用法">用法</h2>
     <p>あとは普通に使用する。 <code>launch</code>時に要求される dependency code は基本的に何も考えず Enter を押す。</p>
     <ol type="1">
     <li>LO Drell-Yan</li>
     </ol>
-    <ul>
-    <li><code>p = p b b~</code></li>
-    <li><code>generate p p &gt; e+ e-</code></li>
-    <li><code>output pp2ee</code></li>
-    <li><code>launch</code></li>
-    </ul>
+    <pre class="shell"><code>    p = p b b~
+        generate p p &gt; e+ e-
+        output pp2ee
+        launch</code></pre>
     <ol start="2" type="1">
     <li>NLO Drell-Yan</li>
     </ol>
-    <ul>
-    <li><code>import model sm-no_b_mass</code></li>
-    <li><code>generate p p &gt; e+ e- [QCD]</code></li>
-    <li><code>output pp2eeNLO</code></li>
-    <li><code>launch</code></li>
-    </ul>
+    <pre class="shell"><code>    import model sm-no_b_mass
+        generate p p &gt; e+ e- [QCD]
+        output pp2eeNLO
+        launch</code></pre>
     <p>等々。</p>
     <h2 id="systematics-module-を使う">(2018/08/19) Systematics module を使う</h2>
     <p>Systematics module を使うためには、<em>LHAPDF</em> の python interface が必要。 上記<code>install lhapdf6</code>で入れた <em>LHAPDF</em> ではライブラリのリンクが上手く貼られていなかった （brew ver. 等複数の <em>LHAPDF</em> が混在したせい？）ため、手動で入れなおした。 https://github.com/davidchall/homebrew-hep/issues/39 を参考に、<code>configure</code>あるいは<code>make</code>時に</p>
-    <pre class="shell"><code>  CXXFLAGS = -stdlib=libstdc++
-      CFLAGS = -stdlib=libstdc++
-      LDFLAGS = -stdlib=libstdc++ -lstdc++
-      CXX = g++-7 -stdlib=libstdc++</code></pre>
+    <pre class="shell"><code>    CXXFLAGS = -stdlib=libstdc++
+        CFLAGS = -stdlib=libstdc++
+        LDFLAGS = -stdlib=libstdc++ -lstdc++
+        CXX = g++-7 -stdlib=libstdc++</code></pre>
     <p>を書き加える。 対応して、<code>input/mg5_configuration.txt</code>内の設定は<code>lhapdf = /usr/local/bin/lhapdf-config</code> （デフォルトのインストールパス）に。そして、<code>bin/mg5_aMCtesfa</code>から<code>install pythia8</code>で pythia も入れなおす。</p>
     <p>実際に<code>launch</code>する際には、特に QCD NLO オプションの場合、<code>run_card.dat</code>の書き換えが必要。</p>
-    <pre class="shell"><code>  lhapdf = pdlabel ! PDF set
-      True  = reweight_scale ! Reweight to get scale variation using the 
-      True  = reweight_pdf ! Reweight to get PDF uncertainty. Should be a
-      True  = store_rwgt_info ! Store info for reweighting in LHE file
-      systematics   = systematics_program 
-      [&#39;--mur=0.5,1,2&#39;, &#39;--muf=0.5,1,2&#39;, &#39;--pdf=errorset&#39;] = systematics_arguments ! see: https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Systematics#Systematicspythonmodule</code></pre>
+    <pre class="shell"><code>    lhapdf = pdlabel ! PDF set
+        True   = reweight_scale ! Reweight to get scale variation using the 
+        True   = reweight_pdf ! Reweight to get PDF uncertainty. Should be a
+        True   = store_rwgt_info ! Store info for reweighting in LHE file
+        systematics = systematics_program 
+        [&#39;--mur=0.5,1,2&#39;, &#39;--muf=0.5,1,2&#39;, &#39;--pdf=errorset&#39;] = systematics_arguments ! see: https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Systematics#Systematicspythonmodule</code></pre>
     <p>これで、くりこみ点（結合定数とPDF）、および PDF choice のエラーを自動で計算してくれる。</p>
     </div>
     </div>
