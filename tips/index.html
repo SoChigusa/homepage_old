@@ -40,8 +40,6 @@
     <!-- Contents below -->
     <div id="content">
     <div class="article">
-    <div id="content">
-    <div class="article">
     <h1 id="madgraph-の導入から計算まで">Madgraph の導入から計算まで</h1>
     <hr />
     <h2 id="導入初期設定">導入、初期設定</h2>
@@ -82,8 +80,21 @@
     <li><code>launch</code></li>
     </ul>
     <p>等々。</p>
-    </div>
-    </div>
+    <h2 id="systematics-module-を使う">(2018/08/19) Systematics module を使う</h2>
+    <p>Systematics module を使うためには、<em>LHAPDF</em> の python interface が必要。 上記<code>install lhapdf6</code>で入れた <em>LHAPDF</em> ではライブラリのリンクが上手く貼られていなかった （brew ver. 等複数の <em>LHAPDF</em> が混在したせい？）ため、手動で入れなおした。 https://github.com/davidchall/homebrew-hep/issues/39 を参考に、<code>configure</code>あるいは<code>make</code>時に</p>
+    <pre class="shell"><code>  CXXFLAGS = -stdlib=libstdc++
+      CFLAGS = -stdlib=libstdc++
+      LDFLAGS = -stdlib=libstdc++ -lstdc++
+      CXX = g++-7 -stdlib=libstdc++</code></pre>
+    <p>を書き加える。 対応して、<code>input/mg5_configuration.txt</code>内の設定は<code>lhapdf = /usr/local/bin/lhapdf-config</code> （デフォルトのインストールパス）に。そして、<code>bin/mg5_aMCtesfa</code>から<code>install pythia8</code>で pythia も入れなおす。</p>
+    <p>実際に<code>launch</code>する際には、特に QCD NLO オプションの場合、<code>run_card.dat</code>の書き換えが必要。</p>
+    <pre class="shell"><code>  lhapdf = pdlabel ! PDF set
+      True  = reweight_scale ! Reweight to get scale variation using the 
+      True  = reweight_pdf ! Reweight to get PDF uncertainty. Should be a
+      True  = store_rwgt_info ! Store info for reweighting in LHE file
+      systematics   = systematics_program 
+      [&#39;--mur=0.5,1,2&#39;, &#39;--muf=0.5,1,2&#39;, &#39;--pdf=errorset&#39;] = systematics_arguments ! see: https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Systematics#Systematicspythonmodule</code></pre>
+    <p>これで、くりこみ点（結合定数とPDF）、および PDF choice のエラーを自動で計算してくれる。</p>
     </div>
     </div>
     <!-- Contents above -->
