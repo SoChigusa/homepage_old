@@ -25,7 +25,7 @@ void update_log(const std::string &comment) {
   system("cp ../tips/*.html ../../sochigusa.bitbucket.org/tips/");
   system(("git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
   	  +"git push origin master").c_str());
-  system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
+  system(("cd ../../sochigusa.bitbucket.org/ && git add tips/*.html && git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
   	  +"git push origin master").c_str());
 }
 
