@@ -23,7 +23,7 @@ void update_log(const std::string &comment) {
   HTML::update_html("../index_temp.html", "../index.html");
   system("cp ../index.html ../../sochigusa.bitbucket.org/index.html");
   system("cp ../tips/*.html ../../sochigusa.bitbucket.org/tips/");
-  system(("git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
+  system(("git add ../tips/* && git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
   	  +"git push origin master").c_str());
   system(("cd ../../sochigusa.bitbucket.org/ && git add tips/*.html && git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
   	  +"git push origin master").c_str());

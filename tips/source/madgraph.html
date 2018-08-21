@@ -1,0 +1,65 @@
+[WARNING] This document format requires a nonempty <title> element.
+  Please specify either 'title' or 'pagetitle' in the metadata.
+  Falling back to 'Untitled'
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Untitled</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/Users/SoChigusa/.pandoc/github.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="madgraph-の導入から計算まで">Madgraph の導入から計算まで</h1>
+<hr />
+<h2 id="導入初期設定">導入、初期設定</h2>
+<p>何度くりかえしてもどこか違うエラーが出るので、今回の成功例を書いておく（2018/8/12） まず、現在のところ gfortran-8 が Madgraph 周りの compile に対応していないので、 <code>homebrew install gcc@7</code> 対応して、<code>input/mg5_configuration.txt</code>内のグローバル設定をいじる。</p>
+<pre class="shell"><code>    fortran_compiler = gfortran-7
+    cpp_compiler = g++-7
+    automatic_html_opening = False</code></pre>
+<p>最後のコマンドで、<code>launch</code>時にブラウザが自動で立ち上がるのを防止する。 fastjet が存在しないエラーが出るときは、<code>fastjet = None</code>でとりあえず動く。</p>
+<p>次に、<a href="http://ktobi.blogspot.com/2018/03/high-sierra.html" target="_blank">Tobiokande 様</a> を参考に、<code>bin/mg5_aMC</code>から dependency のインストール</p>
+<pre class="shell"><code>    install boost
+    install lhapdf6
+    install zlib
+    install hepmc
+    install pythia8</code></pre>
+<h2 id="用法">用法</h2>
+<p>あとは普通に使用する。 <code>launch</code>時に要求される dependency code は基本的に何も考えず Enter を押す。</p>
+<ol type="1">
+<li>LO Drell-Yan</li>
+</ol>
+<pre class="shell"><code>    p = p b b~
+    generate p p &gt; e+ e-
+    output pp2ee
+    launch</code></pre>
+<ol start="2" type="1">
+<li>NLO Drell-Yan</li>
+</ol>
+<pre class="shell"><code>    import model sm-no_b_mass
+    generate p p &gt; e+ e- [QCD]
+    output pp2eeNLO
+    launch</code></pre>
+<p>等々。</p>
+<h2 id="systematics-module-を使う">(2018/08/19) Systematics module を使う</h2>
+<p>Systematics module を使うためには、<em>LHAPDF</em> の python interface が必要。 上記<code>install lhapdf6</code>で入れた <em>LHAPDF</em> ではライブラリのリンクが上手く貼られていなかった （brew ver. 等複数の <em>LHAPDF</em> が混在したせい？）ため、手動で入れなおした。 <!--https://github.com/davidchall/homebrew-hep/issues/39 を参考に、--> <code>configure CXX=g++-7</code>から<code>make</code>そして<code>make install</code>。 正しくインストールできれば、<code>/usr/local/lib/python2.7/site-packages</code>で python モジュールを立ち上げ、 <code>import lhapdf</code>で何も文句を言われずに <em>LHAPDF</em> を読み込めるはず。 この変更に対応して、<code>input/mg5_configuration.txt</code>内の設定は<code>lhapdf = /usr/local/bin/lhapdf-config</code> （デフォルトのインストールパス）に。そして、<code>bin/mg5_aMC</code>から<code>install pythia8</code>で pythia も入れなおす。</p>
+<p>実際に<code>launch</code>する際には、特に QCD NLO オプションの場合、<code>run_card.dat</code>の書き換えが必要。</p>
+<pre class="shell"><code>    lhapdf = pdlabel ! PDF set
+    True   = reweight_scale ! Reweight to get scale variation using the 
+    True   = reweight_pdf ! Reweight to get PDF uncertainty. Should be a
+    True   = store_rwgt_info ! Store info for reweighting in LHE file
+    systematics = systematics_program 
+    [&#39;--mur=0.5,1,2&#39;, &#39;--muf=0.5,1,2&#39;, &#39;--pdf=errorset&#39;] = systematics_arguments ! see: https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Systematics#Systematicspythonmodule</code></pre>
+<p>これで、くりこみ点（結合定数とPDF）、および PDF choice のエラーを自動で計算してくれる。</p>
+</body>
+</html>
