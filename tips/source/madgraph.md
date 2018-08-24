@@ -79,7 +79,7 @@ Systematics module を使うためには、*LHAPDF* の python interface が必�
 
 これで、くりこみ点（結合定数とPDF）、および PDF choice のエラーを自動で計算してくれる。
 
-## aMCatNLOError : Some tests failed, run cannot continue. ##
+## (2018/08/24) aMCatNLOError : Some tests failed, run cannot continue. ##
 
 エラーメッセージを見てエラーが出たテストを特定する。
 今回は Soft / Collinear test で失敗していたので、`SubProcesses/test_soft_col_limits.f` の中身を覗いてみる。
