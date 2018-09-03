@@ -1,6 +1,11 @@
 
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
 
+\bibitem{Chigusa:2018hhl}
+S.~Chigusa and K.~Nakayama, \emph{{Anomalous Discrete Flavor Symmetry and
+  Domain Wall Problem}},  \href{https://arxiv.org/abs/1808.09601}{{\ttfamily
+  1808.09601}}.
+
 \bibitem{Chigusa:2018uuj}
 S.~Chigusa, T.~Moroi and Y.~Shoji, \emph{{Decay Rate of Electroweak Vacuum in
   the Standard Model and Beyond}},
