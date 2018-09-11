@@ -29,6 +29,7 @@
     <nav>
       <h3>Tips Menu</h3>
       <ul>
+      <li><a href="softsusy.html">softsusy</a></li>
       <li><a href="madgraph.html">madgraph</a></li>
       <li><a href="markdown-mode.html">markdown-mode</a></li>
       <li><a href="chrome-JavaScript.html">chrome-JavaScript</a></li>
@@ -79,7 +80,7 @@
         systematics = systematics_program 
         ['--mur=0.5,1,2', '--muf=0.5,1,2', '--pdf=errorset'] = systematics_arguments ! see: https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Systematics#Systematicspythonmodule</code></pre>
     <p>これで、くりこみ点（結合定数とPDF）、および PDF choice のエラーを自動で計算してくれる。</p>
-    <h2 id="amcatnloerror-some-tests-failed-run-cannot-continue.">aMCatNLOError : Some tests failed, run cannot continue.</h2>
+    <h2 id="amcatnloerror-some-tests-failed-run-cannot-continue.">(2018/08/24) aMCatNLOError : Some tests failed, run cannot continue.</h2>
     <p>エラーメッセージを見てエラーが出たテストを特定する。 今回は Soft / Collinear test で失敗していたので、<code>SubProcesses/test_soft_col_limits.f</code> の中身を覗いてみる。 https://answers.launchpad.net/mg5amcnlo/+question/255905 に依ると、energy scale が複数ある場合、numerical instability が大きくてこの手のエラーが起きやすいらしい。 そこで、テストの基準を緩めることにして、</p>
     <div class="sourceCode" id="cb6"><pre class="sourceCode fortran"><code class="sourceCode fortran"><a class="sourceLine" id="cb6-1" data-line-number="1">      <span class="dt">parameter</span>       (max_fail<span class="kw">=</span>(LARGE ENOUGH VALUE))</a></code></pre></div>
     <p>とすることで、無事動いた。</p>
