@@ -9,7 +9,7 @@ brew install autoconf
 brew install automake
 ```
 
-問題なのは、`SOFTSUSY` の要求する `automake` のバージョンと上記で導入した
+問題なのは、SOFTSUSY の要求する `automake` のバージョンと上記で導入した
 `automake` のバージョンがしばしばずれていること。
 典型的には、"automake-1.14: command not found" とか言われる。（2018/09/12）
 これを避けるために、暫定的に Makefile の "automake-1.14" をマシンに存在する

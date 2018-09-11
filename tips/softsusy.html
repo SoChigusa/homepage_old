@@ -29,6 +29,7 @@
     <nav>
       <h3>Tips Menu</h3>
       <ul>
+      <li><a href="susy-hit.html">susy-hit</a></li>
       <li><a href="softsusy.html">softsusy</a></li>
       <li><a href="madgraph.html">madgraph</a></li>
       <li><a href="markdown-mode.html">markdown-mode</a></li>
@@ -39,17 +40,13 @@
   </div>
   <div class="box" id="gfm">
     <!-- Contents below -->
-    <div id="content">
-    <div class="article">
     <h1 id="softsusy-の導入">SOFTSUSY の導入</h1>
     <h4 id="ほぼ-automake-の勉強と同義">（ほぼ <code>automake</code> の勉強と同義）</h4>
     <p>ひとまず、環境に存在しなかった <code>autoconf</code> および <code>automake</code> を導入。</p>
     <pre class="shell"><code>brew install autoconf
     brew install automake</code></pre>
-    <p>問題なのは、<code>SOFTSUSY</code> の要求する <code>automake</code> のバージョンと上記で導入した <code>automake</code> のバージョンがしばしばずれていること。 典型的には、“automake-1.14: command not found” とか言われる。（2018/09/12） これを避けるために、暫定的に Makefile の “automake-1.14” をマシンに存在する バージョン番号に書き換えて <code>make</code> を通している。</p>
+    <p>問題なのは、SOFTSUSY の要求する <code>automake</code> のバージョンと上記で導入した <code>automake</code> のバージョンがしばしばずれていること。 典型的には、“automake-1.14: command not found” とか言われる。（2018/09/12） これを避けるために、暫定的に Makefile の “automake-1.14” をマシンに存在する バージョン番号に書き換えて <code>make</code> を通している。</p>
     <p>（もっと <code>automake</code> の勉強をすればより根本的な解決法がある気がする。 <code>./configure</code> 前に <code>aclocal</code> という方法を試したけれど、とりあえず上手くいかなかった）</p>
-    </div>
-    </div>
     <!-- Contents above -->
   </div>
 </div>
