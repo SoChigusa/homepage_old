@@ -1,5 +1,7 @@
 # SLHA を用いた SUSY-HIT から MadGraph への連携 #
 
+-------------------------------------------------------------------------------
+
 SUSY LesHouches Accord (SLHA) 形式を用いて、超対称粒子スペクトルの情報に
 崩壊率の情報を付け加えて、MadGraph (+Pythia, etc..) が使えるようにする。
 SLHA を扱える decay package の例として、SUSY-HIT（その内部の SDECAY および HDECAY）
