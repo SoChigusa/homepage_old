@@ -1,6 +1,11 @@
 
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
 
+\bibitem{}
+S.~Chigusa, S.~Kasuya and K.~Nakayama, \emph{{Flavon Stabilization in Models
+  with Discrete Flavor Symmetry}},
+  \href{https://arxiv.org/abs/1810.05791}{{\ttfamily 1810.05791}}.
+
 \bibitem{Chigusa:2018hhl}
 S.~Chigusa and K.~Nakayama, \emph{{Anomalous Discrete Flavor Symmetry and
   Domain Wall Problem}},  \href{https://arxiv.org/abs/1808.09601}{{\ttfamily
