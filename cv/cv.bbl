@@ -1,10 +1,15 @@
 
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
 
-\bibitem{}
+\bibitem{Chigusa:2018vxz}
 S.~Chigusa, Y.~Ema and T.~Moroi, \emph{{Probing Electroweakly Interacting
   Massive Particles with Drell-Yan Process at 100 TeV Hadron Colliders}},
   \href{https://arxiv.org/abs/1810.07349}{{\ttfamily 1810.07349}}.
+
+\bibitem{Chigusa:2018yua}
+S.~Chigusa, S.~Kasuya and K.~Nakayama, \emph{{Flavon Stabilization in Models
+  with Discrete Flavor Symmetry}},
+  \href{https://arxiv.org/abs/1810.05791}{{\ttfamily 1810.05791}}.
 
 \bibitem{Chigusa:2018hhl}
 S.~Chigusa and K.~Nakayama, \emph{{Anomalous Discrete Flavor Symmetry and
