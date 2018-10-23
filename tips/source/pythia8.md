@@ -13,7 +13,7 @@ http://home.thep.lu.se/Pythia/pythia82html/MasterSwitches.html を参照する�
 PartonLevel:ISR = off
 ```
 
-を pythia8\_card(\_default).dat へ追加。
+を`pythia8\_card(\_default).dat`へ追加。
 
 ## 出力ファイルのイベント数が想定より少ない ##
 
