@@ -92,3 +92,38 @@ https://answers.launchpad.net/mg5amcnlo/+question/255905
 ```
 
 とすることで、無事動いた。
+
+## (2018/11/20) User defined cuts ##
+
+イベント生成の際に、勝手なカットをかけたい。
+一番簡単に、fortran ソースに直接カットパラメータを書き込む方法を試した。
+各プロセスのディレクトリ内に存在する `SubProcesses/cuts.f` に、以下のように書く。
+
+``` fortran
+C***************************************************************
+C***************************************************************
+C PUT HERE YOUR USER-DEFINED CUTS
+C***************************************************************
+C***************************************************************
+
+      do i=1,nexternal          ! loop over all external particles
+         if(istatus(i).eq.1 .and. ! final state particle
+     &        (ipdg(i).eq.12 .or. ipdg(i).eq.14 .or. ipdg(i).eq.16)) then ! neutrino
+            do j=1,nexternal       ! loop over all external particles
+               if (is_a_lp(j)) then ! l+
+                  if (invm2_04(p(0,i),p(0,j),1d0).lt.450d0**2) then ! invariant mass cut at 450GeV
+                     passcuts_user=.false.
+                     return
+                  endif
+               endif
+            enddo
+         endif
+      enddo
+
+      return
+      end
+```
+
+上の例では、終状態の lepton と neutrino の不変質量でカットをかけている。
+不満な点が一つ。
+**カットが強すぎると、エラーを吐いて止まってしまう。カットをかけるタイミングが他と違うのか？**

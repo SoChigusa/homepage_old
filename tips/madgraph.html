@@ -87,6 +87,31 @@
     <p>エラーメッセージを見てエラーが出たテストを特定する。 今回は Soft / Collinear test で失敗していたので、<code>SubProcesses/test_soft_col_limits.f</code> の中身を覗いてみる。 https://answers.launchpad.net/mg5amcnlo/+question/255905 に依ると、energy scale が複数ある場合、numerical instability が大きくてこの手のエラーが起きやすいらしい。 そこで、テストの基準を緩めることにして、</p>
     <div class="sourceCode" id="cb6"><pre class="sourceCode fortran"><code class="sourceCode fortran"><a class="sourceLine" id="cb6-1" data-line-number="1">      <span class="dt">parameter</span>       (max_fail<span class="kw">=</span>(LARGE ENOUGH VALUE))</a></code></pre></div>
     <p>とすることで、無事動いた。</p>
+    <h2 id="user-defined-cuts">(2018/11/20) User defined cuts</h2>
+    <p>イベント生成の際に、勝手なカットをかけたい。 一番簡単に、fortran ソースに直接カットパラメータを書き込む方法を試した。 各プロセスのディレクトリ内に存在する <code>SubProcesses/cuts.f</code> に、以下のように書く。</p>
+    <div class="sourceCode" id="cb7"><pre class="sourceCode fortran"><code class="sourceCode fortran"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">C***************************************************************</span></a>
+    <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">C***************************************************************</span></a>
+    <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">C PUT HERE YOUR USER-DEFINED CUTS</span></a>
+    <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">C***************************************************************</span></a>
+    <a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">C***************************************************************</span></a>
+    <a class="sourceLine" id="cb7-6" data-line-number="6"></a>
+    <a class="sourceLine" id="cb7-7" data-line-number="7">      <span class="kw">do</span> i<span class="kw">=</span><span class="dv">1</span>,nexternal          <span class="co">! loop over all external particles</span></a>
+    <a class="sourceLine" id="cb7-8" data-line-number="8">         <span class="kw">if</span>(istatus(i)<span class="op">.eq.</span><span class="dv">1</span> <span class="op">.and.</span> <span class="co">! final state particle</span></a>
+    <a class="sourceLine" id="cb7-9" data-line-number="9">     <span class="kw">&amp;</span>        (ipdg(i)<span class="op">.eq.</span><span class="dv">12</span> <span class="op">.or.</span> ipdg(i)<span class="op">.eq.</span><span class="dv">14</span> <span class="op">.or.</span> ipdg(i)<span class="op">.eq.</span><span class="dv">16</span>)) <span class="kw">then</span> <span class="co">! neutrino</span></a>
+    <a class="sourceLine" id="cb7-10" data-line-number="10">            <span class="kw">do</span> j<span class="kw">=</span><span class="dv">1</span>,nexternal       <span class="co">! loop over all external particles</span></a>
+    <a class="sourceLine" id="cb7-11" data-line-number="11">               <span class="kw">if</span> (is_a_lp(j)) <span class="kw">then</span> <span class="co">! l+</span></a>
+    <a class="sourceLine" id="cb7-12" data-line-number="12">                  <span class="kw">if</span> (invm2_<span class="dv">04</span>(p(<span class="dv">0</span>,i),p(<span class="dv">0</span>,j),<span class="fl">1d0</span>)<span class="op">.lt.</span><span class="fl">450d0</span><span class="kw">**</span><span class="dv">2</span>) <span class="kw">then</span> <span class="co">! invariant mass cut at 450GeV</span></a>
+    <a class="sourceLine" id="cb7-13" data-line-number="13">                     passcuts_user<span class="kw">=</span><span class="cn">.false.</span></a>
+    <a class="sourceLine" id="cb7-14" data-line-number="14">                     <span class="kw">return</span></a>
+    <a class="sourceLine" id="cb7-15" data-line-number="15">                  <span class="kw">endif</span></a>
+    <a class="sourceLine" id="cb7-16" data-line-number="16">               <span class="kw">endif</span></a>
+    <a class="sourceLine" id="cb7-17" data-line-number="17">            <span class="kw">enddo</span></a>
+    <a class="sourceLine" id="cb7-18" data-line-number="18">         <span class="kw">endif</span></a>
+    <a class="sourceLine" id="cb7-19" data-line-number="19">      <span class="kw">enddo</span></a>
+    <a class="sourceLine" id="cb7-20" data-line-number="20"></a>
+    <a class="sourceLine" id="cb7-21" data-line-number="21">      <span class="kw">return</span></a>
+    <a class="sourceLine" id="cb7-22" data-line-number="22">      <span class="kw">end</span></a></code></pre></div>
+    <p>上の例では、終状態の lepton と neutrino の不変質量でカットをかけている。 不満な点が一つ。 <strong>カットが強すぎると、エラーを吐いて止まってしまう。カットをかけるタイミングが他と違うのか？</strong></p>
     <!-- Contents above -->
   </div>
 </div>
