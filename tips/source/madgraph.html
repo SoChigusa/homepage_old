@@ -386,17 +386,19 @@ border: none; }
 <a class="sourceLine" id="cb7-9" data-line-number="9">     <span class="kw">&amp;</span>        (ipdg(i)<span class="op">.eq.</span><span class="dv">12</span> <span class="op">.or.</span> ipdg(i)<span class="op">.eq.</span><span class="dv">14</span> <span class="op">.or.</span> ipdg(i)<span class="op">.eq.</span><span class="dv">16</span>)) <span class="kw">then</span> <span class="co">! neutrino</span></a>
 <a class="sourceLine" id="cb7-10" data-line-number="10">            <span class="kw">do</span> j<span class="kw">=</span><span class="dv">1</span>,nexternal       <span class="co">! loop over all external particles</span></a>
 <a class="sourceLine" id="cb7-11" data-line-number="11">               <span class="kw">if</span> (is_a_lp(j)) <span class="kw">then</span> <span class="co">! l+</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12">                  <span class="kw">if</span> (invm2_<span class="dv">04</span>(p(<span class="dv">0</span>,i),p(<span class="dv">0</span>,j),<span class="fl">1d0</span>)<span class="op">.lt.</span><span class="fl">450d0</span><span class="kw">**</span><span class="dv">2</span>) <span class="kw">then</span> <span class="co">! invariant mass cut at 450GeV</span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13">                     passcuts_user<span class="kw">=</span><span class="cn">.false.</span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14">                     <span class="kw">return</span></a>
-<a class="sourceLine" id="cb7-15" data-line-number="15">                  <span class="kw">endif</span></a>
-<a class="sourceLine" id="cb7-16" data-line-number="16">               <span class="kw">endif</span></a>
-<a class="sourceLine" id="cb7-17" data-line-number="17">            <span class="kw">enddo</span></a>
-<a class="sourceLine" id="cb7-18" data-line-number="18">         <span class="kw">endif</span></a>
-<a class="sourceLine" id="cb7-19" data-line-number="19">      <span class="kw">enddo</span></a>
-<a class="sourceLine" id="cb7-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb7-21" data-line-number="21">      <span class="kw">return</span></a>
-<a class="sourceLine" id="cb7-22" data-line-number="22">      <span class="kw">end</span></a></code></pre></div>
-<p>上の例では、終状態の lepton と neutrino の不変質量でカットをかけている。 不満な点が一つ。 <strong>カットが強すぎると、エラーを吐いて止まってしまう。カットをかけるタイミングが他と違うのか？</strong></p>
+<a class="sourceLine" id="cb7-12" data-line-number="12">                  <span class="kw">if</span> (<span class="fl">2d0</span> <span class="kw">*</span> <span class="bu">sqrt</span>(p(<span class="dv">1</span>,i)<span class="kw">**</span><span class="dv">2</span><span class="kw">+</span>p(<span class="dv">2</span>,i)<span class="kw">**</span><span class="dv">2</span>) <span class="kw">*</span> <span class="bu">sqrt</span>(p(<span class="dv">1</span>,j)<span class="kw">**</span><span class="dv">2</span><span class="kw">+</span>p(<span class="dv">2</span>,j)<span class="kw">**</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb7-13" data-line-number="13">     <span class="kw">&amp;</span>                 <span class="kw">-</span> <span class="fl">2d0</span><span class="kw">*</span>(p(<span class="dv">1</span>,i)<span class="kw">*</span>p(<span class="dv">1</span>,j)<span class="kw">+</span>p(<span class="dv">2</span>,i)<span class="kw">*</span>p(<span class="dv">2</span>,j)<span class="kw">+</span>p(<span class="dv">3</span>,i)<span class="kw">*</span>p(<span class="dv">3</span>,j))</a>
+<a class="sourceLine" id="cb7-14" data-line-number="14">     <span class="kw">&amp;</span>                 <span class="op">.lt.</span> <span class="fl">400d0</span><span class="kw">**</span><span class="dv">2</span>) <span class="kw">then</span> <span class="co">! transverse mass cut at 400GeV</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15">                     passcuts_user<span class="kw">=</span><span class="cn">.false.</span></a>
+<a class="sourceLine" id="cb7-16" data-line-number="16">                     <span class="kw">return</span></a>
+<a class="sourceLine" id="cb7-17" data-line-number="17">                  <span class="kw">endif</span></a>
+<a class="sourceLine" id="cb7-18" data-line-number="18">               <span class="kw">endif</span></a>
+<a class="sourceLine" id="cb7-19" data-line-number="19">            <span class="kw">enddo</span></a>
+<a class="sourceLine" id="cb7-20" data-line-number="20">         <span class="kw">endif</span></a>
+<a class="sourceLine" id="cb7-21" data-line-number="21">      <span class="kw">enddo</span></a>
+<a class="sourceLine" id="cb7-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb7-23" data-line-number="23">      <span class="kw">return</span></a>
+<a class="sourceLine" id="cb7-24" data-line-number="24">      <span class="kw">end</span></a></code></pre></div>
+<p>上の例では、終状態の lepton と neutrino の transverse mass でカットをかけている。 注意点として、このカット単体では条件を満たすデータ点が少なすぎてエラーを吐くので（下記リンクと同様の症状と思われる）、 別個に <code>run_card.dat</code> で lepton pT cut（pT &gt; 100GeV）をかけておいた。 おそらく <code>run_card.dat</code> の方の cut は、サンプル点を選び出す段階で既に適用されている。 参考：https://answers.launchpad.net/mg5amcnlo/+question/446723</p>
 </body>
 </html>

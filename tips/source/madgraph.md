@@ -111,7 +111,9 @@ C***************************************************************
      &        (ipdg(i).eq.12 .or. ipdg(i).eq.14 .or. ipdg(i).eq.16)) then ! neutrino
             do j=1,nexternal       ! loop over all external particles
                if (is_a_lp(j)) then ! l+
-                  if (invm2_04(p(0,i),p(0,j),1d0).lt.450d0**2) then ! invariant mass cut at 450GeV
+                  if (2d0 * sqrt(p(1,i)**2+p(2,i)**2) * sqrt(p(1,j)**2+p(2,j)**2)
+     &                 - 2d0*(p(1,i)*p(1,j)+p(2,i)*p(2,j)+p(3,i)*p(3,j))
+     &                 .lt. 400d0**2) then ! transverse mass cut at 400GeV
                      passcuts_user=.false.
                      return
                   endif
@@ -124,6 +126,8 @@ C***************************************************************
       end
 ```
 
-上の例では、終状態の lepton と neutrino の不変質量でカットをかけている。
-不満な点が一つ。
-**カットが強すぎると、エラーを吐いて止まってしまう。カットをかけるタイミングが他と違うのか？**
+上の例では、終状態の lepton と neutrino の transverse mass でカットをかけている。
+注意点として、このカット単体では条件を満たすデータ点が少なすぎてエラーを吐くので（下記リンクと同様の症状と思われる）、
+別個に `run_card.dat` で lepton pT cut（pT > 100GeV）をかけておいた。
+おそらく `run_card.dat` の方の cut は、サンプル点を選び出す段階で既に適用されている。
+参考：https://answers.launchpad.net/mg5amcnlo/+question/446723
