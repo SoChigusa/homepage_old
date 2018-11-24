@@ -112,8 +112,8 @@ C***************************************************************
             do j=1,nexternal       ! loop over all external particles
                if (is_a_lp(j)) then ! l+
                   if (2d0 * sqrt(p(1,i)**2+p(2,i)**2) * sqrt(p(1,j)**2+p(2,j)**2)
-     &                 - 2d0*(p(1,i)*p(1,j)+p(2,i)*p(2,j)+p(3,i)*p(3,j))
-     &                 .lt. 400d0**2) then ! transverse mass cut at 400GeV
+     &                 - 2d0*(p(1,i)*p(1,j)+p(2,i)*p(2,j))
+     &                 .lt. 480d0**2) then ! transverse mass cut at 480GeV
                      passcuts_user=.false.
                      return
                   endif
