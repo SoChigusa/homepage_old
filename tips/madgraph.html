@@ -203,8 +203,11 @@
     <p>上の例では、終状態の lepton と neutrino の transverse mass でカットをかけている。 注意点として、このカット単体では条件を満たすデータ点が少なすぎてエラーを吐くので（下記リンクと同様の症状と思われる）、 別個に <code>run_card.dat</code> で lepton pT cut（pT &gt; 100GeV）をかけておいた。 おそらく <code>run_card.dat</code> の方の cut は、サンプル点を選び出す段階で既に適用されている。 参考：https://answers.launchpad.net/mg5amcnlo/+question/446723</p>
     <h2 id="madgraph-v2.6.4">(2018/12/06) MadGraph v2.6.4 ???</h2>
     <p>v2.6.3.2 では動いていた以下のプロセスが v2.6.4 では動かない。 param_card.dat で指定している崩壊率の指定にミスがあるのか否か？</p>
-    <div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" title="1"><span class="im">import</span> model MSSM_SLHA2</a>
-    <a class="sourceLine" id="cb8-2" title="2">p p <span class="op">&gt;</span> go go, go <span class="op">&gt;</span> n1 j j, go <span class="op">&gt;</span> n1 j j</a></code></pre></div>
+    <pre class="shell"><code>import model MSSM_SLHA2
+    p p &gt; go go, go &gt; n1 j j, go &gt; n1 j j</code></pre>
+    <h2 id="madgraph-v2.6.3.2">(2018/12/06) MadGraph v2.6.3.2 ???</h2>
+    <p>一方で、v2.6.3.2 では standalone pythia8 command が正しく動かない。 https://answers.launchpad.net/mg5amcnlo/+question/671278 にあるように、 <code>KeyError : 'event_norm'</code> と怒られるので、作ったイベントを v2.6.4 のディレクトリ に丸ごとコピーして、そちらで standalone pythia8 を動かせばとりあえず shower できる。 プロセスディレクトリ内の<code>./bin/madevent</code>から、</p>
+    <pre class="shell"><code>pythia8 (RUN NAME)</code></pre>
     <!-- Contents above -->
   </div>
 </div>

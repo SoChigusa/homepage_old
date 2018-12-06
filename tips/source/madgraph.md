@@ -137,7 +137,19 @@ C***************************************************************
 v2.6.3.2 では動いていた以下のプロセスが v2.6.4 では動かない。
 param_card.dat で指定している崩壊率の指定にミスがあるのか否か？
 
-``` python
+``` shell
 import model MSSM_SLHA2
 p p > go go, go > n1 j j, go > n1 j j
+```
+
+## (2018/12/06) MadGraph v2.6.3.2 ??? ##
+
+一方で、v2.6.3.2 では standalone pythia8 command が正しく動かない。
+https://answers.launchpad.net/mg5amcnlo/+question/671278 にあるように、
+`KeyError : 'event_norm'` と怒られるので、作ったイベントを v2.6.4 のディレクトリ
+に丸ごとコピーして、そちらで standalone pythia8 を動かせばとりあえず shower できる。
+プロセスディレクトリ内の`./bin/madevent`から、
+
+``` shell
+pythia8 (RUN NAME)
 ```
