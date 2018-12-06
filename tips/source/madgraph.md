@@ -153,3 +153,6 @@ https://answers.launchpad.net/mg5amcnlo/+question/671278 にあるように、
 ``` shell
 pythia8 (RUN NAME)
 ```
+
+上の方法で一度動かしておくと、`run_shower.sh`および`tag_1_pythia8.cmd`というファイルが自動生成される。
+これをコピーして適宜編集し、イベント毎に使い回す方が効率は良さそう。

@@ -208,6 +208,7 @@
     <h2 id="madgraph-v2.6.3.2">(2018/12/06) MadGraph v2.6.3.2 ???</h2>
     <p>一方で、v2.6.3.2 では standalone pythia8 command が正しく動かない。 https://answers.launchpad.net/mg5amcnlo/+question/671278 にあるように、 <code>KeyError : 'event_norm'</code> と怒られるので、作ったイベントを v2.6.4 のディレクトリ に丸ごとコピーして、そちらで standalone pythia8 を動かせばとりあえず shower できる。 プロセスディレクトリ内の<code>./bin/madevent</code>から、</p>
     <pre class="shell"><code>pythia8 (RUN NAME)</code></pre>
+    <p>上の方法で一度動かしておくと、<code>run_shower.sh</code>および<code>tag_1_pythia8.cmd</code>というファイルが自動生成される。 これをコピーして適宜編集し、イベント毎に使い回す方が効率は良さそう。</p>
     <!-- Contents above -->
   </div>
 </div>
