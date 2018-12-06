@@ -131,3 +131,13 @@ C***************************************************************
 別個に `run_card.dat` で lepton pT cut（pT > 100GeV）をかけておいた。
 おそらく `run_card.dat` の方の cut は、サンプル点を選び出す段階で既に適用されている。
 参考：https://answers.launchpad.net/mg5amcnlo/+question/446723
+
+## (2018/12/06) MadGraph v2.6.4 ??? ##
+
+v2.6.3.2 では動いていた以下のプロセスが v2.6.4 では動かない。
+param_card.dat で指定している崩壊率の指定にミスがあるのか否か？
+
+``` python
+import model MSSM_SLHA2
+p p > go go, go > n1 j j, go > n1 j j
+```
