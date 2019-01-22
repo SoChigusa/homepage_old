@@ -1,0 +1,14 @@
+<body>
+<div id="content">
+<div class="article">
+<h1 id="快適な-latexdiff-生活">快適な latexdiff 生活</h1>
+<h2 id="テンプレート">テンプレート</h2>
+<pre class="shell"><code>latexdiff-vc -e utf8 --exclude-textcmd=&quot;section,subsection,subsubsection&quot; --git --flatten --force -d diff -r (commit / HEAD) (filename)</code></pre>
+<h2 id="git-との連携">git との連携</h2>
+<p>いつも https://nekketsuuu.github.io/entries/2017/01/27/latexdiff-vc.html を参考にしている。</p>
+<pre class="shell"><code>latexdiff-vc -e utf8 --git --flatten --force -d diff -r (commit / HEAD) (filename)</code></pre>
+<h2 id="section-変更時のタイプセットエラーを避ける">Section 変更時のタイプセットエラーを避ける</h2>
+<p>オプション <code>--exclude-textcmd=&quot;section,subsection,subsubsection&quot;</code> で、section の変更、追加等を無視してくれる。</p>
+</div>
+</div>
+</body>
