@@ -1,0 +1,52 @@
+<body>
+<div id="content">
+<div class="article">
+
+[WARNING] This document format requires a nonempty <title> element.
+  Please specify either 'title' or 'pagetitle' in the metadata,
+  e.g. by using --metadata pagetitle="..." on the command line.
+  Falling back to 'Untitled'
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Untitled</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/Users/SoChigusa/.pandoc/github.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<body>
+<div id="content">
+<div class="article">
+<h1 id="mac-os-mojave-アップデートとアフターケア">Mac OS Mojave アップデートとアフターケア</h1>
+<h2 id="emacs-ダークモード">emacs ダークモード</h2>
+<p>ダークモードを使用するように変更し、それに合わせて emacs のテーマを変更した。 ダーク系のテーマを選択し、 <code>~/.emacs.el</code> の末尾に以下のように追加。</p>
+<pre class="emacs-lisp"><code>;;====================================
+;;; Theme
+;;====================================
+(load-theme &#39;manoj-dark t)</code></pre>
+<h2 id="c-開発環境">c++ 開発環境</h2>
+<p>理由をよく理解していない、<code>math.h</code> が見つからないエラーが出たので、以下の URL を参考に修正。</p>
+<ul>
+<li>https://github.com/RcppCore/Rcpp/issues/922</li>
+</ul>
+<p>ターミナルから、</p>
+<pre class="shell"><code>sudo installer -pkg \
+/Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg \
+-target /</code></pre>
+</div>
+</div>
+</body>
+</div>
+</div>
+</body>
