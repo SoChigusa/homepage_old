@@ -86,6 +86,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
       ss << "<article>" << std::endl;
       for(int i = 0; i < 6; i++) {
 	std::getline(iflog, strBufferLine);
+	
 	split(val, strBufferLine, ';');
 	ss << "  <section>" << std::endl;
 	
@@ -100,7 +101,13 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
 	  ss << "    </p>" << std::endl;	
 	} else if(val[1] == "Talk") {
 	  ss << "    <span class=\"date\">" << val[3] << "</span>" << std::endl; // date
-	  ss << "    <h1>Talk: " << val[4] << "</a></h1>" << std::endl;
+	  ss << "    <h1>Talk: " << val[4] << "</h1>" << std::endl;
+	  ss << "    <p>" << std::endl;
+	  ss << "      <i>" << val[2] << "</i>" << std::endl;
+	  ss << "    </p>" << std::endl;
+	} else if(val[1] == "Award") {
+	  ss << "    <span class=\"date\">" << val[3] << "</span>" << std::endl; // date
+	  ss << "    <h1>Award</h1>" << std::endl;
 	  ss << "    <p>" << std::endl;
 	  ss << "      <i>" << val[2] << "</i>" << std::endl;
 	  ss << "    </p>" << std::endl;
@@ -157,6 +164,18 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
       }
     }
 
+    // add award info
+    if((int)strBufferLine.find("<!-- Awards below -->") != -1) {
+      std::ifstream iflog("../research/research.log");
+      while(std::getline(iflog, strBufferLine)) {
+	split(val, strBufferLine, ';');
+	if(val[1] == "Award") {
+	  ss << "    <li><i>" << val[2] << "</i>" // title
+	     << " (" << val[3] << ").</li>" << std::endl; // date
+	}
+      }
+    }
+    
     // add tips menu
     if((int)strBufferLine.find("<!-- Tips menu below -->") != -1) {
       ss << "    <nav>" << std::endl;
@@ -215,7 +234,18 @@ void HTML::update_cv() {
 	  auto pos = val[4].find(" @");
 	  if (pos != std::string::npos) val[4].replace(pos, 2, ",");
 	  ss << " \\item ``" << val[2] // title
-	     << "'', " << val[4] << std::endl; // conference
+	     << "'', " << val[3] << std::endl; // conference
+	}
+      }
+    }
+
+    // add awards    
+    if((int)strBufferLine.find("% Awards below") != -1) {
+      std::ifstream iflog("../research/research.log");
+      while(std::getline(iflog, strBufferLine)) {
+	split(val, strBufferLine, ';');
+	if(val[1] == "Award") {
+	  ss << " \\item " << val[2] << std::endl; // title
 	}
       }
     }

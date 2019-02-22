@@ -22,13 +22,15 @@ void add_log(std::string arg_type, std::string arg_title, std::string arg1, std:
   std::string strType;
   if(arg_type == "p") { strType = "Paper"; }
   if(arg_type == "t") { strType = "Talk"; }
+  if(arg_type == "a") { strType = "Award"; }
 
   std::ifstream ifs("../research/research.log");
   std::stringstream ss;
   std::string strBufferLine;
   time_t now = std::time(nullptr);
-  ss << now << ";" << strType << ";"
-     << arg_title << ";" << arg1 << ";" << arg2 << std::endl;
+  ss << now << ";" << strType << ";" << arg_title << ";" << arg1;
+  if(arg_type == "a") ss << std::endl;
+  else ss << ";" << arg2 << std::endl;
   while(std::getline(ifs, strBufferLine)) {
     ss << strBufferLine << std::endl;
   }
@@ -57,11 +59,13 @@ int main(int argc, char** argv) {
     errorMessage();
     return -1;
   }
+  system("git pull origin master");
+  system("cd ../../sochigusa.bitbucket.org/ && git pull origin master");
 
   std::string arg_opt(argv[1]);
   if(arg_opt == "add") {
     std::string arg_type, arg_title, arg1, arg2;
-    std::cout << "Research type: [p]aper or [t]alk: ";
+    std::cout << "Research type: [p]aper or [t]alk or [a]ward: ";
     std::getline(std::cin, arg_type);
     if(arg_type == "p") {
       std::cout << "Paper title: ";
@@ -82,6 +86,11 @@ int main(int argc, char** argv) {
       std::getline(std::cin, arg1);
       std::cout << "Conference and Location: ";
       std::getline(std::cin, arg2);
+    } else if(arg_type == "a") {
+      std::cout << "Award explanation: ";
+      std::getline(std::cin, arg_title);
+      std::cout << "Date: ";
+      std::getline(std::cin, arg1);
     } else {
       std::cout << "Unexpected research type" << std::endl;
       return -1;

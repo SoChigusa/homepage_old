@@ -9,6 +9,8 @@
 #include "html.h"
 
 int main(int argc, char** argv) {
+  system("git pull origin master");
+  system("cd ../../sochigusa.bitbucket.org/ && git pull origin master");
   std::string comment="";
   HTML::update_html("../git/index_temp.html", "../git/index.html",
 		    "../git/contents.html");
