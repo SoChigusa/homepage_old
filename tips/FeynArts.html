@@ -29,6 +29,7 @@
     <nav>
       <h3>Tips Menu</h3>
       <ul>
+      <li><a href="beamer.html">beamer</a></li>
       <li><a href="Mojave.html">Mojave</a></li>
       <li><a href="latexdiff.html">latexdiff</a></li>
       <li><a href="pythia8.html">pythia8</a></li>
@@ -44,9 +45,9 @@
   </div>
   <div class="box" id="gfm">
     <!-- Contents below -->
-    <div id="content">
-    <div class="article">
-    <h1 id="feynarts-formcalc-looptools-の導入">FeynArts, FormCalc, LoopTools の導入</h1>
+    <header>
+    <h1 class="title">FeynArts, FormCalc, LoopTools の導入</h1>
+    </header>
     <hr />
     <h2 id="インストール">インストール</h2>
     <p>http://www.feynarts.de を見て、用意されているシェルスクリプト<code>FeynInstall</code>を用いて 全てのコードをインストールする。質問にイエス連打していれば<code>$PATH</code>の設定までしてくれるはずが、 今回は上手くいかなかったので、手動で設定する。<code>~/Library/Mathemtica/Kernel/init.m</code>をエディタで開いて</p>
@@ -54,8 +55,6 @@
     <a class="sourceLine" id="cb1-2" data-line-number="2">              ToFileName[<span class="fu">$HomeDirectory</span>, &quot;FormCalc&quot;]},</a>
     <a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="fu">$Path</span>]</a></code></pre></div>
     <p>を追加する。ただし、例は<code>FeynInstall</code>をホームディレクトリで動かした場合に対応する。</p>
-    </div>
-    </div>
     <!-- Contents above -->
   </div>
 </div>

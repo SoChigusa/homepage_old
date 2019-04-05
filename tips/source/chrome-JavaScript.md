@@ -1,4 +1,8 @@
-# Google Chrome を用いて JavaScript のチェックが local で出来る環境を整える #
+---
+title: Google Chrome を用いて JavaScript のチェックが local で出来る環境を整える
+---
+
+-------------------------------------------------------------------------------
 
 `--allow-file-access-from-files` オプションをつけて Chrome を立ち上げれば良い。
 AppleScript Editor を用いて（ * は半角スペースを表す）、

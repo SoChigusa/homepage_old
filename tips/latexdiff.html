@@ -29,6 +29,7 @@
     <nav>
       <h3>Tips Menu</h3>
       <ul>
+      <li><a href="beamer.html">beamer</a></li>
       <li><a href="Mojave.html">Mojave</a></li>
       <li><a href="latexdiff.html">latexdiff</a></li>
       <li><a href="pythia8.html">pythia8</a></li>
@@ -44,9 +45,10 @@
   </div>
   <div class="box" id="gfm">
     <!-- Contents below -->
-    <div id="content">
-    <div class="article">
-    <h1 id="快適な-latexdiff-生活">快適な latexdiff 生活</h1>
+    <header>
+    <h1 class="title">快適な latexdiff 生活</h1>
+    </header>
+    <hr />
     <h2 id="テンプレート">テンプレート</h2>
     <pre class="shell"><code>latexdiff-vc -e utf8 --exclude-textcmd=&quot;section,subsection,subsubsection&quot; --git --flatten --force -d diff -r (commit / HEAD) (filename)</code></pre>
     <h2 id="git-との連携">git との連携</h2>
@@ -54,8 +56,6 @@
     <pre class="shell"><code>latexdiff-vc -e utf8 --git --flatten --force -d diff -r (commit / HEAD) (filename)</code></pre>
     <h2 id="section-変更時のタイプセットエラーを避ける">Section 変更時のタイプセットエラーを避ける</h2>
     <p>オプション <code>--exclude-textcmd=&quot;section,subsection,subsubsection&quot;</code> で、section の変更、追加等を無視してくれる。</p>
-    </div>
-    </div>
     <!-- Contents above -->
   </div>
 </div>

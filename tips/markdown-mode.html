@@ -29,6 +29,7 @@
     <nav>
       <h3>Tips Menu</h3>
       <ul>
+      <li><a href="beamer.html">beamer</a></li>
       <li><a href="Mojave.html">Mojave</a></li>
       <li><a href="latexdiff.html">latexdiff</a></li>
       <li><a href="pythia8.html">pythia8</a></li>
@@ -44,23 +45,21 @@
   </div>
   <div class="box" id="gfm">
     <!-- Contents below -->
-    <div id="content">
-    <div class="article">
-    <h1 id="emacs-で-markdown-mode-を使用した編集プレビュー環境を整える">Emacs で markdown-mode を使用した編集、プレビュー環境を整える</h1>
+    <header>
+    <h1 class="title">Emacs で markdown-mode を使用した編集、プレビュー環境を整える</h1>
+    </header>
     <hr />
     <h2 id="markdown-mode-の導入">markdown-mode の導入</h2>
     <p>Emacs のパッケージインストーラを利用する記事が多いけれど、markdown-mode が見つからなかったため、GitHub から clone した。</p>
     <pre class="shell"><code>git clone git://jblevins.org/git/markdown-mode.git</code></pre>
     <p><code>~/.emacs.el</code> に以下を追加する。</p>
     <pre class="emacs-lisp"><code>(load &quot;path-to-markdown-mode/markdown-mode/markdown-mode.el&quot;)
-    (setq auto-mode-alist (cons &#39;(&quot;\\.md&quot; . gfm-mode) auto-mode-alist))</code></pre>
+    (setq auto-mode-alist (cons '(&quot;\\.md&quot; . gfm-mode) auto-mode-alist))</code></pre>
     <h2 id="プレビュー環境の構築">プレビュー環境の構築</h2>
     <p>pandoc を使用することにした。</p>
     <pre class="shell"><code>brew install pandoc</code></pre>
     <p>表示に使用するスタイルシートを見つけてくる。 GitHub Flavored Markdown (gfm) が見栄え良い。 今回は<code>~/.pandoc/github.css</code>に該当ファイルを置いている。 <code>~/.emacs.el</code> に以下を追加することで、<code>C-c C-c p</code> で html を自動生成し、プレビュー画面が立ち上がる。</p>
     <pre class="emacs-lisp"><code>(setq markdown-command &quot;pandoc -s -c ~/.pandoc/github.css&quot;)</code></pre>
-    </div>
-    </div>
     <!-- Contents above -->
   </div>
 </div>

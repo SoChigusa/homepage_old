@@ -29,6 +29,7 @@
     <nav>
       <h3>Tips Menu</h3>
       <ul>
+      <li><a href="beamer.html">beamer</a></li>
       <li><a href="Mojave.html">Mojave</a></li>
       <li><a href="latexdiff.html">latexdiff</a></li>
       <li><a href="pythia8.html">pythia8</a></li>
@@ -44,7 +45,9 @@
   </div>
   <div class="box" id="gfm">
     <!-- Contents below -->
-    <h1 id="slha-を用いた-susy-hit-から-madgraph-への連携">SLHA を用いた SUSY-HIT から MadGraph への連携</h1>
+    <header>
+    <h1 class="title">SLHA を用いた SUSY-HIT から MadGraph への連携</h1>
+    </header>
     <hr />
     <p>SUSY LesHouches Accord (SLHA) 形式を用いて、超対称粒子スペクトルの情報に 崩壊率の情報を付け加えて、MadGraph (+Pythia, etc..) が使えるようにする。 SLHA を扱える decay package の例として、SUSY-HIT（その内部の SDECAY および HDECAY） を用いることにする。（https://www.itp.kit.edu/~maggie/SUSY-HIT/） ちなみに SDECAY 自体の webpage は更新が止まっているのか、コンパイルに問題があったので、 後継である SUSY-HIT を使っている。</p>
     <p>SUSY-HIT はデフォルトで SuSpect を用いてスペクトル計算を行うが、今回の目的では 使わないので、<code>susyhit.in</code> の最初のオプションで切る。 切ると、SLHA -&gt; SLHA の最小限の機能を持った decay package になる。</p>
