@@ -1,0 +1,28 @@
+<body>
+<div id="content">
+<div class="article">
+<header id="title-block-header">
+<h1 class="title">latexで日本語美文書</h1>
+</header>
+<hr />
+<h2 id="美しいスタイル">美しいスタイル</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">\documentclass</span>[11pt,a4paper,twoside,dvipdfmx,etc...]{<span class="ex">jsarticle</span>}</a></code></pre></div>
+<h2 id="太字が太くない">太字が太くない</h2>
+<p>太いフォントを導入しましょう。</p>
+<h2 id="フォントの導入">フォントの導入</h2>
+<p>この歳になるまで自分でフォントの導入をしたことがなかったので、反省して調べた。 まず、使用するフォント <code>FFF.ttf</code> を準備し、ソースファイルと同じディレクトリに置く。 このフォントを使用しますよー、とマップファイル <code>myfont.map</code> に記述。</p>
+<pre class="map"><code>otf-cjgb-h    Identity-H                      FFF.ttf/AJ16
+otf-cjgb-v    Identity-V                      FFF.ttf/AJ16
+hgothb-h      H                               FFF.ttf
+hgothb-v      V                               FFF.ttf</code></pre>
+<p>このままだとなんか漢字フォントが変わらないので、コマンド書き換えが必要。 今回は日本語の太字用に <code>FFF.ttf</code> を使いたいので、<code>\emph</code> コマンドを書き換えることにして、</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">\renewcommand</span>{<span class="ex">\emph</span>}[1]{{<span class="fu">\usekanji</span>{JY1}{hgt}{bx}{n} #1}}</a></code></pre></div>
+<p>とする。漢字フォントに hgothb-* で指定したフォントを割り当てている。 あと、タイプセット時にマップファイルを指定する必要がある。 面倒くさいので、以下のように <code>makefile</code> を作っておいて、その都度 <code>make</code> する。</p>
+<pre class="shell"><code>all:    pd.pdf
+
+pd.pdf: pd.tex myfont.map
+    platex pd.tex
+    dvipdfmx -f myfont.map pd.dvi</code></pre>
+</div>
+</div>
+</body>
