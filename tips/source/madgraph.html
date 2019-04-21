@@ -407,5 +407,13 @@ p p &gt; go go, go &gt; n1 j j, go &gt; n1 j j</code></pre>
 <p>一方で、v2.6.3.2 では standalone pythia8 command が正しく動かない。 https://answers.launchpad.net/mg5amcnlo/+question/671278 にあるように、 <code>KeyError : 'event_norm'</code> と怒られるので、作ったイベントを v2.6.4 のディレクトリ に丸ごとコピーして、そちらで standalone pythia8 を動かせばとりあえず shower できる。 プロセスディレクトリ内の<code>./bin/madevent</code>から、</p>
 <pre class="shell"><code>pythia8 (RUN NAME)</code></pre>
 <p>上の方法で一度動かしておくと、<code>run_shower.sh</code>および<code>tag_1_pythia8.cmd</code>というファイルが自動生成される。 これをコピーして適宜編集し、イベント毎に使い回す方が効率は良さそう。</p>
+<h2 id="お好みの模型パラメータをデフォルト設定に">(2019/04/21) お好みの模型パラメータをデフォルト設定に</h2>
+<p>例えばSMでb-quarkのPDFを考えたいとき、bはmasslessでなければいけないので、</p>
+<pre class="shell"><code>import model SM-no_b_mass</code></pre>
+<p>とするところから始める。 これは、<code>**MG5**/model/sm/restrict_no_b_mass.dat</code>というデータファイルの内容を<code>param_card.dat</code>として読み込んでいるだけである。 同様に、例えばAMSBのベンチマークポイントをデフォルトとして計算を始めたい場合、<code>**MG5**/model/MSSM_SLHA2/</code>内に<code>restrict_AMSB.dat</code>などの名前で<code>param_card.dat</code>をコピペし、</p>
+<pre class="shell"><code>import model MSSM_SLHA2-AMSB</code></pre>
+<p>でロードされる。 さらに前段階として、崩壊幅の計算を前もってさせておいて<code>param_card.dat</code>をアップデートすると便利。 これには、阿部様のページ http://tomohiro_abe.droppages.com/index.html のメモを参考、</p>
+<pre class="shell"><code>compute_widths n2 go &lt;&lt;etc&gt;&gt; --body_decay=2.0025</code></pre>
+<p>とするなど。モデルディレクトリ内に<code>param_card.dat</code>が新しくできて、そこには崩壊幅の情報が追加されている。</p>
 </body>
 </html>

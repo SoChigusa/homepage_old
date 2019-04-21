@@ -158,3 +158,29 @@ pythia8 (RUN NAME)
 
 上の方法で一度動かしておくと、`run_shower.sh`および`tag_1_pythia8.cmd`というファイルが自動生成される。
 これをコピーして適宜編集し、イベント毎に使い回す方が効率は良さそう。
+
+## (2019/04/21) お好みの模型パラメータをデフォルト設定に ##
+
+例えばSMでb-quarkのPDFを考えたいとき、bはmasslessでなければいけないので、
+
+``` shell
+import model SM-no_b_mass
+```
+
+とするところから始める。
+これは、`**MG5**/model/sm/restrict_no_b_mass.dat`というデータファイルの内容を`param_card.dat`として読み込んでいるだけである。
+同様に、例えばAMSBのベンチマークポイントをデフォルトとして計算を始めたい場合、`**MG5**/model/MSSM_SLHA2/`内に`restrict_AMSB.dat`などの名前で`param_card.dat`をコピペし、
+
+``` shell
+import model MSSM_SLHA2-AMSB
+```
+
+でロードされる。
+さらに前段階として、崩壊幅の計算を前もってさせておいて`param_card.dat`をアップデートすると便利。
+これには、阿部様のページ http://tomohiro_abe.droppages.com/index.html のメモを参考、
+
+``` shell
+compute_widths n2 go <<etc>> --body_decay=2.0025
+```
+
+とするなど。モデルディレクトリ内に`param_card.dat`が新しくできて、そこには崩壊幅の情報が追加されている。
