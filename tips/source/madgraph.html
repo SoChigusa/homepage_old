@@ -399,14 +399,6 @@ border: none; }
 <a class="sourceLine" id="cb7-23" data-line-number="23">      <span class="kw">return</span></a>
 <a class="sourceLine" id="cb7-24" data-line-number="24">      <span class="kw">end</span></a></code></pre></div>
 <p>上の例では、終状態の lepton と neutrino の transverse mass でカットをかけている。 注意点として、このカット単体では条件を満たすデータ点が少なすぎてエラーを吐くので（下記リンクと同様の症状と思われる）、 別個に <code>run_card.dat</code> で lepton pT cut（pT &gt; 100GeV）をかけておいた。 おそらく <code>run_card.dat</code> の方の cut は、サンプル点を選び出す段階で既に適用されている。 参考：https://answers.launchpad.net/mg5amcnlo/+question/446723</p>
-<h2 id="madgraph-v2.6.4">(2018/12/06) MadGraph v2.6.4 ???</h2>
-<p>v2.6.3.2 では動いていた以下のプロセスが v2.6.4 では動かない。 param_card.dat で指定している崩壊率の指定にミスがあるのか否か？</p>
-<pre class="shell"><code>import model MSSM_SLHA2
-p p &gt; go go, go &gt; n1 j j, go &gt; n1 j j</code></pre>
-<h2 id="madgraph-v2.6.3.2">(2018/12/06) MadGraph v2.6.3.2 ???</h2>
-<p>一方で、v2.6.3.2 では standalone pythia8 command が正しく動かない。 https://answers.launchpad.net/mg5amcnlo/+question/671278 にあるように、 <code>KeyError : 'event_norm'</code> と怒られるので、作ったイベントを v2.6.4 のディレクトリ に丸ごとコピーして、そちらで standalone pythia8 を動かせばとりあえず shower できる。 プロセスディレクトリ内の<code>./bin/madevent</code>から、</p>
-<pre class="shell"><code>pythia8 (RUN NAME)</code></pre>
-<p>上の方法で一度動かしておくと、<code>run_shower.sh</code>および<code>tag_1_pythia8.cmd</code>というファイルが自動生成される。 これをコピーして適宜編集し、イベント毎に使い回す方が効率は良さそう。</p>
 <h2 id="お好みの模型パラメータをデフォルト設定に">(2019/04/21) お好みの模型パラメータをデフォルト設定に</h2>
 <p>例えばSMでb-quarkのPDFを考えたいとき、bはmasslessでなければいけないので、</p>
 <pre class="shell"><code>import model SM-no_b_mass</code></pre>
@@ -415,5 +407,25 @@ p p &gt; go go, go &gt; n1 j j, go &gt; n1 j j</code></pre>
 <p>でロードされる。 さらに前段階として、崩壊幅の計算を前もってさせておいて<code>param_card.dat</code>をアップデートすると便利。 これには、阿部様のページ http://tomohiro_abe.droppages.com/index.html のメモを参考、</p>
 <pre class="shell"><code>compute_widths n2 go &lt;&lt;etc&gt;&gt; --body_decay=2.0025</code></pre>
 <p>とするなど。モデルディレクトリ内に<code>param_card.dat</code>が新しくできて、そこには崩壊幅の情報が追加されている。</p>
+<h2 id="事前にコードを書いてインタープリタに読ませる">(2019/4/26) 事前にコードを書いてインタープリタに読ませる</h2>
+<p>簡単な例として、わかりやすい名前で複数回launchしたい場合、</p>
+<pre class="text"><code>launch pp2gogo2 -n 6TeV_0
+launch pp2gogo2 -n 6TeV_1
+launch pp2gogo2 -n 6TeV_2</code></pre>
+<p>などと書いたテキストファイル（<code>launch_several_times.txt</code>とする）を用意する。 これを</p>
+<pre class="shell"><code>./bin/mg5_aMC launch_several_times.txt</code></pre>
+<p>として読み込めば、その通りに実行してくれる。 当然、モデル読み込み、multiparticle 定義等の記述も書いておける。</p>
+<hr />
+<h1 id="以下古いバージョンに対するtipsあるいは古い認識">以下、古いバージョンに対するtips、あるいは古い認識</h1>
+<h2 id="madgraph-v2.6.4">(2018/12/06) MadGraph v2.6.4 ???</h2>
+<p><strong>????</strong></p>
+<p>v2.6.3.2 では動いていた以下のプロセスが v2.6.4 では動かない。 param_card.dat で指定している崩壊率の指定にミスがあるのか否か？</p>
+<pre class="shell"><code>import model MSSM_SLHA2
+p p &gt; go go, go &gt; n1 j j, go &gt; n1 j j</code></pre>
+<h2 id="madgraph-v2.6.3.2">(2018/12/06) MadGraph v2.6.3.2 ???</h2>
+<p><strong>v2.6.5で修正を確認</strong></p>
+<p>一方で、v2.6.3.2 では standalone pythia8 command が正しく動かない。 https://answers.launchpad.net/mg5amcnlo/+question/671278 にあるように、 <code>KeyError : 'event_norm'</code> と怒られるので、作ったイベントを v2.6.4 のディレクトリ に丸ごとコピーして、そちらで standalone pythia8 を動かせばとりあえず shower できる。 プロセスディレクトリ内の<code>./bin/madevent</code>から、</p>
+<pre class="shell"><code>pythia8 (RUN NAME)</code></pre>
+<p>上の方法で一度動かしておくと、<code>run_shower.sh</code>および<code>tag_1_pythia8.cmd</code>というファイルが自動生成される。 これをコピーして適宜編集し、イベント毎に使い回す方が効率は良さそう。</p>
 </body>
 </html>

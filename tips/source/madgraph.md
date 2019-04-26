@@ -134,31 +134,6 @@ C***************************************************************
 おそらく `run_card.dat` の方の cut は、サンプル点を選び出す段階で既に適用されている。
 参考：https://answers.launchpad.net/mg5amcnlo/+question/446723
 
-## (2018/12/06) MadGraph v2.6.4 ??? ##
-
-v2.6.3.2 では動いていた以下のプロセスが v2.6.4 では動かない。
-param_card.dat で指定している崩壊率の指定にミスがあるのか否か？
-
-``` shell
-import model MSSM_SLHA2
-p p > go go, go > n1 j j, go > n1 j j
-```
-
-## (2018/12/06) MadGraph v2.6.3.2 ??? ##
-
-一方で、v2.6.3.2 では standalone pythia8 command が正しく動かない。
-https://answers.launchpad.net/mg5amcnlo/+question/671278 にあるように、
-`KeyError : 'event_norm'` と怒られるので、作ったイベントを v2.6.4 のディレクトリ
-に丸ごとコピーして、そちらで standalone pythia8 を動かせばとりあえず shower できる。
-プロセスディレクトリ内の`./bin/madevent`から、
-
-``` shell
-pythia8 (RUN NAME)
-```
-
-上の方法で一度動かしておくと、`run_shower.sh`および`tag_1_pythia8.cmd`というファイルが自動生成される。
-これをコピーして適宜編集し、イベント毎に使い回す方が効率は良さそう。
-
 ## (2019/04/21) お好みの模型パラメータをデフォルト設定に ##
 
 例えばSMでb-quarkのPDFを考えたいとき、bはmasslessでなければいけないので、
@@ -184,3 +159,56 @@ compute_widths n2 go <<etc>> --body_decay=2.0025
 ```
 
 とするなど。モデルディレクトリ内に`param_card.dat`が新しくできて、そこには崩壊幅の情報が追加されている。
+
+## (2019/4/26) 事前にコードを書いてインタープリタに読ませる ##
+
+簡単な例として、わかりやすい名前で複数回launchしたい場合、
+
+``` text
+launch pp2gogo2 -n 6TeV_0
+launch pp2gogo2 -n 6TeV_1
+launch pp2gogo2 -n 6TeV_2
+```
+
+などと書いたテキストファイル（`launch_several_times.txt`とする）を用意する。
+これを
+
+``` shell
+./bin/mg5_aMC launch_several_times.txt
+```
+
+として読み込めば、その通りに実行してくれる。
+当然、モデル読み込み、multiparticle 定義等の記述も書いておける。
+
+-------------------------------------------------------------------------------
+
+# 以下、古いバージョンに対するtips、あるいは古い認識 #
+
+## (2018/12/06) MadGraph v2.6.4 ??? ##
+
+**????**
+
+v2.6.3.2 では動いていた以下のプロセスが v2.6.4 では動かない。
+param_card.dat で指定している崩壊率の指定にミスがあるのか否か？
+
+``` shell
+import model MSSM_SLHA2
+p p > go go, go > n1 j j, go > n1 j j
+```
+
+## (2018/12/06) MadGraph v2.6.3.2 ??? ##
+
+**v2.6.5で修正を確認**
+
+一方で、v2.6.3.2 では standalone pythia8 command が正しく動かない。
+https://answers.launchpad.net/mg5amcnlo/+question/671278 にあるように、
+`KeyError : 'event_norm'` と怒られるので、作ったイベントを v2.6.4 のディレクトリ
+に丸ごとコピーして、そちらで standalone pythia8 を動かせばとりあえず shower できる。
+プロセスディレクトリ内の`./bin/madevent`から、
+
+``` shell
+pythia8 (RUN NAME)
+```
+
+上の方法で一度動かしておくと、`run_shower.sh`および`tag_1_pythia8.cmd`というファイルが自動生成される。
+これをコピーして適宜編集し、イベント毎に使い回す方が効率は良さそう。
