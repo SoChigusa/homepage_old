@@ -1,6 +1,11 @@
 
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
 
+\bibitem{Abe:2019egv}
+T.~Abe, S.~Chigusa, Y.~Ema and T.~Moroi, \emph{{Indirect Studies of
+  Electroweakly Interacting Particles at 100 TeV Hadron Colliders}},
+  \href{https://arxiv.org/abs/1904.11162}{{\ttfamily 1904.11162}}.
+
 \bibitem{Asai:2019wst}
 S.~Asai, S.~Chigusa, T.~Kaji, T.~Moroi, M.~Saito, R.~Sawada et~al.,
   \emph{{Studying gaugino masses in supersymmetric model at future 100 TeV $pp$
