@@ -28,3 +28,17 @@ title: 自分風 Beamer プレゼン用チートシート
 ``` tex
 \def\arraystretch{1.2}
 ```
+
+## Spacing ##
+
+デフォルト行間は狭すぎるので、読みやすく。
+
+``` tex
+\renewcommand{\baselinestretch}{1.2}
+```
+
+ただ、状況に応じて部分的に変更したい時もあるので、臨機応変に
+
+``` tex
+\setstretch{0.9}
+```
