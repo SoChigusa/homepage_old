@@ -20,3 +20,11 @@ title: 自分風 Beamer プレゼン用チートシート
 ``` tex
 \setlength{\leftskip}{-3mm}
 ```
+
+## Table ##
+
+表の縦幅を広めにとって読みやすくする。
+
+``` tex
+\def\arraystretch{1.2}
+```

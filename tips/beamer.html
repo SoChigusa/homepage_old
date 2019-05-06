@@ -46,20 +46,19 @@
   </div>
   <div class="box" id="gfm">
     <!-- Contents below -->
-    <div id="content">
-    <div class="article">
-    <header>
+    <header id="title-block-header">
     <h1 class="title">自分風 Beamer プレゼン用チートシート</h1>
     </header>
     <hr />
     <h2 id="右下のアレを消す">右下のアレを消す</h2>
     <p>プリアンブル部分に次の一行を追加。</p>
-    <div class="sourceCode" id="cb1"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="fu">\setbeamertemplate</span>{navigation symbols}{}</a></code></pre></div>
+    <div class="sourceCode" id="cb1"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">\setbeamertemplate</span>{navigation symbols}{}</a></code></pre></div>
     <h2 id="itemize">Itemize</h2>
     <p>箇条書きがインデントされるのが気に入らない時の調整。</p>
-    <div class="sourceCode" id="cb2"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="fu">\setlength</span>{<span class="fu">\leftskip</span>}{-3mm}</a></code></pre></div>
-    </div>
-    </div>
+    <div class="sourceCode" id="cb2"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">\setlength</span>{<span class="fu">\leftskip</span>}{-3mm}</a></code></pre></div>
+    <h2 id="table">Table</h2>
+    <p>表の縦幅を広めにとって読みやすくする。</p>
+    <div class="sourceCode" id="cb3"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">\def</span>\arraystretch{1.2}</a></code></pre></div>
     <!-- Contents above -->
   </div>
 </div>
