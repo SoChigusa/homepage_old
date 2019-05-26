@@ -48,10 +48,10 @@ void update_log(const std::string &comment) {
   system("cp ../research/index.html ../../sochigusa.bitbucket.org/research/index.html");
   system(("cd ../cv/ && latex cv && bibtex cv && latex cv && latex cv && dvipdfmx cv"));
   system("cp ../cv/cv.pdf ../../sochigusa.bitbucket.org/cv/cv.pdf");
-  // system(("git commit -a -m \"auto commit by reslog : "+comment+"\" && "
-  // 	  +"git push origin master").c_str());
-  // system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit by reslog : "+comment+"\" && "
-  // 	  +"git push origin master").c_str());
+  system(("git commit -a -m \"auto commit by reslog : "+comment+"\" && "
+  	  +"git push origin master").c_str());
+  system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit by reslog : "+comment+"\" && "
+  	  +"git push origin master").c_str());
 }
 
 int main(int argc, char** argv) {
@@ -59,8 +59,8 @@ int main(int argc, char** argv) {
     errorMessage();
     return -1;
   }
-  // system("git pull origin master");
-  // system("cd ../../sochigusa.bitbucket.org/ && git pull origin master");
+  system("git pull origin master");
+  system("cd ../../sochigusa.bitbucket.org/ && git pull origin master");
 
   std::string arg_opt(argv[1]);
   if(arg_opt == "add") {
