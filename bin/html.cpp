@@ -234,7 +234,8 @@ void HTML::update_cv() {
 	  auto pos = val[4].find(" @");
 	  if (pos != std::string::npos) val[4].replace(pos, 2, ",");
 	  ss << " \\item ``" << val[2] // title
-	     << "'', " << val[3] << std::endl; // conference
+	     << "'', " << val[3] // date
+	     << ", " << val[4] << std::endl; // conference
 	}
       }
     }
