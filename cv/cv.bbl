@@ -1,5 +1,10 @@
 
-\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{}
+S.~Chigusa, S.~Kasuya and K.~Nakayama, \emph{{Novel Flavon Stabilization with
+  Trimaximal Neutrino Mixing}},
+  \href{https://arxiv.org/abs/1905.11517}{{\ttfamily 1905.11517}}.
 
 \bibitem{Abe:2019egv}
 T.~Abe, S.~Chigusa, Y.~Ema and T.~Moroi, \emph{{Indirect Studies of
