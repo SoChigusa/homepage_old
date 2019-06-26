@@ -137,6 +137,10 @@
     <p>などと書いたテキストファイル（<code>launch_several_times.txt</code>とする）を用意する。 これを</p>
     <pre class="shell"><code>./bin/mg5_aMC launch_several_times.txt</code></pre>
     <p>として読み込めば、その通りに実行してくれる。 当然、モデル読み込み、multiparticle 定義等の記述も書いておける。</p>
+    <h2 id="jet-matching">(2019/6/26) jet matching</h2>
+    <p>MadGraph のバージョンによって（？）jet matching の際に <code>run_card.dat</code> を弄る必要がある。</p>
+    <pre class="shell"><code>1 = ickkw            ! 0 no matching, 1 MLM</code></pre>
+    <p>ちなみにヘルプを見ると（https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Matching）、紛らわしいことにオプションの <code>2</code> が CKKW に対応するらしい。 これが on の状態で jet の本数を変えたプロセスをいくつか merge して走らせると、個々のプロセスを独立に走らせて計算した断面積の和と比して、大きな断面積が parton level で出てきたりする。 おそらくこれが matching に十分な overlap を含む phase space の取り方になっていて、その後 pythia が走ってきちんと matching してくれる。</p>
     <hr />
     <h1 id="以下古いバージョンに対するtipsあるいは古い認識">以下、古いバージョンに対するtips、あるいは古い認識</h1>
     <h2 id="madgraph-v2.6.4">(2018/12/06) MadGraph v2.6.4 ???</h2>
@@ -155,7 +159,7 @@
 
 <!-- insertion below : footer.html -->
 <footer>
-  <small>Copyright(C)2018 S. Chigusa, All Rights Reserved.</small>
+  <small>Copyright(C)2019 S. Chigusa, All Rights Reserved.</small>
 </footer>
 <!-- insertion above : footer.html -->
 

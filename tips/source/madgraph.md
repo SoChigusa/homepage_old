@@ -180,6 +180,18 @@ launch pp2gogo2 -n 6TeV_2
 として読み込めば、その通りに実行してくれる。
 当然、モデル読み込み、multiparticle 定義等の記述も書いておける。
 
+## (2019/6/26) jet matching ##
+
+MadGraph のバージョンによって（？）jet matching の際に `run_card.dat` を弄る必要がある。
+
+``` shell
+1 = ickkw            ! 0 no matching, 1 MLM
+```
+
+ちなみにヘルプを見ると（https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Matching）、紛らわしいことにオプションの `2` が CKKW に対応するらしい。
+これが on の状態で jet の本数を変えたプロセスをいくつか merge して走らせると、個々のプロセスを独立に走らせて計算した断面積の和と比して、大きな断面積が parton level で出てきたりする。
+おそらくこれが matching に十分な overlap を含む phase space の取り方になっていて、その後 pythia が走ってきちんと matching してくれる。
+
 -------------------------------------------------------------------------------
 
 # 以下、古いバージョンに対するtips、あるいは古い認識 #
