@@ -1,6 +1,10 @@
 
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
 
+\bibitem{Chigusa:2019wxb}
+S.~Chigusa, T.~Moroi and Y.~Shoji, \emph{{Bounce Configuration from Gradient
+  Flow}},  \href{https://arxiv.org/abs/1906.10829}{{\ttfamily 1906.10829}}.
+
 \bibitem{}
 S.~Chigusa, S.~Kasuya and K.~Nakayama, \emph{{Novel Flavon Stabilization with
   Trimaximal Neutrino Mixing}},
