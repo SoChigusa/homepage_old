@@ -33,16 +33,16 @@ void my_system(const state & x, state & dxdt, const double t) {
 宣言の様子は、
 
 ``` c++
-  auto rk4 = odeint::runge_kutta4<state>();
-  auto crkck54 = odeint::controlled_runge_kutta< odeint::runge_kutta_cash_karp54<state> >();
-  auto crkd5 = odeint::controlled_runge_kutta< odeint::runge_kutta_dopri5<state> >();
-  auto crkf78 = odeint::controlled_runge_kutta< odeint::runge_kutta_fehlberg78<state> >();
+auto rk4 = odeint::runge_kutta4<state>();
+auto crkck54 = odeint::controlled_runge_kutta< odeint::runge_kutta_cash_karp54<state> >();
+auto crkd5 = odeint::controlled_runge_kutta< odeint::runge_kutta_dopri5<state> >();
+auto crkf78 = odeint::controlled_runge_kutta< odeint::runge_kutta_fehlberg78<state> >();
 ```
 
 上記の下3つの書き方ではエラーコントロールが自動でなされるが、エラーの大きさを自分で指定したい場合には、
 
 ``` c++
-  auto crkd5 = odeint::make_controlled< odeint::runge_kutta_dopri5<state> >(1.e-8, 1.e-4);
+auto crkd5 = odeint::make_controlled< odeint::runge_kutta_dopri5<state> >(1.e-8, 1.e-4);
 ```
 
 などと書ける。2つの変数は絶対誤差と相対誤差に対応しており、詳しい定義については[こちら][2]を参照。
@@ -55,25 +55,26 @@ void my_system(const state & x, state & dxdt, const double t) {
 書き方の基本はこんな感じ。
 
 ``` c++
-	std::vector<double> timelog;
-	std::vector<state> statelog;
-	odeint::integrate(
-			  my_system,  // ODE
-			  state0,  // initial condition
-			  0.,   // initial time
-			  1.,   // final time
-			  0.001,// step size
-			  [&](const state & st, const double t) {  // observer
-			    timelog.push_back(arg_t);
-			    statelog.push_back(ph);
-			  });
+std::vector<double> timelog;
+std::vector<state> statelog;
+odeint::integrate_const(
+	      crkd5,  // stepper
+		  my_system,  // ODE
+		  state0,  // initial condition
+		  0.,   // initial time
+		  1.,   // final time
+		  0.001,// step size
+		  [&](const state & st, const double t) {  // observer
+		    timelog.push_back(arg_t);
+		    statelog.push_back(ph);
+		  });
 ```
 
-`integrate` 関数の代わりに `integrate_const` を用いれば、Controlled Stepper の場合にも欲しい刻み幅でのデータを出力してくれる。
-当然出力時以外にもたくさんステップを踏んでいるので、この場合第5引数の step size は単に出力データの大きさを帰るだけである。
+`integrate_const` を用いれば、Controlled Stepper の場合にも欲しい刻み幅でのデータを出力してくれる。
+当然出力時以外にもたくさんステップを踏んでいるので、この場合第5引数の step size は単に出力データの大きさを変更するだけである。
 
 全てのステップに関して出力が欲しい場合には、 `integrate_adaptive` 関数を用いれば良い。
-上記 `integrate` 関数は、`integrate_adaptive` プラス `runge_kutta_dopri5` にデフォルトのエラーコントロールを適用したものと同じ。
+`integrate` 関数というのもあって、これは第1引数が不要で、`integrate_adaptive` プラス `runge_kutta_dopri5` にデフォルトのエラーコントロールを適用したものと同じ。
 
 [1]:https://www.boost.org/doc/libs/1_57_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/getting_started/overview.html
 [2]:https://www.boost.org/doc/libs/1_67_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/tutorial/harmonic_oscillator.html

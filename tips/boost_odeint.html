@@ -49,8 +49,6 @@
   </div>
   <div class="box" id="gfm">
     <!-- Contents below -->
-    <div id="content">
-    <div class="article">
     <header>
     <h1 class="title">Boost を使って微分方程式を解く</h1>
     </header>
@@ -73,31 +71,30 @@
     <p>ちなみに <code>state</code> に 2次元 <code>vector</code> を指定するとコンパイルが通らなかったので、素直に 1次元データを使うのが良さそう？</p>
     <h2 id="アルゴリズムの選択">アルゴリズムの選択</h2>
     <p>用いることのできるアルゴリズムのリストは<a href="https://www.boost.org/doc/libs/1_57_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/getting_started/overview.html">こちら</a>。 このうち、Stepper は等間隔刻みで微分方程式を解くのに単体で使えて、Error Stepper は Controlled Stepper と組み合わせて、適応的に刻み幅を変えながら微分方程式を解くのに便利。 宣言の様子は、</p>
-    <div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb2-1" data-line-number="1">  <span class="kw">auto</span> rk4 = odeint::runge_kutta4&lt;state&gt;();</a>
-    <a class="sourceLine" id="cb2-2" data-line-number="2">  <span class="kw">auto</span> crkck54 = odeint::controlled_runge_kutta&lt; odeint::runge_kutta_cash_karp54&lt;state&gt; &gt;();</a>
-    <a class="sourceLine" id="cb2-3" data-line-number="3">  <span class="kw">auto</span> crkd5 = odeint::controlled_runge_kutta&lt; odeint::runge_kutta_dopri5&lt;state&gt; &gt;();</a>
-    <a class="sourceLine" id="cb2-4" data-line-number="4">  <span class="kw">auto</span> crkf78 = odeint::controlled_runge_kutta&lt; odeint::runge_kutta_fehlberg78&lt;state&gt; &gt;();</a></code></pre></div>
+    <div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">auto</span> rk4 = odeint::runge_kutta4&lt;state&gt;();</a>
+    <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">auto</span> crkck54 = odeint::controlled_runge_kutta&lt; odeint::runge_kutta_cash_karp54&lt;state&gt; &gt;();</a>
+    <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">auto</span> crkd5 = odeint::controlled_runge_kutta&lt; odeint::runge_kutta_dopri5&lt;state&gt; &gt;();</a>
+    <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw">auto</span> crkf78 = odeint::controlled_runge_kutta&lt; odeint::runge_kutta_fehlberg78&lt;state&gt; &gt;();</a></code></pre></div>
     <p>上記の下3つの書き方ではエラーコントロールが自動でなされるが、エラーの大きさを自分で指定したい場合には、</p>
-    <div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb3-1" data-line-number="1">  <span class="kw">auto</span> crkd5 = odeint::make_controlled&lt; odeint::runge_kutta_dopri5&lt;state&gt; &gt;(<span class="dv">1</span>.e<span class="dv">-8</span>, <span class="dv">1</span>.e<span class="dv">-4</span>);</a></code></pre></div>
+    <div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">auto</span> crkd5 = odeint::make_controlled&lt; odeint::runge_kutta_dopri5&lt;state&gt; &gt;(<span class="dv">1</span>.e<span class="dv">-8</span>, <span class="dv">1</span>.e<span class="dv">-4</span>);</a></code></pre></div>
     <p>などと書ける。2つの変数は絶対誤差と相対誤差に対応しており、詳しい定義については<a href="https://www.boost.org/doc/libs/1_67_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/tutorial/harmonic_oscillator.html">こちら</a>を参照。</p>
     <h2 id="積分とオブザーバー">積分とオブザーバー</h2>
     <p>微分方程式を解く操作を積分と読んでいるが、積分関数にもいくつか種類がある。 オブザーバーと呼ばれる中間ステップでの変数の値の保存用の関数をいつ呼び出すかが異なる。 ヘルプは<a href="https://www.boost.org/doc/libs/1_66_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/odeint_in_detail/integrate_functions.html">ここ</a>。 書き方の基本はこんな感じ。</p>
-    <div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb4-1" data-line-number="1">    <span class="bu">std::</span>vector&lt;<span class="dt">double</span>&gt; timelog;</a>
-    <a class="sourceLine" id="cb4-2" data-line-number="2">    <span class="bu">std::</span>vector&lt;state&gt; statelog;</a>
-    <a class="sourceLine" id="cb4-3" data-line-number="3">    odeint::integrate(</a>
-    <a class="sourceLine" id="cb4-4" data-line-number="4">              my_system,  <span class="co">// ODE</span></a>
-    <a class="sourceLine" id="cb4-5" data-line-number="5">              state0,  <span class="co">// initial condition</span></a>
-    <a class="sourceLine" id="cb4-6" data-line-number="6">              <span class="fl">0.</span>,   <span class="co">// initial time</span></a>
-    <a class="sourceLine" id="cb4-7" data-line-number="7">              <span class="fl">1.</span>,   <span class="co">// final time</span></a>
-    <a class="sourceLine" id="cb4-8" data-line-number="8">              <span class="fl">0.001</span>,<span class="co">// step size</span></a>
-    <a class="sourceLine" id="cb4-9" data-line-number="9">              [&amp;](<span class="at">const</span> state &amp; st, <span class="at">const</span> <span class="dt">double</span> t) {  <span class="co">// observer</span></a>
-    <a class="sourceLine" id="cb4-10" data-line-number="10">                timelog.push_back(<span class="dt">arg_t</span>);</a>
-    <a class="sourceLine" id="cb4-11" data-line-number="11">                statelog.push_back(ph);</a>
-    <a class="sourceLine" id="cb4-12" data-line-number="12">              });</a></code></pre></div>
-    <p><code>integrate</code> 関数の代わりに <code>integrate_const</code> を用いれば、Controlled Stepper の場合にも欲しい刻み幅でのデータを出力してくれる。 当然出力時以外にもたくさんステップを踏んでいるので、この場合第5引数の step size は単に出力データの大きさを帰るだけである。</p>
-    <p>全てのステップに関して出力が欲しい場合には、 <code>integrate_adaptive</code> 関数を用いれば良い。 上記 <code>integrate</code> 関数は、<code>integrate_adaptive</code> プラス <code>runge_kutta_dopri5</code> にデフォルトのエラーコントロールを適用したものと同じ。</p>
-    </div>
-    </div>
+    <div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="bu">std::</span>vector&lt;<span class="dt">double</span>&gt; timelog;</a>
+    <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="bu">std::</span>vector&lt;state&gt; statelog;</a>
+    <a class="sourceLine" id="cb4-3" data-line-number="3">odeint::integrate_const(</a>
+    <a class="sourceLine" id="cb4-4" data-line-number="4">          crkd5,  <span class="co">// stepper</span></a>
+    <a class="sourceLine" id="cb4-5" data-line-number="5">          my_system,  <span class="co">// ODE</span></a>
+    <a class="sourceLine" id="cb4-6" data-line-number="6">          state0,  <span class="co">// initial condition</span></a>
+    <a class="sourceLine" id="cb4-7" data-line-number="7">          <span class="fl">0.</span>,   <span class="co">// initial time</span></a>
+    <a class="sourceLine" id="cb4-8" data-line-number="8">          <span class="fl">1.</span>,   <span class="co">// final time</span></a>
+    <a class="sourceLine" id="cb4-9" data-line-number="9">          <span class="fl">0.001</span>,<span class="co">// step size</span></a>
+    <a class="sourceLine" id="cb4-10" data-line-number="10">          [&amp;](<span class="at">const</span> state &amp; st, <span class="at">const</span> <span class="dt">double</span> t) {  <span class="co">// observer</span></a>
+    <a class="sourceLine" id="cb4-11" data-line-number="11">            timelog.push_back(<span class="dt">arg_t</span>);</a>
+    <a class="sourceLine" id="cb4-12" data-line-number="12">            statelog.push_back(ph);</a>
+    <a class="sourceLine" id="cb4-13" data-line-number="13">          });</a></code></pre></div>
+    <p><code>integrate_const</code> を用いれば、Controlled Stepper の場合にも欲しい刻み幅でのデータを出力してくれる。 当然出力時以外にもたくさんステップを踏んでいるので、この場合第5引数の step size は単に出力データの大きさを変更するだけである。</p>
+    <p>全てのステップに関して出力が欲しい場合には、 <code>integrate_adaptive</code> 関数を用いれば良い。 <code>integrate</code> 関数というのもあって、これは第1引数が不要で、<code>integrate_adaptive</code> プラス <code>runge_kutta_dopri5</code> にデフォルトのエラーコントロールを適用したものと同じ。</p>
     <!-- Contents above -->
   </div>
 </div>
