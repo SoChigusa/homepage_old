@@ -1,0 +1,27 @@
+<body>
+<div id="content">
+<div class="article">
+<header id="title-block-header">
+<h1 class="title">インテルコンパイラーで boost</h1>
+</header>
+<hr />
+<h2 id="boost-のコンパイル">boost のコンパイル</h2>
+<p>大体<a href="https://software.intel.com/en-us/articles/building-boost-with-intel-c-compiler-150">ここ</a>や<a href="https://seriousdeveloper.wordpress.com/2015/08/18/building-boost-with-intel-c-compiler-15-0-2/">ここ</a>に載っている通り。 <code>~/boost_***</code> にファイルを展開した後、 64bit マシンで、</p>
+<pre class="shell"><code>source /opt/intel/compilers_and_libraries_***/mac/bin/compilervars.sh intel64
+cd ~/boost_***/tools/build
+./bootstrap.sh
+./b2 install --prefix=~/boost_***
+export PATH=$PATH:~/boost_***/bin
+cd ~/boost_***
+b2 --build-dir=~/boost_***/lib/address-model=64 toolset=intel stage</code></pre>
+<p>ヘッダーやライブラリを別のところにおいておきたかったので、</p>
+<pre class="shell"><code>sudo mkdir -p /opt/boost_***/include
+sudo cp -pr ~/boost_***/boost /opt/boost_1_59_0/include/
+sudo cp -pr ~/boost_***/stage/lib /opt/boost_1_59_0/</code></pre>
+<h2 id="使う">使う</h2>
+<p>Boost を使う際に、</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode makefile"><code class="sourceCode makefile"><a class="sourceLine" id="cb3-1" title="1"><span class="dt">BOOSTFLAGS </span><span class="ch">=</span><span class="st"> -I/opt/boost_***/include -L/opt/boost_***/lib</span></a></code></pre></div>
+<p>を用いる。最初 <code>-std=c++17</code> のフラグを立ててコンパイルしていたら、<code>std::align_val_t</code> の定義がぶつかって エラーになったので、<code>-std=c++11</code> に変更した。多分何かの理解が足りていない。</p>
+</div>
+</div>
+</body>
