@@ -12,6 +12,9 @@
 #include <sstream>
 #include <string>
 
+// #define _UPDATE_CHANGE
+// #define _UPLOAD_CHANGE
+
 void errorMessage() {
   std::cout << "Accepts 1 option:" << std::endl;
   std::cout << "option add: add information and update files" << std::endl;
@@ -46,12 +49,60 @@ void update_log(const std::string &comment) {
   HTML::update_cv();
   system("cp ../index.html ../../sochigusa.bitbucket.org/index.html");
   system("cp ../research/index.html ../../sochigusa.bitbucket.org/research/index.html");
-  system(("cd ../cv/ && latex cv && bibtex cv && latex cv && latex cv && dvipdfmx cv"));
+  system("cd ../cv/ && latex cv && bibtex cv && latex cv && latex cv && dvipdfmx cv");
   system("cp ../cv/cv.pdf ../../sochigusa.bitbucket.org/cv/cv.pdf");
+#ifdef _UPLOAD_CHANGE
   system(("git commit -a -m \"auto commit by reslog : "+comment+"\" && "
   	  +"git push origin master").c_str());
   system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit by reslog : "+comment+"\" && "
   	  +"git push origin master").c_str());
+#endif
+}
+
+void bibtex_info(std::string & arg_title, std::string & arg1, std::string & arg2,
+		 const std::string & arg_buf) {
+  std::vector<std::string> v, vl;
+  HTML::split(v, arg_buf, '\n');
+
+  // information should be in order of author < title < eprint
+  int nl = 0;
+  bool cont = false;
+  std::string label[] = {"author", "title", "eprint"};
+  std::string res[sizeof(label) / sizeof(label[0])];
+  for(int n = 0; n < v.size() && nl < sizeof(label) / sizeof(label[0]); ++n) {
+    HTML::split(vl, v[n], '=');
+    if(vl.size() == 2 && vl[0].find(label[nl]) != std::string::npos) {
+      res[nl] = vl[1];
+      auto vlpost1 = res[nl].find("\",");
+      auto vlpost2 = res[nl].find("}");
+      auto vlpre1  = res[nl].find("{");
+      auto vlpre2  = res[nl].find(" \"");
+      if(vlpost1 != std::string::npos) res[nl].replace(vlpost1, 2, "");
+      else cont = true;
+      if(vlpost2 != std::string::npos) res[nl].replace(vlpost2, 1, "");
+      if(vlpre1 != std::string::npos) res[nl].replace(vlpre1, 1, "");
+      if(vlpre2 != std::string::npos) res[nl].replace(vlpre2, 2, "");
+      std::cout << res[nl] << std::endl;
+      if(!cont) ++nl;
+    } else if(vl.size() == 1 && cont) {
+      res[nl] += vl[0];
+      auto vlpost1 = res[nl].find("\",");
+      auto vlpost2 = res[nl].find("}");
+      if(vlpost1 != std::string::npos) {
+	res[nl].replace(vlpost1, vlpost1+2, "");
+	cont = false;
+      }
+      if(vlpost2 != std::string::npos) res[nl].replace(vlpost2, 1, "");
+      
+      auto spsp = res[nl].find("  ");
+      while(spsp != std::string::npos) {
+	res[nl].replace(spsp, 2, " ");
+	spsp = res[nl].find("  ");
+      }
+      std::cout << res[nl] << std::endl;
+      if(!cont) ++nl;
+    } else cont = false;
+  }
 }
 
 int main(int argc, char** argv) {
@@ -59,8 +110,10 @@ int main(int argc, char** argv) {
     errorMessage();
     return -1;
   }
+#ifdef _UPLOAD_CHANGE
   system("git pull origin master");
   system("cd ../../sochigusa.bitbucket.org/ && git pull origin master");
+#endif
 
   std::string arg_opt(argv[1]);
   if(arg_opt == "add") {
@@ -68,17 +121,18 @@ int main(int argc, char** argv) {
     std::cout << "Research type: [p]aper or [t]alk or [a]ward: ";
     std::getline(std::cin, arg_type);
     if(arg_type == "p") {
-      std::cout << "Paper title: ";
-      std::getline(std::cin, arg_title);
-      std::cout << "Authors: ";
-      std::getline(std::cin, arg1);
-      std::cout << "arXiv number: ";
-      std::getline(std::cin, arg2);
+      // std::cout << "Paper title: ";
+      // std::getline(std::cin, arg_title);
+      // std::cout << "Authors: ";
+      // std::getline(std::cin, arg1);
+      // std::cout << "arXiv number: ";
+      // std::getline(std::cin, arg2);
 
       char buffer[2048];
       std::cout << "Copy and paste bibtex and input # and enter: " << std::endl;
       scanf("%2047[^#]", buffer);
-      HTML::update_bibtex(buffer);
+      // HTML::update_bibtex(buffer);
+      bibtex_info(arg_title, arg1, arg2, std::string(buffer));
     } else if(arg_type == "t") {
       std::cout << "Talk title: ";
       std::getline(std::cin, arg_title);
@@ -95,10 +149,14 @@ int main(int argc, char** argv) {
       std::cout << "Unexpected research type" << std::endl;
       return -1;
     }
+#ifdef _UPDATE_CHANGE
     add_log(arg_type, arg_title, arg1, arg2);
     update_log("add "+arg_title);
+#endif
   } else if(arg_opt == "update") {
+#ifdef _UPDATE_CHANGE
     update_log("update");
+#endif
   } else {
     errorMessage();
     return -1;
