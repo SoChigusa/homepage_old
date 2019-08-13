@@ -13,7 +13,7 @@
 #include <string>
 
 #define _UPDATE_CHANGE
-#define _UPLOAD_CHANGE
+// #define _UPLOAD_CHANGE
 
 void errorMessage() {
   std::cout << "Accepts 1 option:" << std::endl;
@@ -44,6 +44,35 @@ void add_log(std::string arg_type, std::string arg_title, std::string arg1, std:
 }
 
 void update_log(const std::string &comment) {
+  // obtain information from iNSPIRE
+  std::string url = "search?ln=ja&ln=ja&p=find+a+So+Chigusa";
+  system(("wget \"https://inspirehep.net/"+url+"\"").c_str());
+
+  std::vector<std::string> v, vu;
+  std::ifstream ifs(url);
+  std::string buf((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
+  HTML::split(v, buf, "</a>");
+  std::ofstream ofs("../cv/cv.bib");
+  for(int i = 0; i < v.size(); ++i) {
+    if(v[i].find("BibTeX") != std::string::npos) {
+      HTML::split(vu, v[i], '"');
+      system(("wget \""+vu[1]+"\"").c_str());
+    }
+    std::ifstream ifs("hx");
+    if(ifs) {
+      std::string buf((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
+      auto p1 = buf.find("<pre>")+5;
+      auto p2 = buf.find("</pre>");
+      std::string bib(buf.substr(p1, p2-p1));
+      std::remove("hx");
+      std::cout << bib << std::endl;
+      ofs << bib;
+    }
+  }
+  std::remove(url.c_str());
+  ofs.close();
+  
+  // html and pdf files update
   HTML::update_html("../research/index_temp.html", "../research/index.html");
   HTML::update_html("../index_temp.html", "../index.html");
   HTML::update_cv();
@@ -51,6 +80,8 @@ void update_log(const std::string &comment) {
   system("cp ../research/index.html ../../sochigusa.bitbucket.org/research/index.html");
   system("cd ../cv/ && latex cv && bibtex cv && latex cv && latex cv && dvipdfmx cv");
   system("cp ../cv/cv.pdf ../../sochigusa.bitbucket.org/cv/cv.pdf");
+
+  // upload
 #ifdef _UPLOAD_CHANGE
   system(("git commit -a -m \"auto commit by reslog : "+comment+"\" && "
   	  +"git push origin master").c_str());
