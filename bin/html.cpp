@@ -16,6 +16,16 @@ void HTML::split(std::vector<std::string> &v, const std::string &buf, char sep) 
   while(getline(ss, mbuf, sep)) { if(mbuf != "") v.push_back(mbuf); }
 }
 
+void HTML::split(std::vector<std::string> &v, const std::string &arg_buf, const std::string &sep) {
+  std::string buf = arg_buf;
+  auto delim = buf.find(sep);
+  while(delim != std::string::npos) {
+    buf.replace(delim, sep.length(), ";");
+    delim = buf.find(sep);
+  }
+  split(v, buf, ';');
+}
+
 std::string HTML::getYYYYMMDD(time_t t) {
   struct tm* localTime = std::localtime(&t);
   int yyyy = localTime->tm_year + 1900;

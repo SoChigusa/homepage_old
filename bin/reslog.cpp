@@ -12,7 +12,7 @@
 #include <sstream>
 #include <string>
 
-// #define _UPDATE_CHANGE
+#define _UPDATE_CHANGE
 // #define _UPLOAD_CHANGE
 
 void errorMessage() {
@@ -61,7 +61,7 @@ void update_log(const std::string &comment) {
 
 void bibtex_info(std::string & arg_title, std::string & arg1, std::string & arg2,
 		 const std::string & arg_buf) {
-  std::vector<std::string> v, vl;
+  std::vector<std::string> v, vl, va, vap;
   HTML::split(v, arg_buf, '\n');
 
   // information should be in order of author < title < eprint
@@ -82,7 +82,6 @@ void bibtex_info(std::string & arg_title, std::string & arg1, std::string & arg2
       if(vlpost2 != std::string::npos) res[nl].replace(vlpost2, 1, "");
       if(vlpre1 != std::string::npos) res[nl].replace(vlpre1, 1, "");
       if(vlpre2 != std::string::npos) res[nl].replace(vlpre2, 2, "");
-      std::cout << res[nl] << std::endl;
       if(!cont) ++nl;
     } else if(vl.size() == 1 && cont) {
       res[nl] += vl[0];
@@ -99,10 +98,25 @@ void bibtex_info(std::string & arg_title, std::string & arg1, std::string & arg2
 	res[nl].replace(spsp, 2, " ");
 	spsp = res[nl].find("  ");
       }
-      std::cout << res[nl] << std::endl;
       if(!cont) ++nl;
     } else cont = false;
   }
+
+  // author names
+  std::string author = "";
+  HTML::split(va, res[0], " and ");
+  for(int i = 0; i < va.size(); ++i) {
+    HTML::split(vap, va[i], ", ");
+    author += vap[1];
+    author += " ";
+    author += vap[0];
+    if(i < va.size()-1) author += ", ";
+  }
+
+  // info list
+  arg_title = res[1]; // title
+  arg1 = author; // authors
+  arg2 = res[2]; // arXiv number
 }
 
 int main(int argc, char** argv) {
@@ -121,18 +135,13 @@ int main(int argc, char** argv) {
     std::cout << "Research type: [p]aper or [t]alk or [a]ward: ";
     std::getline(std::cin, arg_type);
     if(arg_type == "p") {
-      // std::cout << "Paper title: ";
-      // std::getline(std::cin, arg_title);
-      // std::cout << "Authors: ";
-      // std::getline(std::cin, arg1);
-      // std::cout << "arXiv number: ";
-      // std::getline(std::cin, arg2);
-
       char buffer[2048];
       std::cout << "Copy and paste bibtex and input # and enter: " << std::endl;
       scanf("%2047[^#]", buffer);
-      // HTML::update_bibtex(buffer);
       bibtex_info(arg_title, arg1, arg2, std::string(buffer));
+#ifdef _UPDATE_CHANGE
+      HTML::update_bibtex(buffer);
+#endif
     } else if(arg_type == "t") {
       std::cout << "Talk title: ";
       std::getline(std::cin, arg_title);

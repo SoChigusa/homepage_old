@@ -21,6 +21,7 @@ class HTML {
   HTML();
  public:
   static void split(std::vector<std::string> &, const std::string &buf, char sep);
+  static void split(std::vector<std::string> &, const std::string &buf, const std::string &sep);
   static std::string getYYYYMMDD(time_t);
   static void insertFromFile(std::stringstream &, std::string &);
   static int extract_body(const std::string &, const std::string &);
