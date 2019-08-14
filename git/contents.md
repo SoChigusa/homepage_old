@@ -2,6 +2,12 @@
 
 -------------------------------------------------------------------------------
 
+## Inspire2BibTeX ##
+
+[open in github](https://github.com/SoChigusa/Inspire2BibTeX)
+
+Obtain BibTeX information from iNSPIRE web site for all papers of a given author.
+
 ## Latex2Grammarly ##
 
 [open in Bitbucket](https://bitbucket.org/SoChigusa/latex2grammarly/)
