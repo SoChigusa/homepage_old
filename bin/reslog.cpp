@@ -7,6 +7,7 @@
  */
 
 #include "html.h"
+#include "inspire.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -41,53 +42,6 @@ void add_log(std::string arg_type, std::string arg_title, std::string arg1, std:
   
   std::ofstream ofs("../research/research.log");
   ofs << ss.str();
-}
-
-void update_log(const std::string &comment) {
-  // obtain information from iNSPIRE
-  std::string url = "search?ln=ja&ln=ja&p=find+a+So+Chigusa";
-  system(("wget \"https://inspirehep.net/"+url+"\"").c_str());
-
-  std::vector<std::string> v, vu;
-  std::ifstream ifs(url);
-  std::string buf((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
-  HTML::split(v, buf, "</a>");
-  std::ofstream ofs("../cv/cv.bib");
-  for(int i = 0; i < v.size(); ++i) {
-    if(v[i].find("BibTeX") != std::string::npos) {
-      HTML::split(vu, v[i], '"');
-      system(("wget \""+vu[1]+"\"").c_str());
-    }
-    std::ifstream ifs("hx");
-    if(ifs) {
-      std::string buf((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
-      auto p1 = buf.find("<pre>")+5;
-      auto p2 = buf.find("</pre>");
-      std::string bib(buf.substr(p1, p2-p1));
-      std::remove("hx");
-      std::cout << bib << std::endl;
-      ofs << bib;
-    }
-  }
-  std::remove(url.c_str());
-  ofs.close();
-  
-  // html and pdf files update
-  HTML::update_html("../research/index_temp.html", "../research/index.html");
-  HTML::update_html("../index_temp.html", "../index.html");
-  HTML::update_cv();
-  system("cp ../index.html ../../sochigusa.bitbucket.org/index.html");
-  system("cp ../research/index.html ../../sochigusa.bitbucket.org/research/index.html");
-  system("cd ../cv/ && latex cv && bibtex cv && latex cv && latex cv && dvipdfmx cv");
-  system("cp ../cv/cv.pdf ../../sochigusa.bitbucket.org/cv/cv.pdf");
-
-  // upload
-#ifdef _UPLOAD_CHANGE
-  system(("git commit -a -m \"auto commit by reslog : "+comment+"\" && "
-  	  +"git push origin master").c_str());
-  system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit by reslog : "+comment+"\" && "
-  	  +"git push origin master").c_str());
-#endif
 }
 
 void bibtex_info(std::string & arg_title, std::string & arg1, std::string & arg2,
@@ -148,6 +102,48 @@ void bibtex_info(std::string & arg_title, std::string & arg1, std::string & arg2
   arg_title = res[1]; // title
   arg1 = author; // authors
   arg2 = res[2]; // arXiv number
+}
+
+void update_log(const std::string &comment) {
+  // obtain information from iNSPIRE
+  Inspire my_inspire("S.Chigusa.1", "../cv/cv.bib");
+  my_inspire.get();
+
+  // generate paper log from bibtex
+  std::ifstream ifs("../cv/cv.bib");
+  std::ofstream ofs("../research/paper.log");
+  std::string buf((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
+  std::vector<std::string> v;
+  std::string title, author, preprint;
+  HTML::split(v, buf, "\n\n");
+  for(int i = 0; i < v.size(); ++i) {
+    bibtex_info(title, author, preprint, v[i]);
+    double num = stod(preprint);
+    int y = 2000 + (int)(num / 100.); // year
+    int m = (int)num - (y - 2000) * 100; // month
+    struct tm date = { 0, 0, 0, 1, m, y - 1900 };
+    ofs << std::mktime(&date) << ";"
+	<< title << ";"
+	<< author << ";"
+	<< preprint << std::endl;
+  }
+  
+  // html and pdf files update
+  HTML::update_html("../research/index_temp.html", "../research/index.html");
+  HTML::update_html("../index_temp.html", "../index.html");
+  HTML::update_cv();
+  system("cp ../index.html ../../sochigusa.bitbucket.org/index.html");
+  system("cp ../research/index.html ../../sochigusa.bitbucket.org/research/index.html");
+  system("cd ../cv/ && latex cv && bibtex cv && latex cv && latex cv && dvipdfmx cv");
+  system("cp ../cv/cv.pdf ../../sochigusa.bitbucket.org/cv/cv.pdf");
+
+  // upload
+#ifdef _UPLOAD_CHANGE
+  system(("git commit -a -m \"auto commit by reslog : "+comment+"\" && "
+  	  +"git push origin master").c_str());
+  system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit by reslog : "+comment+"\" && "
+  	  +"git push origin master").c_str());
+#endif
 }
 
 int main(int argc, char** argv) {

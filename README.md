@@ -1,12 +1,12 @@
 # How to maintain my homepage #
 
-## Automatic update of paper information (2019/8/13) ##
+## Automatic update of paper information (2019/8/14) ##
 
-For the updated bibtex information, my code accesses inspire using `wget` command.
-Please use OS X / Linux with `wget` installed.
-For OS X, we can install the command using `homebrew` as
+For the updated bibtex information, Inspire2BibTeX is used.
+Installation directory of the `inspire.h` should be provided in `bin/Makefile`:
 
-``` shell
-brew install wget
+``` makefile
+INSPIREINCLUDE := -I [Path to inspire.h]
 ```
+
 

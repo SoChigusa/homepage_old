@@ -1,5 +1,6 @@
 CXX := icpc
 CXXFLAGS := -g -Wall -Ofast -std=c++11
+INSPIREINCLUDE := -I ../../Inspire2BibTeX/
 
 all: html.o reslog tipslog gitupdate diarylog
 
@@ -7,7 +8,7 @@ html.o:	html.cpp
 	$(CXX) $(CXXFLAGS) -o html.o -c html.cpp
 
 reslog.o:	reslog.cpp
-	$(CXX) $(CXXFLAGS) -o reslog.o -c reslog.cpp
+	$(CXX) $(CXXFLAGS) $(INSPIREINCLUDE) -o reslog.o -c reslog.cpp
 
 reslog: reslog.o html.o
 	$(CXX) $(CXXFLAGS) -o reslog reslog.o html.o
