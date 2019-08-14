@@ -1,4 +1,6 @@
-# Public projects on Bitbucket #
+---
+title: Public projects on Bitbucket
+---
 
 -------------------------------------------------------------------------------
 
