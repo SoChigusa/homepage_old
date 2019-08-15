@@ -124,7 +124,7 @@ void update_log(const std::string &comment) {
       double num = stod(preprint);
       int y = 2000 + (int)(num / 100.); // year
       int m = (int)num - (y - 2000) * 100; // month
-      struct tm date = { 0, 0, 0, 1, m, y - 1900 };
+      struct tm date = { 0, 0, 0, 1, m-1, y - 1900 };
       ofs << std::mktime(&date) << ";"
 	  << "Paper;"
     	  << title << ";"
