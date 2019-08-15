@@ -92,11 +92,10 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
     
     // add recent activities
     if((int)strBufferLine.find("<!-- Recent Activities below -->") != -1) {
-      std::ifstream iflog("../research/research.log");
+      std::ifstream iflog("../research/recent.log");
       ss << "<article>" << std::endl;
       for(int i = 0; i < 6; i++) {
 	std::getline(iflog, strBufferLine);
-	
 	split(val, strBufferLine, ';');
 	ss << "  <section>" << std::endl;
 	
@@ -121,8 +120,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
 	  ss << "    <p>" << std::endl;
 	  ss << "      <i>" << val[2] << "</i>" << std::endl;
 	  ss << "    </p>" << std::endl;
-	}
-	
+	}	
 	ss << "  </section>" << std::endl;
       }
       ss << "</article>" << std::endl;

@@ -14,7 +14,7 @@
 #include <string>
 
 #define _UPDATE_CHANGE
-// #define _UPLOAD_CHANGE
+#define _UPLOAD_CHANGE
 
 void errorMessage() {
   std::cout << "Accepts 1 option:" << std::endl;
@@ -105,27 +105,51 @@ void bibtex_info(std::string & arg_title, std::string & arg1, std::string & arg2
 }
 
 void update_log(const std::string &comment) {
-  // obtain information from iNSPIRE
-  Inspire my_inspire("S.Chigusa.1", "../cv/cv.bib");
-  my_inspire.get();
+  // update paper log
+  if(comment == "update") {
+    
+    // obtain information from iNSPIRE
+    Inspire my_inspire("S.Chigusa.1", "../cv/cv.bib");
+    my_inspire.get();
+    
+    // generate paper log from bibtex
+    std::ifstream ifs("../cv/cv.bib");
+    std::ofstream ofs("../research/paper.log");
+    std::string buf((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
+    std::vector<std::string> v;
+    std::string title, author, preprint;
+    HTML::split(v, buf, "\n\n");
+    for(int i = 0; i < v.size(); ++i) {
+      bibtex_info(title, author, preprint, v[i]);
+      double num = stod(preprint);
+      int y = 2000 + (int)(num / 100.); // year
+      int m = (int)num - (y - 2000) * 100; // month
+      struct tm date = { 0, 0, 0, 1, m, y - 1900 };
+      ofs << std::mktime(&date) << ";"
+    	  << title << ";"
+    	  << author << ";"
+    	  << preprint << std::endl;
+    }
+  }
 
-  // generate paper log from bibtex
-  std::ifstream ifs("../cv/cv.bib");
-  std::ofstream ofs("../research/paper.log");
-  std::string buf((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
-  std::vector<std::string> v;
-  std::string title, author, preprint;
-  HTML::split(v, buf, "\n\n");
-  for(int i = 0; i < v.size(); ++i) {
-    bibtex_info(title, author, preprint, v[i]);
-    double num = stod(preprint);
-    int y = 2000 + (int)(num / 100.); // year
-    int m = (int)num - (y - 2000) * 100; // month
-    struct tm date = { 0, 0, 0, 1, m, y - 1900 };
-    ofs << std::mktime(&date) << ";"
-	<< title << ";"
-	<< author << ";"
-	<< preprint << std::endl;
+  // pick up most recent 6 activities
+  std::ifstream ifs_p("../research/paper.log");
+  std::ifstream ifs_r("../research/research.log");
+  std::ofstream ofs_r("../research/recent.log");
+  std::vector<std::string> v1, v2;
+  std::string buf1, buf2;
+  getline(ifs_p, buf1);
+  getline(ifs_r, buf2);
+  for(int i = 0; i < 6; ++i) {
+    HTML::split(v1, buf1, ';');
+    HTML::split(v2, buf2, ';');
+    if(stoi(v1[0]) >= stoi(v2[0])) {
+      ofs_r << buf1 << std::endl;
+      if(!getline(ifs_p, buf1)) break;
+    } else {
+      ofs_r << buf2 << std::endl;
+      if(!getline(ifs_r, buf2)) break;
+    }
   }
   
   // html and pdf files update
@@ -159,17 +183,9 @@ int main(int argc, char** argv) {
   std::string arg_opt(argv[1]);
   if(arg_opt == "add") {
     std::string arg_type, arg_title, arg1, arg2;
-    std::cout << "Research type: [p]aper or [t]alk or [a]ward: ";
+    std::cout << "Research type: [t]alk or [a]ward: ";
     std::getline(std::cin, arg_type);
-    if(arg_type == "p") {
-      char buffer[2048];
-      std::cout << "Copy and paste bibtex and input # and enter: " << std::endl;
-      scanf("%2047[^#]", buffer);
-      bibtex_info(arg_title, arg1, arg2, std::string(buffer));
-#ifdef _UPDATE_CHANGE
-      HTML::update_bibtex(buffer);
-#endif
-    } else if(arg_type == "t") {
+    if(arg_type == "t") {
       std::cout << "Talk title: ";
       std::getline(std::cin, arg_title);
       std::cout << "Date: ";
