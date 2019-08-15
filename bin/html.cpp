@@ -148,7 +148,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
 
     // add paper info
     if((int)strBufferLine.find("<!-- Papers below -->") != -1) {
-      std::ifstream iflog("../research/research.log");
+      std::ifstream iflog("../research/paper.log");
       while(std::getline(iflog, strBufferLine)) {
 	split(val, strBufferLine, ';');
 	if(val[1] == "Paper") {
