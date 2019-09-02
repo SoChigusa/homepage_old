@@ -1,0 +1,17 @@
+<body>
+<div id="content">
+<div class="article">
+<header id="title-block-header">
+<h1 class="title">fastjet を使って解析</h1>
+</header>
+<hr />
+<h2 id="no-template-named-auto_ptr-in-namespace-std">no template named ‘auto_ptr’ in namespace ‘std’</h2>
+<p><code>-std=c++11</code> で <code>auto_ptr</code> が廃止された問題。 <code>ClusterSequence.hh</code> にも記述がある通り、これを使用しない方向でコンパイルさせれば良いので、<code>config_auto.h</code> 内</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">/* compile the deprecated parts of the interface using auto-ptr */</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="pp">#ifndef FASTJET_HAVE_AUTO_PTR_INTERFACE </span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co">/* #define FASTJET_HAVE_AUTO_PTR_INTERFACE */</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="pp">#endif</span></span></code></pre></div>
+<p>のように該当箇所をコメントアウト。</p>
+</div>
+</div>
+</body>
