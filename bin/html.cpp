@@ -48,12 +48,12 @@ int HTML::extract_body(const std::string &strtemp, const std::string &strout) {
     std::cout << "File " << strtemp << " isn't found" << std::endl;
     return -1;
   }
-  
+
   std::stringstream ss;
   std::string strBufferLine;
   std::vector<std::string> val;
   bool isbody = false;
-  
+
   while(std::getline(ifs, strBufferLine)) {
     if((int)strBufferLine.find("</body>") != -1) {
       isbody = false;
@@ -62,14 +62,14 @@ int HTML::extract_body(const std::string &strtemp, const std::string &strout) {
       ss << "</body>" << std::endl;
     }
     if(isbody) { ss << strBufferLine << std::endl; }
-    if((int)strBufferLine.find("<body>") != -1) {
+    if((int)strBufferLine.find("<body") != -1) {
       isbody = true;
       ss << "<body>" << std::endl;
       ss << "<div id=\"content\">" << std::endl;
       ss << "<div class=\"article\">" << std::endl;
     }
   }
-  
+
   std::ofstream ofs(strout);
   ofs << ss.str();
   return 0;
@@ -89,7 +89,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
     if((int)strBufferLine.find("<!-- insertion below : ") != -1) {
       insertFromFile(ss, strBufferLine);
     }
-    
+
     // add recent activities
     if((int)strBufferLine.find("<!-- Recent Activities below -->") != -1) {
       std::ifstream iflog("../research/recent.log");
@@ -98,7 +98,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
 	std::getline(iflog, strBufferLine);
 	split(val, strBufferLine, ';');
 	ss << "  <section>" << std::endl;
-	
+
 	if(val[1] == "Paper") {
 	  ss << "    <span class=\"date\">" // date
 	     << getYYYYMMDD((time_t)stol(val[0])) << "</span>" << std::endl;
@@ -107,7 +107,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
 	  ss << "    <p>" << std::endl;
 	  ss << "      " << val[3] << "<br>" << std::endl; // authors
 	  ss << "      <i>" << val[2] << "</i>" << std::endl; // title
-	  ss << "    </p>" << std::endl;	
+	  ss << "    </p>" << std::endl;
 	} else if(val[1] == "Talk") {
 	  ss << "    <span class=\"date\">" << val[3] << "</span>" << std::endl; // date
 	  ss << "    <h1>Talk: " << val[4] << "</h1>" << std::endl;
@@ -120,7 +120,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
 	  ss << "    <p>" << std::endl;
 	  ss << "      <i>" << val[2] << "</i>" << std::endl;
 	  ss << "    </p>" << std::endl;
-	}	
+	}
 	ss << "  </section>" << std::endl;
       }
       ss << "</article>" << std::endl;
@@ -183,7 +183,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
 	}
       }
     }
-    
+
     // add tips menu
     if((int)strBufferLine.find("<!-- Tips menu below -->") != -1) {
       ss << "    <nav>" << std::endl;
@@ -198,7 +198,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
       ss << "       </ul>" << std::endl;
       ss << "    </nav>" << std::endl;
     }
-    
+
     // add tips / git contents
     if((int)strBufferLine.find("<!-- Contents below -->") != -1) {
       std::ifstream iftext(cname);
@@ -232,8 +232,8 @@ void HTML::update_cv() {
       int ageLO = (int)((now - birthday) / (365. * 24 * 60 * 60));
       ss << "  Age: & " << ageLO << " \\\\" << std::endl;
     }
-      
-    // add talks    
+
+    // add talks
     if((int)strBufferLine.find("% Talks below") != -1) {
       std::ifstream iflog("../research/research.log");
       while(std::getline(iflog, strBufferLine)) {
@@ -248,7 +248,7 @@ void HTML::update_cv() {
       }
     }
 
-    // add awards    
+    // add awards
     if((int)strBufferLine.find("% Awards below") != -1) {
       std::ifstream iflog("../research/research.log");
       while(std::getline(iflog, strBufferLine)) {

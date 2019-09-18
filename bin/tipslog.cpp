@@ -42,7 +42,7 @@ int add_log(std::string &arg_name, std::ifstream &ifcont) {
   if(!exist_h1) return -1;
   HTML::split(val, strBufferLine, '>');
   HTML::split(val2, val[1], '<');
-  
+
   time_t now = std::time(nullptr);
   std::stringstream ss;
   ss << now << ";" << arg_name << ";" << val2[0] << std::endl;
@@ -52,7 +52,7 @@ int add_log(std::string &arg_name, std::ifstream &ifcont) {
     ss << strBufferLine << std::endl;
   }
   ifs.close();
-  
+
   std::ofstream ofs("../tips/tips.log");
   ofs << ss.str();
   return 0;
@@ -87,4 +87,3 @@ int main(int argc, char** argv) {
   }
   return 0;
 }
-
