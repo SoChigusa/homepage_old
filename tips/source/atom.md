@@ -10,6 +10,10 @@ title: Atom の導入とカスタマイズ
 個人的には、プレビューも含めてエディター内で完結させることができ、環境の構築が楽なところが大きなメリットだと思う。
 使い勝手に関してはこれから検証する。
 
+## Shell
+
+全ての作業をエディター内で完結させることを目指す。platformio-ide-terminalを用いた。
+
 ## Markdown 環境の構築
 
 [このQiita](https://qiita.com/kouichi-c-nakamura/items/5b04fb1a127aac8ba3b0)によくまとまっている。
