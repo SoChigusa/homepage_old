@@ -12,7 +12,7 @@ title: Atom の導入とカスタマイズ
 
 ## Shell
 
-全ての作業をエディター内で完結させることを目指す。platformio-ide-terminalを用いた。
+全ての作業をエディター内で完結させることを目指す。[この辺](https://blanche-toile.com/web/atom-platformio-ide-terminal)を参考に、platformio-ide-terminalを用いた。
 
 ## Markdown 環境の構築
 
