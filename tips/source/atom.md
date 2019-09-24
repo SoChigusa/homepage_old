@@ -28,3 +28,16 @@ latex をタイプセットできる環境が整っていれば、特にやる�
 [ここ](https://qiita.com/kurohune538/items/6c1e48f6380b87fd8161) や
 [ここ](https://qiita.com/ken0nek/items/f98f88c9c45d8499786e)
 から自分に必要なパッケージを選択し、インストールした。
+
+さらに、BibTeX環境も含めた自動コンパイルのために、今回は`latexmk`を活用した。
+例えば[ここ](http://joban.wp.xdomain.jp/archives/151)にあるように、`.latexmkrc`を作成しておき、
+
+``` shell
+latexmk -c $(FILENAME)
+```
+
+とするか、ディレクトリ内にlatexファイルが1つしかなければファイル名は省略可。
+
+## その他便利なパッケージ
+
+ファイルの種類をアイコンで区別できるようになる`file-icons`や、編集中の箇所がわかりやすくなる`minimap`。
