@@ -38,6 +38,27 @@ latexmk -c $(FILENAME)
 
 とするか、ディレクトリ内にlatexファイルが1つしかなければファイル名は省略可。
 
+## c / c++ 開発環境の構築
+
+最低限の環境は初めから揃っている（`langauge-c`）が、`clang-format`を用いたソースの整形が自動でなされるようにしておくと便利。
+`clang-format`は[ここ](http://yasuharu519.hatenablog.com/entry/2015/12/13/210825)を参考にインストール、設定する。
+インストールされたソース内に仕様変更に基づくエラーが1箇所あるので、[ここ](https://github.com/Glavin001/atom-beautify/issues/2290)に従って書き換えた。
+つまり、`clang-format.coffee`の84行目（周辺）を
+
+``` shell
+return @exe("clang-format").run([
+  @dumpToFile(dumpFile, text)
+  ["--style=file"]
+  ]).finally( ->
+    fs.unlink(dumpFile, ->)
+  )
+```
+
+とすれば良い。
+ソースコードの保存と同時に整形されるよう、`atom-beautify`パッケージを導入して設定する。
+ここら辺の話やその他便利なパッケージは[こちら](https://qiita.com/prickle/items/2a8f87fba7f6e1d8f051)を参考にした。
+`autocomplete-clang`（補完）、`atom-ctags`（定義箇所へのジャンプ）、`docblockr`（ブロックコメント）、`indent-guide-improved`（eye guide）、`jumpy`（コード内移動）を試している。
+
 ## その他便利なパッケージ
 
 ファイルの種類をアイコンで区別できるようになる`file-icons`や、編集中の箇所がわかりやすくなる`minimap`。
