@@ -1,4 +1,4 @@
-1569656622;atom;Atom &#x306E;&#x5C0E;&#x5165;&#x3068;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30A4;&#x30BA;
+1571640929;madgraph;&#x4EE5;&#x4E0B;&#x3001;&#x53E4;&#x3044;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x5BFE;&#x3059;&#x308B;tips&#x3001;&#x3042;&#x308B;&#x3044;&#x306F;&#x53E4;&#x3044;&#x8A8D;&#x8B58;
 1569656607;atom;Atom &#x306E;&#x5C0E;&#x5165;&#x3068;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30A4;&#x30BA;
 1567407090;fastjet;fastjet を使って解析
 1564111208;delphes;Delphes の応用
@@ -14,6 +14,5 @@
 1539763788;FeynArts;FeynArts, FormCalc, LoopTools の導入
 1536685375;susy-hit;SLHA を用いた SUSY-HIT から MadGraph への連携
 1536684281;softsusy;SOFTSUSY の導入
-1534686422;madgraph;Madgraph の導入から計算まで
 1530540521;markdown-mode;Emacs で markdown-mode を使用した編集、プレビュー環境を整える
 1530540508;chrome-JavaScript;Google Chrome を用いて JavaScript のチェックが local で出来る環境を整える
