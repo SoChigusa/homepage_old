@@ -1,8 +1,11 @@
 ---
 title: Madgraph の導入から計算まで
+<!-- author: So Chigusa -->
 ---
 
--------------------------------------------------------------------------------
+# Madgraph の導入から計算まで
+
+----------------------------------------------------------------------------------
 
 ## 導入、初期設定 ##
 
@@ -72,10 +75,10 @@ Systematics module を使うためには、*LHAPDF* の python interface が必�
 
 ``` shell
 	lhapdf = pdlabel ! PDF set
-	True   = reweight_scale ! Reweight to get scale variation using the 
+	True   = reweight_scale ! Reweight to get scale variation using the
 	True   = reweight_pdf ! Reweight to get PDF uncertainty. Should be a
 	True   = store_rwgt_info ! Store info for reweighting in LHE file
-	systematics	= systematics_program 
+	systematics	= systematics_program
 	['--mur=0.5,1,2', '--muf=0.5,1,2', '--pdf=errorset'] = systematics_arguments ! see: https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Systematics#Systematicspythonmodule
 ```
 
