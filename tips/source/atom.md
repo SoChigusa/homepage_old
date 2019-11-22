@@ -1,11 +1,5 @@
----
-title: Atom の導入とカスタマイズ
-<!-- author: So Chigusa -->
----
 
 # Atom の導入とカスタマイズ
-
--------------------------------------------------------------------------------
 
 個人的には、プレビューも含めてエディター内で完結させることができ、環境の構築が楽なところが大きなメリットだと思う。
 使い勝手に関してはこれから検証する。
@@ -58,6 +52,12 @@ return @exe("clang-format").run([
 ソースコードの保存と同時に整形されるよう、`atom-beautify`パッケージを導入して設定する。
 ここら辺の話やその他便利なパッケージは[こちら](https://qiita.com/prickle/items/2a8f87fba7f6e1d8f051)を参考にした。
 `autocomplete-clang`（補完）、`atom-ctags`（定義箇所へのジャンプ）、`docblockr`（ブロックコメント）、`indent-guide-improved`（eye guide）、`jumpy`（コード内移動）を試している。
+
+## python 開発環境の構築
+
+[こちら](https://www.sejuku.net/blog/76158)を参考に、python 実行用の `atom-runner` を導入。
+`atom-beauty` が python でも使用可能だが、そもそもインデントに厳しい言語で auto beautify は鬱陶しいだけなので off にする。
+`Hydrogen` パッケージを用いて `jupyter` カーネルも使えるようになるらしいが、まだ活用できていない。
 
 ## その他便利なパッケージ
 
