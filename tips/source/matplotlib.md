@@ -1,8 +1,5 @@
----
-title: Matplotlib を使いこなす
----
 
--------------------------------------------------------------------------------
+# Matplotlib を使いこなす
 
 ## 基本構文 ##
 
@@ -144,10 +141,21 @@ ax.set_axis_bgcolor('green')
 ヒストグラムの描画のためには、1次元のデータリストを用意して、
 
 ``` python
-ax.hist(data, bins=nbin, range=(xmin, xmax), color='m', label='legend')
+ax.hist(data, bins=nbin, range=(xmin, xmax), color='m', ec='black', label='legend')
 ```
 
-とする。各データを違うウェイトで足し合わせたい時は、データと同じ順序で同じ数のウェイトを格納したリスト `weights` を用意し、オプションを追加： `weights=weights`。
+とする。
+`ec` オプションは、python3 で描くとデフォルトの枠線が白色で幸薄い感じになるので必須。
+各データを違うウェイトで足し合わせたい時は、データと同じ順序で同じ数のウェイトを格納したリスト `weights` を用意し、オプションを追加： `weights=weights`。
+
+横軸が log scale のヒストグラムを描きたいときは少々変更が必要で、
+
+``` python
+ax.hist(prob, bins=np.logspace(-6, 0, 50), color='b', ec='black', log=True)
+ax.set_xscale('log')
+```
+
+のような感じ。
 
 ## アスペクト比を変更する ##
 
