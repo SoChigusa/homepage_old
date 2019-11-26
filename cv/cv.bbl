@@ -1,6 +1,11 @@
 
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
 
+\bibitem{Chigusa:2019rra}
+S.~Chigusa, T.~Moroi and K.~Nakayama, \emph{{Signals of Axion Like Dark Matter
+  in Time Dependent Polarization of Light}},
+  \href{https://arxiv.org/abs/1911.09850}{{\ttfamily 1911.09850}}.
+
 \bibitem{Chigusa:2019wxb}
 S.~Chigusa, T.~Moroi and Y.~Shoji, \emph{{Bounce Configuration from Gradient
   Flow}},  \href{https://arxiv.org/abs/1906.10829}{{\ttfamily 1906.10829}}.
