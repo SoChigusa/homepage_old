@@ -1,6 +1,11 @@
 
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
 
+\bibitem{Chigusa:2019zae}
+S.~Chigusa, Y.~Hosomi, T.~Moroi and M.~Saito, \emph{{Determining Wino Lifetime
+  in Supersymmetric Model at Future 100 TeV pp Colliders}},
+  \href{https://arxiv.org/abs/1912.00592}{{\ttfamily 1912.00592}}.
+
 \bibitem{Chigusa:2019rra}
 S.~Chigusa, T.~Moroi and K.~Nakayama, \emph{{Signals of Axion Like Dark Matter
   in Time Dependent Polarization of Light}},
