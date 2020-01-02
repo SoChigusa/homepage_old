@@ -144,7 +144,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
       ss << "<article>" << std::endl;
       for (int i = 0; i < 2; i++) {
         std::getline(iflog, strBufferLine);
-        split(val, strBufferLine, ';');
+        split(val, strBufferLine, ':');
         ss << "  <section>" << std::endl;
         ss << "    <span class=\"date\">" // date
            << getYYYYMMDD((time_t)stol(val[0])) << "</span>" << std::endl;
@@ -300,7 +300,7 @@ void HTML::update_tipslog() {
   std::vector<std::string> val;
   bool firstLine = true;
   while (std::getline(iflog, strBufferLine)) {
-    split(val, strBufferLine, ';');
+    split(val, strBufferLine, ':');
     if (firstLine) { // Preserve most recent as index.html
       update_html("../tips/index_temp.html", "../tips/index.html",
                   "../tips/source/" + val[1] + ".html");

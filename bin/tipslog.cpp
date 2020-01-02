@@ -12,7 +12,7 @@
 #include <sstream>
 #include <string>
 
-#define _ENABLE_GIT_UPDATE
+// #define _ENABLE_GIT_UPDATE
 
 void errorMessage() {
   std::cout << "2-Ways of use:" << std::endl;
@@ -53,7 +53,7 @@ int add_log(std::string &arg_name, std::ifstream &ifcont) {
 
   time_t now = std::time(nullptr);
   std::stringstream ss;
-  ss << now << ";" << arg_name << ";" << val2[0] << std::endl;
+  ss << now << ":" << arg_name << ":" << val2[0] << std::endl;
 
   std::ifstream ifs("../tips/tips.log");
   while (std::getline(ifs, strBufferLine)) {
