@@ -118,7 +118,8 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
           ss << "      " << val[3] << "<br>" << std::endl;    // authors
           ss << "      <i>" << val[2] << "</i>" << std::endl; // title
           ss << "    </p>" << std::endl;
-        } else if (val[1] == "Talk") {
+        } else if (val[1] == "Seminar" || val[1] == "IO" || val[1] == "IP" ||
+                   val[1] == "DO" || val[1] == "DP") {
           ss << "    <span class=\"date\">" << val[3] << "</span>"
              << std::endl; // date
           ss << "    <h1>Talk: " << val[4] << "</h1>" << std::endl;
