@@ -25,15 +25,18 @@ void errorMessage() {
 void add_log(std::string arg_type, std::string arg_title, std::string arg1,
              std::string arg2) {
   std::string strType;
-  if (arg_type == "p") {
-    strType = "Paper";
-  }
-  if (arg_type == "t") {
-    strType = "Talk";
-  }
-  if (arg_type == "a") {
+  if (arg_type == "s")
+    strType = "Seminar";
+  if (arg_type == "io")
+    strType = "IO";
+  if (arg_type == "ip")
+    strType = "IP";
+  if (arg_type == "do")
+    strType = "DO";
+  if (arg_type == "dp")
+    strType = "DP";
+  if (arg_type == "a")
     strType = "Award";
-  }
 
   std::ifstream ifs("../research/research.log");
   std::stringstream ss;
@@ -210,9 +213,11 @@ int main(int argc, char **argv) {
   std::string arg_opt(argv[1]);
   if (arg_opt == "add") {
     std::string arg_type, arg_title, arg1, arg2;
-    std::cout << "Research type: [t]alk or [a]ward: ";
+    std::cout << "Research type: [s]eminar, [io]=international oral, "
+                 "[ip]=poster, [do]=domestic, [dp], or [a]ward: ";
     std::getline(std::cin, arg_type);
-    if (arg_type == "t") {
+    if (arg_type == "s" || arg_type == "io" || arg_type == "ip" ||
+        arg_type == "do" || arg_type == "dp") {
       std::cout << "Talk title: ";
       std::getline(std::cin, arg_title);
       std::cout << "Date: ";
