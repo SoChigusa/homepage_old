@@ -180,7 +180,8 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
       std::ifstream iflog("../research/research.log");
       while (std::getline(iflog, strBufferLine)) {
         split(val, strBufferLine, ';');
-        if (val[1] == "Talk") {
+        if (val[1] == "Seminar" || val[1] == "IO" || val[1] == "IP" ||
+            val[1] == "DO" || val[1] == "DP" || val[1] == "SS") {
           ss << "    <li><i>" << val[2] << ",</i><br>" << std::endl; // title
           ss << "      " << val[4] << " (" << val[3] << ").</li>"
              << std::endl; // location and date
@@ -207,7 +208,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
       ss << "      <ul>" << std::endl;
       std::ifstream iflog("../tips/tips.log");
       while (std::getline(iflog, strBufferLine)) {
-        split(val, strBufferLine, ';');
+        split(val, strBufferLine, ':');
         ss << "      <li><a href=\"" << val[1] << ".html\">" << val[1]
            << "</a></li>" << std::endl;
       }
