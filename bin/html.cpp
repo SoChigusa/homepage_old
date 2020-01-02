@@ -234,7 +234,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
 }
 
 void HTML::update_cv() {
-  std::ifstream ifs("../cv/cv_temp.tex");
+  std::ifstream ifs("../cv/cv_temp");
   std::stringstream ss;
   std::string strBufferLine;
   std::vector<std::string> val;
@@ -252,11 +252,29 @@ void HTML::update_cv() {
     }
 
     // add talks
-    if ((int)strBufferLine.find("% Talks below") != -1) {
+    if ((int)strBufferLine.find("% Seminars below") != -1 ||
+        (int)strBufferLine.find("% International Oral below") != -1 ||
+        (int)strBufferLine.find("% International Poster below") != -1 ||
+        (int)strBufferLine.find("% Domestic Oral below") != -1 ||
+        (int)strBufferLine.find("% Domestic Poster below") != -1 ||
+        (int)strBufferLine.find("% Summer School below") != -1) {
+      std::string type;
+      if ((int)strBufferLine.find("% Seminars below") != -1)
+        type = "Seminar";
+      if ((int)strBufferLine.find("% International Oral below") != -1)
+        type = "IO";
+      if ((int)strBufferLine.find("% International Poster below") != -1)
+        type = "IP";
+      if ((int)strBufferLine.find("% Domestic Oral below") != -1)
+        type = "DO";
+      if ((int)strBufferLine.find("% Domestic Poster below") != -1)
+        type = "DP";
+      if ((int)strBufferLine.find("% Summer School below") != -1)
+        type = "SS";
       std::ifstream iflog("../research/research.log");
       while (std::getline(iflog, strBufferLine)) {
         split(val, strBufferLine, ';');
-        if (val[1] == "Talk") {
+        if (val[1] == type) {
           auto pos = val[4].find(" @");
           if (pos != std::string::npos)
             val[4].replace(pos, 2, ",");

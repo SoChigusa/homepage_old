@@ -47,15 +47,15 @@
 \setcounter{footnote}{0}
 
 \vspace{-5mm}
-\section*{Personal Data}
+\subsection*{Personal Data}
 
 \vspace{-3mm}
 
 \begin{table}[h]
  \begin{tabular}{ll}
-  First Name: & So % (颯) 
+  First Name: & So % (颯)
       \\
-  Last Name: & Chigusa % (千草) 
+  Last Name: & Chigusa % (千草)
       \\
   Date of Birth: & May 22, 1992 \\
   Place of Birth: & Kobe, Japan \\
@@ -79,10 +79,9 @@
   Homepage: & \url{https://sochigusa.bitbucket.io} \\
  \end{tabular}
 \end{table}
-
 \vspace{-5mm}
-\section*{Education}
 
+\subsection*{Education}
 \vspace{-3mm}
 \begin{table}[h]
  \begin{tabular}{lll}
@@ -95,20 +94,23 @@
 \end{table}
 
 \newpage
-\section*{Grant}
-
+\subsection*{Professional experience}
 \vspace{-3mm}
 \begin{table}[h]
  \begin{tabular}{ll}
-  Apr. 2017 - Mar. 2020: & JSPS, Research Fellowships for Young
-  Scientists (DC1) \\
-  Oct. 2015 - Mar. 2020: & MEXT, Program for Leading Graduate Schools
+  \begin{tabular}{l}
+   Apr. 2015 - Mar. 2020:\\
+  \quad
+  \end{tabular} &
+  \begin{tabular}{l}
+   Ph.D. Student, Department of Physics, University of Tokyo\\
+   (Dr. Takeo Moroi)
+  \end{tabular}
  \end{tabular}
 \end{table}
-
 \vspace{-5mm}
-\section*{Teaching experience}
 
+\subsection*{Teaching experience}
 \vspace{-3mm}
 \begin{table}[h]
  \begin{tabular}{ll}
@@ -117,30 +119,79 @@
    \quad
   \end{tabular} &
   \begin{tabular}{l}
-   Teaching Assistant for Undergraduate Class ``Quantum Mechanics
-   II''\\
+   Teaching Assistant for Undergraduate Class ``Quantum Mechanics II''\\
    at Department of Physics, University of Tokyo
   \end{tabular}
  \end{tabular}
 \end{table}
-
 \vspace{-5mm}
+
+\subsection*{Grants}
+\vspace{-3mm}
+\begin{table}[h]
+ \begin{tabular}{ll}
+  \begin{tabular}{l}
+   Apr. 2017 - Mar. 2020:\\
+   \quad
+  \end{tabular} &
+  \begin{tabular}{l}
+   JSPS, Research Fellowships for Young Scientists (DC1)\\
+   Amount: 2800000 JPY
+  \end{tabular}\\
+  \begin{tabular}{l}
+   Oct. 2015 - Mar. 2020:
+  \end{tabular} &
+  \begin{tabular}{l}
+   MEXT, Program for Leading Graduate Schools
+  \end{tabular}
+ \end{tabular}
+\end{table}
+\vspace{-5mm}
+
+\subsection*{Honors and Awards}
+\begin{enumerate}
+ % Awards below
+ % Awards above
+\end{enumerate}
+
 \bibliographystyle{JHEP}
 \bibliography{cv}
 \nocite{*}
 
-\section*{Talks}
-
+\subsection*{Invited Seminar Presentations}
 \begin{enumerate}
- % Talks below
- % Talks above
+ % Seminars below
+ % Seminars above
 \end{enumerate}
 
-\section*{Awards}
-
+\subsection*{Presentations at International Conferences}
+\subsubsection*{(Oral)}
 \begin{enumerate}
- % Awards below
- % Awards above
+ % International Oral below
+ % International Oral above
+\end{enumerate}
+\subsubsection*{(Poster)}
+\begin{enumerate}
+ % International Poster below
+ % International Poster above
+\end{enumerate}
+
+\subsection*{Presentations at Domestic Conferences}
+\subsubsection*{(Oral)}
+\begin{enumerate}
+ % Domestic Oral below
+ % Domestic Oral above
+\end{enumerate}
+\subsubsection*{(Poster)}
+\begin{enumerate}
+ % Domestic Poster below
+ % Domestic Poster above
+\end{enumerate}
+
+\subsection*{Poster Presentations at International Summer Schools}
+\begin{enumerate}
+  % Summer School below
+  % Summer School above
 \end{enumerate}
 
 \end{document}
