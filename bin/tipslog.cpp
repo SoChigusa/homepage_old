@@ -12,6 +12,8 @@
 #include <sstream>
 #include <string>
 
+// #define _ENABLE_GIT_UPDATE
+
 void errorMessage() {
   std::cout << "2-Ways of use:" << std::endl;
   std::cout << "./tiplog add [TipsName]" << std::endl;
@@ -23,23 +25,29 @@ void update_log(const std::string &comment) {
   HTML::update_html("../index_temp.html", "../index.html");
   system("cp ../index.html ../../sochigusa.bitbucket.org/index.html");
   system("cp ../tips/*.html ../../sochigusa.bitbucket.org/tips/");
-  system(("git add ../tips/* && git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
-  	  +"git push origin master").c_str());
-  system(("cd ../../sochigusa.bitbucket.org/ && git add tips/*.html && git commit -a -m \"auto commit by tipslog : "+comment+"\" && "
-  	  +"git push origin master").c_str());
+#ifdef _ENABLE_GIT_UPDATE
+  system(("git add ../tips/* && git commit -a -m \"auto commit by tipslog : " +
+          comment + "\" && " + "git push origin master")
+             .c_str());
+  system(("cd ../../sochigusa.bitbucket.org/ && git add tips/*.html && git "
+          "commit -a -m \"auto commit by tipslog : " +
+          comment + "\" && " + "git push origin master")
+             .c_str());
+#endif
 }
 
 int add_log(std::string &arg_name, std::ifstream &ifcont) {
   std::string strBufferLine;
   std::vector<std::string> val, val2;
   bool exist_h1 = false;
-  while(std::getline(ifcont, strBufferLine)) {
-    if((int)strBufferLine.find("</h1>") != -1) {
+  while (std::getline(ifcont, strBufferLine)) {
+    if ((int)strBufferLine.find("</h1>") != -1) {
       exist_h1 = true;
       break;
     }
   }
-  if(!exist_h1) return -1;
+  if (!exist_h1)
+    return -1;
   HTML::split(val, strBufferLine, '>');
   HTML::split(val2, val[1], '<');
 
@@ -48,7 +56,7 @@ int add_log(std::string &arg_name, std::ifstream &ifcont) {
   ss << now << ";" << arg_name << ";" << val2[0] << std::endl;
 
   std::ifstream ifs("../tips/tips.log");
-  while(std::getline(ifs, strBufferLine)) {
+  while (std::getline(ifs, strBufferLine)) {
     ss << strBufferLine << std::endl;
   }
   ifs.close();
@@ -58,31 +66,33 @@ int add_log(std::string &arg_name, std::ifstream &ifcont) {
   return 0;
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
   if (argc == 1) {
     errorMessage();
     return -1;
   }
+#ifdef _ENABLE_GIT_UPDATE
   system("git pull origin master");
   system("cd ../../sochigusa.bitbucket.org/ && git pull origin master");
+#endif
   std::string arg_opt(argv[1]);
-  if (!(argc == 2 && arg_opt == "update") &&
-      !(argc == 3 && arg_opt == "add")) {
+  if (!(argc == 2 && arg_opt == "update") && !(argc == 3 && arg_opt == "add")) {
     errorMessage();
     return -1;
   }
 
-  if(arg_opt == "add") {
+  if (arg_opt == "add") {
     std::string arg_name(argv[2]);
-    HTML::extract_body("../tips/source/"+arg_name+".html",
-		       "../tips/source/"+arg_name+".html");
-    std::ifstream ifcont("../tips/source/"+arg_name+".html");
-    if(add_log(arg_name, ifcont) == -1) {
-      std::cout << "Error: source html should contain <h1>...</h1> block" << std::endl;
+    HTML::extract_body("../tips/source/" + arg_name + ".html",
+                       "../tips/source/" + arg_name + ".html");
+    std::ifstream ifcont("../tips/source/" + arg_name + ".html");
+    if (add_log(arg_name, ifcont) == -1) {
+      std::cout << "Error: source html should contain <h1>...</h1> block"
+                << std::endl;
       return -1;
     }
-    update_log("add "+arg_name);
-  } else if(arg_opt == "update") {
+    update_log("add " + arg_name);
+  } else if (arg_opt == "update") {
     update_log("update");
   }
   return 0;
