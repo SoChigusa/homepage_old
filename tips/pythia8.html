@@ -53,19 +53,41 @@
   </div>
   <div class="box" id="gfm">
     <!-- Contents below -->
-    <header>
-    <h1 class="title">pythia8 を使いこなす</h1>
-    </header>
-    <hr />
-    <p>基本的に、Madgraph と連携して pythia8 を動かすことを想定する。</p>
-    <h2 id="master-switches">Master Switches</h2>
-    <p>http://home.thep.lu.se/Pythia/pythia82html/MasterSwitches.html を参照する。 今回は initial state radiation (ISR) を切りたかったので、</p>
-    <pre class="dat"><code>PartonLevel:ISR = off</code></pre>
-    <p>を<code>pythia8\_card(\_default).dat</code>へ追加。</p>
-    <h2 id="出力ファイルのイベント数が想定より少ない">出力ファイルのイベント数が想定より少ない</h2>
-    <p>https://answers.launchpad.net/mg5amcnlo/+question/200766 を参考にした。 ほぼ on-shell の粒子が s-channel に飛んでいるなどで、amplitude が発散し、 数値計算が不安定になったときにこういう振る舞いを起こすらしい。 今回は long-lived particle の decay を扱おうとしたせいで問題が起きた。 今の所の対処法としては、ピークの smearing が大きくなることは度外視して、 適度に大きな崩壊率を<code>param_card.dat</code>で指定しておくことくらい。</p>
-    <h2 id="新粒子が-detector-simulation-で悪さをすることを防ぎたい">新粒子が detector simulation で悪さをすることを防ぎたい</h2>
-    <p>https://answers.launchpad.net/mg5amcnlo/+question/222285 にあるように、 Delphes を通す際、気にしている粒子の particle ID を neutralino(1000022) にしておくというチートが可能。</p>
+          <div class="mume markdown-preview  ">
+          <h1 class="mume-header" id="pythia8-%E3%82%92%E4%BD%BF%E3%81%84%E3%81%93%E3%81%AA%E3%81%99">pythia8 &#x3092;&#x4F7F;&#x3044;&#x3053;&#x306A;&#x3059;</h1>
+    
+    <p>&#x57FA;&#x672C;&#x7684;&#x306B;&#x3001;Madgraph &#x3068;&#x9023;&#x643A;&#x3057;&#x3066; pythia8 &#x3092;&#x52D5;&#x304B;&#x3059;&#x3053;&#x3068;&#x3092;&#x60F3;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+    <h2 class="mume-header" id="master-switches">Master Switches</h2>
+    
+    <p><a href="http://home.thep.lu.se/Pythia/pythia82html/MasterSwitches.html">http://home.thep.lu.se/Pythia/pythia82html/MasterSwitches.html</a> &#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3002;
+    &#x4ECA;&#x56DE;&#x306F; initial state radiation (ISR) &#x3092;&#x5207;&#x308A;&#x305F;&#x304B;&#x3063;&#x305F;&#x306E;&#x3067;&#x3001;</p>
+    <pre data-role="codeBlock" data-info="dat" class="language-dat"><code>PartonLevel:ISR = off
+    </code></pre><p>&#x3092;<code>pythia8\_card(\_default).dat</code>&#x3078;&#x8FFD;&#x52A0;&#x3002;</p>
+    <h2 class="mume-header" id="%E5%87%BA%E5%8A%9B%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E6%95%B0%E3%81%8C%E6%83%B3%E5%AE%9A%E3%82%88%E3%82%8A%E5%B0%91%E3%81%AA%E3%81%84">&#x51FA;&#x529B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x6570;&#x304C;&#x60F3;&#x5B9A;&#x3088;&#x308A;&#x5C11;&#x306A;&#x3044;</h2>
+    
+    <p><a href="https://answers.launchpad.net/mg5amcnlo/+question/200766">https://answers.launchpad.net/mg5amcnlo/+question/200766</a> &#x3092;&#x53C2;&#x8003;&#x306B;&#x3057;&#x305F;&#x3002;
+    &#x307B;&#x307C; on-shell &#x306E;&#x7C92;&#x5B50;&#x304C; s-channel &#x306B;&#x98DB;&#x3093;&#x3067;&#x3044;&#x308B;&#x306A;&#x3069;&#x3067;&#x3001;amplitude &#x304C;&#x767A;&#x6563;&#x3057;&#x3001;
+    &#x6570;&#x5024;&#x8A08;&#x7B97;&#x304C;&#x4E0D;&#x5B89;&#x5B9A;&#x306B;&#x306A;&#x3063;&#x305F;&#x3068;&#x304D;&#x306B;&#x3053;&#x3046;&#x3044;&#x3046;&#x632F;&#x308B;&#x821E;&#x3044;&#x3092;&#x8D77;&#x3053;&#x3059;&#x3089;&#x3057;&#x3044;&#x3002;
+    &#x4ECA;&#x56DE;&#x306F; long-lived particle &#x306E; decay &#x3092;&#x6271;&#x304A;&#x3046;&#x3068;&#x3057;&#x305F;&#x305B;&#x3044;&#x3067;&#x554F;&#x984C;&#x304C;&#x8D77;&#x304D;&#x305F;&#x3002;
+    &#x4ECA;&#x306E;&#x6240;&#x306E;&#x5BFE;&#x51E6;&#x6CD5;&#x3068;&#x3057;&#x3066;&#x306F;&#x3001;&#x30D4;&#x30FC;&#x30AF;&#x306E; smearing &#x304C;&#x5927;&#x304D;&#x304F;&#x306A;&#x308B;&#x3053;&#x3068;&#x306F;&#x5EA6;&#x5916;&#x8996;&#x3057;&#x3066;&#x3001;
+    &#x9069;&#x5EA6;&#x306B;&#x5927;&#x304D;&#x306A;&#x5D29;&#x58CA;&#x7387;&#x3092;<code>param_card.dat</code>&#x3067;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x304A;&#x304F;&#x3053;&#x3068;&#x304F;&#x3089;&#x3044;&#x3002;</p>
+    <h2 class="mume-header" id="%E6%96%B0%E7%B2%92%E5%AD%90%E3%81%8C-detector-simulation-%E3%81%A7%E6%82%AA%E3%81%95%E3%82%92%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%82%92%E9%98%B2%E3%81%8E%E3%81%9F%E3%81%84">&#x65B0;&#x7C92;&#x5B50;&#x304C; detector simulation &#x3067;&#x60AA;&#x3055;&#x3092;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x9632;&#x304E;&#x305F;&#x3044;</h2>
+    
+    <p><a href="https://answers.launchpad.net/mg5amcnlo/+question/222285">https://answers.launchpad.net/mg5amcnlo/+question/222285</a> &#x306B;&#x3042;&#x308B;&#x3088;&#x3046;&#x306B;&#x3001;
+    Delphes &#x3092;&#x901A;&#x3059;&#x969B;&#x3001;&#x6C17;&#x306B;&#x3057;&#x3066;&#x3044;&#x308B;&#x7C92;&#x5B50;&#x306E; particle ID &#x3092; neutralino(1000022) &#x306B;&#x3057;&#x3066;&#x304A;&#x304F;&#x3068;&#x3044;&#x3046;&#x30C1;&#x30FC;&#x30C8;&#x304C;&#x53EF;&#x80FD;&#x3002;</p>
+    
+          </div>
+          
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      
     <!-- Contents above -->
   </div>
 </div>

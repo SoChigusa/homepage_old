@@ -53,43 +53,58 @@
   </div>
   <div class="box" id="gfm">
     <!-- Contents below -->
-    <div id="content">
-    <div class="article">
-    <header id="title-block-header">
-    <h1 class="title">Delphes の応用</h1>
-    </header>
-    <hr />
-    <h2 id="そもそも">そもそも</h2>
-    <p>Delphes の detector card は tcl というスクリプト言語で書かれているらしい（拡張子から自明だが）。 emacs の markdown-mode が tcl の存在を知っていたので、教えられた形になった。</p>
-    <h2 id="fastjet-の動作をカスタマイズ">FastJet の動作をカスタマイズ</h2>
-    <p>FastJet の外部呼び出しの<a href="https://cp3.irmp.ucl.ac.be/projects/delphes/wiki/WorkBook/ExternalFastJet">ページ</a>が参考になる。 基本的には <code>ExternalFastJetHepMC.cpp</code> を元に編集して使えば良いが、 １番の問題は External FastJet に対応したカードがデフォルトで CMS のもの <code>cards/delphes_card_CMS_NoFastJet.tcl​</code> しかないこと。 今回は FCC-hh 用のカードを使いたかったので、<code>cards/FCC/FCChh.tcl​</code> を元に書き換えていく。</p>
-    <p>当然 Jet に関する module 群は不要（というか FastJet がないと実行時エラー）なので、宣言と定義を消す。具体的には、</p>
-    <div class="sourceCode" id="cb1"><pre class="sourceCode tcl"><code class="sourceCode tcl"><a class="sourceLine" id="cb1-1" title="1">  GenJetFinder02</a>
-    <a class="sourceLine" id="cb1-2" title="2">  GenJetFinder04</a>
-    <a class="sourceLine" id="cb1-3" title="3">  GenJetFinder08</a>
-    <a class="sourceLine" id="cb1-4" title="4"></a>
-    <a class="sourceLine" id="cb1-5" title="5">  FastJetFinder02</a>
-    <a class="sourceLine" id="cb1-6" title="6">  FastJetFinder04</a>
-    <a class="sourceLine" id="cb1-7" title="7">  FastJetFinder08</a>
-    <a class="sourceLine" id="cb1-8" title="8"></a>
-    <a class="sourceLine" id="cb1-9" title="9">  CaloJetFinder02</a>
-    <a class="sourceLine" id="cb1-10" title="10">  CaloJetFinder04</a>
-    <a class="sourceLine" id="cb1-11" title="11">  CaloJetFinder08</a>
-    <a class="sourceLine" id="cb1-12" title="12"></a>
-    <a class="sourceLine" id="cb1-13" title="13">  TrackJetFinder02</a>
-    <a class="sourceLine" id="cb1-14" title="14">  TrackJetFinder04</a>
-    <a class="sourceLine" id="cb1-15" title="15">  TrackJetFinder08</a>
-    <a class="sourceLine" id="cb1-16" title="16"></a>
-    <a class="sourceLine" id="cb1-17" title="17">  JetEnergyScale</a>
-    <a class="sourceLine" id="cb1-18" title="18"></a>
-    <a class="sourceLine" id="cb1-19" title="19">  JetFlavorAssociation</a>
-    <a class="sourceLine" id="cb1-20" title="20"></a>
-    <a class="sourceLine" id="cb1-21" title="21">  BTagging</a>
-    <a class="sourceLine" id="cb1-22" title="22">  CTagging</a>
-    <a class="sourceLine" id="cb1-23" title="23">  TauTagging</a></code></pre></div>
-    <p>これらが不要。あとよくわからないけど、<code>TreeWriter</code> という module も消しておく必要がある。 これは <code>cards/delphes_card_CMS_NoFastJet.tcl​</code> にも存在しないので consistent。</p>
-    </div>
-    </div>
+          <div class="mume markdown-preview  ">
+          <h1 class="mume-header" id="delphes-%E3%81%AE%E5%BF%9C%E7%94%A8">Delphes &#x306E;&#x5FDC;&#x7528;</h1>
+    
+    <h2 class="mume-header" id="%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82">&#x305D;&#x3082;&#x305D;&#x3082;</h2>
+    
+    <p>Delphes &#x306E; detector card &#x306F; tcl &#x3068;&#x3044;&#x3046;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x8A00;&#x8A9E;&#x3067;&#x66F8;&#x304B;&#x308C;&#x3066;&#x3044;&#x308B;&#x3089;&#x3057;&#x3044;&#xFF08;&#x62E1;&#x5F35;&#x5B50;&#x304B;&#x3089;&#x81EA;&#x660E;&#x3060;&#x304C;&#xFF09;&#x3002;
+    emacs &#x306E; markdown-mode &#x304C; tcl &#x306E;&#x5B58;&#x5728;&#x3092;&#x77E5;&#x3063;&#x3066;&#x3044;&#x305F;&#x306E;&#x3067;&#x3001;&#x6559;&#x3048;&#x3089;&#x308C;&#x305F;&#x5F62;&#x306B;&#x306A;&#x3063;&#x305F;&#x3002;</p>
+    <h2 class="mume-header" id="fastjet-%E3%81%AE%E5%8B%95%E4%BD%9C%E3%82%92%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA">FastJet &#x306E;&#x52D5;&#x4F5C;&#x3092;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30A4;&#x30BA;</h2>
+    
+    <p>FastJet &#x306E;&#x5916;&#x90E8;&#x547C;&#x3073;&#x51FA;&#x3057;&#x306E;<a href="https://cp3.irmp.ucl.ac.be/projects/delphes/wiki/WorkBook/ExternalFastJet">&#x30DA;&#x30FC;&#x30B8;</a>&#x304C;&#x53C2;&#x8003;&#x306B;&#x306A;&#x308B;&#x3002;
+    &#x57FA;&#x672C;&#x7684;&#x306B;&#x306F; <code>ExternalFastJetHepMC.cpp</code> &#x3092;&#x5143;&#x306B;&#x7DE8;&#x96C6;&#x3057;&#x3066;&#x4F7F;&#x3048;&#x3070;&#x826F;&#x3044;&#x304C;&#x3001;
+    &#xFF11;&#x756A;&#x306E;&#x554F;&#x984C;&#x306F; External FastJet &#x306B;&#x5BFE;&#x5FDC;&#x3057;&#x305F;&#x30AB;&#x30FC;&#x30C9;&#x304C;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067; CMS &#x306E;&#x3082;&#x306E; <code>cards/delphes_card_CMS_NoFastJet.tcl&#x200B;</code> &#x3057;&#x304B;&#x306A;&#x3044;&#x3053;&#x3068;&#x3002;
+    &#x4ECA;&#x56DE;&#x306F; FCC-hh &#x7528;&#x306E;&#x30AB;&#x30FC;&#x30C9;&#x3092;&#x4F7F;&#x3044;&#x305F;&#x304B;&#x3063;&#x305F;&#x306E;&#x3067;&#x3001;<code>cards/FCC/FCChh.tcl&#x200B;</code> &#x3092;&#x5143;&#x306B;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x3066;&#x3044;&#x304F;&#x3002;</p>
+    <p>&#x5F53;&#x7136; Jet &#x306B;&#x95A2;&#x3059;&#x308B; module &#x7FA4;&#x306F;&#x4E0D;&#x8981;&#xFF08;&#x3068;&#x3044;&#x3046;&#x304B; FastJet &#x304C;&#x306A;&#x3044;&#x3068;&#x5B9F;&#x884C;&#x6642;&#x30A8;&#x30E9;&#x30FC;&#xFF09;&#x306A;&#x306E;&#x3067;&#x3001;&#x5BA3;&#x8A00;&#x3068;&#x5B9A;&#x7FA9;&#x3092;&#x6D88;&#x3059;&#x3002;&#x5177;&#x4F53;&#x7684;&#x306B;&#x306F;&#x3001;</p>
+    <pre data-role="codeBlock" data-info="tcl" class="language-tcl">  GenJetFinder02
+      GenJetFinder04
+      GenJetFinder08
+    
+      FastJetFinder02
+      FastJetFinder04
+      FastJetFinder08
+    
+      CaloJetFinder02
+      CaloJetFinder04
+      CaloJetFinder08
+    
+      TrackJetFinder02
+      TrackJetFinder04
+      TrackJetFinder08
+    
+      JetEnergyScale
+    
+      JetFlavorAssociation
+    
+      BTagging
+      CTagging
+      TauTagging
+    </pre><p>&#x3053;&#x308C;&#x3089;&#x304C;&#x4E0D;&#x8981;&#x3002;&#x3042;&#x3068;&#x3088;&#x304F;&#x308F;&#x304B;&#x3089;&#x306A;&#x3044;&#x3051;&#x3069;&#x3001;<code>TreeWriter</code> &#x3068;&#x3044;&#x3046; module &#x3082;&#x6D88;&#x3057;&#x3066;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;
+    &#x3053;&#x308C;&#x306F; <code>cards/delphes_card_CMS_NoFastJet.tcl&#x200B;</code> &#x306B;&#x3082;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x306E;&#x3067; consistent&#x3002;</p>
+    
+          </div>
+          
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      
     <!-- Contents above -->
   </div>
 </div>

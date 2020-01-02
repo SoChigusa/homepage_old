@@ -1,8 +1,5 @@
----
-title: FeynArts, FormCalc, LoopTools の導入
----
 
--------------------------------------------------------------------------------
+# FeynArts, FormCalc, LoopTools の導入
 
 ## インストール ##
 

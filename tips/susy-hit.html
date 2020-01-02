@@ -53,21 +53,42 @@
   </div>
   <div class="box" id="gfm">
     <!-- Contents below -->
-    <header>
-    <h1 class="title">SLHA を用いた SUSY-HIT から MadGraph への連携</h1>
-    </header>
-    <hr />
-    <p>SUSY LesHouches Accord (SLHA) 形式を用いて、超対称粒子スペクトルの情報に 崩壊率の情報を付け加えて、MadGraph (+Pythia, etc..) が使えるようにする。 SLHA を扱える decay package の例として、SUSY-HIT（その内部の SDECAY および HDECAY） を用いることにする。（https://www.itp.kit.edu/~maggie/SUSY-HIT/） ちなみに SDECAY 自体の webpage は更新が止まっているのか、コンパイルに問題があったので、 後継である SUSY-HIT を使っている。</p>
-    <p>SUSY-HIT はデフォルトで SuSpect を用いてスペクトル計算を行うが、今回の目的では 使わないので、<code>susyhit.in</code> の最初のオプションで切る。 切ると、SLHA -&gt; SLHA の最小限の機能を持った decay package になる。</p>
-    <p>出力された SLHA がほぼ MadGraph の <code>param_card.dat</code> に対応するが、 以下の二点の修正が必要。</p>
+          <div class="mume markdown-preview  ">
+          <h1 class="mume-header" id="slha-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F-susy-hit-%E3%81%8B%E3%82%89-madgraph-%E3%81%B8%E3%81%AE%E9%80%A3%E6%90%BA">SLHA &#x3092;&#x7528;&#x3044;&#x305F; SUSY-HIT &#x304B;&#x3089; MadGraph &#x3078;&#x306E;&#x9023;&#x643A;</h1>
+    
+    <p>SUSY LesHouches Accord (SLHA) &#x5F62;&#x5F0F;&#x3092;&#x7528;&#x3044;&#x3066;&#x3001;&#x8D85;&#x5BFE;&#x79F0;&#x7C92;&#x5B50;&#x30B9;&#x30DA;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x60C5;&#x5831;&#x306B;
+    &#x5D29;&#x58CA;&#x7387;&#x306E;&#x60C5;&#x5831;&#x3092;&#x4ED8;&#x3051;&#x52A0;&#x3048;&#x3066;&#x3001;MadGraph (+Pythia, etc..) &#x304C;&#x4F7F;&#x3048;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3002;
+    SLHA &#x3092;&#x6271;&#x3048;&#x308B; decay package &#x306E;&#x4F8B;&#x3068;&#x3057;&#x3066;&#x3001;SUSY-HIT&#xFF08;&#x305D;&#x306E;&#x5185;&#x90E8;&#x306E; SDECAY &#x304A;&#x3088;&#x3073; HDECAY&#xFF09;
+    &#x3092;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x306B;&#x3059;&#x308B;&#x3002;&#xFF08;<a href="https://www.itp.kit.edu/~maggie/SUSY-HIT/%EF%BC%89">https://www.itp.kit.edu/~maggie/SUSY-HIT/&#xFF09;</a>
+    &#x3061;&#x306A;&#x307F;&#x306B; SDECAY &#x81EA;&#x4F53;&#x306E; webpage &#x306F;&#x66F4;&#x65B0;&#x304C;&#x6B62;&#x307E;&#x3063;&#x3066;&#x3044;&#x308B;&#x306E;&#x304B;&#x3001;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x306B;&#x554F;&#x984C;&#x304C;&#x3042;&#x3063;&#x305F;&#x306E;&#x3067;&#x3001;
+    &#x5F8C;&#x7D99;&#x3067;&#x3042;&#x308B; SUSY-HIT &#x3092;&#x4F7F;&#x3063;&#x3066;&#x3044;&#x308B;&#x3002;</p>
+    <p>SUSY-HIT &#x306F;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067; SuSpect &#x3092;&#x7528;&#x3044;&#x3066;&#x30B9;&#x30DA;&#x30AF;&#x30C8;&#x30EB;&#x8A08;&#x7B97;&#x3092;&#x884C;&#x3046;&#x304C;&#x3001;&#x4ECA;&#x56DE;&#x306E;&#x76EE;&#x7684;&#x3067;&#x306F;
+    &#x4F7F;&#x308F;&#x306A;&#x3044;&#x306E;&#x3067;&#x3001;<code>susyhit.in</code> &#x306E;&#x6700;&#x521D;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x5207;&#x308B;&#x3002;
+    &#x5207;&#x308B;&#x3068;&#x3001;SLHA -&gt; SLHA &#x306E;&#x6700;&#x5C0F;&#x9650;&#x306E;&#x6A5F;&#x80FD;&#x3092;&#x6301;&#x3063;&#x305F; decay package &#x306B;&#x306A;&#x308B;&#x3002;</p>
+    <p>&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F; SLHA &#x304C;&#x307B;&#x307C; MadGraph &#x306E; <code>param_card.dat</code> &#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x304C;&#x3001;
+    &#x4EE5;&#x4E0B;&#x306E;&#x4E8C;&#x70B9;&#x306E;&#x4FEE;&#x6B63;&#x304C;&#x5FC5;&#x8981;&#x3002;</p>
     <ul>
-    <li>不足する情報を加える。具体的には <code>import model MSSM_SLHA2</code> して作ったプロセスに自動で作られる <code>param_card.dat</code> 内の
+    <li>&#x4E0D;&#x8DB3;&#x3059;&#x308B;&#x60C5;&#x5831;&#x3092;&#x52A0;&#x3048;&#x308B;&#x3002;&#x5177;&#x4F53;&#x7684;&#x306B;&#x306F; <code>import model MSSM_SLHA2</code> &#x3057;&#x3066;&#x4F5C;&#x3063;&#x305F;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306B;&#x81EA;&#x52D5;&#x3067;&#x4F5C;&#x3089;&#x308C;&#x308B; <code>param_card.dat</code> &#x5185;&#x306E;
     <ul>
-    <li>BLOCK MASS および BLOCK DECAY の一部、標準模型粒子の情報</li>
-    <li>BLOCK QNUMBERS : 超対称性粒子の量子数</li>
-    </ul></li>
-    <li>SLHA -&gt; SLHA2 形式への変換。面倒なので、SLHA をそのまま突っ込んで <code>./bin/generate_events</code> すると、文句を言いながら変換してくれる。</li>
+    <li>BLOCK MASS &#x304A;&#x3088;&#x3073; BLOCK DECAY &#x306E;&#x4E00;&#x90E8;&#x3001;&#x6A19;&#x6E96;&#x6A21;&#x578B;&#x7C92;&#x5B50;&#x306E;&#x60C5;&#x5831;</li>
+    <li>BLOCK QNUMBERS : &#x8D85;&#x5BFE;&#x79F0;&#x6027;&#x7C92;&#x5B50;&#x306E;&#x91CF;&#x5B50;&#x6570;</li>
     </ul>
+    </li>
+    <li>SLHA -&gt; SLHA2 &#x5F62;&#x5F0F;&#x3078;&#x306E;&#x5909;&#x63DB;&#x3002;&#x9762;&#x5012;&#x306A;&#x306E;&#x3067;&#x3001;SLHA &#x3092;&#x305D;&#x306E;&#x307E;&#x307E;&#x7A81;&#x3063;&#x8FBC;&#x3093;&#x3067; <code>./bin/generate_events</code> &#x3059;&#x308B;&#x3068;&#x3001;&#x6587;&#x53E5;&#x3092;&#x8A00;&#x3044;&#x306A;&#x304C;&#x3089;&#x5909;&#x63DB;&#x3057;&#x3066;&#x304F;&#x308C;&#x308B;&#x3002;</li>
+    </ul>
+    
+          </div>
+          
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      
     <!-- Contents above -->
   </div>
 </div>

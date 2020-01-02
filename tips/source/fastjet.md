@@ -1,8 +1,5 @@
----
-title: fastjet を使って解析
----
 
--------------------------------------------------------------------------------
+# fastjet を使って解析
 
 ## no template named 'auto_ptr' in namespace 'std' ##
 
@@ -11,7 +8,7 @@ title: fastjet を使って解析
 
 ``` c++
 /* compile the deprecated parts of the interface using auto-ptr */
-#ifndef FASTJET_HAVE_AUTO_PTR_INTERFACE 
+#ifndef FASTJET_HAVE_AUTO_PTR_INTERFACE
 /* #define FASTJET_HAVE_AUTO_PTR_INTERFACE */
 #endif
 ```

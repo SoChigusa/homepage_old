@@ -53,31 +53,43 @@
   </div>
   <div class="box" id="gfm">
     <!-- Contents below -->
-    <div id="content">
-    <div class="article">
-    <header id="title-block-header">
-    <h1 class="title">インテルコンパイラーで boost</h1>
-    </header>
-    <hr />
-    <h2 id="boost-のコンパイル">boost のコンパイル</h2>
-    <p>大体<a href="https://software.intel.com/en-us/articles/building-boost-with-intel-c-compiler-150">ここ</a>や<a href="https://seriousdeveloper.wordpress.com/2015/08/18/building-boost-with-intel-c-compiler-15-0-2/">ここ</a>に載っている通り。 <code>~/boost_***</code> にファイルを展開した後、 64bit マシンで、</p>
-    <pre class="shell"><code>source /opt/intel/compilers_and_libraries_***/mac/bin/compilervars.sh intel64
-    cd ~/boost_***/tools/build
+          <div class="mume markdown-preview  ">
+          <h1 class="mume-header" id="%E3%82%A4%E3%83%B3%E3%83%86%E3%83%AB%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9%E3%83%BC%E3%81%A7-boost">&#x30A4;&#x30F3;&#x30C6;&#x30EB;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x30FC;&#x3067; boost</h1>
+    
+    <h2 class="mume-header" id="boost-%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB">boost &#x306E;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;</h2>
+    
+    <p>&#x5927;&#x4F53;<a href="https://software.intel.com/en-us/articles/building-boost-with-intel-c-compiler-150">&#x3053;&#x3053;</a>&#x3084;<a href="https://seriousdeveloper.wordpress.com/2015/08/18/building-boost-with-intel-c-compiler-15-0-2/">&#x3053;&#x3053;</a>&#x306B;&#x8F09;&#x3063;&#x3066;&#x3044;&#x308B;&#x901A;&#x308A;&#x3002;
+    <code>~/boost_***</code> &#x306B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5C55;&#x958B;&#x3057;&#x305F;&#x5F8C;&#x3001; 64bit &#x30DE;&#x30B7;&#x30F3;&#x3067;&#x3001;</p>
+    <pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">source</span> /opt/intel/compilers_and_libraries_***/mac/bin/compilervars.sh intel64
+    <span class="token function">cd</span> ~/boost_***/tools/build
     ./bootstrap.sh
-    ./b2 install --prefix=~/boost_***
-    export PATH=$PATH:~/boost_***/bin
-    cd ~/boost_***
-    b2 --build-dir=~/boost_***/lib/address-model=64 toolset=intel stage</code></pre>
-    <p>ヘッダーやライブラリを別のところにおいておきたかったので、</p>
-    <pre class="shell"><code>sudo mkdir -p /opt/boost_***/include
-    sudo cp -pr ~/boost_***/boost /opt/boost_1_59_0/include/
-    sudo cp -pr ~/boost_***/stage/lib /opt/boost_1_59_0/</code></pre>
-    <h2 id="使う">使う</h2>
-    <p>Boost を使う際に、</p>
-    <div class="sourceCode" id="cb3"><pre class="sourceCode makefile"><code class="sourceCode makefile"><a class="sourceLine" id="cb3-1" title="1"><span class="dt">BOOSTFLAGS </span><span class="ch">=</span><span class="st"> -I/opt/boost_***/include -L/opt/boost_***/lib</span></a></code></pre></div>
-    <p>を用いる。最初 <code>-std=c++17</code> のフラグを立ててコンパイルしていたら、<code>std::align_val_t</code> の定義がぶつかって エラーになったので、<code>-std=c++11</code> に変更した。多分何かの理解が足りていない。</p>
-    </div>
-    </div>
+    ./b2 <span class="token function">install</span> --prefix<span class="token operator">=</span>~/boost_***
+    <span class="token function">export</span> PATH<span class="token operator">=</span><span class="token variable">$PATH</span>:~/boost_***/bin
+    <span class="token function">cd</span> ~/boost_***
+    b2 --build-dir<span class="token operator">=</span>~/boost_***/lib/address-model<span class="token operator">=</span>64 toolset<span class="token operator">=</span>intel stage
+    </pre><p>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3084;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x5225;&#x306E;&#x3068;&#x3053;&#x308D;&#x306B;&#x304A;&#x3044;&#x3066;&#x304A;&#x304D;&#x305F;&#x304B;&#x3063;&#x305F;&#x306E;&#x3067;&#x3001;</p>
+    <pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">sudo</span> <span class="token function">mkdir</span> -p /opt/boost_***/include
+    <span class="token function">sudo</span> <span class="token function">cp</span> -pr ~/boost_***/boost /opt/boost_1_59_0/include/
+    <span class="token function">sudo</span> <span class="token function">cp</span> -pr ~/boost_***/stage/lib /opt/boost_1_59_0/
+    </pre><h2 class="mume-header" id="%E4%BD%BF%E3%81%86">&#x4F7F;&#x3046;</h2>
+    
+    <p>Boost &#x3092;&#x4F7F;&#x3046;&#x969B;&#x306B;&#x3001;</p>
+    <pre data-role="codeBlock" data-info="makefile" class="language-makefile">BOOSTFLAGS <span class="token operator">=</span> -I/opt/boost_***/<span class="token keyword">include</span> -L/opt/boost_***/lib
+    </pre><p>&#x3092;&#x7528;&#x3044;&#x308B;&#x3002;&#x6700;&#x521D; <code>-std=c++17</code> &#x306E;&#x30D5;&#x30E9;&#x30B0;&#x3092;&#x7ACB;&#x3066;&#x3066;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x3057;&#x3066;&#x3044;&#x305F;&#x3089;&#x3001;<code>std::align_val_t</code> &#x306E;&#x5B9A;&#x7FA9;&#x304C;&#x3076;&#x3064;&#x304B;&#x3063;&#x3066;
+    &#x30A8;&#x30E9;&#x30FC;&#x306B;&#x306A;&#x3063;&#x305F;&#x306E;&#x3067;&#x3001;<code>-std=c++11</code> &#x306B;&#x5909;&#x66F4;&#x3057;&#x305F;&#x3002;&#x591A;&#x5206;&#x4F55;&#x304B;&#x306E;&#x7406;&#x89E3;&#x304C;&#x8DB3;&#x308A;&#x3066;&#x3044;&#x306A;&#x3044;&#x3002;</p>
+    
+          </div>
+          
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      
     <!-- Contents above -->
   </div>
 </div>

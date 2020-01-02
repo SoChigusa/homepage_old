@@ -53,21 +53,31 @@
   </div>
   <div class="box" id="gfm">
     <!-- Contents below -->
-    <div id="content">
-    <div class="article">
-    <header id="title-block-header">
-    <h1 class="title">fastjet を使って解析</h1>
-    </header>
-    <hr />
-    <h2 id="no-template-named-auto_ptr-in-namespace-std">no template named ‘auto_ptr’ in namespace ‘std’</h2>
-    <p><code>-std=c++11</code> で <code>auto_ptr</code> が廃止された問題。 <code>ClusterSequence.hh</code> にも記述がある通り、これを使用しない方向でコンパイルさせれば良いので、<code>config_auto.h</code> 内</p>
-    <div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">/* compile the deprecated parts of the interface using auto-ptr */</span></span>
-    <span id="cb1-2"><a href="#cb1-2"></a><span class="pp">#ifndef FASTJET_HAVE_AUTO_PTR_INTERFACE </span></span>
-    <span id="cb1-3"><a href="#cb1-3"></a><span class="co">/* #define FASTJET_HAVE_AUTO_PTR_INTERFACE */</span></span>
-    <span id="cb1-4"><a href="#cb1-4"></a><span class="pp">#endif</span></span></code></pre></div>
-    <p>のように該当箇所をコメントアウト。</p>
-    </div>
-    </div>
+          <div class="mume markdown-preview  ">
+          <h1 class="mume-header" id="fastjet-%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A7%A3%E6%9E%90">fastjet &#x3092;&#x4F7F;&#x3063;&#x3066;&#x89E3;&#x6790;</h1>
+    
+    <h2 class="mume-header" id="no-template-named-auto_ptr-in-namespace-std">no template named &apos;auto_ptr&apos; in namespace &apos;std&apos;</h2>
+    
+    <p><code>-std=c++11</code> &#x3067; <code>auto_ptr</code> &#x304C;&#x5EC3;&#x6B62;&#x3055;&#x308C;&#x305F;&#x554F;&#x984C;&#x3002;
+    <code>ClusterSequence.hh</code> &#x306B;&#x3082;&#x8A18;&#x8FF0;&#x304C;&#x3042;&#x308B;&#x901A;&#x308A;&#x3001;&#x3053;&#x308C;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x306A;&#x3044;&#x65B9;&#x5411;&#x3067;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x3055;&#x305B;&#x308C;&#x3070;&#x826F;&#x3044;&#x306E;&#x3067;&#x3001;<code>config_auto.h</code> &#x5185;</p>
+    <pre data-role="codeBlock" data-info="c++" class="language-cpp"><span class="token comment">/* compile the deprecated parts of the interface using auto-ptr */</span>
+    <span class="token macro property">#<span class="token directive keyword">ifndef</span> FASTJET_HAVE_AUTO_PTR_INTERFACE</span>
+    <span class="token comment">/* #define FASTJET_HAVE_AUTO_PTR_INTERFACE */</span>
+    <span class="token macro property">#<span class="token directive keyword">endif</span></span>
+    </pre><p>&#x306E;&#x3088;&#x3046;&#x306B;&#x8A72;&#x5F53;&#x7B87;&#x6240;&#x3092;&#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x30A2;&#x30A6;&#x30C8;&#x3002;</p>
+    
+          </div>
+          
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      
     <!-- Contents above -->
   </div>
 </div>

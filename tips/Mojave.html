@@ -53,25 +53,40 @@
   </div>
   <div class="box" id="gfm">
     <!-- Contents below -->
-    <header>
-    <h1 class="title">Mac OS Mojave アップデートとアフターケア</h1>
-    </header>
-    <hr />
-    <h2 id="emacs-ダークモード">emacs ダークモード</h2>
-    <p>ダークモードを使用するように変更し、それに合わせて emacs のテーマを変更した。 ダーク系のテーマを選択し、 <code>~/.emacs.el</code> の末尾に以下のように追加。</p>
-    <pre class="emacs-lisp"><code>;;====================================
-    ;;; Theme
-    ;;====================================
-    (load-theme 'manoj-dark t)</code></pre>
-    <h2 id="c-開発環境">c++ 開発環境</h2>
-    <p>理由をよく理解していない、<code>math.h</code> が見つからないエラーが出たので、以下の URL を参考に修正。</p>
+          <div class="mume markdown-preview  ">
+          <h1 class="mume-header" id="mac-os-mojave-%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88%E3%81%A8%E3%82%A2%E3%83%95%E3%82%BF%E3%83%BC%E3%82%B1%E3%82%A2">Mac OS Mojave &#x30A2;&#x30C3;&#x30D7;&#x30C7;&#x30FC;&#x30C8;&#x3068;&#x30A2;&#x30D5;&#x30BF;&#x30FC;&#x30B1;&#x30A2;</h1>
+    
+    <h2 class="mume-header" id="emacs-%E3%83%80%E3%83%BC%E3%82%AF%E3%83%A2%E3%83%BC%E3%83%89">emacs &#x30C0;&#x30FC;&#x30AF;&#x30E2;&#x30FC;&#x30C9;</h2>
+    
+    <p>&#x30C0;&#x30FC;&#x30AF;&#x30E2;&#x30FC;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x5909;&#x66F4;&#x3057;&#x3001;&#x305D;&#x308C;&#x306B;&#x5408;&#x308F;&#x305B;&#x3066; emacs &#x306E;&#x30C6;&#x30FC;&#x30DE;&#x3092;&#x5909;&#x66F4;&#x3057;&#x305F;&#x3002;
+    &#x30C0;&#x30FC;&#x30AF;&#x7CFB;&#x306E;&#x30C6;&#x30FC;&#x30DE;&#x3092;&#x9078;&#x629E;&#x3057;&#x3001; <code>~/.emacs.el</code> &#x306E;&#x672B;&#x5C3E;&#x306B;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x8FFD;&#x52A0;&#x3002;</p>
+    <pre data-role="codeBlock" data-info="emacs-lisp" class="language-emacs-lisp"><span class="token comment">;;====================================</span>
+    <span class="token heading comment title">;;; Theme</span>
+    <span class="token comment">;;====================================</span>
+    <span class="token punctuation">(</span><span class="token car">load-theme</span> <span class="token quoted-symbol variable symbol">&apos;manoj-dark</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
+    </pre><h2 class="mume-header" id="c-%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">c++ &#x958B;&#x767A;&#x74B0;&#x5883;</h2>
+    
+    <p>&#x7406;&#x7531;&#x3092;&#x3088;&#x304F;&#x7406;&#x89E3;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x3001;<code>math.h</code> &#x304C;&#x898B;&#x3064;&#x304B;&#x3089;&#x306A;&#x3044;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x51FA;&#x305F;&#x306E;&#x3067;&#x3001;&#x4EE5;&#x4E0B;&#x306E; URL &#x3092;&#x53C2;&#x8003;&#x306B;&#x4FEE;&#x6B63;&#x3002;</p>
     <ul>
-    <li>https://github.com/RcppCore/Rcpp/issues/922</li>
+    <li><a href="https://github.com/RcppCore/Rcpp/issues/922">https://github.com/RcppCore/Rcpp/issues/922</a></li>
     </ul>
-    <p>ターミナルから、</p>
-    <pre class="shell"><code>sudo installer -pkg \
+    <p>&#x30BF;&#x30FC;&#x30DF;&#x30CA;&#x30EB;&#x304B;&#x3089;&#x3001;</p>
+    <pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">sudo</span> installer -pkg \
     /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg \
-    -target /</code></pre>
+    -target /
+    </pre>
+          </div>
+          
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      
     <!-- Contents above -->
   </div>
 </div>

@@ -53,24 +53,40 @@
   </div>
   <div class="box" id="gfm">
     <!-- Contents below -->
-    <header id="title-block-header">
-    <h1 class="title">自分風 Beamer プレゼン用チートシート</h1>
-    </header>
-    <hr />
-    <h2 id="右下のアレを消す">右下のアレを消す</h2>
-    <p>プリアンブル部分に次の一行を追加。</p>
-    <div class="sourceCode" id="cb1"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">\setbeamertemplate</span>{navigation symbols}{}</a></code></pre></div>
-    <h2 id="itemize">Itemize</h2>
-    <p>箇条書きがインデントされるのが気に入らない時の調整。</p>
-    <div class="sourceCode" id="cb2"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">\setlength</span>{<span class="fu">\leftskip</span>}{-3mm}</a></code></pre></div>
-    <h2 id="table">Table</h2>
-    <p>表の縦幅を広めにとって読みやすくする。</p>
-    <div class="sourceCode" id="cb3"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">\def</span>\arraystretch{1.2}</a></code></pre></div>
-    <h2 id="spacing">Spacing</h2>
-    <p>デフォルト行間は狭すぎるので、読みやすく。</p>
-    <div class="sourceCode" id="cb4"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">\renewcommand</span>{<span class="ex">\baselinestretch</span>}{1.2}</a></code></pre></div>
-    <p>ただ、状況に応じて部分的に変更したい時もあるので、臨機応変に</p>
-    <div class="sourceCode" id="cb5"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">\setstretch</span>{0.9}</a></code></pre></div>
+          <div class="mume markdown-preview  ">
+          <h1 class="mume-header" id="%E8%87%AA%E5%88%86%E9%A2%A8-beamer-%E3%83%97%E3%83%AC%E3%82%BC%E3%83%B3%E7%94%A8%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88">&#x81EA;&#x5206;&#x98A8; Beamer &#x30D7;&#x30EC;&#x30BC;&#x30F3;&#x7528;&#x30C1;&#x30FC;&#x30C8;&#x30B7;&#x30FC;&#x30C8;</h1>
+    
+    <h2 class="mume-header" id="%E5%8F%B3%E4%B8%8B%E3%81%AE%E3%82%A2%E3%83%AC%E3%82%92%E6%B6%88%E3%81%99">&#x53F3;&#x4E0B;&#x306E;&#x30A2;&#x30EC;&#x3092;&#x6D88;&#x3059;</h2>
+    
+    <p>&#x30D7;&#x30EA;&#x30A2;&#x30F3;&#x30D6;&#x30EB;&#x90E8;&#x5206;&#x306B;&#x6B21;&#x306E;&#x4E00;&#x884C;&#x3092;&#x8FFD;&#x52A0;&#x3002;</p>
+    <pre data-role="codeBlock" data-info="tex" class="language-latex"><span class="token function selector">\setbeamertemplate</span><span class="token punctuation">{</span>navigation symbols<span class="token punctuation">}</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+    </pre><h2 class="mume-header" id="itemize">Itemize</h2>
+    
+    <p>&#x7B87;&#x6761;&#x66F8;&#x304D;&#x304C;&#x30A4;&#x30F3;&#x30C7;&#x30F3;&#x30C8;&#x3055;&#x308C;&#x308B;&#x306E;&#x304C;&#x6C17;&#x306B;&#x5165;&#x3089;&#x306A;&#x3044;&#x6642;&#x306E;&#x8ABF;&#x6574;&#x3002;</p>
+    <pre data-role="codeBlock" data-info="tex" class="language-latex"><span class="token function selector">\setlength</span><span class="token punctuation">{</span><span class="token function selector">\leftskip</span><span class="token punctuation">}</span><span class="token punctuation">{</span>-3mm<span class="token punctuation">}</span>
+    </pre><h2 class="mume-header" id="table">Table</h2>
+    
+    <p>&#x8868;&#x306E;&#x7E26;&#x5E45;&#x3092;&#x5E83;&#x3081;&#x306B;&#x3068;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x3084;&#x3059;&#x304F;&#x3059;&#x308B;&#x3002;</p>
+    <pre data-role="codeBlock" data-info="tex" class="language-latex"><span class="token function selector">\def</span><span class="token function selector">\arraystretch</span><span class="token punctuation">{</span>1.2<span class="token punctuation">}</span>
+    </pre><h2 class="mume-header" id="spacing">Spacing</h2>
+    
+    <p>&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x884C;&#x9593;&#x306F;&#x72ED;&#x3059;&#x304E;&#x308B;&#x306E;&#x3067;&#x3001;&#x8AAD;&#x307F;&#x3084;&#x3059;&#x304F;&#x3002;</p>
+    <pre data-role="codeBlock" data-info="tex" class="language-latex"><span class="token function selector">\renewcommand</span><span class="token punctuation">{</span><span class="token function selector">\baselinestretch</span><span class="token punctuation">}</span><span class="token punctuation">{</span>1.2<span class="token punctuation">}</span>
+    </pre><p>&#x305F;&#x3060;&#x3001;&#x72B6;&#x6CC1;&#x306B;&#x5FDC;&#x3058;&#x3066;&#x90E8;&#x5206;&#x7684;&#x306B;&#x5909;&#x66F4;&#x3057;&#x305F;&#x3044;&#x6642;&#x3082;&#x3042;&#x308B;&#x306E;&#x3067;&#x3001;&#x81E8;&#x6A5F;&#x5FDC;&#x5909;&#x306B;</p>
+    <pre data-role="codeBlock" data-info="tex" class="language-latex"><span class="token function selector">\setstretch</span><span class="token punctuation">{</span>0.9<span class="token punctuation">}</span>
+    </pre>
+          </div>
+          
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      
     <!-- Contents above -->
   </div>
 </div>
