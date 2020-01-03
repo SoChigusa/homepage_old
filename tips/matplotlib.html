@@ -1,15 +1,259 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Tips</title>
+<title>Mojave</title>
 <link href="../css/normalize.css" rel="stylesheet">
-<link href="../css/github.css" rel="stylesheet">
+<!-- <link href="../css/github.css" rel="stylesheet"> -->
 <link href="../css/main.css" rel="stylesheet">
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before,
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+  </style>
 </head>
+<body for="html-export">
 
-<body>
-
-<!-- insertion below : menu.html -->
+  <!-- insertion below : menu.html -->
 <header>
     <a href="/"><h1>So Chigusa</h1></a>
 </header>
@@ -21,11 +265,11 @@
     <a href="/git/"><li>Git</li></a>
   </ul>
 </nav>
-<!-- insertion above : menu.html -->
-  
-<div class="container">
-  <div class="box" id="tipsmenu">
-    <!-- Tips menu below -->
+  <!-- insertion above : menu.html -->
+
+  <div class="container">
+    <div class="box" id="tipsmenu">
+      <!-- Tips menu below -->
     <nav>
       <h3>Tips Menu</h3>
       <ul>
@@ -49,140 +293,141 @@
       <li><a href="chrome-JavaScript.html">chrome-JavaScript</a></li>
        </ul>
     </nav>
-    <!-- Tips menu above -->
-  </div>
-  <div class="box" id="gfm">
-    <!-- Contents below -->
-    <div id="content">
-    <div class="article">
-    <header id="title-block-header">
-    <h1 class="title">Matplotlib を使いこなす</h1>
-    </header>
-    <hr />
-    <h2 id="基本構文">基本構文</h2>
-    <p><code>matplotlib</code> を読み込んで、図を描く準備をする部分。</p>
-    <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> matplotlib</a>
-    <a class="sourceLine" id="cb1-2" title="2">matplotlib.use(<span class="st">&quot;Agg&quot;</span>)</a>
-    <a class="sourceLine" id="cb1-3" title="3"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</a>
-    <a class="sourceLine" id="cb1-4" title="4"></a>
-    <a class="sourceLine" id="cb1-5" title="5">fig <span class="op">=</span> plt.figure()</a>
-    <a class="sourceLine" id="cb1-6" title="6">ax  <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</a></code></pre></div>
-    <p><code>matplotlib.axes.Axes</code> クラスのインスタンスである <code>ax</code> を用いて図を描いたら（下部参照）、図の設定は以下のように可能。</p>
-    <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1">ax.set_title(<span class="vs">r&#39;title $\LaTeX$&#39;</span>, size<span class="op">=</span><span class="dv">25</span>)</a>
-    <a class="sourceLine" id="cb2-2" title="2">ax.set_xlabel(<span class="st">&#39;xlabel&#39;</span>, size<span class="op">=</span><span class="dv">25</span>)</a>
-    <a class="sourceLine" id="cb2-3" title="3">ax.set_ylabel(<span class="st">&#39;ylabel&#39;</span>, size<span class="op">=</span><span class="dv">25</span>)</a>
-    <a class="sourceLine" id="cb2-4" title="4">ax.legend(loc<span class="op">=</span><span class="st">&quot;lower right&quot;</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</a>
-    <a class="sourceLine" id="cb2-5" title="5">ax.tick_params(labelsize<span class="op">=</span><span class="dv">20</span>)</a></code></pre></div>
-    <p>最後に PDF に保存し、確認のためにファイルを開く。</p>
-    <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1">plt.tight_layout()</a>
-    <a class="sourceLine" id="cb3-2" title="2">plt.show()</a>
-    <a class="sourceLine" id="cb3-3" title="3">plt.savefig(<span class="st">&#39;hoge.pdf&#39;</span>)</a>
-    <a class="sourceLine" id="cb3-4" title="4">commands.getoutput(<span class="st">&#39;open hoge.pdf&#39;</span>)</a></code></pre></div>
-    <h2 id="描画データの準備">描画データの準備</h2>
-    <p>CSV のような構造のデータが与えられていることをイメージする。 これを <code>numpy</code> で読み込んで使用する場合、</p>
-    <div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1">data <span class="op">=</span> np.loadtxt(<span class="st">&#39;hoge.dat&#39;</span>, skiprows<span class="op">=</span><span class="dv">1</span>, usecols<span class="op">=</span><span class="bu">range</span>(<span class="dv">2</span>))</a>
-    <a class="sourceLine" id="cb4-2" title="2">x <span class="op">=</span> data[:,<span class="dv">0</span>]</a>
-    <a class="sourceLine" id="cb4-3" title="3">y <span class="op">=</span> data[:,<span class="dv">1</span>]</a></code></pre></div>
-    <p>などとする。<code>skiprows</code> オプションを使用することで、好きな数のヘッダー行を読み込み範囲から外せる。 また、<code>pandas</code> を用いる場合には、区切り文字が空白かタブかに応じて、</p>
-    <div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1">data <span class="op">=</span> pd.read_csv(<span class="st">&#39;hoge.dat&#39;</span>)</a>
-    <a class="sourceLine" id="cb5-2" title="2">data <span class="op">=</span> pd.read_table(<span class="st">&#39;hoge.dat&#39;</span>)</a></code></pre></div>
-    <p>とする。このとき、各データ列のヘッダーに変数名を書いておいて、<code>data['name']</code> で参照できる。 このデータを <code>numpy</code> リストにも変換できる。</p>
-    <div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1">nplist <span class="op">=</span> data.values</a></code></pre></div>
-    <h2 id="基本の1d-plot">基本の1D plot</h2>
-    <p>x,y 両軸のデータのリストをそれぞれ用意して、<code>plot</code> 関数を用いる。</p>
-    <div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1">ax.plot(xlist, ylist, color<span class="op">=</span><span class="st">&#39;r&#39;</span>, linestyle<span class="op">=</span><span class="st">&#39;-&#39;</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">&#39;hoge&#39;</span>)</a></code></pre></div>
-    <p><code>label</code> オプションの文字列がレジェンドとして使用される。軸の範囲の設定は</p>
-    <div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" title="1">ax.set_xbound(xmin, xmax)</a>
-    <a class="sourceLine" id="cb8-2" title="2">ax.set_ybound(ymin, ymax)</a></code></pre></div>
-    <p>対数目盛りの設定は</p>
-    <div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb9-1" title="1">ax.set_xscale(<span class="st">&#39;log&#39;</span>)</a>
-    <a class="sourceLine" id="cb9-2" title="2">ax.set_yscale(<span class="st">&#39;log&#39;</span>)</a></code></pre></div>
-    <p>のように可能。軸の目盛りの位置と対応する文字列も必要に応じて指定できる。</p>
-    <div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb10-1" title="1">ax.set_xticks([<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>])</a>
-    <a class="sourceLine" id="cb10-2" title="2">ax.set_yticks([<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>])</a>
-    <a class="sourceLine" id="cb10-3" title="3">ax.set_yticklabels([<span class="st">&#39;0.0&#39;</span>, <span class="st">&#39;0.5&#39;</span>, <span class="st">&#39;1.0&#39;</span>, <span class="st">&#39;1.5&#39;</span>])</a></code></pre></div>
-    <p>また、補助線を引きたい時は <code>numpy</code> を使って</p>
-    <div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb11-1" title="1">x <span class="op">=</span> np.linspace(xmin, xmax, npts)</a>
-    <a class="sourceLine" id="cb11-2" title="2">y <span class="op">=</span> np.linspace(ymin, ymax, npts)</a></code></pre></div>
-    <p>として作ったリストが使える。</p>
-    <h2 id="等高線">等高線</h2>
-    <p><code>matplotlib</code> で等高線をプロットするには、2次元リストに格納された x,y,z の値が必要。 もし用意されたデータが 1次元で、ただし秩序を保って並んでいるなら、</p>
-    <div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb12-1" title="1">x,y,z <span class="op">=</span> data[:,<span class="dv">1</span>].reshape(ny,nx), data[:,<span class="dv">2</span>].reshape(ny,nx), data[:,<span class="dv">3</span>].reshape(ny,nx)</a></code></pre></div>
-    <p>などと、<code>ndarray.reshape</code> 関数が使える。 さて、これを用いて等高線プロットは</p>
-    <div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb13-1" title="1">cs <span class="op">=</span> ax.contour(x, y, z, levels<span class="op">=</span>[z1, z2, z3], colors<span class="op">=</span><span class="st">&#39;b&#39;</span>, linestyles<span class="op">=</span><span class="st">&#39;-&#39;</span>)</a>
-    <a class="sourceLine" id="cb13-2" title="2">h,_   <span class="op">=</span> cs.legend_elements()</a>
-    <a class="sourceLine" id="cb13-3" title="3">ax.legend([h[<span class="dv">0</span>]], [<span class="st">&#39;legend&#39;</span>], fontsize<span class="op">=</span><span class="dv">20</span>)</a></code></pre></div>
-    <p>などとして描ける。レジェンドの他に、等高線の途中に対応する z の値を描くことも出来る。</p>
-    <div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb14-1" title="1">ax.clabel(cs, fmt<span class="op">=</span><span class="st">&#39;</span><span class="sc">%d</span><span class="st">&#39;</span>)</a>
-    <a class="sourceLine" id="cb14-2" title="2">ax.clabel(cs2, fmt<span class="op">=</span><span class="st">&#39;</span><span class="sc">%.1E</span><span class="st">&#39;</span>)</a></code></pre></div>
-    <p>別の種類のプロットとして、等高線間の塗りつぶしも可能。そのためには</p>
-    <div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" title="1">ax.contourf(x, y, z, levels<span class="op">=</span>[zmin,zmax], alpha<span class="op">=</span><span class="fl">0.3</span>, colors<span class="op">=</span><span class="st">&#39;gray&#39;</span>)</a></code></pre></div>
-    <p>などとすると、<code>zmin &lt; z &lt; zmax</code> の領域を指定された色で塗りつぶす。 この時、場合によっては背景色を白以外の色にしておくと便利。</p>
-    <div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb16-1" title="1">ax.set_axis_bgcolor(<span class="st">&#39;green&#39;</span>)</a></code></pre></div>
-    <h2 id="ヒストグラム">ヒストグラム</h2>
-    <p>ヒストグラムの描画のためには、1次元のデータリストを用意して、</p>
-    <div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb17-1" title="1">ax.hist(data, bins<span class="op">=</span>nbin, <span class="bu">range</span><span class="op">=</span>(xmin, xmax), color<span class="op">=</span><span class="st">&#39;m&#39;</span>, label<span class="op">=</span><span class="st">&#39;legend&#39;</span>)</a></code></pre></div>
-    <p>とする。各データを違うウェイトで足し合わせたい時は、データと同じ順序で同じ数のウェイトを格納したリスト <code>weights</code> を用意し、オプションを追加： <code>weights=weights</code>。</p>
-    <h2 id="アスペクト比を変更する">アスペクト比を変更する</h2>
-    <p>図の高さを幅の <code>aspect</code> 倍に変更したいとする。以下のようにすれば良い。</p>
-    <div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb18-1" title="1">xmin, xmax <span class="op">=</span> ax.get_xlim()</a>
-    <a class="sourceLine" id="cb18-2" title="2">ymin, ymax <span class="op">=</span> ax.get_ylim()</a>
-    <a class="sourceLine" id="cb18-3" title="3">ax.set_aspect(<span class="bu">abs</span>((xmax<span class="op">-</span>xmin)<span class="op">/</span>(ymax<span class="op">-</span>ymin))<span class="op">*</span>aspect, adjustable<span class="op">=</span><span class="st">&#39;box-forced&#39;</span>)</a></code></pre></div>
-    <h2 id="座標軸の描画">座標軸の描画</h2>
-    <p>以下のサンプルはどこぞからの拾い物。</p>
-    <div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb19-1" title="1"><span class="co"># removing the default axis on all sides:</span></a>
-    <a class="sourceLine" id="cb19-2" title="2"><span class="cf">for</span> side <span class="kw">in</span> [<span class="st">&#39;bottom&#39;</span>,<span class="st">&#39;right&#39;</span>,<span class="st">&#39;top&#39;</span>,<span class="st">&#39;left&#39;</span>]:</a>
-    <a class="sourceLine" id="cb19-3" title="3">    ax.spines[side].set_visible(<span class="va">False</span>)</a>
-    <a class="sourceLine" id="cb19-4" title="4"></a>
-    <a class="sourceLine" id="cb19-5" title="5"><span class="co"># removing the axis ticks</span></a>
-    <a class="sourceLine" id="cb19-6" title="6">plt.xticks([]) <span class="co"># labels</span></a>
-    <a class="sourceLine" id="cb19-7" title="7">plt.yticks([])</a>
-    <a class="sourceLine" id="cb19-8" title="8">ax.xaxis.set_ticks_position(<span class="st">&#39;none&#39;</span>) <span class="co"># tick markers</span></a>
-    <a class="sourceLine" id="cb19-9" title="9">ax.yaxis.set_ticks_position(<span class="st">&#39;none&#39;</span>)</a>
-    <a class="sourceLine" id="cb19-10" title="10"></a>
-    <a class="sourceLine" id="cb19-11" title="11"><span class="co"># get width and height of axes object to compute</span></a>
-    <a class="sourceLine" id="cb19-12" title="12"><span class="co"># matching arrowhead length and width</span></a>
-    <a class="sourceLine" id="cb19-13" title="13">dps <span class="op">=</span> fig.dpi_scale_trans.inverted()</a>
-    <a class="sourceLine" id="cb19-14" title="14">bbox <span class="op">=</span> ax.get_window_extent().transformed(dps)</a>
-    <a class="sourceLine" id="cb19-15" title="15">width, height <span class="op">=</span> bbox.width, bbox.height</a>
-    <a class="sourceLine" id="cb19-16" title="16"></a>
-    <a class="sourceLine" id="cb19-17" title="17"><span class="co"># manual arrowhead width and length</span></a>
-    <a class="sourceLine" id="cb19-18" title="18">hw <span class="op">=</span> <span class="fl">1.</span><span class="op">/</span><span class="fl">20.</span><span class="op">*</span>(ymax<span class="op">-</span>ymin)</a>
-    <a class="sourceLine" id="cb19-19" title="19">hl <span class="op">=</span> <span class="fl">1.</span><span class="op">/</span><span class="fl">20.</span><span class="op">*</span>(xmax<span class="op">-</span>xmin)</a>
-    <a class="sourceLine" id="cb19-20" title="20">lw <span class="op">=</span> <span class="fl">1.</span> <span class="co"># axis line width</span></a>
-    <a class="sourceLine" id="cb19-21" title="21">ohg <span class="op">=</span> <span class="fl">0.3</span> <span class="co"># arrow overhang</span></a>
-    <a class="sourceLine" id="cb19-22" title="22"></a>
-    <a class="sourceLine" id="cb19-23" title="23"><span class="co"># compute matching arrowhead length and width</span></a>
-    <a class="sourceLine" id="cb19-24" title="24">yhw <span class="op">=</span> hw<span class="op">/</span>(ymax<span class="op">-</span>ymin)<span class="op">*</span>(xmax<span class="op">-</span>xmin)<span class="op">*</span> height<span class="op">/</span>width</a>
-    <a class="sourceLine" id="cb19-25" title="25">yhl <span class="op">=</span> hl<span class="op">/</span>(xmax<span class="op">-</span>xmin)<span class="op">*</span>(ymax<span class="op">-</span>ymin)<span class="op">*</span> width<span class="op">/</span>height</a>
-    <a class="sourceLine" id="cb19-26" title="26"></a>
-    <a class="sourceLine" id="cb19-27" title="27"><span class="co"># draw x and y axis</span></a>
-    <a class="sourceLine" id="cb19-28" title="28">ax.arrow(xmin, <span class="dv">0</span>, xmax<span class="op">-</span>xmin, <span class="fl">0.</span>, fc<span class="op">=</span><span class="st">&#39;k&#39;</span>, ec<span class="op">=</span><span class="st">&#39;k&#39;</span>, lw <span class="op">=</span> lw,</a>
-    <a class="sourceLine" id="cb19-29" title="29">         head_width<span class="op">=</span>hw, head_length<span class="op">=</span>hl, overhang <span class="op">=</span> ohg,</a>
-    <a class="sourceLine" id="cb19-30" title="30">         length_includes_head<span class="op">=</span> <span class="va">True</span>, clip_on <span class="op">=</span> <span class="va">False</span>)</a>
-    <a class="sourceLine" id="cb19-31" title="31">ax.arrow(<span class="dv">0</span>, ymin, <span class="fl">0.</span>, ymax<span class="op">-</span>ymin, fc<span class="op">=</span><span class="st">&#39;k&#39;</span>, ec<span class="op">=</span><span class="st">&#39;k&#39;</span>, lw <span class="op">=</span> lw,</a>
-    <a class="sourceLine" id="cb19-32" title="32">         head_width<span class="op">=</span>yhw, head_length<span class="op">=</span>yhl, overhang <span class="op">=</span> ohg,</a>
-    <a class="sourceLine" id="cb19-33" title="33">         length_includes_head<span class="op">=</span> <span class="va">True</span>, clip_on <span class="op">=</span> <span class="va">False</span>)</a></code></pre></div>
-    <p>上のコマンドで座標軸を作ったら、そこに <code>ax.plot</code> で関数を描画したり、</p>
-    <div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb20-1" title="1">phi <span class="op">=</span> patches.Circle(xy<span class="op">=</span>(x, y), radius<span class="op">=</span>r, fc<span class="op">=</span><span class="st">&#39;green&#39;</span>)</a>
-    <a class="sourceLine" id="cb20-2" title="2">ax.add_patch(phi)</a></code></pre></div>
-    <p>で円を描いたり出来る。</p>
-    <h2 id="図への書き込み">図への書き込み</h2>
-    <p>プレゼン用に図に星印などつけたい場合は、</p>
-    <div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb21-1" title="1">ax.plot(x, y, <span class="st">&#39;*&#39;</span>, markersize<span class="op">=</span><span class="dv">15</span>, color<span class="op">=</span><span class="st">&#39;black&#39;</span>, clip_on<span class="op">=</span><span class="va">False</span>)</a></code></pre></div>
-    <p>とする。<code>clip_on=False</code> を指定すると、点が図の領域からはみ出た場合も、はみ出た部分を含めて全て描画してくれる。 また、矢印付き、なしの文字の書き込みが</p>
-    <div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb22-1" title="1">ax.annotate(<span class="st">&#39;Text&#39;</span>, xy<span class="op">=</span>[x, y], xytext<span class="op">=</span>[xtext, ytext], arrowprops<span class="op">=</span><span class="bu">dict</span>(width<span class="op">=</span><span class="dv">4</span>, color<span class="op">=</span><span class="st">&#39;b&#39;</span>), fontsize<span class="op">=</span><span class="dv">30</span>, color<span class="op">=</span><span class="st">&#39;b&#39;</span>)</a>
-    <a class="sourceLine" id="cb22-2" title="2">ax.annotate(<span class="st">&#39;Text&#39;</span>, xy<span class="op">=</span>(xtext, ytext), fontsize<span class="op">=</span><span class="dv">20</span>)</a></code></pre></div>
-    <p>などで可能。</p>
-    <h2 id="図を分割">図を分割</h2>
-    <p><code>matplotlib.axes.Axes</code> インスタンスを準備する部分を</p>
-    <div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb23-1" title="1">ax1  <span class="op">=</span> fig.add_subplot(N,x,y)</a></code></pre></div>
-    <p>などと変更する。ここで <code>N</code> は図の総数で、<code>x</code>, <code>y</code> が <code>ax1</code> の図の座標に対応する。</p>
-    <h2 id="漫画風のプロット">漫画風のプロット</h2>
-    <div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb24-1" title="1">plt.xkcd()</a></code></pre></div>
+      <!-- Tips menu above -->
     </div>
-    </div>
-    <!-- Contents above -->
+
+    <div class="box" id="gfm">
+      <!-- Contents below -->
+<div id="content">
+<div class="article">
+<header id="title-block-header">
+<h1 class="title">Matplotlib を使いこなす</h1>
+</header>
+<hr />
+<h2 id="基本構文">基本構文</h2>
+<p><code>matplotlib</code> を読み込んで、図を描く準備をする部分。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> matplotlib</a>
+<a class="sourceLine" id="cb1-2" title="2">matplotlib.use(<span class="st">&quot;Agg&quot;</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5">fig <span class="op">=</span> plt.figure()</a>
+<a class="sourceLine" id="cb1-6" title="6">ax  <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</a></code></pre></div>
+<p><code>matplotlib.axes.Axes</code> クラスのインスタンスである <code>ax</code> を用いて図を描いたら（下部参照）、図の設定は以下のように可能。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1">ax.set_title(<span class="vs">r&#39;title $\LaTeX$&#39;</span>, size<span class="op">=</span><span class="dv">25</span>)</a>
+<a class="sourceLine" id="cb2-2" title="2">ax.set_xlabel(<span class="st">&#39;xlabel&#39;</span>, size<span class="op">=</span><span class="dv">25</span>)</a>
+<a class="sourceLine" id="cb2-3" title="3">ax.set_ylabel(<span class="st">&#39;ylabel&#39;</span>, size<span class="op">=</span><span class="dv">25</span>)</a>
+<a class="sourceLine" id="cb2-4" title="4">ax.legend(loc<span class="op">=</span><span class="st">&quot;lower right&quot;</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb2-5" title="5">ax.tick_params(labelsize<span class="op">=</span><span class="dv">20</span>)</a></code></pre></div>
+<p>最後に PDF に保存し、確認のためにファイルを開く。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1">plt.tight_layout()</a>
+<a class="sourceLine" id="cb3-2" title="2">plt.show()</a>
+<a class="sourceLine" id="cb3-3" title="3">plt.savefig(<span class="st">&#39;hoge.pdf&#39;</span>)</a>
+<a class="sourceLine" id="cb3-4" title="4">commands.getoutput(<span class="st">&#39;open hoge.pdf&#39;</span>)</a></code></pre></div>
+<h2 id="描画データの準備">描画データの準備</h2>
+<p>CSV のような構造のデータが与えられていることをイメージする。 これを <code>numpy</code> で読み込んで使用する場合、</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1">data <span class="op">=</span> np.loadtxt(<span class="st">&#39;hoge.dat&#39;</span>, skiprows<span class="op">=</span><span class="dv">1</span>, usecols<span class="op">=</span><span class="bu">range</span>(<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb4-2" title="2">x <span class="op">=</span> data[:,<span class="dv">0</span>]</a>
+<a class="sourceLine" id="cb4-3" title="3">y <span class="op">=</span> data[:,<span class="dv">1</span>]</a></code></pre></div>
+<p>などとする。<code>skiprows</code> オプションを使用することで、好きな数のヘッダー行を読み込み範囲から外せる。 また、<code>pandas</code> を用いる場合には、区切り文字が空白かタブかに応じて、</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1">data <span class="op">=</span> pd.read_csv(<span class="st">&#39;hoge.dat&#39;</span>)</a>
+<a class="sourceLine" id="cb5-2" title="2">data <span class="op">=</span> pd.read_table(<span class="st">&#39;hoge.dat&#39;</span>)</a></code></pre></div>
+<p>とする。このとき、各データ列のヘッダーに変数名を書いておいて、<code>data['name']</code> で参照できる。 このデータを <code>numpy</code> リストにも変換できる。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1">nplist <span class="op">=</span> data.values</a></code></pre></div>
+<h2 id="基本の1d-plot">基本の1D plot</h2>
+<p>x,y 両軸のデータのリストをそれぞれ用意して、<code>plot</code> 関数を用いる。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1">ax.plot(xlist, ylist, color<span class="op">=</span><span class="st">&#39;r&#39;</span>, linestyle<span class="op">=</span><span class="st">&#39;-&#39;</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">&#39;hoge&#39;</span>)</a></code></pre></div>
+<p><code>label</code> オプションの文字列がレジェンドとして使用される。軸の範囲の設定は</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" title="1">ax.set_xbound(xmin, xmax)</a>
+<a class="sourceLine" id="cb8-2" title="2">ax.set_ybound(ymin, ymax)</a></code></pre></div>
+<p>対数目盛りの設定は</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb9-1" title="1">ax.set_xscale(<span class="st">&#39;log&#39;</span>)</a>
+<a class="sourceLine" id="cb9-2" title="2">ax.set_yscale(<span class="st">&#39;log&#39;</span>)</a></code></pre></div>
+<p>のように可能。軸の目盛りの位置と対応する文字列も必要に応じて指定できる。</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb10-1" title="1">ax.set_xticks([<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>])</a>
+<a class="sourceLine" id="cb10-2" title="2">ax.set_yticks([<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>])</a>
+<a class="sourceLine" id="cb10-3" title="3">ax.set_yticklabels([<span class="st">&#39;0.0&#39;</span>, <span class="st">&#39;0.5&#39;</span>, <span class="st">&#39;1.0&#39;</span>, <span class="st">&#39;1.5&#39;</span>])</a></code></pre></div>
+<p>また、補助線を引きたい時は <code>numpy</code> を使って</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb11-1" title="1">x <span class="op">=</span> np.linspace(xmin, xmax, npts)</a>
+<a class="sourceLine" id="cb11-2" title="2">y <span class="op">=</span> np.linspace(ymin, ymax, npts)</a></code></pre></div>
+<p>として作ったリストが使える。</p>
+<h2 id="等高線">等高線</h2>
+<p><code>matplotlib</code> で等高線をプロットするには、2次元リストに格納された x,y,z の値が必要。 もし用意されたデータが 1次元で、ただし秩序を保って並んでいるなら、</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb12-1" title="1">x,y,z <span class="op">=</span> data[:,<span class="dv">1</span>].reshape(ny,nx), data[:,<span class="dv">2</span>].reshape(ny,nx), data[:,<span class="dv">3</span>].reshape(ny,nx)</a></code></pre></div>
+<p>などと、<code>ndarray.reshape</code> 関数が使える。 さて、これを用いて等高線プロットは</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb13-1" title="1">cs <span class="op">=</span> ax.contour(x, y, z, levels<span class="op">=</span>[z1, z2, z3], colors<span class="op">=</span><span class="st">&#39;b&#39;</span>, linestyles<span class="op">=</span><span class="st">&#39;-&#39;</span>)</a>
+<a class="sourceLine" id="cb13-2" title="2">h,_   <span class="op">=</span> cs.legend_elements()</a>
+<a class="sourceLine" id="cb13-3" title="3">ax.legend([h[<span class="dv">0</span>]], [<span class="st">&#39;legend&#39;</span>], fontsize<span class="op">=</span><span class="dv">20</span>)</a></code></pre></div>
+<p>などとして描ける。レジェンドの他に、等高線の途中に対応する z の値を描くことも出来る。</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb14-1" title="1">ax.clabel(cs, fmt<span class="op">=</span><span class="st">&#39;</span><span class="sc">%d</span><span class="st">&#39;</span>)</a>
+<a class="sourceLine" id="cb14-2" title="2">ax.clabel(cs2, fmt<span class="op">=</span><span class="st">&#39;</span><span class="sc">%.1E</span><span class="st">&#39;</span>)</a></code></pre></div>
+<p>別の種類のプロットとして、等高線間の塗りつぶしも可能。そのためには</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" title="1">ax.contourf(x, y, z, levels<span class="op">=</span>[zmin,zmax], alpha<span class="op">=</span><span class="fl">0.3</span>, colors<span class="op">=</span><span class="st">&#39;gray&#39;</span>)</a></code></pre></div>
+<p>などとすると、<code>zmin &lt; z &lt; zmax</code> の領域を指定された色で塗りつぶす。 この時、場合によっては背景色を白以外の色にしておくと便利。</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb16-1" title="1">ax.set_axis_bgcolor(<span class="st">&#39;green&#39;</span>)</a></code></pre></div>
+<h2 id="ヒストグラム">ヒストグラム</h2>
+<p>ヒストグラムの描画のためには、1次元のデータリストを用意して、</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb17-1" title="1">ax.hist(data, bins<span class="op">=</span>nbin, <span class="bu">range</span><span class="op">=</span>(xmin, xmax), color<span class="op">=</span><span class="st">&#39;m&#39;</span>, label<span class="op">=</span><span class="st">&#39;legend&#39;</span>)</a></code></pre></div>
+<p>とする。各データを違うウェイトで足し合わせたい時は、データと同じ順序で同じ数のウェイトを格納したリスト <code>weights</code> を用意し、オプションを追加： <code>weights=weights</code>。</p>
+<h2 id="アスペクト比を変更する">アスペクト比を変更する</h2>
+<p>図の高さを幅の <code>aspect</code> 倍に変更したいとする。以下のようにすれば良い。</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb18-1" title="1">xmin, xmax <span class="op">=</span> ax.get_xlim()</a>
+<a class="sourceLine" id="cb18-2" title="2">ymin, ymax <span class="op">=</span> ax.get_ylim()</a>
+<a class="sourceLine" id="cb18-3" title="3">ax.set_aspect(<span class="bu">abs</span>((xmax<span class="op">-</span>xmin)<span class="op">/</span>(ymax<span class="op">-</span>ymin))<span class="op">*</span>aspect, adjustable<span class="op">=</span><span class="st">&#39;box-forced&#39;</span>)</a></code></pre></div>
+<h2 id="座標軸の描画">座標軸の描画</h2>
+<p>以下のサンプルはどこぞからの拾い物。</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb19-1" title="1"><span class="co"># removing the default axis on all sides:</span></a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="cf">for</span> side <span class="kw">in</span> [<span class="st">&#39;bottom&#39;</span>,<span class="st">&#39;right&#39;</span>,<span class="st">&#39;top&#39;</span>,<span class="st">&#39;left&#39;</span>]:</a>
+<a class="sourceLine" id="cb19-3" title="3">    ax.spines[side].set_visible(<span class="va">False</span>)</a>
+<a class="sourceLine" id="cb19-4" title="4"></a>
+<a class="sourceLine" id="cb19-5" title="5"><span class="co"># removing the axis ticks</span></a>
+<a class="sourceLine" id="cb19-6" title="6">plt.xticks([]) <span class="co"># labels</span></a>
+<a class="sourceLine" id="cb19-7" title="7">plt.yticks([])</a>
+<a class="sourceLine" id="cb19-8" title="8">ax.xaxis.set_ticks_position(<span class="st">&#39;none&#39;</span>) <span class="co"># tick markers</span></a>
+<a class="sourceLine" id="cb19-9" title="9">ax.yaxis.set_ticks_position(<span class="st">&#39;none&#39;</span>)</a>
+<a class="sourceLine" id="cb19-10" title="10"></a>
+<a class="sourceLine" id="cb19-11" title="11"><span class="co"># get width and height of axes object to compute</span></a>
+<a class="sourceLine" id="cb19-12" title="12"><span class="co"># matching arrowhead length and width</span></a>
+<a class="sourceLine" id="cb19-13" title="13">dps <span class="op">=</span> fig.dpi_scale_trans.inverted()</a>
+<a class="sourceLine" id="cb19-14" title="14">bbox <span class="op">=</span> ax.get_window_extent().transformed(dps)</a>
+<a class="sourceLine" id="cb19-15" title="15">width, height <span class="op">=</span> bbox.width, bbox.height</a>
+<a class="sourceLine" id="cb19-16" title="16"></a>
+<a class="sourceLine" id="cb19-17" title="17"><span class="co"># manual arrowhead width and length</span></a>
+<a class="sourceLine" id="cb19-18" title="18">hw <span class="op">=</span> <span class="fl">1.</span><span class="op">/</span><span class="fl">20.</span><span class="op">*</span>(ymax<span class="op">-</span>ymin)</a>
+<a class="sourceLine" id="cb19-19" title="19">hl <span class="op">=</span> <span class="fl">1.</span><span class="op">/</span><span class="fl">20.</span><span class="op">*</span>(xmax<span class="op">-</span>xmin)</a>
+<a class="sourceLine" id="cb19-20" title="20">lw <span class="op">=</span> <span class="fl">1.</span> <span class="co"># axis line width</span></a>
+<a class="sourceLine" id="cb19-21" title="21">ohg <span class="op">=</span> <span class="fl">0.3</span> <span class="co"># arrow overhang</span></a>
+<a class="sourceLine" id="cb19-22" title="22"></a>
+<a class="sourceLine" id="cb19-23" title="23"><span class="co"># compute matching arrowhead length and width</span></a>
+<a class="sourceLine" id="cb19-24" title="24">yhw <span class="op">=</span> hw<span class="op">/</span>(ymax<span class="op">-</span>ymin)<span class="op">*</span>(xmax<span class="op">-</span>xmin)<span class="op">*</span> height<span class="op">/</span>width</a>
+<a class="sourceLine" id="cb19-25" title="25">yhl <span class="op">=</span> hl<span class="op">/</span>(xmax<span class="op">-</span>xmin)<span class="op">*</span>(ymax<span class="op">-</span>ymin)<span class="op">*</span> width<span class="op">/</span>height</a>
+<a class="sourceLine" id="cb19-26" title="26"></a>
+<a class="sourceLine" id="cb19-27" title="27"><span class="co"># draw x and y axis</span></a>
+<a class="sourceLine" id="cb19-28" title="28">ax.arrow(xmin, <span class="dv">0</span>, xmax<span class="op">-</span>xmin, <span class="fl">0.</span>, fc<span class="op">=</span><span class="st">&#39;k&#39;</span>, ec<span class="op">=</span><span class="st">&#39;k&#39;</span>, lw <span class="op">=</span> lw,</a>
+<a class="sourceLine" id="cb19-29" title="29">         head_width<span class="op">=</span>hw, head_length<span class="op">=</span>hl, overhang <span class="op">=</span> ohg,</a>
+<a class="sourceLine" id="cb19-30" title="30">         length_includes_head<span class="op">=</span> <span class="va">True</span>, clip_on <span class="op">=</span> <span class="va">False</span>)</a>
+<a class="sourceLine" id="cb19-31" title="31">ax.arrow(<span class="dv">0</span>, ymin, <span class="fl">0.</span>, ymax<span class="op">-</span>ymin, fc<span class="op">=</span><span class="st">&#39;k&#39;</span>, ec<span class="op">=</span><span class="st">&#39;k&#39;</span>, lw <span class="op">=</span> lw,</a>
+<a class="sourceLine" id="cb19-32" title="32">         head_width<span class="op">=</span>yhw, head_length<span class="op">=</span>yhl, overhang <span class="op">=</span> ohg,</a>
+<a class="sourceLine" id="cb19-33" title="33">         length_includes_head<span class="op">=</span> <span class="va">True</span>, clip_on <span class="op">=</span> <span class="va">False</span>)</a></code></pre></div>
+<p>上のコマンドで座標軸を作ったら、そこに <code>ax.plot</code> で関数を描画したり、</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb20-1" title="1">phi <span class="op">=</span> patches.Circle(xy<span class="op">=</span>(x, y), radius<span class="op">=</span>r, fc<span class="op">=</span><span class="st">&#39;green&#39;</span>)</a>
+<a class="sourceLine" id="cb20-2" title="2">ax.add_patch(phi)</a></code></pre></div>
+<p>で円を描いたり出来る。</p>
+<h2 id="図への書き込み">図への書き込み</h2>
+<p>プレゼン用に図に星印などつけたい場合は、</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb21-1" title="1">ax.plot(x, y, <span class="st">&#39;*&#39;</span>, markersize<span class="op">=</span><span class="dv">15</span>, color<span class="op">=</span><span class="st">&#39;black&#39;</span>, clip_on<span class="op">=</span><span class="va">False</span>)</a></code></pre></div>
+<p>とする。<code>clip_on=False</code> を指定すると、点が図の領域からはみ出た場合も、はみ出た部分を含めて全て描画してくれる。 また、矢印付き、なしの文字の書き込みが</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb22-1" title="1">ax.annotate(<span class="st">&#39;Text&#39;</span>, xy<span class="op">=</span>[x, y], xytext<span class="op">=</span>[xtext, ytext], arrowprops<span class="op">=</span><span class="bu">dict</span>(width<span class="op">=</span><span class="dv">4</span>, color<span class="op">=</span><span class="st">&#39;b&#39;</span>), fontsize<span class="op">=</span><span class="dv">30</span>, color<span class="op">=</span><span class="st">&#39;b&#39;</span>)</a>
+<a class="sourceLine" id="cb22-2" title="2">ax.annotate(<span class="st">&#39;Text&#39;</span>, xy<span class="op">=</span>(xtext, ytext), fontsize<span class="op">=</span><span class="dv">20</span>)</a></code></pre></div>
+<p>などで可能。</p>
+<h2 id="図を分割">図を分割</h2>
+<p><code>matplotlib.axes.Axes</code> インスタンスを準備する部分を</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb23-1" title="1">ax1  <span class="op">=</span> fig.add_subplot(N,x,y)</a></code></pre></div>
+<p>などと変更する。ここで <code>N</code> は図の総数で、<code>x</code>, <code>y</code> が <code>ax1</code> の図の座標に対応する。</p>
+<h2 id="漫画風のプロット">漫画風のプロット</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb24-1" title="1">plt.xkcd()</a></code></pre></div>
+</div>
+</div>
+      <!-- Contents above -->
   </div>
 </div>
 

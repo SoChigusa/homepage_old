@@ -224,7 +224,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
         if ((int)strBufferLine.find("</body") != -1)
           body = false;
         if (body)
-          ss << "    " << strBufferLine << std::endl;
+          ss << strBufferLine << std::endl;
         if ((int)strBufferLine.find("<body") != -1)
           body = true;
       }
