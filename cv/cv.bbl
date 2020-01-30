@@ -1,9 +1,14 @@
 
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
 
+\bibitem{Chigusa:2020gfs}
+S.~Chigusa, T.~Moroi and K.~Nakayama, \emph{{Detecting Light Boson Dark Matter
+  through Conversion into Magnon}},
+  \href{https://arxiv.org/abs/2001.10666}{{\ttfamily 2001.10666}}.
+
 \bibitem{Chigusa:2019zae}
 S.~Chigusa, Y.~Hosomi, T.~Moroi and M.~Saito, \emph{{Determining Wino Lifetime
-  in Supersymmetric Model at Future 100 TeV pp Colliders}},
+  in Supersymmetric Model at Future 100 TeV $pp$ Colliders}},
   \href{https://arxiv.org/abs/1912.00592}{{\ttfamily 1912.00592}}.
 
 \bibitem{Chigusa:2019rra}
@@ -13,7 +18,9 @@ S.~Chigusa, T.~Moroi and K.~Nakayama, \emph{{Signals of Axion Like Dark Matter
 
 \bibitem{Chigusa:2019wxb}
 S.~Chigusa, T.~Moroi and Y.~Shoji, \emph{{Bounce Configuration from Gradient
-  Flow}},  \href{https://arxiv.org/abs/1906.10829}{{\ttfamily 1906.10829}}.
+  Flow}}, \href{https://doi.org/10.1016/j.physletb.2019.135115}{\emph{Phys.
+  Lett.} {\bfseries B800} (2020) 135115},
+  [\href{https://arxiv.org/abs/1906.10829}{{\ttfamily 1906.10829}}].
 
 \bibitem{Chigusa:2019jrz}
 S.~Chigusa, S.~Kasuya and K.~Nakayama, \emph{{Novel Flavon Stabilization with

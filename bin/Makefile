@@ -1,5 +1,5 @@
-CXX := icpc
-CXXFLAGS := -g -Wall -Ofast -std=c++11
+CXX := g++
+CXXFLAGS := -g -Wall -O3 -std=c++11
 INSPIREINCLUDE := -I ../../Inspire2BibTeX/
 
 all: html.o reslog tipslog gitupdate diarylog
