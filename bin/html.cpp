@@ -118,11 +118,19 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
           ss << "      " << val[3] << "<br>" << std::endl;    // authors
           ss << "      <i>" << val[2] << "</i>" << std::endl; // title
           ss << "    </p>" << std::endl;
-        } else if (val[1] == "Seminar" || val[1] == "IO" || val[1] == "IP" ||
-                   val[1] == "DO" || val[1] == "DP") {
+        } else if (val[1] == "Seminar") {
           ss << "    <span class=\"date\">" << val[3] << "</span>"
              << std::endl; // date
-          ss << "    <h1>Talk: " << val[4] << "</h1>" << std::endl;
+          ss << "    <h1>Seminar: " << val[4] << "</h1>" << std::endl;
+          ss << "    <p>" << std::endl;
+          ss << "      <i>" << val[2] << "</i>" << std::endl;
+          ss << "    </p>" << std::endl;
+        } else if (val[1] == "IO" || val[1] == "IP" || val[1] == "DO" ||
+                   val[1] == "DP") {
+          ss << "    <span class=\"date\">" << val[3] << "</span>"
+             << std::endl; // date
+          ss << "    <h1>Talk: " << val[4] << " @ " << val[5] << "</h1>"
+             << std::endl;
           ss << "    <p>" << std::endl;
           ss << "      <i>" << val[2] << "</i>" << std::endl;
           ss << "    </p>" << std::endl;
@@ -175,16 +183,29 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
       }
     }
 
+    // add seminar info
+    if ((int)strBufferLine.find("<!-- Seminars below -->") != -1) {
+      std::ifstream iflog("../research/research.log");
+      while (std::getline(iflog, strBufferLine)) {
+        split(val, strBufferLine, ';');
+        if (val[1] == "Seminar") {
+          ss << "    <li><i>" << val[2] << ",</i><br>" << std::endl; // title
+          ss << "      " << val[4] << " (" << val[3] << ").</li>"
+             << std::endl; // location and date
+        }
+      }
+    }
+
     // add talk info
     if ((int)strBufferLine.find("<!-- Talks below -->") != -1) {
       std::ifstream iflog("../research/research.log");
       while (std::getline(iflog, strBufferLine)) {
         split(val, strBufferLine, ';');
-        if (val[1] == "Seminar" || val[1] == "IO" || val[1] == "IP" ||
-            val[1] == "DO" || val[1] == "DP" || val[1] == "SS") {
+        if (val[1] == "IO" || val[1] == "IP" || val[1] == "DO" ||
+            val[1] == "DP" || val[1] == "SS") {
           ss << "    <li><i>" << val[2] << ",</i><br>" << std::endl; // title
-          ss << "      " << val[4] << " (" << val[3] << ").</li>"
-             << std::endl; // location and date
+          ss << "      " << val[4] << " @ " << val[5] << " (" << val[3]
+             << ").</li>" << std::endl; // conference name, location and date
         }
       }
     }
@@ -280,9 +301,14 @@ void HTML::update_cv() {
           auto pos = val[4].find(" @");
           if (pos != std::string::npos)
             val[4].replace(pos, 2, ",");
-          ss << " \\item ``" << val[2]       // title
-             << "'', " << val[3]             // date
-             << ", " << val[4] << std::endl; // conference
+          ss << " \\item ``" << val[2] // title
+             << "'', " << val[3]       // date
+             << ", ";
+          if (type == "Seminar")
+            ss << "Seminar, " << val[4] << std::endl; // [location]
+          else
+            ss << val[4] << ", " << val[5]
+               << std::endl; // [conference], [location]
         }
       }
     }

@@ -13,8 +13,8 @@
 #include <sstream>
 #include <string>
 
-#define _UPDATE_BIBLIO
-#define _UPLOAD_CHANGE
+// #define _UPDATE_BIBLIO
+// #define _UPLOAD_CHANGE
 
 void errorMessage() {
   std::cout << "Accepts 1 option:" << std::endl;
@@ -23,7 +23,7 @@ void errorMessage() {
 }
 
 void add_log(std::string arg_type, std::string arg_title, std::string arg1,
-             std::string arg2) {
+             std::string arg2, std::string arg3) {
   std::string strType;
   if (arg_type == "s")
     strType = "Seminar";
@@ -45,8 +45,12 @@ void add_log(std::string arg_type, std::string arg_title, std::string arg1,
   ss << now << ";" << strType << ";" << arg_title << ";" << arg1;
   if (arg_type == "a")
     ss << std::endl;
-  else
-    ss << ";" << arg2 << std::endl;
+  else {
+    ss << ";" << arg2;
+    if (arg_type != "s")
+      ss << ";" << arg3;
+    ss << std::endl;
+  }
   while (std::getline(ifs, strBufferLine)) {
     ss << strBufferLine << std::endl;
   }
@@ -212,18 +216,27 @@ int main(int argc, char **argv) {
 
   std::string arg_opt(argv[1]);
   if (arg_opt == "add") {
-    std::string arg_type, arg_title, arg1, arg2;
+    std::string arg_type, arg_title, arg1, arg2, arg3;
     std::cout << "Research type: [s]eminar, [io]=international oral, "
                  "[ip]=poster, [do]=domestic, [dp], or [a]ward: ";
     std::getline(std::cin, arg_type);
-    if (arg_type == "s" || arg_type == "io" || arg_type == "ip" ||
-        arg_type == "do" || arg_type == "dp") {
+    if (arg_type == "s") {
+      std::cout << "Seminar title: ";
+      std::getline(std::cin, arg_title);
+      std::cout << "Date: ";
+      std::getline(std::cin, arg1);
+      std::cout << "Institute name: ";
+      std::getline(std::cin, arg2);
+    } else if (arg_type == "io" || arg_type == "ip" || arg_type == "do" ||
+               arg_type == "dp") {
       std::cout << "Talk title: ";
       std::getline(std::cin, arg_title);
       std::cout << "Date: ";
       std::getline(std::cin, arg1);
-      std::cout << "Conference and Location: ";
+      std::cout << "Conference name: ";
       std::getline(std::cin, arg2);
+      std::cout << "Location: ";
+      std::getline(std::cin, arg3);
     } else if (arg_type == "a") {
       std::cout << "Award explanation: ";
       std::getline(std::cin, arg_title);
@@ -233,7 +246,7 @@ int main(int argc, char **argv) {
       std::cout << "Unexpected research type" << std::endl;
       return -1;
     }
-    add_log(arg_type, arg_title, arg1, arg2);
+    add_log(arg_type, arg_title, arg1, arg2, arg3);
     update_log("add " + arg_title);
   } else if (arg_opt == "update") {
     update_log("update");
