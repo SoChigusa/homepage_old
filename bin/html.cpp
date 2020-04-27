@@ -305,7 +305,7 @@ void HTML::update_cv() {
              << "'', " << val[3]       // date
              << ", ";
           if (type == "Seminar")
-            ss << "Seminar, " << val[4] << std::endl; // [location]
+            ss << val[4] << std::endl; // [location]
           else
             ss << val[4] << ", " << val[5]
                << std::endl; // [conference], [location]
