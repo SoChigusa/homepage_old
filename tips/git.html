@@ -263,6 +263,7 @@ box-shadow: 0 1px white;
     <nav>
       <h3>Tips Menu</h3>
       <ul>
+      <li><a href="MW50.html">MW50</a></li>
       <li><a href="inkscape.html">inkscape</a></li>
       <li><a href="git.html">git</a></li>
       <li><a href="madgraph.html">madgraph</a></li>
@@ -290,10 +291,6 @@ box-shadow: 0 1px white;
 
     <div class="box" id="gfm">
       <!-- Contents below -->
-<div id="content">
-<div class="article">
-<div id="content">
-<div class="article">
       <div class="mume markdown-preview  ">
       <h1 class="mume-header" id="%E3%81%B2%E3%81%A8%E3%82%8A%E3%81%A7%E3%82%82git-%E3%81%BF%E3%82%93%E3%81%AA%E3%81%A7%E3%82%82git">&#x3072;&#x3068;&#x308A;&#x3067;&#x3082;git&#x3001;&#x307F;&#x3093;&#x306A;&#x3067;&#x3082;git</h1>
 
@@ -304,18 +301,18 @@ box-shadow: 0 1px white;
 
 <p>git&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x591A;&#x4EBA;&#x6570;&#x30D7;&#x30ED;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3067;&#x539F;&#x7A3F;&#x3092;&#x540C;&#x6642;&#x7DE8;&#x96C6;&#x3059;&#x308B;&#x969B;&#x306A;&#x3069;&#x3001;&#x539F;&#x7A3F;&#x306E;&#x5909;&#x66F4;&#x70B9;&#x3092;&#x9014;&#x4E2D;&#x3067;&#x5408;&#x4F53;&#x3055;&#x305B;&#x308B;&#x305F;&#x3081;&#x306B;merge&#x304C;&#x6D3B;&#x7528;&#x3067;&#x304D;&#x308B;&#x3002;</p>
 <p>&#x7C21;&#x5358;&#x306E;&#x305F;&#x3081;&#x3001;&#x6700;&#x521D;&#x306B;&#x30ED;&#x30FC;&#x30AB;&#x30EB;master&#x306E;&#x5909;&#x66F4;&#x70B9;&#x306F;&#x5168;&#x3066;push&#x3057;&#x3066;&#x304A;&#x304F;&#x3002;</p>
-<pre data-role="codeBlock" data-info class="language-"><code>git push origin master
-</code></pre><p>&#x6B21;&#x306B;master&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x540C;&#x6642;&#x7DE8;&#x96C6;&#x304C;&#x59CB;&#x307E;&#x3063;&#x305F;&#x6642;&#x671F;&#x306B;&#x623B;&#x3059;&#x3002;</p>
-<pre data-role="codeBlock" data-info class="language-"><code>git reset --hard (commit)
-</code></pre><p>&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3092;&#x5207;&#x3063;&#x3066;&#x3001;&#x65B0;&#x3057;&#x3044;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x4E0A;&#x306B;&#x5225;&#x306E;&#x4EBA;&#x304C;&#x7DE8;&#x96C6;&#x3057;&#x305F;&#x539F;&#x7A3F;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x3002;</p>
-<pre data-role="codeBlock" data-info class="language-"><code>git branch (branch name)
-git checkout (branch name)
-cp (new draft) (old draft)
-</code></pre><p>master&#x3082;&#x6700;&#x65B0;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x623B;&#x3057;&#x3001;&#x5909;&#x66F4;&#x70B9;&#x3092;merge&#x3002;</p>
-<pre data-role="codeBlock" data-info class="language-"><code>git checkout master
-git pull origin master
-git merge (branch name)
-</code></pre>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">git</span> push origin master
+</pre><p>&#x6B21;&#x306B;master&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x540C;&#x6642;&#x7DE8;&#x96C6;&#x304C;&#x59CB;&#x307E;&#x3063;&#x305F;&#x6642;&#x671F;&#x306B;&#x623B;&#x3059;&#x3002;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">git</span> reset --hard <span class="token punctuation">(</span>commit<span class="token punctuation">)</span>
+</pre><p>&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3092;&#x5207;&#x3063;&#x3066;&#x3001;&#x65B0;&#x3057;&#x3044;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x4E0A;&#x306B;&#x5225;&#x306E;&#x4EBA;&#x304C;&#x7DE8;&#x96C6;&#x3057;&#x305F;&#x539F;&#x7A3F;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x3002;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">git</span> branch <span class="token punctuation">(</span>branch name<span class="token punctuation">)</span>
+<span class="token function">git</span> checkout <span class="token punctuation">(</span>branch name<span class="token punctuation">)</span>
+<span class="token function">cp</span> <span class="token punctuation">(</span>new draft<span class="token punctuation">)</span> <span class="token punctuation">(</span>old draft<span class="token punctuation">)</span>
+</pre><p>master&#x3082;&#x6700;&#x65B0;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x623B;&#x3057;&#x3001;&#x5909;&#x66F4;&#x70B9;&#x3092;merge&#x3002;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">git</span> checkout master
+<span class="token function">git</span> pull origin master
+<span class="token function">git</span> merge <span class="token punctuation">(</span>branch name<span class="token punctuation">)</span>
+</pre>
       </div>
       
       
@@ -328,10 +325,6 @@ git merge (branch name)
     
     
   
-</div>
-</div>
-</div>
-</div>
       <!-- Contents above -->
   </div>
 </div>
