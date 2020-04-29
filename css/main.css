@@ -80,6 +80,36 @@ header p{
     float: left;
 }
 
+/*****ACD MENU*****/
+.acd-check{
+  display: none;
+}
+.acd-label{
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative;
+  font-size: 24px;
+  color: black;
+  display: block;
+  border-bottom: 1px solid #cccccc;
+}
+.acd-content{
+  height: 0;
+  opacity: 0;
+  padding: 0 10px;
+  transition: .5s;
+  visibility: hidden;
+}
+.acd-check:checked + .acd-label + .acd-content{
+  margin: 15px 0;
+  opacity: 1;
+  visibility: visible;
+  height: auto;
+}
+
 /*****BRANDING*****/
 #branding{
     display: block;
@@ -304,7 +334,7 @@ footer small{
     margin-left: 3px;
     padding-left: 3px;
 }
-    
+
 #gfm{
     width: 50%;
     margin-top: 0px;
@@ -327,7 +357,7 @@ footer small{
     content: "";
     display: table;
 }
- 
+
 .container:after {
     clear: both;
 }

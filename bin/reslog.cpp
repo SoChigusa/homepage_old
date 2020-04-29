@@ -14,7 +14,7 @@
 #include <string>
 
 // #define _UPDATE_BIBLIO
-#define _UPLOAD_CHANGE
+// #define _UPLOAD_CHANGE
 
 void errorMessage() {
   std::cout << "Accepts 1 option:" << std::endl;
