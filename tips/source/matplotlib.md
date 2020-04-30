@@ -34,7 +34,7 @@ commands.getoutput('open hoge.pdf')
 ```
 
 LaTeX表記は`r'$...$'`の形でもともと使用できるが、デフォルトのフォントが気に入らない。
-[このページ]()を参考にフォントを変更するのがおすすめ。
+[このページ](http://satemochi.blog.fc2.com/blog-entry-56.html)を参考にフォントを変更するのがおすすめ。
 
 ``` python
 from matplotlib import rc
