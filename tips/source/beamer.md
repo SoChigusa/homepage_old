@@ -37,3 +37,16 @@
 ``` tex
 \setstretch{0.9}
 ```
+
+## Minipage
+
+横にいくつかブロック分けして上揃えしたい場合、全ての`minipage`コマンドを以下の形で書く。
+
+``` tex
+\begin{minipage}[t]{0.48\hsize}
+  \leavevmode%
+  \vskip 0pt%
+  \vskip -\baselineskip%
+  ...
+\end{minipage}
+```
