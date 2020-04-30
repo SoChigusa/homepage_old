@@ -169,14 +169,12 @@ ax.set_xscale('log')
 
 のような感じ。
 
-## アスペクト比を変更する ##
+## 図のサイズ、アスペクト比を任意に変更する ##
 
-図の高さを幅の `aspect` 倍に変更したいとする。以下のようにすれば良い。
+以下の修正で十分。
 
 ``` python
-xmin, xmax = ax.get_xlim()
-ymin, ymax = ax.get_ylim()
-ax.set_aspect(abs((xmax-xmin)/(ymax-ymin))*aspect, adjustable='box-forced')
+fig = plt.figure(figsize=[4,2.25])
 ```
 
 ## 座標軸の描画 ##
@@ -255,6 +253,17 @@ ax1  = fig.add_subplot(N,x,y)
 ```
 
 などと変更する。ここで `N` は図の総数で、`x`, `y` が `ax1` の図の座標に対応する。
+
+## Legendの設定色々
+
+以下テンプレート。
+
+``` python
+ax.legend(loc='upper right', fontsize=15, borderaxespad=0).get_frame().set_alpha(1)
+```
+
+オプション`borderaxespad`でlegendと図の外周との余白を調整できる。
+また、python3系ではデフォルトでlegendが半透明なので、不透明に戻したいときは`.get_frame().set_alpha(1)`コマンドが役立つ。
 
 ## 漫画風のプロット ##
 
