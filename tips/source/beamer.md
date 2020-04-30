@@ -44,9 +44,9 @@
 
 ``` tex
 \begin{minipage}[t]{0.48\hsize}
-  \leavevmode%
-  \vskip 0pt%
-  \vskip -\baselineskip%
+  \leavevmode
+  \vskip 0pt
+  \vskip -\baselineskip
   ...
 \end{minipage}
 ```
