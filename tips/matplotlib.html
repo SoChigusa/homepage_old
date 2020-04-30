@@ -314,6 +314,14 @@ ax<span class="token punctuation">.</span>tick_params<span class="token punctuat
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>savefig<span class="token punctuation">(</span><span class="token string">&apos;hoge.pdf&apos;</span><span class="token punctuation">)</span>
 commands<span class="token punctuation">.</span>getoutput<span class="token punctuation">(</span><span class="token string">&apos;open hoge.pdf&apos;</span><span class="token punctuation">)</span>
+</pre><p>LaTeX&#x8868;&#x8A18;&#x306F;<code>r&apos;$...$&apos;</code>&#x306E;&#x5F62;&#x3067;&#x3082;&#x3068;&#x3082;&#x3068;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#x304C;&#x3001;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x306E;&#x30D5;&#x30A9;&#x30F3;&#x30C8;&#x304C;&#x6C17;&#x306B;&#x5165;&#x3089;&#x306A;&#x3044;&#x3002;
+<a href>&#x3053;&#x306E;&#x30DA;&#x30FC;&#x30B8;</a>&#x3092;&#x53C2;&#x8003;&#x306B;&#x30D5;&#x30A9;&#x30F3;&#x30C8;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#x306E;&#x304C;&#x304A;&#x3059;&#x3059;&#x3081;&#x3002;</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword">from</span> matplotlib <span class="token keyword">import</span> rc
+
+rc<span class="token punctuation">(</span><span class="token string">&apos;mathtext&apos;</span><span class="token punctuation">,</span> <span class="token operator">**</span><span class="token punctuation">{</span><span class="token string">&apos;rm&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;serif&apos;</span><span class="token punctuation">,</span>
+    <span class="token string">&apos;it&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;serif:itelic&apos;</span><span class="token punctuation">,</span>
+    <span class="token string">&apos;bf&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;serif:bold&apos;</span><span class="token punctuation">,</span>
+    <span class="token string">&apos;fontset&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;cm&apos;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 </pre><h2 class="mume-header" id="%E6%8F%8F%E7%94%BB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%BA%96%E5%82%99">&#x63CF;&#x753B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x6E96;&#x5099;</h2>
 
 <p>CSV &#x306E;&#x3088;&#x3046;&#x306A;&#x69CB;&#x9020;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x3092;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x3059;&#x308B;&#x3002;

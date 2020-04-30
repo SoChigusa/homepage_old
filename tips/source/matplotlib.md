@@ -33,6 +33,18 @@ plt.savefig('hoge.pdf')
 commands.getoutput('open hoge.pdf')
 ```
 
+LaTeX表記は`r'$...$'`の形でもともと使用できるが、デフォルトのフォントが気に入らない。
+[このページ]()を参考にフォントを変更するのがおすすめ。
+
+``` python
+from matplotlib import rc
+
+rc('mathtext', **{'rm': 'serif',
+    'it': 'serif:itelic',
+    'bf': 'serif:bold',
+    'fontset': 'cm'})
+```
+
 ## 描画データの準備 ##
 
 CSV のような構造のデータが与えられていることをイメージする。
