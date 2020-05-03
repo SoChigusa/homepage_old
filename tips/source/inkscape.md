@@ -1,8 +1,8 @@
 
-# Inkscape w/ LaTeX
+# Inkscapeでお絵かき
 
 Inkscape はフリーのドローソフトの最高峰である（自分比）。
-知名度の高さから多くのextensionも用意されており、その中の一つである`EqTeXSVG`を用いることで、LaTeX形式で入力した数式を図に書き込める。
+知名度の高さから多くのextensionも用意されており、その中の一つである`EqTeXSVG`を用いることで、LaTeX形式で入力した数式を図に書き込むこともできる。
 
 ## インストール for Mac
 
@@ -30,3 +30,8 @@ cp eqtexsvg/eqtexsvg.* ~/.config/inkscape/extensions/
 
 extensionフォルダの場所が非自明だったが、自分の環境では[このページ](https://tesselace.com/2017/10/31/inkscape-on-mac-os-x/)の情報と同じだった。
 動かしたいときは、Inkscapeのメニューの`Extensions>Render>LaTeX formula`から。
+
+## 数式のプロット
+
+まず、数式をプロットしたい矩形領域を書いておく。
+領域を選択して、メニューの`Extensions>Render>Function Plotter...`を開いて色々設定できる。
