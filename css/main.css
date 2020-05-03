@@ -300,7 +300,7 @@ footer small{
 
 /*****TIPS*****/
 #tipsmenu{
-    width: 200px;
+    width: 240px;
     margin-left: calc(25% - 140px);
     margin-right: 20px;
 }
@@ -308,7 +308,7 @@ footer small{
 #tipsmenu nav{
     font-size:80%;
     color:#313131;
-    width: 160px;
+    width: 200px;
     padding-top: 10px;
     padding-bottom: 10px;
     margin-top: 20px;
@@ -318,6 +318,7 @@ footer small{
     border:1px solid #313131;
     border-radius: 5px;
     float: left;
+    overflow-x: scroll;
 }
 
 #tipsmenu h3{

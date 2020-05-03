@@ -12,7 +12,7 @@
 #include <sstream>
 #include <string>
 
-#define _ENABLE_GIT_UPDATE
+// #define _ENABLE_GIT_UPDATE
 
 void errorMessage() {
   std::cout << "2-Ways of use:" << std::endl;
