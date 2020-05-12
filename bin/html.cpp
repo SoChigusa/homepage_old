@@ -9,6 +9,8 @@
 
 #include "html.h"
 
+#define _NUM_RECENT 3
+
 void HTML::split(std::vector<std::string> &v, const std::string &buf,
                  char sep) {
   v.resize(0);
@@ -167,18 +169,55 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
       ss << "</article>" << std::endl;
     }
 
-    // add paper info
-    if ((int)strBufferLine.find("<!-- Papers below -->") != -1) {
+    // add recent paper info
+    if ((int)strBufferLine.find("<!-- Recent papers below -->") != -1) {
       std::ifstream iflog("../research/paper.log");
+      int n = 0;
       while (std::getline(iflog, strBufferLine)) {
         split(val, strBufferLine, ';');
-        if (val[1] == "Paper") {
+        if (val[1] == "Paper" && n < _NUM_RECENT) {
           ss << "    <li>" << val[3] << "<br>" << std::endl;       // authors
           ss << "      <i>" << val[2] << ",</i><br>" << std::endl; // title
           ss << "      <a href=\"https://arxiv.org/abs/" << val[4]
              << "\" target=_blank>[arXiv:" << val[4] << "]</a>."
              << std::endl; // arXiv #
           ss << "    </li>" << std::endl;
+          n++;
+        }
+      }
+    }
+
+    // add paper info
+    if ((int)strBufferLine.find("<!-- Papers below -->") != -1) {
+      std::ifstream iflog("../research/paper.log");
+      int n = 0;
+      while (std::getline(iflog, strBufferLine)) {
+        split(val, strBufferLine, ';');
+        if (val[1] == "Paper") {
+          if (n >= _NUM_RECENT) {
+            ss << "    <li>" << val[3] << "<br>" << std::endl;       // authors
+            ss << "      <i>" << val[2] << ",</i><br>" << std::endl; // title
+            ss << "      <a href=\"https://arxiv.org/abs/" << val[4]
+               << "\" target=_blank>[arXiv:" << val[4] << "]</a>."
+               << std::endl; // arXiv #
+            ss << "    </li>" << std::endl;
+          }
+          n++;
+        }
+      }
+    }
+
+    // add recent seminar info
+    if ((int)strBufferLine.find("<!-- Recent seminars below -->") != -1) {
+      std::ifstream iflog("../research/research.log");
+      int n = 0;
+      while (std::getline(iflog, strBufferLine)) {
+        split(val, strBufferLine, ';');
+        if (val[1] == "Seminar" && n < _NUM_RECENT) {
+          ss << "    <li><i>" << val[2] << ",</i><br>" << std::endl; // title
+          ss << "      " << val[4] << " (" << val[3] << ").</li>"
+             << std::endl; // location and date
+          n++;
         }
       }
     }
@@ -186,12 +225,33 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
     // add seminar info
     if ((int)strBufferLine.find("<!-- Seminars below -->") != -1) {
       std::ifstream iflog("../research/research.log");
+      int n = 0;
       while (std::getline(iflog, strBufferLine)) {
         split(val, strBufferLine, ';');
         if (val[1] == "Seminar") {
+          if (n >= _NUM_RECENT) {
+            ss << "    <li><i>" << val[2] << ",</i><br>" << std::endl; // title
+            ss << "      " << val[4] << " (" << val[3] << ").</li>"
+               << std::endl; // location and date
+          }
+          n++;
+        }
+      }
+    }
+
+    // add recent talk info
+    if ((int)strBufferLine.find("<!-- Recent talks below -->") != -1) {
+      std::ifstream iflog("../research/research.log");
+      int n = 0;
+      while (std::getline(iflog, strBufferLine)) {
+        split(val, strBufferLine, ';');
+        if ((val[1] == "IO" || val[1] == "IP" || val[1] == "DO" ||
+             val[1] == "DP" || val[1] == "SS") &&
+            n < _NUM_RECENT) {
           ss << "    <li><i>" << val[2] << ",</i><br>" << std::endl; // title
-          ss << "      " << val[4] << " (" << val[3] << ").</li>"
-             << std::endl; // location and date
+          ss << "      " << val[4] << " @ " << val[5] << " (" << val[3]
+             << ").</li>" << std::endl; // conference name, location and date
+          n++;
         }
       }
     }
@@ -199,13 +259,17 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
     // add talk info
     if ((int)strBufferLine.find("<!-- Talks below -->") != -1) {
       std::ifstream iflog("../research/research.log");
+      int n = 0;
       while (std::getline(iflog, strBufferLine)) {
         split(val, strBufferLine, ';');
         if (val[1] == "IO" || val[1] == "IP" || val[1] == "DO" ||
             val[1] == "DP" || val[1] == "SS") {
-          ss << "    <li><i>" << val[2] << ",</i><br>" << std::endl; // title
-          ss << "      " << val[4] << " @ " << val[5] << " (" << val[3]
-             << ").</li>" << std::endl; // conference name, location and date
+          if (n >= _NUM_RECENT) {
+            ss << "    <li><i>" << val[2] << ",</i><br>" << std::endl; // title
+            ss << "      " << val[4] << " @ " << val[5] << " (" << val[3]
+               << ").</li>" << std::endl; // conference name, location and date
+          }
+          n++;
         }
       }
     }
