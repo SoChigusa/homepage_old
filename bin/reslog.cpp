@@ -14,7 +14,7 @@
 #include <string>
 
 // #define _UPDATE_BIBLIO
-#define _UPLOAD_CHANGE
+// #define _UPLOAD_CHANGE
 
 void errorMessage() {
   std::cout << "Accepts 1 option:" << std::endl;
@@ -188,7 +188,7 @@ void update_log(const std::string &comment) {
   system("cp ../index.html ../../sochigusa.bitbucket.org/index.html");
   system("cp ../research/index.html "
          "../../sochigusa.bitbucket.org/research/index.html");
-  system("cd ../cv/ && latex cv && bibtex cv && latex cv && latex cv && "
+  system("cd ../cv/ && uplatex cv && bibtex cv && uplatex cv && uplatex cv && "
          "dvipdfmx cv");
   system("cp ../cv/cv.pdf ../../sochigusa.bitbucket.org/cv/cv.pdf");
 

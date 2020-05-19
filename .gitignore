@@ -12,3 +12,5 @@ cv.log
 gitupdate
 diarylog
 *.jpg
+cv.fdb_latexmk
+cv.fls
