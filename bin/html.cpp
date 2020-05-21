@@ -33,6 +33,13 @@ void HTML::split(std::vector<std::string> &v, const std::string &arg_buf,
   split(v, buf, '|');
 }
 
+std::string HTML::getYYYYMM(time_t t) {
+  struct tm *localTime = std::localtime(&t);
+  int yyyy = localTime->tm_year + 1900;
+  int mm = localTime->tm_mon + 1;
+  return std::to_string(yyyy) + "/" + std::to_string(mm);
+}
+
 std::string HTML::getYYYYMMDD(time_t t) {
   struct tm *localTime = std::localtime(&t);
   int yyyy = localTime->tm_year + 1900;
@@ -112,7 +119,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
 
         if (val[1] == "Paper") {
           ss << "    <span class=\"date\">" // date
-             << getYYYYMMDD((time_t)stol(val[0])) << "</span>" << std::endl;
+             << getYYYYMM((time_t)stol(val[0])) << "</span>" << std::endl;
           ss << "    <h1><a href=\"https://arxiv.org/abs/" << val[4] << "\" "
              << "target=_blank>arXiv:" << val[4] << "</a></h1>"
              << std::endl; // arXiv #
