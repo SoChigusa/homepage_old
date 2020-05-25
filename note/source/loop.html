@@ -1,0 +1,196 @@
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>(One-)loop calculation</title>
+<!-- <link rel="stylesheet" href="https://latex.now.sh/style.css"> -->
+<link href="../../css/latex.css" rel="stylesheet">
+<link href="../../css/normalize.css" rel="stylesheet">
+<link href="../../css/main.css" rel="stylesheet">
+<script>
+MathJax = {
+  chtml: {
+    matchFontHeight: false
+  },
+  tex: {
+    inlineMath: [['$', '$']]
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+</head>
+<body for="html-export">
+
+  <!-- insertion below : menu.html -->
+<header>
+    <a href="/"><h1>So Chigusa</h1></a>
+</header>
+<nav id="global-nav">
+  <ul>
+    <a href="/cv/cv.pdf"><li>CV</li></a>
+    <a href="/research/"><li>Research</li></a>
+    <a href="/tips/"><li>Tips</li></a>
+    <a href="/git/"><li>Git</li></a>
+  </ul>
+</nav>
+  <!-- insertion above : menu.html -->
+
+  <div class="container">
+    <div class="box" id="tipsmenu">
+      <!-- Tips menu below -->
+    <nav>
+      <h3>Note Menu</h3>
+      <ul>
+      <li>(One-)loop calculation</li>
+      </ul>
+    </nav>
+      <!-- Tips menu above -->
+    </div>
+
+    <div class="box">
+      <!-- Contents below -->
+
+<div class="latex">
+  <h1>(One-)loop calculation</h1>
+  <p class="author">So Chigusa <br> May 2020</p>
+  <div class="abstract">
+    <h5>Abstract</h5>
+    <p>
+      Do not believe.
+    </p>
+  </div>
+
+  <nav role="navigation" class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#Feynman-Parameters">Feynman Parameters</a> </li>
+      <li><a href="#Dirac-Algebra">Dirac Algebra</a></li>
+      <li><a href="#Loop-Integral-Formulas">Loop Integral Formulas</a></li>
+      <li><a href="#PaVe-Functions">PaVe Functions</a></li>
+      <ol>
+        <li><a href="#1-point-function">1-point function</a></li>
+        <li><a href="#2-point-functions">2-point functions</a></li>
+        <li><a href="#3-point-functions">3-point functions</a></li>
+      </ol>
+    </ol>
+  </nav>
+
+  <main>
+    <h2 id="Feynman-Parameters">Feynman Parameters</h2>
+    \begin{align}
+      \frac{1}{AB} &= \int_0^1 dxdy\ \delta(1-x-y) \frac{1}{[xA + yB]^2},\\
+      \frac{1}{AB^n} &= \int_0^1 dxdy\ \delta(1-x-y)
+      \frac{ny^{n-1}}{[xA+yB]^{n-1}}, \\
+      \frac{1}{A_1\cdots A_n} &= \int_0^1 dx_1 \cdots dx_n\
+      \delta\left(1-\sum_{i=1}^{n} dx_i\right)
+      \frac{(n-1)!}{\left[\sum_{i=1}^{n} x_i A_i\right]^n},
+    \end{align}
+
+    <h2 id="Dirac-Algebra">Dirac Algebra</h2>
+    Contraction formula (in the parenthesis, dimensional regularization with $d=4-2\epsilon$):
+    \begin{align}
+      \gamma^\mu \gamma_\mu &= 4\ [d], \\
+      \gamma^\mu \gamma^\nu \gamma_\mu &= -2\gamma^\nu\ [(2-d)\gamma^\nu], \\
+      \gamma^\mu \gamma^\nu \gamma^\rho \gamma_\mu &= 4g^{\nu\rho}\
+      [4g^{\nu\rho} - (4-d) \gamma^\nu \gamma^\rho],\\
+      \gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma \gamma_\mu &=
+      -2\gamma^\sigma \gamma^\rho \gamma^\nu\ [-2\gamma^\sigma \gamma^\rho
+      \gamma^\nu + (4-d) \gamma^\nu \gamma^\rho \gamma^\sigma].
+    \end{align}
+    Trace formula:
+    \begin{align}
+      {\rm Tr}[ \gamma^\mu \gamma^\nu ] &= 4 g^{\mu\nu},\\
+      {\rm Tr}[ \gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma ] &=
+      4(g^{\mu\nu} g^{\rho\sigma} - g^{\mu\rho} g^{\nu\sigma} + g^{\mu\sigma} g^{\nu\rho}),\\
+      {\rm Tr}[ \gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma \gamma_5 ] &=
+      -4i\epsilon^{\mu\nu\rho\sigma}.
+    \end{align}
+
+    <h2 id="Loop-Integral-Formulas">Loop Integral Formulas</h2>
+    By using the convention $d = 4-2\epsilon$, the general formula is
+    \begin{align}
+      \mu^{4-d} \int \frac{d^d k}{(2\pi)^d} \frac{k^{2a}}{(k^2 - \Delta)^b} = i(-1)^{a-b} \frac{\mu^{4-d}}{(4\pi)^{d/2}} \frac{1}{\Delta^{b-a-\frac{d}{2}}} \frac{\Gamma (a+\frac{d}{2}) \Gamma (b-a-\frac{d}{2})}{\Gamma (b) \Gamma (\frac{d}{2})}.
+    \end{align}
+    In particular, convergent (when $d=4$) integrals are
+    \begin{align}
+      \int \frac{d^4 k}{(2\pi)^4} \frac{1}{(k^2 - \Delta)^3} &=
+      \frac{-i}{32\pi^2 \Delta},\\
+      \int \frac{d^4 k}{(2\pi)^4} \frac{k^2}{(k^2 - \Delta)^4} &=
+      \frac{-i}{48\pi^2} \frac{1}{\Delta}, \\
+      \int \frac{d^4 k}{(2\pi)^4} \frac{1}{(k^2 - \Delta)^r} &=
+      i\frac{(-1)^r}{(4\pi)^2} \frac{1}{(r-1)(r-2)} \frac{1}{\Delta^{r-2}},\\
+      \int \frac{d^4 k}{(2\pi)^4} \frac{k^2}{(k^2 - \Delta)^r} &=
+      i\frac{(-1)^{r+1}}{(4\pi)^2} \frac{2}{(r-1)(r-2)(r-3)} \frac{1}{\Delta^{r-3}},
+    \end{align}
+    and divergent integrals are
+    \begin{align}
+      \mu^{4-d} \int \frac{d^d k}{(2\pi)^d} \frac{1}{k^2 - \Delta} &=
+      \frac{-i \mu^{4-d}}{(4\pi)^{d/2}} \frac{1}{\Delta^{1-d/2}} \Gamma\left( \frac{2-d}{2} \right) \simeq \frac{i\Delta}{16\pi^2} \left[ \frac{1}{\epsilon} + 1 + \ln \frac{\tilde{\mu}^2}{\Delta} \right], \\
+      \mu^{4-d} \int \frac{d^d k}{(2\pi)^d} \frac{1}{[k^2 - \Delta]^2} &=
+      \frac{i \mu^{4-d}}{(4\pi)^{d/2}} \frac{1}{\Delta^{2-d/2}} \Gamma\left( \frac{4-d}{2} \right) \simeq \frac{i}{16\pi^2} \left[ \frac{1}{\epsilon} + \ln \frac{\tilde{\mu}^2}{\Delta} \right], \\
+      \mu^{4-d} \int \frac{d^d k}{(2\pi)^d} \frac{k^2}{[k^2 - \Delta]^2} &=
+      -\frac{d}{2} \frac{i \mu^{4-d}}{(4\pi)^{d/2}} \frac{1}{\Delta^{1-d/2}} \Gamma\left( \frac{2-d}{2} \right) \simeq \frac{i\Delta}{16\pi^2} \left[ \frac{2}{\epsilon} + 1 + 2\ln \frac{\tilde{\mu}^2}{\Delta} \right],\\
+      \mu^{4-d} \int \frac{d^d k}{(2\pi)^d} \frac{k^4}{[k^2 - \Delta]^2} &=
+      \frac{d}{2} \left( 1 + \frac{d}{2} \right) \frac{i\mu^{4-d}}{(4\pi)^{d/2}} \frac{1}{\Delta^{-d/2}} \Gamma \left( -\frac{d}{2} \right) \simeq \frac{i\Delta^2}{16\pi^2} \left[  \frac{3}{\epsilon} + 2 + 3\ln \frac{\tilde{\mu}^2}{\Delta} \right],\\
+      \mu^{4-d} \int \frac{d^d k}{(2\pi)^d} \frac{k^2}{[k^2 - \Delta]^3} &=
+      \frac{d}{4} \frac{i \mu^{4-d}}{(4\pi)^{d/2}} \frac{1}{\Delta^{2-d/2}} \Gamma\left( \frac{4-d}{2} \right) \simeq \frac{i}{16\pi^2} \left[ \frac{1}{\epsilon} - \frac{1}{2} + \ln \frac{\tilde{\mu}^2}{\Delta} \right]
+    \end{align}
+    with $\tilde{\mu}^2 \equiv 4\pi e^{-\gamma_E} \mu^2$.  If you want to evaluate them separately,
+    \begin{align}
+      \frac{i \mu^{4-d}}{(4\pi)^{d/2}} \frac{1}{\Delta^{2-d/2}} \Gamma\left( \frac{4-d}{2} \right) &\simeq \frac{1}{16\pi^2} \left[ \frac{1}{\epsilon} + \ln \frac{\tilde{\mu}^2}{\Delta} \right], \\
+      \frac{i \mu^{4-d}}{(4\pi)^{d/2}} \frac{1}{\Delta^{1-d/2}} \Gamma\left( \frac{2-d}{2} \right) &\simeq \frac{\Delta}{16\pi^2} \left[ - \frac{1}{\epsilon} - 1 - \ln \frac{\tilde{\mu}^2}{\Delta} \right],
+    \end{align}
+    will be convenient.
+
+    <h2 id="PaVe-Functions">PaVe Functions</h2>
+    <h3 id="1-point-function">1-point function</h3>
+    The only important integral is
+    \begin{align}
+      A(m) \equiv \frac{\mu^{4-d}}{i\pi^2} \int  d^dk \frac{1}{k^2-m^2} = m^2 \left[ \frac{1}{\epsilon} + 1 + \ln \frac{\tilde{\mu}^2}{m^2} \right].
+    \end{align}
+    <h3 id="2-point-functions">2-point functions</h3>
+    We define
+    \begin{align}
+      B_0; B_\mu; B_{\mu\nu}(p, m_1, m_2) \equiv \frac{\mu^{4-d}}{i\pi^2} \int d^dk \frac{1; k_\mu; k_\mu k_\nu}{(k^2-m_1^2)((k+p)^2-m_2^2)},
+    \end{align}
+    and from their property under Lorentz transformation, we can define another set of functions,
+    \begin{align}
+      B_\mu &\equiv p_\mu B_1,\\
+      B_{\mu\nu} &\equiv p_\mu p_\nu B_{21} + g_{\mu\nu} B_{22}.
+    \end{align}
+    There are three relations among them:
+    \begin{align}
+      p^2 B_1 &= \frac{1}{2}\left[ A(m_1) - A(m_2) + (-p^2 + m_2^2 - m_1^2) B_0 \right],\\
+      p^2 B_{21} + B_{22} &= \frac{1}{2} \left[ A(m_2) + (-p^2 + m_2^2 - m_1^2) B_1 \right],\\
+      p^2 B_{21} + d B_{22} &= A(m_2) + m_1^2 B_0,
+    \end{align}
+    where $\overline{\rm MS}$ scheme is used and $d = 4-2\epsilon$.  In particular,
+    \begin{align}
+      B_0 &= \frac{1}{\epsilon} + 2 + x_1 \log \left( \frac{1-x_1}{-x_1} \right) + x_2 \log \left( \frac{x_2-1}{x_2} \right) + \log \left( \frac{1}{(1-x_1)(x_2-1)} \right) \log \left( \frac{\tilde{\mu^2}}{-p^2} \right),\\
+      B_1 &= -\frac{1}{2\epsilon} - \frac{1}{2} \ln \frac{\tilde{\mu}^2}{-p^2} + \frac{1}{2} \sum_{i} \left\{ \ln (1-x_i) + F(2, x_i) \right\} \textcolor{red}{1-x_i\text{ may be negative!! (should be corrected))}},
+    \end{align}
+    where $x_i$ are the roots of $-p^2 x^2 + (p^2 - m_1^2 + m_2^2) x - m_2^2 = 0$ and $F(n,y)$ are defined as
+    \begin{align}
+      F(n,x)\equiv -x^n \ln \frac{x-1}{x} - x^{n-1} - \frac{1}{2} x^{n-2} - \cdots - \frac{1}{n},
+    \end{align}
+    and with properties
+    \begin{align}
+      \int dx\ x^n \ln (x-x_1) = \frac{1}{n+1} \left\{ \ln (1-x_1) + F(n+1, x_1) \right\}.
+    \end{align}
+  </main>
+
+</div>
+
+      <!-- Contents above -->
+  </div>
+</div>
+
+<!-- insertion below : footer.html -->
+<footer>
+  <small>Copyright(C)2020 S. Chigusa, All Rights Reserved.</small>
+</footer>
+<!-- insertion above : footer.html -->
+
+</body>
+</html>
