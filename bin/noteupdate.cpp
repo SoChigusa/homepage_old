@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
 #ifdef _ENABLE_GIT_UPDATE
   system("git pull origin master");
   system("cd ../../sochigusa.bitbucket.org/ && git pull origin master");
-  system("git add note/" + notename + ".html");
+  system(("git add note/" + notename + ".html").c_str());
   system(("git commit -a -m \"auto commit by gitupdate " + notename + "\" && " +
           "git push origin master")
              .c_str());
