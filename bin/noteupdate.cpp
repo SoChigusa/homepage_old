@@ -9,7 +9,7 @@
 #include "html.h"
 #include <fstream>
 
-// #define _ENABLE_GIT_UPDATE
+#define _ENABLE_GIT_UPDATE
 
 void errorMessage() {
   std::cout << "Usage: noteupdate [notename]" << std::endl;
@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
 #ifdef _ENABLE_GIT_UPDATE
   system("git pull origin master");
   system("cd ../../sochigusa.bitbucket.org/ && git pull origin master");
-  system(("git commit -a -m \"auto commit by gitupdate" + comment + "\" && " +
+  system(("git commit -a -m \"auto commit by gitupdate " + notename + "\" && " +
           "git push origin master")
              .c_str());
   system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit "
