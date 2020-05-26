@@ -41,7 +41,8 @@ int main(int argc, char **argv) {
   system(("git commit -a -m \"auto commit by gitupdate " + notename + "\" && " +
           "git push origin master")
              .c_str());
-  system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit "
+  system(("cd ../../sochigusa.bitbucket.org/ && git add note/" + notename +
+          ".html && git commit -a -m \"auto commit "
           "by noteupdate " +
           notename + "\" && " + "git push origin master")
              .c_str());
