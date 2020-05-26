@@ -2,7 +2,7 @@ CXX := g++
 CXXFLAGS := -g -Wall -O3 -std=c++11
 INSPIREINCLUDE := -I ../../Inspire2BibTeX/
 
-all: html.o reslog tipslog gitupdate diarylog
+all: html.o reslog noteupdate tipslog gitupdate diarylog
 
 html.o:	html.cpp
 	$(CXX) $(CXXFLAGS) -o html.o -c html.cpp
@@ -12,6 +12,12 @@ reslog.o:	reslog.cpp
 
 reslog: reslog.o html.o
 	$(CXX) $(CXXFLAGS) -o reslog reslog.o html.o
+
+noteupdate.o:	noteupdate.cpp
+	$(CXX) $(CXXFLAGS) -o noteupdate.o -c noteupdate.cpp
+
+noteupdate:	noteupdate.o html.o
+	$(CXX) $(CXXFLAGS) -o noteupdate noteupdate.o html.o
 
 tipslog.o:	tipslog.cpp
 	$(CXX) $(CXXFLAGS) -o tipslog.o -c tipslog.cpp

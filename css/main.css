@@ -175,7 +175,7 @@ header p{
     padding-left: 0;
 }
 #global-nav li{
-    width: calc(25% - 2px);
+    width: calc(20% - 2px);
     font-size: 110%;
     letter-spacing: 5px;
     font-weight: 400;
