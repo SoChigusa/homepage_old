@@ -14,12 +14,40 @@
 
 学振PDの書類を書き終える。長期出張中だったが、無事に提出。学振PDの書類の進捗タイムスケールと完成形については、[こちらのリポジトリ](https://bitbucket.org/SoChigusa/jsps_pd/src/master/)を参照のこと。
 
+### 9/7
+
+Postdoc job application のための Research statement 等の書類を書き始める。書類の準備の進捗は[こちらのリポジトリ](https://bitbucket.org/SoChigusa/application2019/)で見られる。Application の時期は基本的に大学や研究機関ごとに異なり、さらに Fellowship 系は時期が早いことが多いので、興味のある中で1番早い公募がどれかを見定めて早い段階で覚悟を決めることが重要。今回は10/4〆切の MIT の Pappalardo Fellowship があったので、そこに照準を定めて動き始めたのがこの時期。
+
 ### 9/30
 
 学振PDの第一次選考結果が発表される。面接免除で無事に合格。4月から3年間の最低限の食いぶちが確保されたことになるので、ひと安心する。このあと学振PDの採用手続きやらで色々と書類を用意することになるが、規定通りの手続きを行っただけなので、以下では省略する。
 
+### 10/4
 
+人生最初の job application。MIT Pappalardo Fellowship に応募する。採用候補者は MIT に呼ばれて面接を受けると書いてあり、本当にアジアを初めとする遠い国々の人間を採用する気があるのかと疑う。
+
+### 10/15
+
+CERN に apply する。CERN は応募時期が早い分 offer を出すのも早く、[Rumor Mill](https://sites.google.com/site/postdocrumor/2020-rumors) を見返すと11/12から徐々に Rumor が出始めている。
+
+### 11月
+
+ここまでポツポツと存在していた公募〆切が、どさっといっぺんに襲いかかってくるようになってくる。Application の年の個々の〆切や apply 履歴、書類の変遷などは[リポジトリ](https://bitbucket.org/SoChigusa/application2019/)の README やコミット履歴を参照していただければと思う。[Academic Jobs Online (AJO)](https://academicjobsonline.org/ajo) を通じて apply する job はある程度機械的に消化できるので基本的に参加し、そうでないものは内容を吟味して出すかどうかを決めた。どこに出す場合も書類の基本形はおおよそ同じだが、割と行きたいと思う場所が cover letter を要求している場合（体感的にはアメリカはどこもそうだった印象）、宛名や内容をちょこちょこ書き換えるような小技は使った。どれほどまでに効果がある小手先のテクニックなのかは知らないが。
+
+### 11/20
+
+MIT Pappalardo Fellowship のお祈りメールが届く。英語では "wish you the very best in your future endeavors" と言うらしい。
+
+### 11/23
+
+CERN のお祈りメールが届く。こっちは "wish you good luck with your future applications" などと、応募者の気持ちに寄り添った文面。
+
+## Postdoc Job Preparation (2019.3 ー 2020.1)
 
 ### 2/6
 
 学振との地獄の交渉
+
+### 4/1
+
+学振PD を使って KEK でポスドクを始める。
