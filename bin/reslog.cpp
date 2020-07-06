@@ -13,7 +13,7 @@
 #include <sstream>
 #include <string>
 
-// #define _UPLOAD_CHANGE
+#define _UPLOAD_CHANGE
 
 void errorMessage() {
   std::cout << "Accepts 1 option:" << std::endl;
