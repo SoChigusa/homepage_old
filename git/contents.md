@@ -10,9 +10,11 @@ The calculation is performed in the natural unit.
 
 ## Inspire2BibTeX
 
-[open in github](https://github.com/SoChigusa/Inspire2BibTeX)
+~~[open in github](https://github.com/SoChigusa/Inspire2BibTeX)~~
 
-Obtain BibTeX information from iNSPIRE web site for all papers of a given author.
+~~Obtain BibTeX information from iNSPIRE web site for all papers of a given author.~~
+
+No need to use this; just click "cite all" button on new iNSPIRE-HEP.
 
 ## Latex2Grammarly
 
