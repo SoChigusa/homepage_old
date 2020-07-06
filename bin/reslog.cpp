@@ -13,8 +13,7 @@
 #include <sstream>
 #include <string>
 
-// #define _UPDATE_BIBLIO
-#define _UPLOAD_CHANGE
+// #define _UPLOAD_CHANGE
 
 void errorMessage() {
   std::cout << "Accepts 1 option:" << std::endl;
@@ -131,13 +130,12 @@ void bibtex_info(std::string &arg_title, std::string &arg1, std::string &arg2,
 }
 
 void update_log(const std::string &comment) {
-#ifdef _UPDATE_BIBLIO
   // update paper log
   if (comment == "update") {
 
     // obtain information from iNSPIRE
-    Inspire my_inspire("S.Chigusa.1", "../cv/cv.bib");
-    my_inspire.get();
+    // Inspire my_inspire("S.Chigusa.1", "../cv/cv.bib");
+    // my_inspire.get();
 
     // generate paper log from bibtex
     std::ifstream ifs("../cv/cv.bib");
@@ -157,7 +155,6 @@ void update_log(const std::string &comment) {
           << "Paper;" << title << ";" << author << ";" << preprint << std::endl;
     }
   }
-#endif
 
   // pick up most recent 6 activities
   std::ifstream ifs_p("../research/paper.log");
