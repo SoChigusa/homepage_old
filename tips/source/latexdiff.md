@@ -18,3 +18,7 @@ latexdiff-vc -e utf8 --git --flatten --force -d diff -r (commit / HEAD) (filenam
 ## Section 変更時のタイプセットエラーを避ける ##
 
 オプション `--exclude-textcmd="section,subsection,subsubsection"` で、section の変更、追加等を無視してくれる。
+
+## 複雑な数式を変更した際のエラーを避ける
+
+オプション `--math-markup=whole` で、変更のある数式は全体を色付けする対応をとる。これでもエラーが避けられない場合もあり、数式の変更点を諦めても良いなら `--math-markup=off` が使える。
