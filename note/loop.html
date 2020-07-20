@@ -149,11 +149,11 @@ MathJax = {
     through with all vector and tensor integrals are decomposed into linear combinations of scalar integrals $A$ and $B_0$.
     Thus, we only need to calculate the expression of the scalar integral $B_0$, which is given by
     \begin{align}
-      B_0 &= \frac{1}{\epsilon} + 2 + x_1 \log \left( \frac{1-x_1}{-x_1} \right) + x_2 \log \left( \frac{x_2-1}{x_2} \right) + \log \left( \frac{1}{(1-x_1)(x_2-1)} \right) \log \left( \frac{\tilde{\mu}^2}{-p^2} \right),
+      B_0 &= \frac{1}{\epsilon} + 2 + x_1 \log \left( \frac{x_1-1}{x_1} \right) + x_2 \log \left( \frac{x_2-1}{x_2} \right) - \log (1-x_1) - \log (x_2-1) + \log \left( \frac{\tilde{\mu}^2}{-p^2} \right),
       <!-- \\
       B_1 &= -\frac{1}{2\epsilon} - \frac{1}{2} \ln \frac{\tilde{\mu}^2}{-p^2} + \frac{1}{2} \sum_{i} \left\{ \ln (1-x_i) + F(2, x_i) \right\} \textcolor{red}{1-x_i\text{ may be negative!! (should be corrected))}}, -->
     \end{align}
-    where $x_i$ are the roots of $-p^2 x^2 + (p^2 - m_1^2 + m_2^2) x - m_2^2 = 0$.
+    where $x_i$ are the roots of $-p^2 x^2 + (p^2 - m_1^2 + m_2^2) x + m_1^2 = 0$.
     <!-- and $F(n,y)$ are defined as
     \begin{align}
       F(n,x)\equiv -x^n \ln \frac{x-1}{x} - x^{n-1} - \frac{1}{2} x^{n-2} - \cdots - \frac{1}{n},
@@ -162,9 +162,10 @@ MathJax = {
     \begin{align}
       \int dx\ x^n \ln (x-x_1) = \frac{1}{n+1} \left\{ \ln (1-x_1) + F(n+1, x_1) \right\}.
     \end{align} -->
-    It is also useful to see the massless case
+    It is also useful to see the massless cases
     \begin{align}
-      B_0(p,0,0) &= \frac{1}{\epsilon} + \ln \frac{\tilde{\mu}^2}{-p^2},\\
+      B_0(p,m,0) &= \frac{1}{\epsilon} + 2 + \ln \frac{\tilde{\mu}^2}{-p^2+m^2} + \frac{m^2}{p^2}\ln\frac{-p^2+m^2}{m^2},\\
+      B_0(p,0,0) &= \frac{1}{\epsilon} + 2 + \ln \frac{\tilde{\mu}^2}{-p^2},\\
     \end{align}
     and the large mass limit
     \begin{align}
