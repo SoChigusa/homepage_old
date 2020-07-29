@@ -1,6 +1,11 @@
 
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
 
+\bibitem{Chigusa:2020jbn}
+S.~Chigusa, T.~Moroi and Y.~Shoji, \emph{{Precise Calculation of the Decay Rate
+  of False Vacuum with Multi-Field Bounce}},
+  \href{https://arxiv.org/abs/2007.14124}{{\ttfamily 2007.14124}}.
+
 \bibitem{Chigusa:2020bgq}
 S.~Chigusa, M.~Endo and K.~Kohri, \emph{{Constraints on electron-scattering
   interpretation of XENON1T excess}},
@@ -42,7 +47,7 @@ S.~Chigusa, S.~Kasuya and K.~Nakayama, \emph{{Novel Flavon Stabilization with
 
 \bibitem{Abe:2019egv}
 T.~Abe, S.~Chigusa, Y.~Ema and T.~Moroi, \emph{{Indirect studies of
-  electroweakly interacting particles at 100 TeV hadron colliders}},
+  electroweakly interacting particles at 100 TeV hadron colliders}},
   \href{https://doi.org/10.1103/PhysRevD.100.055018}{\emph{Phys. Rev. D}
   {\bfseries 100} (2019) 055018},
   [\href{https://arxiv.org/abs/1904.11162}{{\ttfamily 1904.11162}}].
