@@ -1,15 +1,24 @@
 
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
 
+\bibitem{Chigusa:2020rks}
+S.~Chigusa, Y.~Nakai and J.~Zheng, \emph{{Implications of Gravitational Waves
+  for Supersymmetric Grand Unification}},
+  \href{https://arxiv.org/abs/2011.04090}{{\ttfamily 2011.04090}}.
+
 \bibitem{Chigusa:2020jbn}
 S.~Chigusa, T.~Moroi and Y.~Shoji, \emph{{Precise Calculation of the Decay Rate
   of False Vacuum with Multi-Field Bounce}},
-  \href{https://arxiv.org/abs/2007.14124}{{\ttfamily 2007.14124}}.
+  \href{https://doi.org/10.1007/JHEP11(2020)006}{\emph{JHEP} {\bfseries 11}
+  (2020) 006}, [\href{https://arxiv.org/abs/2007.14124}{{\ttfamily
+  2007.14124}}].
 
 \bibitem{Chigusa:2020bgq}
 S.~Chigusa, M.~Endo and K.~Kohri, \emph{{Constraints on electron-scattering
   interpretation of XENON1T excess}},
-  \href{https://arxiv.org/abs/2007.01663}{{\ttfamily 2007.01663}}.
+  \href{https://doi.org/10.1088/1475-7516/2020/10/035}{\emph{JCAP} {\bfseries
+  10} (2020) 035}, [\href{https://arxiv.org/abs/2007.01663}{{\ttfamily
+  2007.01663}}].
 
 \bibitem{Chigusa:2020gfs}
 S.~Chigusa, T.~Moroi and K.~Nakayama, \emph{{Detecting light boson dark matter
@@ -61,7 +70,8 @@ S.~Asai, S.~Chigusa, T.~Kaji, T.~Moroi, M.~Saito, R.~Sawada et~al.,
 
 \bibitem{Chigusa:2018vxz}
 S.~Chigusa, Y.~Ema and T.~Moroi, \emph{{Probing electroweakly interacting
-  massive particles with Drell--Yan process at 100 TeV hadron colliders}},
+  massive particles with Drell\textendash{}Yan process at 100 TeV hadron
+  colliders}},
   \href{https://doi.org/10.1016/j.physletb.2018.12.011}{\emph{Phys. Lett. B}
   {\bfseries 789} (2019) 106--113},
   [\href{https://arxiv.org/abs/1810.07349}{{\ttfamily 1810.07349}}].
