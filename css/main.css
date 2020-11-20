@@ -159,6 +159,15 @@ header p{
     margin-left: 20%;
 }
 
+/*****PLOT*****/
+.plot img{
+    display: block;
+    margin:auto;
+    width:auto;
+    height:auto;
+    max-width:50%;
+}
+
 /*****NAV*****/
 #global-nav{
     width: 100%;
