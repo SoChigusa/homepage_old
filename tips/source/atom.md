@@ -35,9 +35,10 @@ latexmk -c $(FILENAME)
 ## c / c++ 開発環境の構築
 
 最低限の環境は初めから揃っている（`langauge-c`）が、`clang-format`を用いたソースの整形が自動でなされるようにしておくと便利。
-`clang-format`は[ここ](http://yasuharu519.hatenablog.com/entry/2015/12/13/210825)を参考にインストール、設定する。
+`clang-format`は[ここ](http://yasuharu519.hatenablog.com/entry/2015/12/13/210825)を参考にインストール。
+ソースコードの保存と同時に整形されるよう、`atom-beautify`パッケージを導入して設定する。
 インストールされたソース内に仕様変更に基づくエラーが1箇所あるので、[ここ](https://github.com/Glavin001/atom-beautify/issues/2290)に従って書き換えた。
-つまり、`clang-format.coffee`の84行目（周辺）を
+つまり、Atom > 環境設定 > 設定フォルダを開くから参照できる`packages/atom-beutify/src/beautifiers/clang-format.coffee`の84行目（周辺）を
 
 ``` shell
 return @exe("clang-format").run([
@@ -49,7 +50,6 @@ return @exe("clang-format").run([
 ```
 
 とすれば良い。
-ソースコードの保存と同時に整形されるよう、`atom-beautify`パッケージを導入して設定する。
 ここら辺の話やその他便利なパッケージは[こちら](https://qiita.com/prickle/items/2a8f87fba7f6e1d8f051)を参考にした。
 `autocomplete-clang`（補完）、`atom-ctags`（定義箇所へのジャンプ）、`docblockr`（ブロックコメント）、`indent-guide-improved`（eye guide）、`jumpy`（コード内移動）を試している。
 
