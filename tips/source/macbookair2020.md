@@ -120,14 +120,20 @@ sudo pip3 install matplotlib
 
 [公式サイト](https://atom.io)から、v1.53.0をインストール。
 問題なく動く。
-[自分のメモ](https://sochigusa.bitbucket.io/tips/atom.html)を参考にお気に入りのパッケージも揃える。
+[自分のメモ](atom.html)を参考にお気に入りのパッケージも揃える。
+
+### Inkscape
+
+`homebrew`を使って最新版をインストール。
+[自分のメモ](inkscape.html)を参考にパッケージを導入してLaTeXの入力も可能になる。
 
 ### SNS
 
 * [Zoom](https://zoom.us/download)をインストール、動く。
-* [Skype](https://www.skype.com/ja/get-skype/)をインストール、パスワードがわからなすぎてロックがかかる。
+* [Skype](https://www.skype.com/ja/get-skype/)をインストール、動く。
 * [slack](https://slack.com/downloads/mac)をインストール、全てのワークスペースを一括でアプリに追加する方法がわからずたくさんクリックする、面倒だったが動く。
 * [Sococo](https://app.sococo.com/a/download)（バーチャルオフィスアプリケーション）をインストール、動く。
+* [Line](https://apps.apple.com/us/app/line/id539883307?mt=12)をインストール、動く。
 
 ### カレンダー
 
