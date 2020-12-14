@@ -301,7 +301,7 @@ void HTML::update_html(const std::string &strtemp, const std::string &strout,
       std::ifstream iflog("../tips/tips.log");
       while (std::getline(iflog, strBufferLine)) {
         split(val, strBufferLine, ':');
-        ss << "      <li><a href=\"" << val[1] << ".html\">" << val[2]
+        ss << "      <li><a href=\"" << val[1] << ".html\">" << val[1]
            << "</a></li>" << std::endl;
       }
       ss << "       </ul>" << std::endl;
