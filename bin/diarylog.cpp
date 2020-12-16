@@ -55,7 +55,7 @@ int main(int argc, char **argv) {
     errorMessage();
     return -1;
   }
-  system("git pull origin master");
+  system("git pull origin main");
   system("cd ../../sochigusa.bitbucket.org/ && git pull origin master");
   std::string arg_opt(argv[1]);
   if (!(argc == 2 && arg_opt == "update") && !(argc == 3 && arg_opt == "add")) {

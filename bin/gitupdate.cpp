@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
                     "../git/contents.html");
   system("cp ../git/index.html ../../sochigusa.bitbucket.org/git/index.html");
 #ifdef _ENABLE_GIT_UPDATE
-  system("git pull origin master");
+  system("git pull origin main");
   system("cd ../../sochigusa.bitbucket.org/ && git pull origin master");
   system(("git commit -a -m \"auto commit by gitupdate" + comment + "\" && " +
           "git push origin main")

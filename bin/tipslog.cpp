@@ -72,7 +72,7 @@ int main(int argc, char **argv) {
     return -1;
   }
 #ifdef _ENABLE_GIT_UPDATE
-  system("git pull origin master");
+  system("git pull origin main");
   system("cd ../../sochigusa.bitbucket.org/ && git pull origin master");
 #endif
   std::string arg_opt(argv[1]);
