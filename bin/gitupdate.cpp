@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
   system("git pull origin master");
   system("cd ../../sochigusa.bitbucket.org/ && git pull origin master");
   system(("git commit -a -m \"auto commit by gitupdate" + comment + "\" && " +
-          "git push origin master")
+          "git push origin main")
              .c_str());
   system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit "
           "by gitupdate" +

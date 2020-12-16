@@ -27,7 +27,7 @@ void update_log(const std::string &comment) {
   system("cp ../tips/*.html ../../sochigusa.bitbucket.org/tips/");
 #ifdef _ENABLE_GIT_UPDATE
   system(("git add ../tips/* && git commit -a -m \"auto commit by tipslog : " +
-          comment + "\" && " + "git push origin master")
+          comment + "\" && " + "git push origin main")
              .c_str());
   system(("cd ../../sochigusa.bitbucket.org/ && git add tips/*.html && git "
           "commit -a -m \"auto commit by tipslog : " +

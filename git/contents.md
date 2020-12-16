@@ -24,6 +24,6 @@ LaTeX 原稿を Grammarly （あるいは他の文法チェッカー）にかけ
 
 ## Homepage
 
-[open in Bitbucket](https://bitbucket.org/SoChigusa/homepage/)
+[open in Bitbucket](https://github.com/SoChigusa/homepage)
 
 ホームページ更新用のコード群と、その中間生成物等。持続可能な更新作業を目指して、ミニマルなステップ数で各種ファイルを生成、アップロードする。ブラウザ依存性（特に IE）を嫌って JavaScript を使わないことにしたら、こうなった。

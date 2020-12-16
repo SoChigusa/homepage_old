@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
   system("cd ../../sochigusa.bitbucket.org/ && git pull origin master");
   system(("git add note/" + notename + ".html").c_str());
   system(("git commit -a -m \"auto commit by gitupdate " + notename + "\" && " +
-          "git push origin master")
+          "git push origin main")
              .c_str());
   system(("cd ../../sochigusa.bitbucket.org/ && git add note/" + notename +
           ".html && git commit -a -m \"auto commit "

@@ -192,7 +192,7 @@ void update_log(const std::string &comment) {
   // upload
 #ifdef _UPLOAD_CHANGE
   system(("git commit -a -m \"auto commit by reslog : " + comment + "\" && " +
-          "git push origin master")
+          "git push origin main")
              .c_str());
   system(("cd ../../sochigusa.bitbucket.org/ && git commit -a -m \"auto commit "
           "by reslog : " +
