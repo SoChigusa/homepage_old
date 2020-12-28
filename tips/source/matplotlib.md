@@ -6,8 +6,6 @@
 `matplotlib` を読み込んで、図を描く準備をする部分。
 
 ``` python
-import matplotlib
-matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 fig = plt.figure()
@@ -24,13 +22,12 @@ ax.legend(loc="lower right", fontsize=20)
 ax.tick_params(labelsize=20)
 ```
 
-最後に PDF に保存し、確認のためにファイルを開く。
+最後に PDF に保存する。
 
 ``` python
+
 plt.tight_layout()
-plt.show()
-plt.savefig('hoge.pdf')
-commands.getoutput('open hoge.pdf')
+plt.savefig('hoge.pdf', bbox_inches='tight')
 ```
 
 LaTeX表記は`r'$...$'`の形でもともと使用できるが、デフォルトのフォントが気に入らない。
@@ -82,8 +79,8 @@ ax.plot(xlist, ylist, color='r', linestyle='-', linewidth=2, label='hoge')
 `label` オプションの文字列がレジェンドとして使用される。軸の範囲の設定は
 
 ``` python
-ax.set_xbound(xmin, xmax)
-ax.set_ybound(ymin, ymax)
+ax.set_xlim(xmin, xmax)
+ax.set_ylim(ymin, ymax)
 ```
 
 対数目盛りの設定は
