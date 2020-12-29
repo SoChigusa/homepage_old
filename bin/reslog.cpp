@@ -207,7 +207,7 @@ int main(int argc, char **argv) {
     return -1;
   }
 #ifdef _UPLOAD_CHANGE
-  system("git pull origin master");
+  system("git pull origin main");
   system("cd ../../sochigusa.bitbucket.org/ && git pull origin master");
 #endif
 
