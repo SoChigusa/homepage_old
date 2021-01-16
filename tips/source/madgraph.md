@@ -3,22 +3,23 @@
 
 ## 導入、初期設定 ##
 
-何度くりかえしてもどこか違うエラーが出るので、今回の成功例を書いておく（2018/8/12）
-まず、現在のところ gfortran-8 が Madgraph 周りの compile に対応していないので、
+何度くりかえしてもどこか違うエラーが出るので、今回の成功例を書いておく（2020/1/15）
+~~まず、現在のところ gfortran-8 が Madgraph 周りの compile に対応していないので、
 `homebrew install gcc@7`
-対応して、`input/mg5_configuration.txt`内のグローバル設定をいじる。
+対応して、~~
+（**2020/1/15追記**　最新版の`MadGraph v2.8.2`ではこの操作が不要なことを確認済み。
+確認は Mac OS BigSur (ARM), Mac OS Mojave (Intel) で行った。）
+
+`input/mg5_configuration.txt`内のグローバル設定をいじる。
 
 ``` shell
-	fortran_compiler = gfortran-7
-	cpp_compiler = g++-7
 	automatic_html_opening = False
 ```
 
-最後のコマンドで、`launch`時にブラウザが自動で立ち上がるのを防止する。
-fastjet が存在しないエラーが出るときは、`fastjet = None`でとりあえず動く。
+これにより、`launch`時にブラウザが自動で立ち上がるのを防止する。
+~~fastjet が存在しないエラーが出るときは、`fastjet = None`でとりあえず動く。~~
 
-次に、<a href="http://ktobi.blogspot.com/2018/03/high-sierra.html" target="_blank">Tobiokande 様</a>
-を参考に、`bin/mg5_aMC`から dependency のインストール
+次に、`bin/mg5_aMC`から dependency のインストール
 
 ``` shell
 	install boost
@@ -189,7 +190,7 @@ MadGraph のバージョンによって（？）jet matching の際に `run_card
 これが on の状態で jet の本数を変えたプロセスをいくつか merge して走らせると、個々のプロセスを独立に走らせて計算した断面積の和と比して、大きな断面積が parton level で出てきたりする。
 おそらくこれが matching に十分な overlap を含む phase space の取り方になっていて、その後 pythia が走ってきちんと matching してくれる。
 
--------------------------------------------------------------------------------
+___
 
 # 以下、古いバージョンに対するtips、あるいは古い認識 #
 
