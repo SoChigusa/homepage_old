@@ -1,0 +1,40 @@
+<body>
+<div id="content">
+<div class="article">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="python%E3%81%A7%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0">Pythonでスクレイピング</h1>
+
+<h2 class="mume-header" id="%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%A8%E3%81%84%E3%81%86%E3%81%BB%E3%81%A9%E3%81%A7%E3%82%82%E3%81%AA%E3%81%84%E3%81%8C%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E6%93%8D%E4%BD%9C">（スクレイピングというほどでもないが）ブラウザ操作</h2>
+
+<p><code>selenium</code>を使う。インストールされているChromeのバージョンに対応したWebDriverを<a href="https://chromedriver.chromium.org/downloads">ダウンロードページ</a>から落としておく。</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>keys <span class="token keyword">import</span> Keys
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support<span class="token punctuation">.</span>ui <span class="token keyword">import</span> WebDriverWait
+
+chrome <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token string">'path-to-chrome-driver'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ページの取得</span>
+chrome<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'URL'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># タブが閉じられるのを待つ</span>
+tmax <span class="token operator">=</span> <span class="token number">60</span><span class="token operator">*</span><span class="token number">60</span><span class="token operator">*</span><span class="token number">24</span> <span class="token comment"># in seconds</span>
+WebDriverWait<span class="token punctuation">(</span>chrome<span class="token punctuation">,</span> tmax<span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span><span class="token keyword">lambda</span> d<span class="token punctuation">:</span> <span class="token builtin">len</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>window_handles<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 終了処理</span>
+chrome<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</div>
+</div>
+</body>
