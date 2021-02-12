@@ -1,6 +1,11 @@
 
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
 
+\bibitem{Chigusa:2021mci}
+S.~Chigusa, T.~Moroi and K.~Nakayama, \emph{{Axion/Hidden-Photon Dark Matter
+  Conversion into Condensed Matter Axion}},
+  \href{https://arxiv.org/abs/2102.06179}{{\ttfamily 2102.06179}}.
+
 \bibitem{Chigusa:2020rks}
 S.~Chigusa, Y.~Nakai and J.~Zheng, \emph{{Implications of Gravitational Waves
   for Supersymmetric Grand Unification}},
