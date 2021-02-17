@@ -1,6 +1,11 @@
 
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
 
+\bibitem{Chigusa:2021glp}
+S.~Chigusa, K.~Hamaguchi, T.~Moroi, A.~Niki and K.~Ono, \emph{{Studying squark
+  mass spectrum through gluino decay at 100 TeV future hadron colliders}},
+  \href{https://arxiv.org/abs/2102.07910}{{\ttfamily 2102.07910}}.
+
 \bibitem{Chigusa:2021mci}
 S.~Chigusa, T.~Moroi and K.~Nakayama, \emph{{Axion/Hidden-Photon Dark Matter
   Conversion into Condensed Matter Axion}},
