@@ -299,6 +299,43 @@ W-2 と確定申告書類を適切な住所に郵送する。</p>
 こちらも入力が終わると処理に入り、完成した書類をダウンロードできるようになる。
 Form 540NR と Form 3853。
 インストラクションにしたがって適切な場所にサインし、連邦税の確定申告書類のコピーと W-2 のコピーを添えて正しい住所へ郵送。</p>
+<h2 class="mume-header" id="%E6%9B%B8%E9%A1%9E%E3%81%AE%E9%83%B5%E9%80%81">書類の郵送</h2>
+
+<p>ついでに。
+郵送先が私書箱だったりするので、悪名高い郵便サービス（UPS）を利用して郵送するしかない（？）様子。
+一番安い first-class mail で、紛失等が怖いので追跡サービスの certified mail を付けて送る。
+これで 1つあたり $5 くらい。
+2020年度の連邦税、およびカリフォルニア州税の送り先は</p>
+<pre data-role="codeBlock" data-info="text" class="language-text">Department of the Treasury Internal Revenue Service Austin, TX 73301-0215 USA
+</pre><p>および</p>
+<pre data-role="codeBlock" data-info="text" class="language-text">FRANCHISE TAX BOARD PO BOX 942840 SACRAMENTO, CA 94240-0001 USA
+</pre><p>〆切 1週間前に郵送するも、連邦税の方が途中で事故ったらしく〆切から数日遅れて到着する。
+確か消印の日付が重要だったはずなので、セーフだとは思うが。</p>
+<h2 class="mume-header" id="fica%E7%A8%8E%E3%81%AE%E8%BF%94%E9%82%84%E6%89%8B%E7%B6%9A%E3%81%8D">FICA税の返還手続き</h2>
+
+<p><a href="https://www.wakanacpa.com/Tax/SSTax">ここ</a>に詳しいように、J1ビザでの渡航の1,2年めはFICA税と呼ばれる social security tax および medical tax が免除される。
+ところが雇用主がこれを知らないと（あるいは適当だと）、勝手に源泉徴収されてこれらが引かれているときがあるので、その場合は雇用主に文句をつけて取り戻す。
+誤って源泉徴収された額は W-2 form の欄 4,6 を見ることでわかる。
+ここに non-zero の額が入力されていると、GTP を使用した際に以下のようなメッセージが出る。</p>
+<pre data-role="codeBlock" data-info="text" class="language-text">You have indicated that FICA tax (the combination of Social Security and Medicare taxes)
+was withheld from your compensation as an employee. As a Nonresident Alien for Tax purposes
+who is present in the U.S. as an J-1 Research Scholar, you are NOT required to pay FICA tax
+for 2020. FICA tax is different from federal, state or local tax and may not be claimed on
+your tax return as a payment or deduction.
+Because you are NOT required to pay FICA tax, your employer should refund to you any
+amounts shown on your Form W-2, Box 4 or Box 6. When finished with GTP, please contact your
+employer’s payroll office (the institution that issued your Form W-2) and ask for a refund
+of FICA tax because you qualify for the exemption from FICA tax under Internal Revenue Code
+section 3121(b)(19).
+If your employer refuses to give you a refund, go to www.irs.gov or click on FAQ above to
+print Form 843 and Form 8316. Complete both forms and submit them as a refund request
+directly to the IRS; DO NOT include Form 843 or Form 8316 with your tax return.
+In the meantime, if you owe federal tax, you must pay it with your federal tax return,
+irrespective of any FICA tax refund that may or may not be due to you.
+You may wish to print this page for future reference. This information is also available on
+the FAQ screen.
+</pre><p>僕の場合は Medicare tax が少額（$28.13）引かれていたので問い合わせるも、FICA 税の免除が適用されたのが 2020 年の 10月からだ（渡航したのは 9月）と言われて跳ね除けられる。謎。
+少額なので面倒になってここで諦める。</p>
 
       </div>
       
