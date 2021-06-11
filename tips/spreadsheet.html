@@ -264,6 +264,7 @@ box-shadow: 0 1px white;
     <nav>
       <h3>Tips Menu</h3>
       <ul>
+      <li><a href="google-api.html">google-api</a></li>
       <li><a href="JupyterLab.html">JupyterLab</a></li>
       <li><a href="taxreturn.html">taxreturn</a></li>
       <li><a href="scraping.html">scraping</a></li>
@@ -298,70 +299,6 @@ box-shadow: 0 1px white;
 
     <div class="box" id="gfm">
       <!-- Contents below -->
-<div id="content">
-<div class="article">
-      <div class="mume markdown-preview  ">
-      <h1 class="mume-header" id="python%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6google%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%E3%82%B7%E3%83%BC%E3%83%88%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9">Pythonを使ってGoogleスプレッドシートにアクセス</h1>
-
-<h2 class="mume-header" id="%E5%89%8D%E6%BA%96%E5%82%99">前準備</h2>
-
-<p><a href="https://tanuhack.com/operate-spreadsheet/">このサイト</a>の記述通りにやればできる。
-大まかな流れとしては、</p>
-<ol>
-<li>Google Cloud Platformでプロジェクトを作成する。</li>
-<li>Google Drive APIとGoogle Sheets APIを有効にする。</li>
-<li>認証情報を作成し（サービスアカウントキーというものを選択する）、JSONタイプのキーをダウンロードする。</li>
-<li>JSONファイルの中をのぞいて、<code>client_email</code>と書かれたアドレスをコピーする。</li>
-<li>スプレッドシートの共有メニューから、上記のアドレスにメールを送って編集者権限でシートを共有する。このときaddress not foundエラーのメールが届くが、どうやらそれでも上手くいっているよう。</li>
-</ol>
-<h2 class="mume-header" id="%E3%82%B7%E3%83%BC%E3%83%88%E3%82%92%E9%96%8B%E3%81%8F%E3%81%BE%E3%81%A7">シートを開くまで</h2>
-
-<p>またしても<a href="https://tanuhack.com/operate-spreadsheet/">上記サイト</a>からの借り物。</p>
-<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword">import</span> gspread
-<span class="token keyword">import</span> json
-
-<span class="token comment">#ServiceAccountCredentials：Googleの各サービスへアクセスできるservice変数を生成します。</span>
-<span class="token keyword">from</span> oauth2client<span class="token punctuation">.</span>service_account <span class="token keyword">import</span> ServiceAccountCredentials
-
-<span class="token comment">#2つのAPIを記述しないとリフレッシュトークンを3600秒毎に発行し続けなければならない</span>
-scope <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'https://spreadsheets.google.com/feeds'</span><span class="token punctuation">,</span><span class="token string">'https://www.googleapis.com/auth/drive'</span><span class="token punctuation">]</span>
-
-<span class="token comment">#認証情報設定</span>
-<span class="token comment">#ダウンロードしたjsonファイル名をクレデンシャル変数に設定（秘密鍵、Pythonファイルから読み込みしやすい位置に置く）</span>
-credentials <span class="token operator">=</span> ServiceAccountCredentials<span class="token punctuation">.</span>from_json_keyfile_name<span class="token punctuation">(</span><span class="token string">'ダウンロードしたJSONファイル名.json'</span><span class="token punctuation">,</span> scope<span class="token punctuation">)</span>
-
-<span class="token comment">#OAuth2の資格情報を使用してGoogle APIにログインします。</span>
-gc <span class="token operator">=</span> gspread<span class="token punctuation">.</span>authorize<span class="token punctuation">(</span>credentials<span class="token punctuation">)</span>
-
-<span class="token comment">#共有設定したスプレッドシートキーを変数[SPREADSHEET_KEY]に格納する。</span>
-SPREADSHEET_KEY <span class="token operator">=</span> <span class="token string">'スプレッドシートキー'</span>
-
-<span class="token comment">#共有設定したスプレッドシートのシート1を開く</span>
-worksheet <span class="token operator">=</span> gc<span class="token punctuation">.</span>open_by_key<span class="token punctuation">(</span>SPREADSHEET_KEY<span class="token punctuation">)</span><span class="token punctuation">.</span>sheet1
-</pre><p>JSONファイルのパスと、スプレッドシートキー（<a href="https://docs.google.com/spreadsheets/d/%5BSpreadsheet_Key%5D/edit#gid=xxx%EF%BC%89%E3%82%92%E4%B8%8A%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AB%E5%9F%8B%E3%82%81%E3%82%8B%E3%80%82">https://docs.google.com/spreadsheets/d/[Spreadsheet_Key]/edit#gid=xxx）を上のコードに埋める。</a></p>
-<h2 class="mume-header" id="%E5%80%A4%E3%81%AE%E8%AA%AD%E3%81%BF%E5%8F%96%E3%82%8A">値の読み取り</h2>
-
-<p>重要なgspreadモジュールのドキュメントは<a href="https://gspread.readthedocs.io/en/latest/">こちら</a>。
-基本の基本は</p>
-<ul>
-<li>n行目の値をarrayで返す<code>worksheet.row_values(n)</code></li>
-<li>n列目の値をarrayで返す<code>worksheet.col_values(n)</code></li>
-</ul>
-
-      </div>
-      
-      
-    
-    
-    
-    
-    
-    
-    
-    
-  
-</div>
-</div>
       <!-- Contents above -->
   </div>
 </div>
