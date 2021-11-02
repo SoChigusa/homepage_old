@@ -53,3 +53,8 @@ Siriがめちゃデカい声でしゃべるので注意。
 
 <img src="https://dl.dropboxusercontent.com/s/o15k2n8yjc0ccqb/LWScreenShot-2021-11-01-18-02-48.png?dl=0" style="max-width:100%;">
 <center><i>Monty Hall "Which of these is the administrator account?"</i></center>
+
+## Anaconda3 の置き場所変更
+
+macOS Catalina 以降で必要な変更とのことなので、macOS Mojave から 3階級特進するような状況でしか生じない問題である。
+要は Anaconda3 の以前のデフォルト置き場所である root が Catalina 以降で使えなくなったようなので、別の場所にインストールし直す必要がある。
