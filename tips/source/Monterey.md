@@ -1,6 +1,6 @@
 # macOS Monterey 12 アップデート日記
 
-<img src="https://dl.dropboxusercontent.com/s/4s2nkqcebcqa80n/monterey.jpeg?dl=0">
+<img src="https://dl.dropboxusercontent.com/s/4s2nkqcebcqa80n/monterey.jpeg?dl=0" style="max-width:100%;">
 <center><i>2021 Summer, 17-Mile Drive @ Monterey</i></center>
 
 ## 環境
@@ -23,7 +23,7 @@ macOS Mojave 10.14 からのアップデート。
 **アレ、管理者いなくね？**
 
 <center>
-  <img src="https://dl.dropboxusercontent.com/s/z0qas1qqp27o3dk/screenshot-2021-11-01-16-47-58.png?dl=0" width="50%">
+  <img src="https://dl.dropboxusercontent.com/s/z0qas1qqp27o3dk/screenshot-2021-11-01-16-47-58.png?dl=0" style="max-width:50%;">
 
   <i>かつて管理者であったであろう「管理者」という通常ユーザー</i>
 </center>
@@ -44,12 +44,12 @@ Siriがめちゃデカい声でしゃべるので注意。
 もちろん初めから存在していたユーザーのデータは消えないので問題なし。
 
 <center>
-  <img src="https://dl.dropboxusercontent.com/s/qyq8b45t7c4wq2a/screenshot-2021-11-01-17-59-21.png?dl=0" width="50%">
+  <img src="https://dl.dropboxusercontent.com/s/qyq8b45t7c4wq2a/screenshot-2021-11-01-17-59-21.png?dl=0" style="max-width:50%;">
 
   <i>無事新しい管理者アカウントが増えている</i>
 </center>
 
 うーん、なんだコレ。
 
-<img src="https://dl.dropboxusercontent.com/s/o15k2n8yjc0ccqb/LWScreenShot-2021-11-01-18-02-48.png?dl=0">
+<img src="https://dl.dropboxusercontent.com/s/o15k2n8yjc0ccqb/LWScreenShot-2021-11-01-18-02-48.png?dl=0" style="max-width:100%;">
 <center><i>Monty Hall "Which of these is the administrator account?"</i></center>
