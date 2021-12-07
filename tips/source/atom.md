@@ -1,4 +1,3 @@
-
 # Atom の導入とカスタマイズ
 
 個人的には、プレビューも含めてエディター内で完結させることができ、環境の構築が楽なところが大きなメリットだと思う。
@@ -26,7 +25,7 @@ latex をタイプセットできる環境が整っていれば、特にやる�
 さらに、BibTeX環境も含めた自動コンパイルのために、今回は`latexmk`を活用した。
 例えば[ここ](http://joban.wp.xdomain.jp/archives/151)にあるように、`.latexmkrc`を作成しておき、
 
-``` shell
+```shell
 latexmk -c $(FILENAME)
 ```
 
@@ -43,7 +42,7 @@ latexmk -c $(FILENAME)
 インストールされたソース内に仕様変更に基づくエラーが1箇所あるので、[ここ](https://github.com/Glavin001/atom-beautify/issues/2290)に従って書き換えた。
 つまり、Atom > 環境設定 > 設定フォルダを開くから参照できる`packages/atom-beutify/src/beautifiers/clang-format.coffee`の84行目（周辺）を
 
-``` shell
+```shell
 return @exe("clang-format").run([
   @dumpToFile(dumpFile, text)
   ["--style=file"]
@@ -65,13 +64,14 @@ return @exe("clang-format").run([
 ## その他便利なパッケージ
 
 ファイルの種類をアイコンで区別できるようになる`file-icons`や、編集中の箇所がわかりやすくなる`minimap`。
+矩形選択を可能にする`sublime-style-column-selection`。
 
 ## アンインストールの方法
 
 いろいろな設定ファイルがいろいろな場所に散らばっているので存外面倒くさい。
 アプリケーションフォルダ内のアプリを消去するのに加えて、例えば[ここ](https://qiita.com/ishizukih/items/9467473e5562ba940c65)にあるように
 
-``` shell
+```shell
 rm -rf ~/.atom
 rm -rf /usr/local/bin/atom
 rm -rf /usr/local/bin/apm
