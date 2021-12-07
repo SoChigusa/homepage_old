@@ -32,6 +32,9 @@ latexmk -c $(FILENAME)
 
 とするか、ディレクトリ内にlatexファイルが1つしかなければファイル名は省略可。
 
+また、PDFの閲覧もatom内で完結させるために`pdf-view`を導入する。
+（2021/12/6 追記）ある時期から2枚目以降のPDFが表示されない（black screenになる）バグに悩まされていたが、[こちら](https://github.com/izuzak/atom-pdf-view/issues/239)のissueに従って"fit to width on open"のオプションをオフにすることで解決した。
+
 ## c / c++ 開発環境の構築
 
 最低限の環境は初めから揃っている（`langauge-c`）が、`clang-format`を用いたソースの整形が自動でなされるようにしておくと便利。
@@ -62,3 +65,24 @@ return @exe("clang-format").run([
 ## その他便利なパッケージ
 
 ファイルの種類をアイコンで区別できるようになる`file-icons`や、編集中の箇所がわかりやすくなる`minimap`。
+
+## アンインストールの方法
+
+いろいろな設定ファイルがいろいろな場所に散らばっているので存外面倒くさい。
+アプリケーションフォルダ内のアプリを消去するのに加えて、例えば[ここ](https://qiita.com/ishizukih/items/9467473e5562ba940c65)にあるように
+
+``` shell
+rm -rf ~/.atom
+rm -rf /usr/local/bin/atom
+rm -rf /usr/local/bin/apm
+rm -rf /Applications/Atom.app
+rm -rf ~/Library/Preferences/com.github.atom.plist
+rm -rf ~/Library/Application\ Support/com.github.atom.ShipIt
+rm -rf ~/Library/Application\ Support/Atom
+rm -rf ~/Library/Saved\ Application\ State/com.github.atom.savedState
+rm -rf ~/Library/Caches/com.github.atom
+rm -rf ~/Library/Caches/com.github.atom.Shipit
+rm -rf ~/Library/Caches/Atom
+```
+
+とする。
