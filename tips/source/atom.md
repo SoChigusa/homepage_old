@@ -2,7 +2,7 @@
 # Atom の導入とカスタマイズ
 
 個人的には、プレビューも含めてエディター内で完結させることができ、環境の構築が楽なところが大きなメリットだと思う。
-使い勝手に関してはこれから検証する。
+使い勝手に関しては随時検証しつつ報告する。
 
 ## Shell
 
@@ -33,7 +33,7 @@ latexmk -c $(FILENAME)
 とするか、ディレクトリ内にlatexファイルが1つしかなければファイル名は省略可。
 
 また、PDFの閲覧もatom内で完結させるために`pdf-view`を導入する。
-（2021/12/6 追記）ある時期から2枚目以降のPDFが表示されない（black screenになる）バグに悩まされていたが、[こちら](https://github.com/izuzak/atom-pdf-view/issues/239)のissueに従って"fit to width on open"のオプションをオフにすることで解決した。
+**（2021/12/6 追記）**ある時期から2枚目以降のPDFが表示されない（black screenになる）バグに悩まされていたが、[こちら](https://github.com/izuzak/atom-pdf-view/issues/239)のissueに従って"fit to width on open"のオプションをオフにすることで解決した。
 
 ## c / c++ 開発環境の構築
 
