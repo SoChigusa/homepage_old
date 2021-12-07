@@ -33,7 +33,7 @@ latexmk -c $(FILENAME)
 とするか、ディレクトリ内にlatexファイルが1つしかなければファイル名は省略可。
 
 また、PDFの閲覧もatom内で完結させるために`pdf-view`を導入する。
-**（2021/12/6 追記）**ある時期から2枚目以降のPDFが表示されない（black screenになる）バグに悩まされていたが、[こちら](https://github.com/izuzak/atom-pdf-view/issues/239)のissueに従って"fit to width on open"のオプションをオフにすることで解決した。
+**（2021/12/6 追記）** ある時期から2枚目以降のPDFが表示されない（black screenになる）バグに悩まされていたが、[こちら](https://github.com/izuzak/atom-pdf-view/issues/239)のissueに従って"fit to width on open"のオプションをオフにすることで解決した。
 
 ## c / c++ 開発環境の構築
 
