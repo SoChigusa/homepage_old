@@ -1,20 +1,31 @@
 
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
 
+\bibitem{Chigusa:2022svv}
+S.~Chigusa, S.~Li, Y.~Nakai, W.~Zhang, Y.~Zhang and J.~Zheng, \emph{{Deeply
+  Learned Preselection of Higgs Dijet Decays at Future Lepton Colliders}},
+  \href{https://arxiv.org/abs/2202.02534}{{\ttfamily 2202.02534}}.
+
 \bibitem{Chigusa:2021glp}
 S.~Chigusa, K.~Hamaguchi, T.~Moroi, A.~Niki and K.~Ono, \emph{{Studying squark
   mass spectrum through gluino decay at 100 TeV future hadron colliders}},
-  \href{https://arxiv.org/abs/2102.07910}{{\ttfamily 2102.07910}}.
+  \href{https://doi.org/10.1016/j.physletb.2021.136332}{\emph{Phys. Lett. B}
+  {\bfseries 817} (2021) 136332},
+  [\href{https://arxiv.org/abs/2102.07910}{{\ttfamily 2102.07910}}].
 
 \bibitem{Chigusa:2021mci}
-S.~Chigusa, T.~Moroi and K.~Nakayama, \emph{{Axion/Hidden-Photon Dark Matter
-  Conversion into Condensed Matter Axion}},
-  \href{https://arxiv.org/abs/2102.06179}{{\ttfamily 2102.06179}}.
+S.~Chigusa, T.~Moroi and K.~Nakayama, \emph{{Axion/hidden-photon dark matter
+  conversion into condensed matter axion}},
+  \href{https://doi.org/10.1007/JHEP08(2021)074}{\emph{JHEP} {\bfseries 08}
+  (2021) 074}, [\href{https://arxiv.org/abs/2102.06179}{{\ttfamily
+  2102.06179}}].
 
 \bibitem{Chigusa:2020rks}
-S.~Chigusa, Y.~Nakai and J.~Zheng, \emph{{Implications of Gravitational Waves
-  for Supersymmetric Grand Unification}},
-  \href{https://arxiv.org/abs/2011.04090}{{\ttfamily 2011.04090}}.
+S.~Chigusa, Y.~Nakai and J.~Zheng, \emph{{Implications of gravitational waves
+  for supersymmetric grand unification}},
+  \href{https://doi.org/10.1103/PhysRevD.104.035031}{\emph{Phys. Rev. D}
+  {\bfseries 104} (2021) 035031},
+  [\href{https://arxiv.org/abs/2011.04090}{{\ttfamily 2011.04090}}].
 
 \bibitem{Chigusa:2020jbn}
 S.~Chigusa, T.~Moroi and Y.~Shoji, \emph{{Precise Calculation of the Decay Rate
