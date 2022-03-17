@@ -1,6 +1,11 @@
 
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
 
+\bibitem{Chigusa:2022xpq}
+S.~Chigusa, T.~Moroi and Y.~Shoji, \emph{{Upper bound on the smuon mass from
+  vacuum stability in the light of muon $g-2$ anomaly}},
+  \href{https://arxiv.org/abs/2203.08062}{{\ttfamily 2203.08062}}.
+
 \bibitem{Chigusa:2022svv}
 S.~Chigusa, S.~Li, Y.~Nakai, W.~Zhang, Y.~Zhang and J.~Zheng, \emph{{Deeply
   Learned Preselection of Higgs Dijet Decays at Future Lepton Colliders}},
