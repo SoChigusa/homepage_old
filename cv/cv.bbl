@@ -1,6 +1,10 @@
 
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
 
+\bibitem{Chigusa:2022act}
+S.~Chigusa and M.~Yamazaki, \emph{{Quantum Simulations of Dark Sector
+  Showers}},  \href{https://arxiv.org/abs/2204.12500}{{\ttfamily 2204.12500}}.
+
 \bibitem{Chigusa:2022xpq}
 S.~Chigusa, T.~Moroi and Y.~Shoji, \emph{{Upper bound on the smuon mass from
   vacuum stability in the light of muon $g-2$ anomaly}},
