@@ -301,48 +301,51 @@ box-shadow: 0 1px white;
 
     <div class="box" id="gfm">
       <!-- Contents below -->
-<div id="content">
-<div class="article">
       <div class="mume markdown-preview  ">
-      <h1 class="mume-header" id="jupyterlab-%E3%81%AE%E5%B0%8E%E5%85%A5%E3%81%8B%E3%82%89%E6%A9%9F%E8%83%BD%E6%8B%A1%E5%BC%B5-%E4%BE%BF%E5%88%A9%E3%81%AA%E5%BF%9C%E7%94%A8%E3%81%BE%E3%81%A7">JupyterLab の導入から機能拡張、便利な応用まで</h1>
+      <h1 class="mume-header" id="jupyterlab-%E3%81%AE%E5%B0%8E%E5%85%A5%E3%81%8B%E3%82%89%E6%A9%9F%E8%83%BD%E6%8B%A1%E5%BC%B5-%E4%BE%BF%E5%88%A9%E3%81%AA%E5%BF%9C%E7%94%A8%E3%81%BE%E3%81%A7">JupyterLab &#x306E;&#x5C0E;&#x5165;&#x304B;&#x3089;&#x6A5F;&#x80FD;&#x62E1;&#x5F35;&#x3001;&#x4FBF;&#x5229;&#x306A;&#x5FDC;&#x7528;&#x307E;&#x3067;</h1>
 
-<p>JupyterLab は Python がインタラクティブに書ける Jupyter Notebook の進化版、らしい。
-(デフォルトで) markdown 記法を使って綺麗なノートが作れることが個人的な推しポイント。
-あと拡張機能。</p>
-<h2 class="mume-header" id="%E5%B0%8E%E5%85%A5">導入</h2>
+<p>JupyterLab &#x306F; Python &#x304C;&#x30A4;&#x30F3;&#x30BF;&#x30E9;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x306B;&#x66F8;&#x3051;&#x308B; Jupyter Notebook &#x306E;&#x9032;&#x5316;&#x7248;&#x3001;&#x3089;&#x3057;&#x3044;&#x3002;<br>
+(&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;) markdown &#x8A18;&#x6CD5;&#x3092;&#x4F7F;&#x3063;&#x3066;&#x7DBA;&#x9E97;&#x306A;&#x30CE;&#x30FC;&#x30C8;&#x304C;&#x4F5C;&#x308C;&#x308B;&#x3053;&#x3068;&#x304C;&#x500B;&#x4EBA;&#x7684;&#x306A;&#x63A8;&#x3057;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3002;<br>
+&#x3042;&#x3068;&#x62E1;&#x5F35;&#x6A5F;&#x80FD;&#x3002;</p>
+<h2 class="mume-header" id="%E5%B0%8E%E5%85%A5">&#x5C0E;&#x5165;</h2>
 
-<p><a href="https://ai-inter1.com/jupyter-lab/#st-toc-h-2">こちらのサイト</a>を参考にした。
-今回は Anaconda と一緒に導入することに決めて、<a href="https://www.anaconda.com/download/">ダウンロードページ</a>から GUI 版をダウンロード。
-インストールが終わったら Anaconda.Navigator を使って即 JupyterLab が launch できるようになっている。便利。</p>
-<h2 class="mume-header" id="%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E5%B0%8E%E5%85%A5">拡張機能の導入</h2>
+<p><a href="https://ai-inter1.com/jupyter-lab/#st-toc-h-2">&#x3053;&#x3061;&#x3089;&#x306E;&#x30B5;&#x30A4;&#x30C8;</a>&#x3092;&#x53C2;&#x8003;&#x306B;&#x3057;&#x305F;&#x3002;<br>
+&#x4ECA;&#x56DE;&#x306F; Anaconda &#x3068;&#x4E00;&#x7DD2;&#x306B;&#x5C0E;&#x5165;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x6C7A;&#x3081;&#x3066;&#x3001;<a href="https://www.anaconda.com/download/">&#x30C0;&#x30A6;&#x30F3;&#x30ED;&#x30FC;&#x30C9;&#x30DA;&#x30FC;&#x30B8;</a>&#x304B;&#x3089; GUI &#x7248;&#x3092;&#x30C0;&#x30A6;&#x30F3;&#x30ED;&#x30FC;&#x30C9;&#x3002;<br>
+&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x304C;&#x7D42;&#x308F;&#x3063;&#x305F;&#x3089; Anaconda.Navigator &#x3092;&#x4F7F;&#x3063;&#x3066;&#x5373; JupyterLab &#x304C; launch &#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x3002;&#x4FBF;&#x5229;&#x3002;</p>
+<h2 class="mume-header" id="%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E5%B0%8E%E5%85%A5">&#x62E1;&#x5F35;&#x6A5F;&#x80FD;&#x306E;&#x5C0E;&#x5165;</h2>
 
-<p><a href="https://ai-inter1.com/jupyter-lab/#st-toc-h-2">上と同じサイト</a>を参考に、まず <code>node.js</code> をインストールする必要がある。
-<code>brew</code> でもインストールできるのだが、JupyterLab との連携がうまく行かなかったので、<code>conda</code> を推奨。</p>
+<p><a href="https://ai-inter1.com/jupyter-lab/#st-toc-h-2">&#x4E0A;&#x3068;&#x540C;&#x3058;&#x30B5;&#x30A4;&#x30C8;</a>&#x3092;&#x53C2;&#x8003;&#x306B;&#x3001;&#x307E;&#x305A; <code>node.js</code> &#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;<br>
+<code>brew</code> &#x3067;&#x3082;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3067;&#x304D;&#x308B;&#x306E;&#x3060;&#x304C;&#x3001;JupyterLab &#x3068;&#x306E;&#x9023;&#x643A;&#x304C;&#x3046;&#x307E;&#x304F;&#x884C;&#x304B;&#x306A;&#x304B;&#x3063;&#x305F;&#x306E;&#x3067;&#x3001;<code>conda</code> &#x3092;&#x63A8;&#x5968;&#x3002;</p>
 <pre data-role="codeBlock" data-info="shell" class="language-shell">conda <span class="token function">install</span> nodejs
-</pre><p>これでノートブック左側のメニューから拡張機能の検索・導入ができるようになる。</p>
-<h3 class="mume-header" id="%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD1-variable-inspector">拡張機能1: Variable Inspector</h3>
+</pre><p>&#x3053;&#x308C;&#x3067;&#x30CE;&#x30FC;&#x30C8;&#x30D6;&#x30C3;&#x30AF;&#x5DE6;&#x5074;&#x306E;&#x30E1;&#x30CB;&#x30E5;&#x30FC;&#x304B;&#x3089;&#x62E1;&#x5F35;&#x6A5F;&#x80FD;&#x306E;&#x691C;&#x7D22;&#x30FB;&#x5C0E;&#x5165;&#x304C;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#x3002;</p>
+<p><strong>(2022/05/03 &#x8FFD;&#x8A18;)</strong></p>
+<p>base (root) &#x306E;&#x74B0;&#x5883;&#x3060;&#x3068;&#x4F55;&#x6545;&#x304B;&#x975E;&#x5E38;&#x306B;&#x53E4;&#x3044;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306E; <code>node.js</code> &#x3057;&#x304B;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x306A;&#x3044;&#x3068;&#x3044;&#x3046;&#x73FE;&#x8C61;&#x304C;&#x751F;&#x3058;&#x305F;&#x3002;<br>
+&#x3053;&#x308C;&#x306F;&#x65B0;&#x3057;&#x304F;&#x74B0;&#x5883;&#x3092;&#x4F5C;&#x3063;&#x3066;&#x4E0A;&#x8A18;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3057;&#x306A;&#x304A;&#x3059;&#x3053;&#x3068;&#x3067;&#x89E3;&#x6C7A;&#x3002;</p>
+<h3 class="mume-header" id="%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD1-variable-inspector">&#x62E1;&#x5F35;&#x6A5F;&#x80FD;1: Variable Inspector</h3>
 
-<p>上記サイトでオススメされているこれを導入した。
-導入には GUI から行う方法の他に、shellで</p>
-<pre data-role="codeBlock" data-info="" class="language-"><code>jupyter labextension install @lckr/jupyterlab_variableinspector
-</code></pre><p>などとすることも可能。</p>
-<h3 class="mume-header" id="%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD2-github-%E3%81%A8%E3%81%AE%E9%80%A3%E6%90%BA">拡張機能2: git(hub) との連携</h3>
+<p>&#x4E0A;&#x8A18;&#x30B5;&#x30A4;&#x30C8;&#x3067;&#x30AA;&#x30B9;&#x30B9;&#x30E1;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x3053;&#x308C;&#x3092;&#x5C0E;&#x5165;&#x3057;&#x305F;&#x3002;<br>
+&#x5C0E;&#x5165;&#x306B;&#x306F; GUI &#x304B;&#x3089;&#x884C;&#x3046;&#x65B9;&#x6CD5;&#x306E;&#x4ED6;&#x306B;&#x3001;shell&#x3067;</p>
+<pre class="language-text">jupyter labextension install @lckr/jupyterlab_variableinspector
+</pre>
+<p>&#x306A;&#x3069;&#x3068;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;&#x3002;</p>
+<h3 class="mume-header" id="%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD2-github-%E3%81%A8%E3%81%AE%E9%80%A3%E6%90%BA">&#x62E1;&#x5F35;&#x6A5F;&#x80FD;2: git(hub) &#x3068;&#x306E;&#x9023;&#x643A;</h3>
 
-<p><code>@jupyterlab/git</code> を導入する。拡張機能の他に、以下のインストールが必要らしい。</p>
-<pre data-role="codeBlock" data-info="" class="language-"><code>conda install -c conda-forge jupyterlab-git
-</code></pre><p>使い方の手順は<a href="https://qiita.com/cleeeear/items/2fa90aded84e90f9bff5">こちら</a>にある通り。
-正しくインストールが完了すれば、GUIの左側に git のメニューが存在して、そこから <code>stage</code> や <code>commit</code> や <code>push</code> ができるようになる</p>
-<h2 class="mume-header" id="matplotlib-%E3%82%92%E4%BD%BF%E3%81%86">matplotlib を使う</h2>
+<p><code>@jupyterlab/git</code> &#x3092;&#x5C0E;&#x5165;&#x3059;&#x308B;&#x3002;&#x62E1;&#x5F35;&#x6A5F;&#x80FD;&#x306E;&#x4ED6;&#x306B;&#x3001;&#x4EE5;&#x4E0B;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x304C;&#x5FC5;&#x8981;&#x3089;&#x3057;&#x3044;&#x3002;</p>
+<pre class="language-text">conda install -c conda-forge jupyterlab-git
+</pre>
+<p>&#x4F7F;&#x3044;&#x65B9;&#x306E;&#x624B;&#x9806;&#x306F;<a href="https://qiita.com/cleeeear/items/2fa90aded84e90f9bff5">&#x3053;&#x3061;&#x3089;</a>&#x306B;&#x3042;&#x308B;&#x901A;&#x308A;&#x3002;<br>
+&#x6B63;&#x3057;&#x304F;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x304C;&#x5B8C;&#x4E86;&#x3059;&#x308C;&#x3070;&#x3001;GUI&#x306E;&#x5DE6;&#x5074;&#x306B; git &#x306E;&#x30E1;&#x30CB;&#x30E5;&#x30FC;&#x304C;&#x5B58;&#x5728;&#x3057;&#x3066;&#x3001;&#x305D;&#x3053;&#x304B;&#x3089; <code>stage</code> &#x3084; <code>commit</code> &#x3084; <code>push</code> &#x304C;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;</p>
+<h2 class="mume-header" id="matplotlib-%E3%82%92%E4%BD%BF%E3%81%86">matplotlib &#x3092;&#x4F7F;&#x3046;</h2>
 
-<p>ちょっとハマったのが、コードの先頭（<code>import matplotlib</code> より前）におまじないが必要（以下1行目）。
-これがないとノート内で図を表示してくれない。
-また、おまじないがあれば <code>plt.show()</code> は不要で、特にこのコマンドがあると図をファイルに保存するとき正しく出力されなかったので、書かない。
-さらに、全てのコマンドを1つのセル内に書かないと図は正しく作られなかった。
-以下ミニマルなサンプルコード。</p>
+<p>&#x3061;&#x3087;&#x3063;&#x3068;&#x30CF;&#x30DE;&#x3063;&#x305F;&#x306E;&#x304C;&#x3001;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x5148;&#x982D;&#xFF08;<code>import matplotlib</code> &#x3088;&#x308A;&#x524D;&#xFF09;&#x306B;&#x304A;&#x307E;&#x3058;&#x306A;&#x3044;&#x304C;&#x5FC5;&#x8981;&#xFF08;&#x4EE5;&#x4E0B;1&#x884C;&#x76EE;&#xFF09;&#x3002;<br>
+&#x3053;&#x308C;&#x304C;&#x306A;&#x3044;&#x3068;&#x30CE;&#x30FC;&#x30C8;&#x5185;&#x3067;&#x56F3;&#x3092;&#x8868;&#x793A;&#x3057;&#x3066;&#x304F;&#x308C;&#x306A;&#x3044;&#x3002;<br>
+&#x307E;&#x305F;&#x3001;&#x304A;&#x307E;&#x3058;&#x306A;&#x3044;&#x304C;&#x3042;&#x308C;&#x3070; <code>plt.show()</code> &#x306F;&#x4E0D;&#x8981;&#x3067;&#x3001;&#x7279;&#x306B;&#x3053;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x304C;&#x3042;&#x308B;&#x3068;&#x56F3;&#x3092;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x4FDD;&#x5B58;&#x3059;&#x308B;&#x3068;&#x304D;&#x6B63;&#x3057;&#x304F;&#x51FA;&#x529B;&#x3055;&#x308C;&#x306A;&#x304B;&#x3063;&#x305F;&#x306E;&#x3067;&#x3001;&#x66F8;&#x304B;&#x306A;&#x3044;&#x3002;<br>
+&#x3055;&#x3089;&#x306B;&#x3001;&#x5168;&#x3066;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;1&#x3064;&#x306E;&#x30BB;&#x30EB;&#x5185;&#x306B;&#x66F8;&#x304B;&#x306A;&#x3044;&#x3068;&#x56F3;&#x306F;&#x6B63;&#x3057;&#x304F;&#x4F5C;&#x3089;&#x308C;&#x306A;&#x304B;&#x3063;&#x305F;&#x3002;<br>
+&#x4EE5;&#x4E0B;&#x30DF;&#x30CB;&#x30DE;&#x30EB;&#x306A;&#x30B5;&#x30F3;&#x30D7;&#x30EB;&#x30B3;&#x30FC;&#x30C9;&#x3002;</p>
 <pre data-role="codeBlock" data-info="python" class="language-python"><span class="token operator">%</span>matplotlib inline
 
-<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token keyword keyword-import">import</span> numpy <span class="token keyword keyword-as">as</span> np
+<span class="token keyword keyword-import">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword keyword-as">as</span> plt
 
 <span class="token comment"># figure settings</span>
 fig <span class="token operator">=</span> plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -361,7 +364,7 @@ ax<span class="token punctuation">.</span>scatter<span class="token punctuation"
 plt<span class="token punctuation">.</span>tight_layout<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token comment"># save figure</span>
-plt<span class="token punctuation">.</span>savefig<span class="token punctuation">(</span><span class="token string">'../figure/plot.pdf'</span><span class="token punctuation">,</span> bbox_inches<span class="token operator">=</span><span class="token string">'tight'</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>savefig<span class="token punctuation">(</span><span class="token string">&apos;../figure/plot.pdf&apos;</span><span class="token punctuation">,</span> bbox_inches<span class="token operator">=</span><span class="token string">&apos;tight&apos;</span><span class="token punctuation">)</span>
 </pre>
       </div>
       
@@ -375,8 +378,6 @@ plt<span class="token punctuation">.</span>savefig<span class="token punctuation
     
     
   
-</div>
-</div>
       <!-- Contents above -->
   </div>
 </div>

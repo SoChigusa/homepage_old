@@ -15,20 +15,23 @@ JupyterLab は Python がインタラクティブに書ける Jupyter Notebook �
 [上と同じサイト](https://ai-inter1.com/jupyter-lab/#st-toc-h-2)を参考に、まず `node.js` をインストールする必要がある。
 `brew` でもインストールできるのだが、JupyterLab との連携がうまく行かなかったので、`conda` を推奨。
 
-``` shell
+```shell
 conda install nodejs
 ```
 
 これでノートブック左側のメニューから拡張機能の検索・導入ができるようになる。
+
+**(2022/05/03 追記)**
+
+base (root) の環境だと何故か非常に古いバージョンの `node.js` しかインストールされないという現象が生じた。
+これは新しく環境を作って上記コマンドを実行しなおすことで解決。
 
 ### 拡張機能1: Variable Inspector
 
 上記サイトでオススメされているこれを導入した。
 導入には GUI から行う方法の他に、shellで
 
-```
-jupyter labextension install @lckr/jupyterlab_variableinspector
-```
+    jupyter labextension install @lckr/jupyterlab_variableinspector
 
 などとすることも可能。
 
@@ -36,9 +39,7 @@ jupyter labextension install @lckr/jupyterlab_variableinspector
 
 `@jupyterlab/git` を導入する。拡張機能の他に、以下のインストールが必要らしい。
 
-```
-conda install -c conda-forge jupyterlab-git
-```
+    conda install -c conda-forge jupyterlab-git
 
 使い方の手順は[こちら](https://qiita.com/cleeeear/items/2fa90aded84e90f9bff5)にある通り。
 正しくインストールが完了すれば、GUIの左側に git のメニューが存在して、そこから `stage` や `commit` や `push` ができるようになる
@@ -51,7 +52,7 @@ conda install -c conda-forge jupyterlab-git
 さらに、全てのコマンドを1つのセル内に書かないと図は正しく作られなかった。
 以下ミニマルなサンプルコード。
 
-``` python
+```python
 %matplotlib inline
 
 import numpy as np
