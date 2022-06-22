@@ -1,0 +1,71 @@
+<body>
+<div id="content">
+<div class="article">
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="macbook-air-2020-m1%E3%83%81%E3%83%83%E3%83%97">Macbook Air (2020) M1チップ</h1>
+<h2 id="%E5%BA%8F%E8%AA%AC">序説</h2>
+<p>ポスドクとして雇われ始めた当初はコロナ禍真っ只中で通勤もままならず、オフィスではデスクトップPC派の自分がパソコンを買ってもらうまでに実に1年半も要してしまった。
+ともあれ、今回買ってもらったものは Mac mini (2022) M1チップ搭載モデル、macOS 12 Monterey、16GBメモリ、512GB SSD。
+これはその際の環境構築の自分用メモである。</p>
+<p><a href="macbookair2020.html">2年前のM1 macの環境構築</a>の際と比べて、ほとんどのアプリがデフォルトで M1 チップに対応するようになっている分、環境構築は非常に簡単だと感じた。</p>
+<h2 id="%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">環境構築</h2>
+<h3 id="%E3%83%AF%E3%82%A4%E3%83%A4%E3%83%AC%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%E3%83%88%E3%83%A9%E3%83%83%E3%82%AF%E3%83%91%E3%83%83%E3%83%89%E3%83%9E%E3%82%A6%E3%82%B9%E3%81%AE%E6%8E%A5%E7%B6%9A">ワイヤレスキーボード、トラックパッド、マウスの接続</h3>
+<p>logicool製のキーボード・マウスを使用しているので<a href="https://www.logicool.co.jp/ja-jp/product/options">Logicool Options</a>をインストール。</p>
+<h3 id="xcode">Xcode</h3>
+<p>App Storeからインストールする。
+その後、以下の通り Command Line tools をインストール。</p>
+<pre class="hljs"><code><div>xcode-select --install
+</div></code></pre>
+<h3 id="rosetta">Rosetta</h3>
+<p>インテルプロセッサー用のアプリを実行するためのエミュレーターである Rosetta 2。
+今のところ必要な状況に直面していない。</p>
+<h3 id="homebrew">Homebrew</h3>
+<p><a href="https://brew.sh/index_ja">公式サイト</a>の言うとおり、</p>
+<pre class="hljs"><code><div>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+</div></code></pre>
+<p>でインストールできる！　
+2年前の苦労が嘘のような簡単さ。</p>
+<h3 id="homebrew%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E8%89%B2%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">Homebrewを使って色々インストール</h3>
+<h4 id="root">root</h4>
+<p>Homebrew で以下の通り</p>
+<pre class="hljs"><code><div>brew install root
+</div></code></pre>
+<p>してインストールできる v6.26/04 が問題なく動く。</p>
+<h4 id="mactex">MacTeX</h4>
+<p>今回は GUI 無しバージョンを Homebrew で入れてみた。</p>
+<pre class="hljs"><code><div>brew install mactex-no-gui --cask
+</div></code></pre>
+<h4 id="inkscape">Inkscape</h4>
+<pre class="hljs"><code><div>brew install inkscape
+</div></code></pre>
+<p>そして<a href="inkscape.html">設定を行う</a>。</p>
+<h3 id="anaconda">Anaconda</h3>
+<p>python のバージョン管理、および JupyterLab などを使うために Anaconda を導入している。
+<a href="https://www.anaconda.com/products/distribution#Downloads">公式サイト</a>にある通り、M1 チップ用の GUI 版のディストリビューションがあるのでそれをインストールする。問題なく動く。</p>
+<h3 id="mathematica">Mathematica</h3>
+<p>ライセンスが新しいコンピューターで利用可能か確認中。</p>
+<h3 id="vscode">VSCode</h3>
+<p>環境構築のタイミングに乗じて VSCode を使い始めた。
+<a href="https://code.visualstudio.com/download">公式サイト</a>の Mac OS X 用インストーラーは M1 チップにも対応している。問題なく動く。</p>
+<h3 id="sns">SNS</h3>
+<ul>
+<li><a href="https://zoom.us/download">Zoom</a>をインストール、動く。</li>
+<li><a href="https://www.skype.com/ja/get-skype/">Skype</a>をインストール、動く。</li>
+<li><a href="https://slack.com/downloads/mac">slack</a>をインストール、動く。</li>
+</ul>
+<h3 id="%E3%81%9D%E3%81%AE%E4%BB%96%E4%BE%BF%E5%88%A9%E3%83%84%E3%83%BC%E3%83%AB">その他便利ツール</h3>
+<ul>
+<li><a href="https://www.deepl.com/app">DeepL</a>、動く。</li>
+<li><a href="https://www.grammarly.com/desktop/mac">Grammarly</a>、動く。</li>
+</ul>
+
+</div>
+</div>
+</body>
