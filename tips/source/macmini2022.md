@@ -1,5 +1,5 @@
 
-# Macbook Air (2020) M1チップ
+# Mac mini (2022) M1チップ
 
 ## 序説
 
