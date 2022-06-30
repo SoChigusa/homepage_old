@@ -16,3 +16,5 @@ cv.fdb_latexmk
 cv.fls
 css/latex.css
 noteupdate
+.tags
+.DS_Store
