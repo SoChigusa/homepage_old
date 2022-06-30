@@ -7,7 +7,6 @@
  */
 
 #include "html.h"
-#include "inspire.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>

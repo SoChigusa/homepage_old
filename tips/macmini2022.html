@@ -311,48 +311,75 @@ box-shadow: 0 1px white;
 
     <div class="box" id="gfm">
       <!-- Contents below -->
-      <div class="mume markdown-preview  ">
-      <h1 class="mume-header" id="latex%E3%81%A7%E6%97%A5%E6%9C%AC%E8%AA%9E%E7%BE%8E%E6%96%87%E6%9B%B8">latex&#x3067;&#x65E5;&#x672C;&#x8A9E;&#x7F8E;&#x6587;&#x66F8;</h1>
+<div id="content">
+<div class="article">
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="mac-mini-2022-m1%E3%83%81%E3%83%83%E3%83%97">Mac mini (2022) M1チップ</h1>
+<h2 id="%E5%BA%8F%E8%AA%AC">序説</h2>
+<p>ポスドクとして雇われ始めた当初はコロナ禍真っ只中で通勤もままならず、オフィスではデスクトップPC派の自分がパソコンを買ってもらうまでに実に1年半も要してしまった。
+ともあれ、今回買ってもらったものは Mac mini (2022) M1チップ搭載モデル、macOS 12 Monterey、16GBメモリ、512GB SSD。
+これはその際の環境構築の自分用メモである。</p>
+<p><a href="macbookair2020.html">2年前のM1 macの環境構築</a>の際と比べて、ほとんどのアプリがデフォルトで M1 チップに対応するようになっている分、環境構築は非常に簡単だと感じた。</p>
+<h2 id="%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">環境構築</h2>
+<h3 id="%E3%83%AF%E3%82%A4%E3%83%A4%E3%83%AC%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%E3%83%88%E3%83%A9%E3%83%83%E3%82%AF%E3%83%91%E3%83%83%E3%83%89%E3%83%9E%E3%82%A6%E3%82%B9%E3%81%AE%E6%8E%A5%E7%B6%9A">ワイヤレスキーボード、トラックパッド、マウスの接続</h3>
+<p>logicool製のキーボード・マウスを使用しているので<a href="https://www.logicool.co.jp/ja-jp/product/options">Logicool Options</a>をインストール。</p>
+<h3 id="xcode">Xcode</h3>
+<p>App Storeからインストールする。
+その後、以下の通り Command Line tools をインストール。</p>
+<pre class="hljs"><code><div>xcode-select --install
+</div></code></pre>
+<h3 id="rosetta">Rosetta</h3>
+<p>インテルプロセッサー用のアプリを実行するためのエミュレーターである Rosetta 2。
+今のところ必要な状況に直面していない。</p>
+<h3 id="homebrew">Homebrew</h3>
+<p><a href="https://brew.sh/index_ja">公式サイト</a>の言うとおり、</p>
+<pre class="hljs"><code><div>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+</div></code></pre>
+<p>でインストールできる！　
+2年前の苦労が嘘のような簡単さ。</p>
+<h3 id="homebrew%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E8%89%B2%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">Homebrewを使って色々インストール</h3>
+<h4 id="root">root</h4>
+<p>Homebrew で以下の通り</p>
+<pre class="hljs"><code><div>brew install root
+</div></code></pre>
+<p>してインストールできる v6.26/04 が問題なく動く。</p>
+<h4 id="mactex">MacTeX</h4>
+<p>今回は GUI 無しバージョンを Homebrew で入れてみた。</p>
+<pre class="hljs"><code><div>brew install mactex-no-gui --cask
+</div></code></pre>
+<h4 id="inkscape">Inkscape</h4>
+<pre class="hljs"><code><div>brew install inkscape
+</div></code></pre>
+<p>そして<a href="inkscape.html">設定を行う</a>。</p>
+<h3 id="anaconda">Anaconda</h3>
+<p>python のバージョン管理、および JupyterLab などを使うために Anaconda を導入している。
+<a href="https://www.anaconda.com/products/distribution#Downloads">公式サイト</a>にある通り、M1 チップ用の GUI 版のディストリビューションがあるのでそれをインストールする。問題なく動く。</p>
+<h3 id="mathematica">Mathematica</h3>
+<p>ライセンスが新しいコンピューターで利用可能か確認中。</p>
+<h3 id="vscode">VSCode</h3>
+<p>環境構築のタイミングに乗じて VSCode を使い始めた。
+<a href="https://code.visualstudio.com/download">公式サイト</a>の Mac OS X 用インストーラーは M1 チップにも対応している。問題なく動く。</p>
+<h3 id="sns">SNS</h3>
+<ul>
+<li><a href="https://zoom.us/download">Zoom</a>をインストール、動く。</li>
+<li><a href="https://www.skype.com/ja/get-skype/">Skype</a>をインストール、動く。</li>
+<li><a href="https://slack.com/downloads/mac">slack</a>をインストール、動く。</li>
+</ul>
+<h3 id="%E3%81%9D%E3%81%AE%E4%BB%96%E4%BE%BF%E5%88%A9%E3%83%84%E3%83%BC%E3%83%AB">その他便利ツール</h3>
+<ul>
+<li><a href="https://www.deepl.com/app">DeepL</a>、動く。</li>
+<li><a href="https://www.grammarly.com/desktop/mac">Grammarly</a>、動く。</li>
+</ul>
 
-<h2 class="mume-header" id="%E7%BE%8E%E3%81%97%E3%81%84%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB">&#x7F8E;&#x3057;&#x3044;&#x30B9;&#x30BF;&#x30A4;&#x30EB;</h2>
-
-<pre data-role="codeBlock" data-info="latex" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">[</span>11pt,a4paper,twoside,dvipdfmx,etc...<span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token keyword">jsarticle</span><span class="token punctuation">}</span>
-</pre><h2 class="mume-header" id="%E5%A4%AA%E5%AD%97%E3%81%8C%E5%A4%AA%E3%81%8F%E3%81%AA%E3%81%84">&#x592A;&#x5B57;&#x304C;&#x592A;&#x304F;&#x306A;&#x3044;</h2>
-
-<p>&#x592A;&#x3044;&#x30D5;&#x30A9;&#x30F3;&#x30C8;&#x3092;&#x5C0E;&#x5165;&#x3057;&#x307E;&#x3057;&#x3087;&#x3046;&#x3002;</p>
-<h2 class="mume-header" id="%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E3%81%AE%E5%B0%8E%E5%85%A5">&#x30D5;&#x30A9;&#x30F3;&#x30C8;&#x306E;&#x5C0E;&#x5165;</h2>
-
-<p>&#x3053;&#x306E;&#x6B73;&#x306B;&#x306A;&#x308B;&#x307E;&#x3067;&#x81EA;&#x5206;&#x3067;&#x30D5;&#x30A9;&#x30F3;&#x30C8;&#x306E;&#x5C0E;&#x5165;&#x3092;&#x3057;&#x305F;&#x3053;&#x3068;&#x304C;&#x306A;&#x304B;&#x3063;&#x305F;&#x306E;&#x3067;&#x3001;&#x53CD;&#x7701;&#x3057;&#x3066;&#x8ABF;&#x3079;&#x305F;&#x3002;
-&#x307E;&#x305A;&#x3001;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30D5;&#x30A9;&#x30F3;&#x30C8; <code>FFF.ttf</code> &#x3092;&#x6E96;&#x5099;&#x3057;&#x3001;&#x30BD;&#x30FC;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x540C;&#x3058;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x7F6E;&#x304F;&#x3002;
-&#x3053;&#x306E;&#x30D5;&#x30A9;&#x30F3;&#x30C8;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x307E;&#x3059;&#x3088;&#x30FC;&#x3001;&#x3068;&#x30DE;&#x30C3;&#x30D7;&#x30D5;&#x30A1;&#x30A4;&#x30EB; <code>myfont.map</code> &#x306B;&#x8A18;&#x8FF0;&#x3002;</p>
-<pre data-role="codeBlock" data-info="map" class="language-map"><code>otf-cjgb-h    Identity-H                      FFF.ttf/AJ16
-otf-cjgb-v    Identity-V                      FFF.ttf/AJ16
-hgothb-h      H                               FFF.ttf
-hgothb-v      V                               FFF.ttf
-</code></pre><p>&#x3053;&#x306E;&#x307E;&#x307E;&#x3060;&#x3068;&#x306A;&#x3093;&#x304B;&#x6F22;&#x5B57;&#x30D5;&#x30A9;&#x30F3;&#x30C8;&#x304C;&#x5909;&#x308F;&#x3089;&#x306A;&#x3044;&#x306E;&#x3067;&#x3001;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x304C;&#x5FC5;&#x8981;&#x3002;
-&#x4ECA;&#x56DE;&#x306F;&#x65E5;&#x672C;&#x8A9E;&#x306E;&#x592A;&#x5B57;&#x7528;&#x306B; <code>FFF.ttf</code> &#x3092;&#x4F7F;&#x3044;&#x305F;&#x3044;&#x306E;&#x3067;&#x3001;<code>\emph</code> &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x308B;&#x3053;&#x3068;&#x306B;&#x3057;&#x3066;&#x3001;</p>
-<pre data-role="codeBlock" data-info="latex" class="language-latex"><span class="token function selector">\renewcommand</span><span class="token punctuation">{</span><span class="token function selector">\emph</span><span class="token punctuation">}</span><span class="token punctuation">[</span>1<span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token function selector">\usekanji</span><span class="token punctuation">{</span>JY1<span class="token punctuation">}</span><span class="token punctuation">{</span>hgt<span class="token punctuation">}</span><span class="token punctuation">{</span>bx<span class="token punctuation">}</span><span class="token punctuation">{</span>n<span class="token punctuation">}</span> #1<span class="token punctuation">}</span><span class="token punctuation">}</span>
-</pre><p>&#x3068;&#x3059;&#x308B;&#x3002;&#x6F22;&#x5B57;&#x30D5;&#x30A9;&#x30F3;&#x30C8;&#x306B; hgothb-* &#x3067;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D5;&#x30A9;&#x30F3;&#x30C8;&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3066;&#x3044;&#x308B;&#x3002;
-&#x3042;&#x3068;&#x3001;&#x30BF;&#x30A4;&#x30D7;&#x30BB;&#x30C3;&#x30C8;&#x6642;&#x306B;&#x30DE;&#x30C3;&#x30D7;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;
-&#x9762;&#x5012;&#x304F;&#x3055;&#x3044;&#x306E;&#x3067;&#x3001;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B; <code>makefile</code> &#x3092;&#x4F5C;&#x3063;&#x3066;&#x304A;&#x3044;&#x3066;&#x3001;&#x305D;&#x306E;&#x90FD;&#x5EA6; <code>make</code> &#x3059;&#x308B;&#x3002;</p>
-<pre data-role="codeBlock" data-info="shell" class="language-shell">all:	pd.pdf
-
-pd.pdf:	pd.tex myfont.map
-	platex pd.tex
-	dvipdfmx -f myfont.map pd.dvi
-</pre>
-      </div>
-      
-      
-    
-    
-    
-    
-    
-    
-    
-    
-  
+</div>
+</div>
       <!-- Contents above -->
   </div>
 </div>
