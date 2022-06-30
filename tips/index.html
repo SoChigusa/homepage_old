@@ -311,8 +311,6 @@ box-shadow: 0 1px white;
 
     <div class="box" id="gfm">
       <!-- Contents below -->
-<div id="content">
-<div class="article">
   <script>
     mermaid.initialize({
       startOnLoad: true,
@@ -322,14 +320,15 @@ box-shadow: 0 1px white;
     });
   </script>
 <h1 id="vs-code-%E3%81%AE%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%81%A8%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88">VS Code の環境構築とチートシート</h1>
-<p>##　経緯</p>
+<h2 id="%E7%B5%8C%E7%B7%AF">経緯</h2>
 <p><a href="https://forest.watch.impress.co.jp/docs/news/1415735.html#:~:text=%E7%B1%B3Microsoft%E5%82%98%E4%B8%8B%E3%81%AEGitHub,%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AF%E3%82%A2%E3%83%BC%E3%82%AB%E3%82%A4%E3%83%96%E3%81%95%E3%82%8C%E3%82%8B%E3%80%82">GitHub 社が Atom の開発終了をお知らせした</a>のを良いタイミングだと思って、VS Code に乗り換えることにした。</p>
 <h2 id="vs-code">VS Code</h2>
 <p><code>homebrew</code> でインストールが可能。</p>
 <pre class="hljs"><code><div>brew install visual-studio-code --cask
 </div></code></pre>
 <h3 id="%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">基本操作</h3>
-<p>Atom と操作が似ている部分が多くて馴染みやすかった（どっちが真似したんだ？）。</p>
+<p>Atom と操作が似ている部分が多くて馴染みやすかった（どっちが真似したんだ？）。
+<strong>同じ GitHub アカウントでログインしておけば複数PCで設定が共有される</strong>の（Settings Sync）が非常に便利である。</p>
 <ul>
 <li><code>Cmd + Shift + p</code> でコマンドパレットを開ける。</li>
 <li>画面下部から引き出してこれるウィンドウでターミナルの操作や各種エラーログの確認が可能。</li>
@@ -526,10 +525,17 @@ $max_repeat = 10;
 <li>markdownlint（書式チェック）</li>
 <li>Markdown Preview Github Styling（GitHub 風のプレビュー表示）</li>
 </ul>
+<p><a href="https://www.jackjasonb.com/2021/03/22/markdown-pdf-css/">このページ</a>を参考に、好みのスタイルシートを使って出力できるように設定する。
+GitHub のスタイルシートを <a href="https://github.com/sindresorhus/github-markdown-css">ここ</a> から手に入れて、<code>settings.json</code> に追記。</p>
+<pre class="hljs"><code><div><span class="hljs-comment">//デフォルトのCSSを無効にする</span>
+<span class="hljs-string">"markdown-pdf.includeDefaultStyles"</span>: <span class="hljs-literal">false</span>,
+<span class="hljs-comment">// 上記で編集したCSSを指定する</span>
+<span class="hljs-string">"markdown-pdf.styles"</span>: [<span class="hljs-string">"&lt;path-to-css&gt;"</span>],
+</div></code></pre>
 <h3 id="%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88%E5%80%8B%E4%BA%BA%E8%A8%AD%E5%AE%9A%E5%90%AB%E3%82%80">チートシート（個人設定含む）</h3>
 <ul>
 <li>プレビュー <code>Cmd + Alt + v</code></li>
-<li>html 出力 <code>Cmd + Shift + p</code> （コマンドパレット）から Export (html)</li>
+<li>html 出力 <code>Cmd + Alt + e</code></li>
 <li>インラインコード <code>Ctrl + q</code></li>
 <li>コードブロック <code>Ctrl + Alt + q</code></li>
 <li><strong>ボールド</strong> <code>Cmd + b</code></li>
@@ -541,11 +547,9 @@ $max_repeat = 10;
 <p>開発者ツールが使用できる優秀な html ビューアー、<code>Live Preview</code> を導入した。</p>
 <h3 id="%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88%E5%80%8B%E4%BA%BA%E8%A8%AD%E5%AE%9A">チートシート（個人設定）</h3>
 <ul>
-<li>プレビュー <code>Cmd + Alt + v</code></li>
+<li>プレビュー <code>Alt + k</code>（markdown preview と競合するようなのでショートカットを分けてある）</li>
 </ul>
 
-</div>
-</div>
       <!-- Contents above -->
   </div>
 </div>

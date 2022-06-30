@@ -1,7 +1,7 @@
 
 # VS Code の環境構築とチートシート
 
-##　経緯
+## 経緯
 
 [GitHub 社が Atom の開発終了をお知らせした](https://forest.watch.impress.co.jp/docs/news/1415735.html#:~:text=%E7%B1%B3Microsoft%E5%82%98%E4%B8%8B%E3%81%AEGitHub,%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AF%E3%82%A2%E3%83%BC%E3%82%AB%E3%82%A4%E3%83%96%E3%81%95%E3%82%8C%E3%82%8B%E3%80%82)のを良いタイミングだと思って、VS Code に乗り換えることにした。
 
@@ -16,6 +16,7 @@ brew install visual-studio-code --cask
 ### 基本操作
 
 Atom と操作が似ている部分が多くて馴染みやすかった（どっちが真似したんだ？）。
+**同じ GitHub アカウントでログインしておけば複数PCで設定が共有される**の（Settings Sync）が非常に便利である。
 
 - `Cmd + Shift + p` でコマンドパレットを開ける。
 - 画面下部から引き出してこれるウィンドウでターミナルの操作や各種エラーログの確認が可能。
@@ -232,10 +233,20 @@ VS Code 側では、最も有名な拡張機能である `LaTeX Workshop` をイ
 - markdownlint（書式チェック）
 - Markdown Preview Github Styling（GitHub 風のプレビュー表示）
 
+[このページ](https://www.jackjasonb.com/2021/03/22/markdown-pdf-css/)を参考に、好みのスタイルシートを使って出力できるように設定する。
+GitHub のスタイルシートを [ここ](https://github.com/sindresorhus/github-markdown-css) から手に入れて、`settings.json` に追記。
+
+``` json
+//デフォルトのCSSを無効にする
+"markdown-pdf.includeDefaultStyles": false,
+// 上記で編集したCSSを指定する
+"markdown-pdf.styles": ["<path-to-css>"],
+```
+
 ### チートシート（個人設定含む）
 
 - プレビュー `Cmd + Alt + v`
-- html 出力 `Cmd + Shift + p` （コマンドパレット）から Export (html)
+- html 出力 `Cmd + Alt + e`
 - インラインコード `Ctrl + q`
 - コードブロック `Ctrl + Alt + q`
 - **ボールド** `Cmd + b`
@@ -249,4 +260,4 @@ VS Code 側では、最も有名な拡張機能である `LaTeX Workshop` をイ
 
 ### チートシート（個人設定）
 
-- プレビュー `Cmd + Alt + v`
+- プレビュー `Alt + k`（markdown preview と競合するようなのでショートカットを分けてある）
