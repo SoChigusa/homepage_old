@@ -37,8 +37,7 @@ xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-でインストールできる！　
-2年前の苦労が嘘のような簡単さ。
+でインストールできる！　2年前の苦労が嘘のような簡単さ。
 
 ### Homebrewを使って色々インストール
 
