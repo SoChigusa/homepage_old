@@ -1,415 +1,424 @@
 <html lang="ja">
-
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-  <meta charset="UTF-8">
-  <title>Mojave</title>
-  <link href="../css/github.css" rel="stylesheet">
-  <link href="../css/normalize.css" rel="stylesheet">
-  <link href="../css/main.css" rel="stylesheet">
-  <meta property="og:url" content="https://sochigusa.bitbucket.io/tips/" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="Tips" />
-  <meta property="og:description" content="So Chigusa's tips about research and every other thing" />
-  <meta property="og:image" content="https://dl.dropboxusercontent.com/s/ueao8qcnkr9zj0t/OGP1.jpeg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@SoChigusa" />
-  <meta property="fb:app_id" content="480402633774231">
-  <style>
-    /**
+<meta charset="UTF-8">
+<title>Mojave</title>
+<link href="../css/normalize.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<meta property="og:url" content="https://sochigusa.bitbucket.io/tips/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Tips" />
+<meta property="og:description" content="So Chigusa's tips about research and every other thing" />
+<meta property="og:image" content="https://dl.dropboxusercontent.com/s/ueao8qcnkr9zj0t/OGP1.jpeg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@SoChigusa" />
+<meta property="fb:app_id" content="480402633774231">
+<style>
+/**
 * prism.js Github theme based on GitHub's theme.
 * @author Sam Clarke
 */
-    code[class*="language-"],
-    pre[class*="language-"] {
-      color: #333;
-      background: none;
-      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-      text-align: left;
-      white-space: pre;
-      word-spacing: normal;
-      word-break: normal;
-      word-wrap: normal;
-      line-height: 1.4;
+code[class*="language-"],
+pre[class*="language-"] {
+color: #333;
+background: none;
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+text-align: left;
+white-space: pre;
+word-spacing: normal;
+word-break: normal;
+word-wrap: normal;
+line-height: 1.4;
 
-      -moz-tab-size: 8;
-      -o-tab-size: 8;
-      tab-size: 8;
+-moz-tab-size: 8;
+-o-tab-size: 8;
+tab-size: 8;
 
-      -webkit-hyphens: none;
-      -moz-hyphens: none;
-      -ms-hyphens: none;
-      hyphens: none;
-    }
+-webkit-hyphens: none;
+-moz-hyphens: none;
+-ms-hyphens: none;
+hyphens: none;
+}
 
-    /* Code blocks */
-    pre[class*="language-"] {
-      padding: .8em;
-      overflow: auto;
-      /* border: 1px solid #ddd; */
-      border-radius: 3px;
-      /* background: #fff; */
-      background: #f5f5f5;
-    }
+/* Code blocks */
+pre[class*="language-"] {
+padding: .8em;
+overflow: auto;
+/* border: 1px solid #ddd; */
+border-radius: 3px;
+/* background: #fff; */
+background: #f5f5f5;
+}
 
-    /* Inline code */
-    :not(pre)>code[class*="language-"] {
-      padding: .1em;
-      border-radius: .3em;
-      white-space: normal;
-      background: #f5f5f5;
-    }
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+padding: .1em;
+border-radius: .3em;
+white-space: normal;
+background: #f5f5f5;
+}
 
-    .token.comment,
-    .token.blockquote {
-      color: #969896;
-    }
+.token.comment,
+.token.blockquote {
+color: #969896;
+}
 
-    .token.cdata {
-      color: #183691;
-    }
+.token.cdata {
+color: #183691;
+}
 
-    .token.doctype,
-    .token.punctuation,
-    .token.variable,
-    .token.macro.property {
-      color: #333;
-    }
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+color: #333;
+}
 
-    .token.operator,
-    .token.important,
-    .token.keyword,
-    .token.rule,
-    .token.builtin {
-      color: #a71d5d;
-    }
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+color: #a71d5d;
+}
 
-    .token.string,
-    .token.url,
-    .token.regex,
-    .token.attr-value {
-      color: #183691;
-    }
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+color: #183691;
+}
 
-    .token.property,
-    .token.number,
-    .token.boolean,
-    .token.entity,
-    .token.atrule,
-    .token.constant,
-    .token.symbol,
-    .token.command,
-    .token.code {
-      color: #0086b3;
-    }
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+color: #0086b3;
+}
 
-    .token.tag,
-    .token.selector,
-    .token.prolog {
-      color: #63a35c;
-    }
+.token.tag,
+.token.selector,
+.token.prolog {
+color: #63a35c;
+}
 
-    .token.function,
-    .token.namespace,
-    .token.pseudo-element,
-    .token.class,
-    .token.class-name,
-    .token.pseudo-class,
-    .token.id,
-    .token.url-reference .token.variable,
-    .token.attr-name {
-      color: #795da3;
-    }
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+color: #795da3;
+}
 
-    .token.entity {
-      cursor: help;
-    }
+.token.entity {
+cursor: help;
+}
 
-    .token.title,
-    .token.title .token.punctuation {
-      font-weight: bold;
-      color: #1d3e81;
-    }
+.token.title,
+.token.title .token.punctuation {
+font-weight: bold;
+color: #1d3e81;
+}
 
-    .token.list {
-      color: #ed6a43;
-    }
+.token.list {
+color: #ed6a43;
+}
 
-    .token.inserted {
-      background-color: #eaffea;
-      color: #55a532;
-    }
+.token.inserted {
+background-color: #eaffea;
+color: #55a532;
+}
 
-    .token.deleted {
-      background-color: #ffecec;
-      color: #bd2c00;
-    }
+.token.deleted {
+background-color: #ffecec;
+color: #bd2c00;
+}
 
-    .token.bold {
-      font-weight: bold;
-    }
+.token.bold {
+font-weight: bold;
+}
 
-    .token.italic {
-      font-style: italic;
-    }
+.token.italic {
+font-style: italic;
+}
 
 
-    /* JSON */
-    .language-json .token.property {
-      color: #183691;
-    }
+/* JSON */
+.language-json .token.property {
+color: #183691;
+}
 
-    .language-markup .token.tag .token.punctuation {
-      color: #333;
-    }
+.language-markup .token.tag .token.punctuation {
+color: #333;
+}
 
-    /* CSS */
-    code.language-css,
-    .language-css .token.function {
-      color: #0086b3;
-    }
+/* CSS */
+code.language-css,
+.language-css .token.function {
+color: #0086b3;
+}
 
-    /* YAML */
-    .language-yaml .token.atrule {
-      color: #63a35c;
-    }
+/* YAML */
+.language-yaml .token.atrule {
+color: #63a35c;
+}
 
-    code.language-yaml {
-      color: #183691;
-    }
+code.language-yaml {
+color: #183691;
+}
 
-    /* Ruby */
-    .language-ruby .token.function {
-      color: #333;
-    }
+/* Ruby */
+.language-ruby .token.function {
+color: #333;
+}
 
-    /* Markdown */
-    .language-markdown .token.url {
-      color: #795da3;
-    }
+/* Markdown */
+.language-markdown .token.url {
+color: #795da3;
+}
 
-    /* Makefile */
-    .language-makefile .token.symbol {
-      color: #795da3;
-    }
+/* Makefile */
+.language-makefile .token.symbol {
+color: #795da3;
+}
 
-    .language-makefile .token.variable {
-      color: #183691;
-    }
+.language-makefile .token.variable {
+color: #183691;
+}
 
-    .language-makefile .token.builtin {
-      color: #0086b3;
-    }
+.language-makefile .token.builtin {
+color: #0086b3;
+}
 
-    /* Bash */
-    .language-bash .token.keyword {
-      color: #0086b3;
-    }
+/* Bash */
+.language-bash .token.keyword {
+color: #0086b3;
+}
 
-    /* highlight */
-    pre[data-line] {
-      position: relative;
-      padding: 1em 0 1em 3em;
-    }
+/* highlight */
+pre[data-line] {
+position: relative;
+padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+position: absolute;
+top: 0;
+left: 0;
+background-color: transparent;
+display: block;
+width: 100%;
+}
 
-    pre[data-line] .line-highlight-wrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: transparent;
-      display: block;
-      width: 100%;
-    }
+pre[data-line] .line-highlight {
+position: absolute;
+left: 0;
+right: 0;
+padding: inherit 0;
+margin-top: 1em;
+background: hsla(24, 20%, 50%,.08);
+background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+pointer-events: none;
+line-height: inherit;
+white-space: pre;
+}
 
-    pre[data-line] .line-highlight {
-      position: absolute;
-      left: 0;
-      right: 0;
-      padding: inherit 0;
-      margin-top: 1em;
-      background: hsla(24, 20%, 50%, .08);
-      background: linear-gradient(to right, hsla(24, 20%, 50%, .1) 70%, hsla(24, 20%, 50%, 0));
-      pointer-events: none;
-      line-height: inherit;
-      white-space: pre;
-    }
-
-    pre[data-line] .line-highlight:before,
-    pre[data-line] .line-highlight[data-end]:after {
-      content: attr(data-start);
-      position: absolute;
-      top: .4em;
-      left: .6em;
-      min-width: 1em;
-      padding: 0 .5em;
-      background-color: hsla(24, 20%, 50%, .4);
-      color: hsl(24, 20%, 95%);
-      font: bold 65%/1.5 sans-serif;
-      text-align: center;
-      vertical-align: .3em;
-      border-radius: 999px;
-      text-shadow: none;
-      box-shadow: 0 1px white;
-    }
-  </style>
+pre[data-line] .line-highlight:before,
+pre[data-line] .line-highlight[data-end]:after {
+content: attr(data-start);
+position: absolute;
+top: .4em;
+left: .6em;
+min-width: 1em;
+padding: 0 .5em;
+background-color: hsla(24, 20%, 50%,.4);
+color: hsl(24, 20%, 95%);
+font: bold 65%/1.5 sans-serif;
+text-align: center;
+vertical-align: .3em;
+border-radius: 999px;
+text-shadow: none;
+box-shadow: 0 1px white;
+}
+</style>
 </head>
-
 <body for="html-export">
 
   <!-- insertion below : menu.html -->
-  <header>
-    <a href="/">
-      <h1>So Chigusa</h1>
-    </a>
-  </header>
-  <nav id="global-nav">
-    <ul>
-      <a href="/cv/cv.pdf">
-        <li>CV</li>
-      </a>
-      <a href="/research/">
-        <li>Research</li>
-      </a>
-      <a href="/note/">
-        <li>Note</li>
-      </a>
-      <a href="/tips/">
-        <li>Tips</li>
-      </a>
-      <a href="/git/">
-        <li>Git</li>
-      </a>
-    </ul>
-  </nav>
+<header>
+    <a href="/"><h1>So Chigusa</h1></a>
+</header>
+<nav id="global-nav">
+  <ul>
+    <a href="/cv/cv.pdf"><li>CV</li></a>
+    <a href="/research/"><li>Research</li></a>
+    <a href="/note/"><li>Note</li></a>
+    <a href="/tips/"><li>Tips</li></a>
+    <a href="/git/"><li>Git</li></a>
+  </ul>
+</nav>
   <!-- insertion above : menu.html -->
 
   <div class="container">
     <div class="box" id="tipsmenu">
       <!-- Tips menu below -->
-      <nav>
-        <h3>Tips Menu</h3>
-        <ul>
-          <li><a href="vscode.html">vscode</a></li>
-          <li><a href="macmini2022.html">macmini2022</a></li>
-          <li><a href="costco.html">costco</a></li>
-          <li><a href="Monterey.html">Monterey</a></li>
-          <li><a href="parallel.html">parallel</a></li>
-          <li><a href="google-api.html">google-api</a></li>
-          <li><a href="JupyterLab.html">JupyterLab</a></li>
-          <li><a href="taxreturn.html">taxreturn</a></li>
-          <li><a href="scraping.html">scraping</a></li>
-          <li><a href="macbookair2020.html">macbookair2020</a></li>
-          <li><a href="postdoc.html">postdoc</a></li>
-          <li><a href="MW50.html">MW50</a></li>
-          <li><a href="inkscape.html">inkscape</a></li>
-          <li><a href="git.html">git</a></li>
-          <li><a href="madgraph.html">madgraph</a></li>
-          <li><a href="atom.html">atom</a></li>
-          <li><a href="fastjet.html">fastjet</a></li>
-          <li><a href="delphes.html">delphes</a></li>
-          <li><a href="boost_icc.html">boost_icc</a></li>
-          <li><a href="boost_odeint.html">boost_odeint</a></li>
-          <li><a href="matplotlib.html">matplotlib</a></li>
-          <li><a href="latex.html">latex</a></li>
-          <li><a href="latex_japanese.html">latex_japanese</a></li>
-          <li><a href="beamer.html">beamer</a></li>
-          <li><a href="Mojave.html">Mojave</a></li>
-          <li><a href="latexdiff.html">latexdiff</a></li>
-          <li><a href="pythia8.html">pythia8</a></li>
-          <li><a href="FeynArts.html">FeynArts</a></li>
-          <li><a href="susy-hit.html">susy-hit</a></li>
-          <li><a href="softsusy.html">softsusy</a></li>
-          <li><a href="markdown-mode.html">markdown-mode</a></li>
-          <li><a href="chrome-JavaScript.html">chrome-JavaScript</a></li>
-        </ul>
-      </nav>
+    <nav>
+      <h3>Tips Menu</h3>
+      <ul>
+      <li><a href="vscode.html">vscode</a></li>
+      <li><a href="macmini2022.html">macmini2022</a></li>
+      <li><a href="costco.html">costco</a></li>
+      <li><a href="Monterey.html">Monterey</a></li>
+      <li><a href="parallel.html">parallel</a></li>
+      <li><a href="google-api.html">google-api</a></li>
+      <li><a href="JupyterLab.html">JupyterLab</a></li>
+      <li><a href="taxreturn.html">taxreturn</a></li>
+      <li><a href="scraping.html">scraping</a></li>
+      <li><a href="macbookair2020.html">macbookair2020</a></li>
+      <li><a href="postdoc.html">postdoc</a></li>
+      <li><a href="MW50.html">MW50</a></li>
+      <li><a href="inkscape.html">inkscape</a></li>
+      <li><a href="git.html">git</a></li>
+      <li><a href="madgraph.html">madgraph</a></li>
+      <li><a href="atom.html">atom</a></li>
+      <li><a href="fastjet.html">fastjet</a></li>
+      <li><a href="delphes.html">delphes</a></li>
+      <li><a href="boost_icc.html">boost_icc</a></li>
+      <li><a href="boost_odeint.html">boost_odeint</a></li>
+      <li><a href="matplotlib.html">matplotlib</a></li>
+      <li><a href="latex.html">latex</a></li>
+      <li><a href="latex_japanese.html">latex_japanese</a></li>
+      <li><a href="beamer.html">beamer</a></li>
+      <li><a href="Mojave.html">Mojave</a></li>
+      <li><a href="latexdiff.html">latexdiff</a></li>
+      <li><a href="pythia8.html">pythia8</a></li>
+      <li><a href="FeynArts.html">FeynArts</a></li>
+      <li><a href="susy-hit.html">susy-hit</a></li>
+      <li><a href="softsusy.html">softsusy</a></li>
+      <li><a href="markdown-mode.html">markdown-mode</a></li>
+      <li><a href="chrome-JavaScript.html">chrome-JavaScript</a></li>
+       </ul>
+    </nav>
       <!-- Tips menu above -->
     </div>
 
     <div class="box" id="gfm">
       <!-- Contents below -->
-      <script>
-        mermaid.initialize({
-          startOnLoad: true,
-          theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-            ? 'dark'
-            : 'default'
-        });
-      </script>
-      <h1 id="mac-mini-2022-m1%E3%83%81%E3%83%83%E3%83%97">Mac mini (2022) M1チップ</h1>
-      <h2 id="%E5%BA%8F%E8%AA%AC">序説</h2>
-      <p>ポスドクとして雇われ始めた当初はコロナ禍真っ只中で通勤もままならず、オフィスではデスクトップPC派の自分がパソコンを買ってもらうまでに実に1年半も要してしまった。
-        ともあれ、今回買ってもらったものは Mac mini (2022) M1チップ搭載モデル、macOS 12 Monterey、16GBメモリ、512GB SSD。
-        これはその際の環境構築の自分用メモである。</p>
-      <p><a href="macbookair2020.html">2年前のM1 macの環境構築</a>の際と比べて、ほとんどのアプリがデフォルトで M1 チップに対応するようになっている分、環境構築は非常に簡単だと感じた。
-      </p>
-      <h2 id="%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">環境構築</h2>
-      <h3
-        id="%E3%83%AF%E3%82%A4%E3%83%A4%E3%83%AC%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%E3%83%88%E3%83%A9%E3%83%83%E3%82%AF%E3%83%91%E3%83%83%E3%83%89%E3%83%9E%E3%82%A6%E3%82%B9%E3%81%AE%E6%8E%A5%E7%B6%9A">
-        ワイヤレスキーボード、トラックパッド、マウスの接続</h3>
-      <p>logicool製のキーボード・マウスを使用しているので<a href="https://www.logicool.co.jp/ja-jp/product/options">Logicool
-          Options</a>をインストール。</p>
-      <h3 id="xcode">Xcode</h3>
-      <p>App Storeからインストールする。
-        その後、以下の通り Command Line tools をインストール。</p>
-      <pre class="hljs"><code><div>xcode-select --install
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="mac-mini-2022-m1%E3%83%81%E3%83%83%E3%83%97">Mac mini (2022) M1チップ</h1>
+<h2 id="%E5%BA%8F%E8%AA%AC">序説</h2>
+<p>ポスドクとして雇われ始めた当初はコロナ禍真っ只中で通勤もままならず、オフィスではデスクトップPC派の自分がパソコンを買ってもらうまでに実に1年半も要してしまった。
+ともあれ、今回買ってもらったものは Mac mini (2022) M1チップ搭載モデル、macOS 12 Monterey、16GBメモリ、512GB SSD。
+これはその際の環境構築の自分用メモである。</p>
+<p><a href="macbookair2020.html">2年前のM1 macの環境構築</a>の際と比べて、ほとんどのアプリがデフォルトで M1 チップに対応するようになっている分、環境構築は非常に簡単だと感じた。</p>
+<h2 id="%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">環境構築</h2>
+<h3 id="%E3%83%AF%E3%82%A4%E3%83%A4%E3%83%AC%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%E3%83%88%E3%83%A9%E3%83%83%E3%82%AF%E3%83%91%E3%83%83%E3%83%89%E3%83%9E%E3%82%A6%E3%82%B9%E3%81%AE%E6%8E%A5%E7%B6%9A">ワイヤレスキーボード、トラックパッド、マウスの接続</h3>
+<p>logicool製のキーボード・マウスを使用しているので<a href="https://www.logicool.co.jp/ja-jp/product/options">Logicool Options</a>をインストール。</p>
+<h3 id="xcode">Xcode</h3>
+<p>App Storeからインストールする。
+その後、以下の通り Command Line tools をインストール。</p>
+<pre class="hljs"><code><div>xcode-select --install
 </div></code></pre>
-      <h3 id="rosetta">Rosetta</h3>
-      <p>インテルプロセッサー用のアプリを実行するためのエミュレーターである Rosetta 2。
-        今のところ必要な状況に直面していない。</p>
-      <h3 id="homebrew">Homebrew</h3>
-      <p><a href="https://brew.sh/index_ja">公式サイト</a>の言うとおり、</p>
-      <pre class="hljs"><code><div>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+<h3 id="rosetta">Rosetta</h3>
+<p>インテルプロセッサー用のアプリを実行するためのエミュレーターである Rosetta 2。
+今のところ必要な状況に直面していない。</p>
+<h3 id="homebrew">Homebrew</h3>
+<p><a href="https://brew.sh/index_ja">公式サイト</a>の言うとおり、</p>
+<pre class="hljs"><code><div>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 </div></code></pre>
-      <p>でインストールできる！　2年前の苦労が嘘のような簡単さ。</p>
-      <h3
-        id="homebrew%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E8%89%B2%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">
-        Homebrewを使って色々インストール</h3>
-      <h4 id="root">root</h4>
-      <p>Homebrew で以下の通り</p>
-      <pre class="hljs"><code><div>brew install root
+<p>でインストールできる！　2年前の苦労が嘘のような簡単さ。</p>
+<h3 id="homebrew%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E8%89%B2%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">Homebrewを使って色々インストール</h3>
+<h4 id="root">root</h4>
+<p>Homebrew で以下の通り</p>
+<pre class="hljs"><code><div>brew install root
 </div></code></pre>
-      <p>してインストールできる v6.26/04 が問題なく動く。</p>
-      <h4 id="mactex">MacTeX</h4>
-      <p>今回は GUI 無しバージョンを Homebrew で入れてみた。</p>
-      <pre class="hljs"><code><div>brew install mactex-no-gui --cask
+<p>してインストールできる v6.26/04 が問題なく動く。</p>
+<h4 id="mactex">MacTeX</h4>
+<p>今回は GUI 無しバージョンを Homebrew で入れてみた。</p>
+<pre class="hljs"><code><div>brew install mactex-no-gui --cask
 </div></code></pre>
-      <h4 id="inkscape">Inkscape</h4>
-      <pre class="hljs"><code><div>brew install inkscape
+<h4 id="inkscape">Inkscape</h4>
+<pre class="hljs"><code><div>brew install inkscape
 </div></code></pre>
-      <p>そして<a href="inkscape.html">設定を行う</a>。</p>
-      <h3 id="anaconda">Anaconda</h3>
-      <p>python のバージョン管理、および JupyterLab などを使うために Anaconda を導入している。
-        <a href="https://www.anaconda.com/products/distribution#Downloads">公式サイト</a>にある通り、M1 チップ用の GUI
-        版のディストリビューションがあるのでそれをインストールする。問題なく動く。
-      </p>
-      <h3 id="mathematica">Mathematica</h3>
-      <p>ライセンスが新しいコンピューターで利用可能か確認中。</p>
-      <h3 id="vscode">VSCode</h3>
-      <p>環境構築のタイミングに乗じて VSCode を使い始めた。
-        <a href="https://code.visualstudio.com/download">公式サイト</a>の Mac OS X 用インストーラーは M1 チップにも対応している。問題なく動く。
-      </p>
-      <h3 id="sns">SNS</h3>
-      <ul>
-        <li><a href="https://zoom.us/download">Zoom</a>をインストール、動く。</li>
-        <li><a href="https://www.skype.com/ja/get-skype/">Skype</a>をインストール、動く。</li>
-        <li><a href="https://slack.com/downloads/mac">slack</a>をインストール、動く。</li>
-      </ul>
-      <h3 id="%E3%81%9D%E3%81%AE%E4%BB%96%E4%BE%BF%E5%88%A9%E3%83%84%E3%83%BC%E3%83%AB">その他便利ツール</h3>
-      <ul>
-        <li><a href="https://www.deepl.com/app">DeepL</a>、動く。</li>
-        <li><a href="https://www.grammarly.com/desktop/mac">Grammarly</a>、動く。</li>
-      </ul>
+<p>そして<a href="inkscape.html">設定を行う</a>。</p>
+<h3 id="anaconda">Anaconda</h3>
+<p>python のバージョン管理、および JupyterLab などを使うために Anaconda を導入している。
+<a href="https://www.anaconda.com/products/distribution#Downloads">公式サイト</a>にある通り、M1 チップ用の GUI 版のディストリビューションがあるのでそれをインストールする。問題なく動く。</p>
+<h3 id="mathematica">Mathematica</h3>
+<p>ライセンスさえ手に入れれば問題なく動く。</p>
+<h3 id="c">c++</h3>
+<h4 id="%E6%95%B0%E5%80%A4%E8%A8%88%E7%AE%97%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA-gsl">数値計算ライブラリ gsl</h4>
+<p>ナイーブなオプション指定 <code>-lgsl</code> が</p>
+<pre class="hljs"><code><div>ld: warning: ignoring file /usr/local/lib/libgsl.dylib, building for macOS-arm64 but attempting to link with file built for macOS-x86_64
+</div></code></pre>
+<p>エラーを吐いたので対応した。
+<a href="https://macappstore.org/gsl/">MacAppStore</a>にある通り</p>
+<pre class="hljs"><code><div>brew install gsl
+</div></code></pre>
+<p>でライブラリをインストール。
+<code>Makefile</code> におけるオプション指定は</p>
+<pre class="hljs"><code><div>GSLFLAGS = $<span class="hljs-variable">$(gsl-config --libs)</span>
+</div></code></pre>
+<p>を用いるとラク。</p>
+<h4 id="boost">boost</h4>
+<pre class="hljs"><code><div>brew install boost
+</div></code></pre>
+<p>でインストールした Boost c++ ライブラリも上記と同様のライブラリエラーで動かなかったので対応。
+<a href="https://github.com/apotocki/boost-iosx">このリポジトリ</a>から必要なファイルを引っ張ってきてライブラリをコンパイルし直す。
+<code>cocoapods</code>が必要だが、</p>
+<pre class="hljs"><code><div>sudo gem install cocoapods
+</div></code></pre>
+<p>でインストールしたものは<a href="https://stackoverflow.com/questions/64901180/how-to-run-cocoapods-on-apple-silicon-m1">ここにあるようなエラー</a>を吐いたので、代わりに</p>
+<pre class="hljs"><code><div>brew install cocoapods
+</div></code></pre>
+<p>からの</p>
+<pre class="hljs"><code><div>git clone https://github.com/apotocki/boost-iosx
+cd boost-iosx
+scripts/build.sh
+</div></code></pre>
+<p>でFA。
+<code>Makefile</code> には</p>
+<pre class="hljs"><code><div>BOOSTFLAGS = -I/&lt;path_to_boost-iosx&gt;/boost -L/&lt;path_to_boost-iosx&gt;/boost/stage/macosx/lib
+</div></code></pre>
+<p>としておく。</p>
+<h3 id="vscode">VSCode</h3>
+<p>環境構築のタイミングに乗じて VSCode を使い始めた。
+<a href="https://code.visualstudio.com/download">公式サイト</a>の Mac OS X 用インストーラーは M1 チップにも対応している。問題なく動く。</p>
+<h3 id="sns">SNS</h3>
+<ul>
+<li><a href="https://zoom.us/download">Zoom</a>をインストール、動く。</li>
+<li><a href="https://www.skype.com/ja/get-skype/">Skype</a>をインストール、動く。</li>
+<li><a href="https://slack.com/downloads/mac">slack</a>をインストール、動く。</li>
+</ul>
+<h3 id="%E3%81%9D%E3%81%AE%E4%BB%96%E4%BE%BF%E5%88%A9%E3%83%84%E3%83%BC%E3%83%AB">その他便利ツール</h3>
+<ul>
+<li><a href="https://www.deepl.com/app">DeepL</a>、動く。</li>
+<li><a href="https://www.grammarly.com/desktop/mac">Grammarly</a>、動く。</li>
+</ul>
 
       <!-- Contents above -->
-    </div>
   </div>
+</div>
 
-  <!-- insertion below : footer.html -->
-  <footer>
-    <small>Copyright(C)2022 S. Chigusa, All Rights Reserved.</small>
-  </footer>
-  <!-- insertion above : footer.html -->
+<!-- insertion below : footer.html -->
+<footer>
+	<small>Copyright(C)2022 S. Chigusa, All Rights Reserved.</small>
+</footer>
+<!-- insertion above : footer.html -->
 
 </body>
-
 </html>

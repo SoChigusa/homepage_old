@@ -1,406 +1,380 @@
 <html lang="ja">
-
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-  <meta charset="UTF-8">
-  <title>Mojave</title>
-  <link href="../css/github.css" rel="stylesheet">
-  <link href="../css/normalize.css" rel="stylesheet">
-  <link href="../css/main.css" rel="stylesheet">
-  <meta property="og:url" content="https://sochigusa.bitbucket.io/tips/" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="Tips" />
-  <meta property="og:description" content="So Chigusa's tips about research and every other thing" />
-  <meta property="og:image" content="https://dl.dropboxusercontent.com/s/ueao8qcnkr9zj0t/OGP1.jpeg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@SoChigusa" />
-  <meta property="fb:app_id" content="480402633774231">
-  <style>
-    /**
+<meta charset="UTF-8">
+<title>Mojave</title>
+<link href="../css/normalize.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<meta property="og:url" content="https://sochigusa.bitbucket.io/tips/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Tips" />
+<meta property="og:description" content="So Chigusa's tips about research and every other thing" />
+<meta property="og:image" content="https://dl.dropboxusercontent.com/s/ueao8qcnkr9zj0t/OGP1.jpeg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@SoChigusa" />
+<meta property="fb:app_id" content="480402633774231">
+<style>
+/**
 * prism.js Github theme based on GitHub's theme.
 * @author Sam Clarke
 */
-    code[class*="language-"],
-    pre[class*="language-"] {
-      color: #333;
-      background: none;
-      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-      text-align: left;
-      white-space: pre;
-      word-spacing: normal;
-      word-break: normal;
-      word-wrap: normal;
-      line-height: 1.4;
+code[class*="language-"],
+pre[class*="language-"] {
+color: #333;
+background: none;
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+text-align: left;
+white-space: pre;
+word-spacing: normal;
+word-break: normal;
+word-wrap: normal;
+line-height: 1.4;
 
-      -moz-tab-size: 8;
-      -o-tab-size: 8;
-      tab-size: 8;
+-moz-tab-size: 8;
+-o-tab-size: 8;
+tab-size: 8;
 
-      -webkit-hyphens: none;
-      -moz-hyphens: none;
-      -ms-hyphens: none;
-      hyphens: none;
-    }
+-webkit-hyphens: none;
+-moz-hyphens: none;
+-ms-hyphens: none;
+hyphens: none;
+}
 
-    /* Code blocks */
-    pre[class*="language-"] {
-      padding: .8em;
-      overflow: auto;
-      /* border: 1px solid #ddd; */
-      border-radius: 3px;
-      /* background: #fff; */
-      background: #f5f5f5;
-    }
+/* Code blocks */
+pre[class*="language-"] {
+padding: .8em;
+overflow: auto;
+/* border: 1px solid #ddd; */
+border-radius: 3px;
+/* background: #fff; */
+background: #f5f5f5;
+}
 
-    /* Inline code */
-    :not(pre)>code[class*="language-"] {
-      padding: .1em;
-      border-radius: .3em;
-      white-space: normal;
-      background: #f5f5f5;
-    }
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+padding: .1em;
+border-radius: .3em;
+white-space: normal;
+background: #f5f5f5;
+}
 
-    .token.comment,
-    .token.blockquote {
-      color: #969896;
-    }
+.token.comment,
+.token.blockquote {
+color: #969896;
+}
 
-    .token.cdata {
-      color: #183691;
-    }
+.token.cdata {
+color: #183691;
+}
 
-    .token.doctype,
-    .token.punctuation,
-    .token.variable,
-    .token.macro.property {
-      color: #333;
-    }
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+color: #333;
+}
 
-    .token.operator,
-    .token.important,
-    .token.keyword,
-    .token.rule,
-    .token.builtin {
-      color: #a71d5d;
-    }
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+color: #a71d5d;
+}
 
-    .token.string,
-    .token.url,
-    .token.regex,
-    .token.attr-value {
-      color: #183691;
-    }
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+color: #183691;
+}
 
-    .token.property,
-    .token.number,
-    .token.boolean,
-    .token.entity,
-    .token.atrule,
-    .token.constant,
-    .token.symbol,
-    .token.command,
-    .token.code {
-      color: #0086b3;
-    }
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+color: #0086b3;
+}
 
-    .token.tag,
-    .token.selector,
-    .token.prolog {
-      color: #63a35c;
-    }
+.token.tag,
+.token.selector,
+.token.prolog {
+color: #63a35c;
+}
 
-    .token.function,
-    .token.namespace,
-    .token.pseudo-element,
-    .token.class,
-    .token.class-name,
-    .token.pseudo-class,
-    .token.id,
-    .token.url-reference .token.variable,
-    .token.attr-name {
-      color: #795da3;
-    }
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+color: #795da3;
+}
 
-    .token.entity {
-      cursor: help;
-    }
+.token.entity {
+cursor: help;
+}
 
-    .token.title,
-    .token.title .token.punctuation {
-      font-weight: bold;
-      color: #1d3e81;
-    }
+.token.title,
+.token.title .token.punctuation {
+font-weight: bold;
+color: #1d3e81;
+}
 
-    .token.list {
-      color: #ed6a43;
-    }
+.token.list {
+color: #ed6a43;
+}
 
-    .token.inserted {
-      background-color: #eaffea;
-      color: #55a532;
-    }
+.token.inserted {
+background-color: #eaffea;
+color: #55a532;
+}
 
-    .token.deleted {
-      background-color: #ffecec;
-      color: #bd2c00;
-    }
+.token.deleted {
+background-color: #ffecec;
+color: #bd2c00;
+}
 
-    .token.bold {
-      font-weight: bold;
-    }
+.token.bold {
+font-weight: bold;
+}
 
-    .token.italic {
-      font-style: italic;
-    }
+.token.italic {
+font-style: italic;
+}
 
 
-    /* JSON */
-    .language-json .token.property {
-      color: #183691;
-    }
+/* JSON */
+.language-json .token.property {
+color: #183691;
+}
 
-    .language-markup .token.tag .token.punctuation {
-      color: #333;
-    }
+.language-markup .token.tag .token.punctuation {
+color: #333;
+}
 
-    /* CSS */
-    code.language-css,
-    .language-css .token.function {
-      color: #0086b3;
-    }
+/* CSS */
+code.language-css,
+.language-css .token.function {
+color: #0086b3;
+}
 
-    /* YAML */
-    .language-yaml .token.atrule {
-      color: #63a35c;
-    }
+/* YAML */
+.language-yaml .token.atrule {
+color: #63a35c;
+}
 
-    code.language-yaml {
-      color: #183691;
-    }
+code.language-yaml {
+color: #183691;
+}
 
-    /* Ruby */
-    .language-ruby .token.function {
-      color: #333;
-    }
+/* Ruby */
+.language-ruby .token.function {
+color: #333;
+}
 
-    /* Markdown */
-    .language-markdown .token.url {
-      color: #795da3;
-    }
+/* Markdown */
+.language-markdown .token.url {
+color: #795da3;
+}
 
-    /* Makefile */
-    .language-makefile .token.symbol {
-      color: #795da3;
-    }
+/* Makefile */
+.language-makefile .token.symbol {
+color: #795da3;
+}
 
-    .language-makefile .token.variable {
-      color: #183691;
-    }
+.language-makefile .token.variable {
+color: #183691;
+}
 
-    .language-makefile .token.builtin {
-      color: #0086b3;
-    }
+.language-makefile .token.builtin {
+color: #0086b3;
+}
 
-    /* Bash */
-    .language-bash .token.keyword {
-      color: #0086b3;
-    }
+/* Bash */
+.language-bash .token.keyword {
+color: #0086b3;
+}
 
-    /* highlight */
-    pre[data-line] {
-      position: relative;
-      padding: 1em 0 1em 3em;
-    }
+/* highlight */
+pre[data-line] {
+position: relative;
+padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+position: absolute;
+top: 0;
+left: 0;
+background-color: transparent;
+display: block;
+width: 100%;
+}
 
-    pre[data-line] .line-highlight-wrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: transparent;
-      display: block;
-      width: 100%;
-    }
+pre[data-line] .line-highlight {
+position: absolute;
+left: 0;
+right: 0;
+padding: inherit 0;
+margin-top: 1em;
+background: hsla(24, 20%, 50%,.08);
+background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+pointer-events: none;
+line-height: inherit;
+white-space: pre;
+}
 
-    pre[data-line] .line-highlight {
-      position: absolute;
-      left: 0;
-      right: 0;
-      padding: inherit 0;
-      margin-top: 1em;
-      background: hsla(24, 20%, 50%, .08);
-      background: linear-gradient(to right, hsla(24, 20%, 50%, .1) 70%, hsla(24, 20%, 50%, 0));
-      pointer-events: none;
-      line-height: inherit;
-      white-space: pre;
-    }
-
-    pre[data-line] .line-highlight:before,
-    pre[data-line] .line-highlight[data-end]:after {
-      content: attr(data-start);
-      position: absolute;
-      top: .4em;
-      left: .6em;
-      min-width: 1em;
-      padding: 0 .5em;
-      background-color: hsla(24, 20%, 50%, .4);
-      color: hsl(24, 20%, 95%);
-      font: bold 65%/1.5 sans-serif;
-      text-align: center;
-      vertical-align: .3em;
-      border-radius: 999px;
-      text-shadow: none;
-      box-shadow: 0 1px white;
-    }
-  </style>
+pre[data-line] .line-highlight:before,
+pre[data-line] .line-highlight[data-end]:after {
+content: attr(data-start);
+position: absolute;
+top: .4em;
+left: .6em;
+min-width: 1em;
+padding: 0 .5em;
+background-color: hsla(24, 20%, 50%,.4);
+color: hsl(24, 20%, 95%);
+font: bold 65%/1.5 sans-serif;
+text-align: center;
+vertical-align: .3em;
+border-radius: 999px;
+text-shadow: none;
+box-shadow: 0 1px white;
+}
+</style>
 </head>
-
 <body for="html-export">
 
   <!-- insertion below : menu.html -->
-  <header>
-    <a href="/">
-      <h1>So Chigusa</h1>
-    </a>
-  </header>
-  <nav id="global-nav">
-    <ul>
-      <a href="/cv/cv.pdf">
-        <li>CV</li>
-      </a>
-      <a href="/research/">
-        <li>Research</li>
-      </a>
-      <a href="/note/">
-        <li>Note</li>
-      </a>
-      <a href="/tips/">
-        <li>Tips</li>
-      </a>
-      <a href="/git/">
-        <li>Git</li>
-      </a>
-    </ul>
-  </nav>
+<header>
+    <a href="/"><h1>So Chigusa</h1></a>
+</header>
+<nav id="global-nav">
+  <ul>
+    <a href="/cv/cv.pdf"><li>CV</li></a>
+    <a href="/research/"><li>Research</li></a>
+    <a href="/note/"><li>Note</li></a>
+    <a href="/tips/"><li>Tips</li></a>
+    <a href="/git/"><li>Git</li></a>
+  </ul>
+</nav>
   <!-- insertion above : menu.html -->
 
   <div class="container">
     <div class="box" id="tipsmenu">
       <!-- Tips menu below -->
-      <nav>
-        <h3>Tips Menu</h3>
-        <ul>
-          <li><a href="vscode.html">vscode</a></li>
-          <li><a href="macmini2022.html">macmini2022</a></li>
-          <li><a href="costco.html">costco</a></li>
-          <li><a href="Monterey.html">Monterey</a></li>
-          <li><a href="parallel.html">parallel</a></li>
-          <li><a href="google-api.html">google-api</a></li>
-          <li><a href="JupyterLab.html">JupyterLab</a></li>
-          <li><a href="taxreturn.html">taxreturn</a></li>
-          <li><a href="scraping.html">scraping</a></li>
-          <li><a href="macbookair2020.html">macbookair2020</a></li>
-          <li><a href="postdoc.html">postdoc</a></li>
-          <li><a href="MW50.html">MW50</a></li>
-          <li><a href="inkscape.html">inkscape</a></li>
-          <li><a href="git.html">git</a></li>
-          <li><a href="madgraph.html">madgraph</a></li>
-          <li><a href="atom.html">atom</a></li>
-          <li><a href="fastjet.html">fastjet</a></li>
-          <li><a href="delphes.html">delphes</a></li>
-          <li><a href="boost_icc.html">boost_icc</a></li>
-          <li><a href="boost_odeint.html">boost_odeint</a></li>
-          <li><a href="matplotlib.html">matplotlib</a></li>
-          <li><a href="latex.html">latex</a></li>
-          <li><a href="latex_japanese.html">latex_japanese</a></li>
-          <li><a href="beamer.html">beamer</a></li>
-          <li><a href="Mojave.html">Mojave</a></li>
-          <li><a href="latexdiff.html">latexdiff</a></li>
-          <li><a href="pythia8.html">pythia8</a></li>
-          <li><a href="FeynArts.html">FeynArts</a></li>
-          <li><a href="susy-hit.html">susy-hit</a></li>
-          <li><a href="softsusy.html">softsusy</a></li>
-          <li><a href="markdown-mode.html">markdown-mode</a></li>
-          <li><a href="chrome-JavaScript.html">chrome-JavaScript</a></li>
-        </ul>
-      </nav>
+    <nav>
+      <h3>Tips Menu</h3>
+      <ul>
+      <li><a href="vscode.html">vscode</a></li>
+      <li><a href="macmini2022.html">macmini2022</a></li>
+      <li><a href="costco.html">costco</a></li>
+      <li><a href="Monterey.html">Monterey</a></li>
+      <li><a href="parallel.html">parallel</a></li>
+      <li><a href="google-api.html">google-api</a></li>
+      <li><a href="JupyterLab.html">JupyterLab</a></li>
+      <li><a href="taxreturn.html">taxreturn</a></li>
+      <li><a href="scraping.html">scraping</a></li>
+      <li><a href="macbookair2020.html">macbookair2020</a></li>
+      <li><a href="postdoc.html">postdoc</a></li>
+      <li><a href="MW50.html">MW50</a></li>
+      <li><a href="inkscape.html">inkscape</a></li>
+      <li><a href="git.html">git</a></li>
+      <li><a href="madgraph.html">madgraph</a></li>
+      <li><a href="atom.html">atom</a></li>
+      <li><a href="fastjet.html">fastjet</a></li>
+      <li><a href="delphes.html">delphes</a></li>
+      <li><a href="boost_icc.html">boost_icc</a></li>
+      <li><a href="boost_odeint.html">boost_odeint</a></li>
+      <li><a href="matplotlib.html">matplotlib</a></li>
+      <li><a href="latex.html">latex</a></li>
+      <li><a href="latex_japanese.html">latex_japanese</a></li>
+      <li><a href="beamer.html">beamer</a></li>
+      <li><a href="Mojave.html">Mojave</a></li>
+      <li><a href="latexdiff.html">latexdiff</a></li>
+      <li><a href="pythia8.html">pythia8</a></li>
+      <li><a href="FeynArts.html">FeynArts</a></li>
+      <li><a href="susy-hit.html">susy-hit</a></li>
+      <li><a href="softsusy.html">softsusy</a></li>
+      <li><a href="markdown-mode.html">markdown-mode</a></li>
+      <li><a href="chrome-JavaScript.html">chrome-JavaScript</a></li>
+       </ul>
+    </nav>
       <!-- Tips menu above -->
     </div>
 
     <div class="box" id="gfm">
       <!-- Contents below -->
-      <script>
-        mermaid.initialize({
-          startOnLoad: true,
-          theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-            ? 'dark'
-            : 'default'
-        });
-      </script>
-      <h1
-        id="vs-code-%E3%81%AE%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%81%A8%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88">
-        VS Code の環境構築とチートシート</h1>
-      <h2 id="%E7%B5%8C%E7%B7%AF">経緯</h2>
-      <p><a
-          href="https://forest.watch.impress.co.jp/docs/news/1415735.html#:~:text=%E7%B1%B3Microsoft%E5%82%98%E4%B8%8B%E3%81%AEGitHub,%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AF%E3%82%A2%E3%83%BC%E3%82%AB%E3%82%A4%E3%83%96%E3%81%95%E3%82%8C%E3%82%8B%E3%80%82">GitHub
-          社が Atom の開発終了をお知らせした</a>のを良いタイミングだと思って、VS Code に乗り換えることにした。</p>
-      <h2 id="vs-code">VS Code</h2>
-      <p><code>homebrew</code> でインストールが可能。</p>
-      <pre class="hljs"><code><div>brew install visual-studio-code --cask
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="vs-code-%E3%81%AE%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%81%A8%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88">VS Code の環境構築とチートシート</h1>
+<h2 id="%E7%B5%8C%E7%B7%AF">経緯</h2>
+<p><a href="https://forest.watch.impress.co.jp/docs/news/1415735.html#:~:text=%E7%B1%B3Microsoft%E5%82%98%E4%B8%8B%E3%81%AEGitHub,%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AF%E3%82%A2%E3%83%BC%E3%82%AB%E3%82%A4%E3%83%96%E3%81%95%E3%82%8C%E3%82%8B%E3%80%82">GitHub 社が Atom の開発終了をお知らせした</a>のを良いタイミングだと思って、VS Code に乗り換えることにした。</p>
+<h2 id="vs-code">VS Code</h2>
+<p><code>homebrew</code> でインストールが可能。</p>
+<pre class="hljs"><code><div>brew install visual-studio-code --cask
 </div></code></pre>
-      <h3 id="%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">基本操作</h3>
-      <p>Atom と操作が似ている部分が多くて馴染みやすかった（どっちが真似したんだ？）。
-        <strong>同じ GitHub アカウントでログインしておけば複数PCで設定が共有される</strong>の（Settings Sync）が非常に便利である。
-      </p>
-      <ul>
-        <li><code>Cmd + Shift + p</code> でコマンドパレットを開ける。</li>
-        <li>画面下部から引き出してこれるウィンドウでターミナルの操作や各種エラーログの確認が可能。</li>
-        <li>グローバル設定は <code>Cmd + ,</code> の設定画面、あるいはその右上をクリックして開く <code>settings.json</code> で編集する。</li>
-        <li>キーバインド設定は <code>Cmd + k</code> + <code>Cmd + s</code> のキーボードショートカット画面、あるいはその右上をクリックして開く
-          <code>keybindings.json</code> で編集する。
-        </li>
-        <li>左側のサイドバーから git リポジトリの操作が可能。</li>
-        <li>左側のサイドバーから拡張機能メニューを開いて色々とインストールしていく。</li>
-      </ul>
-      <h3 id="%E8%A8%AD%E5%AE%9A">設定</h3>
-      <p><code>settings.json</code> （あるいは設定画面）を使ってエディターの共通設定をいくつか変更。</p>
-      <pre class="hljs"><code><div><span class="hljs-string">"editor.mouseWheelScrollSensitivity"</span>: <span class="hljs-number">0.6</span>,
+<h3 id="%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">基本操作</h3>
+<p>Atom と操作が似ている部分が多くて馴染みやすかった（どっちが真似したんだ？）。
+<strong>同じ GitHub アカウントでログインしておけば複数PCで設定が共有される</strong>の（Settings Sync）が非常に便利である。</p>
+<ul>
+<li><code>Cmd + Shift + p</code> でコマンドパレットを開ける。</li>
+<li>画面下部から引き出してこれるウィンドウでターミナルの操作や各種エラーログの確認が可能。</li>
+<li>グローバル設定は <code>Cmd + ,</code> の設定画面、あるいはその右上をクリックして開く <code>settings.json</code> で編集する。</li>
+<li>キーバインド設定は <code>Cmd + k</code> + <code>Cmd + s</code> のキーボードショートカット画面、あるいはその右上をクリックして開く <code>keybindings.json</code> で編集する。</li>
+<li>左側のサイドバーから git リポジトリの操作が可能。</li>
+<li>左側のサイドバーから拡張機能メニューを開いて色々とインストールしていく。</li>
+</ul>
+<h3 id="%E8%A8%AD%E5%AE%9A">設定</h3>
+<p><code>settings.json</code> （あるいは設定画面）を使ってエディターの共通設定をいくつか変更。</p>
+<pre class="hljs"><code><div><span class="hljs-string">"editor.mouseWheelScrollSensitivity"</span>: <span class="hljs-number">0.6</span>,
 <span class="hljs-string">"editor.tabSize"</span>: <span class="hljs-number">2</span>,
 <span class="hljs-string">"editor.wordWrap"</span>: <span class="hljs-string">"on"</span>,
 <span class="hljs-string">"editor.formatOnSave"</span>: <span class="hljs-literal">true</span>,
 </div></code></pre>
-      <p>上から順に</p>
-      <ul>
-        <li>スクロールを少し遅くした。</li>
-        <li>タブに対応するスペースの数は2つ。</li>
-        <li>エディター画面の右端で折り返す。</li>
-        <li>保存するたびに整形する。</li>
-      </ul>
-      <h3 id="%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88">チートシート</h3>
-      <ul>
-        <li>折り返し設定のファイルごと変更 <code>Alt + z</code></li>
-      </ul>
-      <h2 id="%E3%82%B9%E3%83%9A%E3%83%AB%E3%83%BB%E6%96%87%E6%B3%95%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF">スペル・文法チェック
-      </h2>
-      <p>スペルチェック用に <code>Code Spell Checker</code> を導入した。
-        スペルミスした部分が青波線で表示され、以下の操作により修正できるようになる。</p>
-      <h3 id="%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88">チートシート</h3>
-      <ul>
-        <li>スペル修正 <code>Cmd + .</code> 出現するダイアログから正しい単語を選ぶ。</li>
-        <li>プロジェクト辞書・ユーザー辞書の更新：上記のダイアログの最後２つの選択肢。</li>
-      </ul>
-      <h2 id="latex-%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">LaTeX 環境構築</h2>
-      <p><code>latexmk</code> を使用する場合、（未設定ならば）設定ファイルを作成する。
-        今回は <code>upLaTeX</code> 用のグローバル設定を <code>~/.latexmkrc</code> に作って</p>
-      <pre class="hljs"><code><div>$latex = 'uplatex %O %S';
+<p>上から順に</p>
+<ul>
+<li>スクロールを少し遅くした。</li>
+<li>タブに対応するスペースの数は2つ。</li>
+<li>エディター画面の右端で折り返す。</li>
+<li>保存するたびに整形する。</li>
+</ul>
+<h3 id="%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88">チートシート</h3>
+<ul>
+<li>折り返し設定のファイルごと変更 <code>Alt + z</code></li>
+</ul>
+<h2 id="%E3%82%B9%E3%83%9A%E3%83%AB%E3%83%BB%E6%96%87%E6%B3%95%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF">スペル・文法チェック</h2>
+<p>スペルチェック用に <code>Code Spell Checker</code> を導入した。
+スペルミスした部分が青波線で表示され、以下の操作により修正できるようになる。</p>
+<h3 id="%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88">チートシート</h3>
+<ul>
+<li>スペル修正 <code>Cmd + .</code> 出現するダイアログから正しい単語を選ぶ。</li>
+<li>プロジェクト辞書・ユーザー辞書の更新：上記のダイアログの最後２つの選択肢。</li>
+</ul>
+<h2 id="latex-%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">LaTeX 環境構築</h2>
+<p><code>latexmk</code> を使用する場合、（未設定ならば）設定ファイルを作成する。
+今回は <code>upLaTeX</code> 用のグローバル設定を <code>~/.latexmkrc</code> に作って</p>
+<pre class="hljs"><code><div>$latex = 'uplatex %O %S';
 $bibtex = 'upbibtex %O %B';
 $dvipdf = 'dvipdfmx %O -o %D %S';
 $max_repeat = 10;
 </div></code></pre>
-      <p>としておいた。</p>
-      <p>VS Code 側では、最も有名な拡張機能である <code>LaTeX Workshop</code> をインストールする。
-        <code>settings.json</code> の内容は <a href="https://qiita.com/rainbartown/items/d7718f12d71e688f3573">ここ</a>や<a
-          href="https://qiita.com/t_kemmochi/items/dd38bbf2b823c770d1ec">ここ</a>を参考に、こんな感じ。
-      </p>
-      <pre class="hljs"><code><div><span class="hljs-comment">// ---------- Language ----------</span>
+<p>としておいた。</p>
+<p>VS Code 側では、最も有名な拡張機能である <code>LaTeX Workshop</code> をインストールする。
+<code>settings.json</code> の内容は <a href="https://qiita.com/rainbartown/items/d7718f12d71e688f3573">ここ</a>や<a href="https://qiita.com/t_kemmochi/items/dd38bbf2b823c770d1ec">ここ</a>を参考に、こんな感じ。</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// ---------- Language ----------</span>
 <span class="hljs-string">"[tex]"</span>: {
     <span class="hljs-comment">// スニペット補完中にも補完を使えるようにする</span>
     <span class="hljs-attr">"editor.suggest.snippetsPreventQuickSuggestions"</span>: <span class="hljs-literal">false</span>
@@ -489,16 +463,13 @@ $max_repeat = 10;
     }
 ],
 </div></code></pre>
-      <p>クリーン時に削除されるファイルのリストでは、<code>latexdiff-vc</code> や論文の投稿に必要な <code>*.bbl</code> ファイルと、sync に必要な
-        <code>*.synctex.gz</code> ファイルは除外している。
-        <code>recipes</code> は <code>*.tex</code> ファイルのビルドに使われるコマンド群を指定しており、各コマンドの詳細を <code>tools</code> が指定している。
-        デフォルトでは一番上のレシピである <code>pdflatex</code> が使われ、コマンドパレットから <code>Build with recipe</code> を選ぶことで
-        <code>latexmk + uplatex</code> も使えるようになっている。
-      </p>
-      <h3 id="%E3%82%B9%E3%83%8B%E3%83%9A%E3%83%83%E3%83%88%E3%81%AE%E7%99%BB%E9%8C%B2">スニペットの登録</h3>
-      <p>左下の歯車から、ユーザースニペットの構成、<code>latex</code> と進み、<code>latex.json</code> を作成する。
-        この中にテンプレートを登録しておくことで、次回から簡単に呼び出せるようになる。ひとまず Referee report への返答中だったので、これを登録してみる。</p>
-      <pre class="hljs"><code><div><span class="hljs-string">"Referee Reply"</span>: {
+<p>クリーン時に削除されるファイルのリストでは、<code>latexdiff-vc</code> や論文の投稿に必要な <code>*.bbl</code> ファイルと、sync に必要な <code>*.synctex.gz</code> ファイルは除外している。
+<code>recipes</code> は <code>*.tex</code> ファイルのビルドに使われるコマンド群を指定しており、各コマンドの詳細を <code>tools</code> が指定している。
+デフォルトでは一番上のレシピである <code>pdflatex</code> が使われ、コマンドパレットから <code>Build with recipe</code> を選ぶことで <code>latexmk + uplatex</code> も使えるようになっている。</p>
+<h3 id="%E3%82%B9%E3%83%8B%E3%83%9A%E3%83%83%E3%83%88%E3%81%AE%E7%99%BB%E9%8C%B2">スニペットの登録</h3>
+<p>左下の歯車から、ユーザースニペットの構成、<code>latex</code> と進み、<code>latex.json</code> を作成する。
+この中にテンプレートを登録しておくことで、次回から簡単に呼び出せるようになる。ひとまず Referee report への返答中だったので、これを登録してみる。</p>
+<pre class="hljs"><code><div><span class="hljs-string">"Referee Reply"</span>: {
   <span class="hljs-attr">"prefix"</span>: <span class="hljs-string">"reply"</span>,
   <span class="hljs-attr">"body"</span>: [
     <span class="hljs-string">"\\documentclass[12pt]{article}"</span>,
@@ -528,71 +499,66 @@ $max_repeat = 10;
   <span class="hljs-attr">"description"</span>: <span class="hljs-string">"reply to referee report"</span>
 }
 </div></code></pre>
-      <p>任意の <code>*.tex</code> ファイル内で <code>reply + Tab</code> とすると返答のテンプレートができる。</p>
-      <h3 id="%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E8%A8%AD%E5%AE%9A">その他の設定</h3>
-      <ul>
-        <li><code>latex-workshop.latex.autoBuild.run</code> = <code>onSave</code> （保存のたびに自動でビルド）</li>
-        <li><code>latex-workshop.latex.autoClean.run</code> = <code>onBuilt</code> （ビルドのたびに自動でクリーン）</li>
-        <li><code>latex-workshop.synctex.afterBuild.enabled</code> = <code>true</code>（ビルド後のプレビュー画面がカーソル位置まで飛ぶ）</li>
-        <li><code>latex-workshop.latex.recipe.default</code> = <code>lastUsed</code>（ビルドのレシピは最後に使用したものを使用）</li>
-      </ul>
-      <h3 id="%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88">チートシート</h3>
-      <ul>
-        <li>ビルド <code>Cmd + Alt + b</code></li>
-        <li>プレビュー <code>Cmd + Alt + v</code></li>
-        <li>クリーン <code>Cmd + Alt + c</code></li>
-        <li>sync tex → pdf <code>Cmd + Alt + j</code></li>
-        <li>sync pdf → tex <code>Cmd + Click</code></li>
-        <li>環境の展開 <code>\align + Tab</code> 等</li>
-        <li>ギリシア文字の展開 <code>@a + Tab</code> 等</li>
-      </ul>
-      <h2 id="markdown-%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">Markdown 環境構築</h2>
-      <p>以下の拡張機能を使用。</p>
-      <ul>
-        <li>Markdown All in One（さまざまな機能がオールインワンでほぼ必須）</li>
-        <li>Markdown PDF（html 等へのエクスポート用。<code>pandoc</code> の代わり）</li>
-        <li>markdownlint（書式チェック）</li>
-        <li>Markdown Preview Github Styling（GitHub 風のプレビュー表示）</li>
-      </ul>
-      <p><a href="https://www.jackjasonb.com/2021/03/22/markdown-pdf-css/">このページ</a>を参考に、好みのスタイルシートを使って出力できるように設定する。
-        GitHub のスタイルシートを <a href="https://github.com/sindresorhus/github-markdown-css">ここ</a>
-        から手に入れて、<code>settings.json</code> に追記。</p>
-      <pre class="hljs"><code><div><span class="hljs-comment">//デフォルトのCSSを無効にする</span>
+<p>任意の <code>*.tex</code> ファイル内で <code>reply + Tab</code> とすると返答のテンプレートができる。</p>
+<h3 id="%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E8%A8%AD%E5%AE%9A">その他の設定</h3>
+<ul>
+<li><code>latex-workshop.latex.autoBuild.run</code> = <code>onSave</code> （保存のたびに自動でビルド）</li>
+<li><code>latex-workshop.latex.autoClean.run</code> = <code>onBuilt</code> （ビルドのたびに自動でクリーン）</li>
+<li><code>latex-workshop.synctex.afterBuild.enabled</code> = <code>true</code>（ビルド後のプレビュー画面がカーソル位置まで飛ぶ）</li>
+<li><code>latex-workshop.latex.recipe.default</code> = <code>lastUsed</code>（ビルドのレシピは最後に使用したものを使用）</li>
+</ul>
+<h3 id="%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88">チートシート</h3>
+<ul>
+<li>ビルド <code>Cmd + Alt + b</code></li>
+<li>プレビュー <code>Cmd + Alt + v</code></li>
+<li>クリーン <code>Cmd + Alt + c</code></li>
+<li>sync tex → pdf <code>Cmd + Alt + j</code></li>
+<li>sync pdf → tex <code>Cmd + Click</code></li>
+<li>環境の展開 <code>\align + Tab</code> 等</li>
+<li>ギリシア文字の展開 <code>@a + Tab</code> 等</li>
+</ul>
+<h2 id="markdown-%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">Markdown 環境構築</h2>
+<p>以下の拡張機能を使用。</p>
+<ul>
+<li>Markdown All in One（さまざまな機能がオールインワンでほぼ必須）</li>
+<li>Markdown PDF（html 等へのエクスポート用。<code>pandoc</code> の代わり）</li>
+<li>markdownlint（書式チェック）</li>
+<li>Markdown Preview Github Styling（GitHub 風のプレビュー表示）</li>
+</ul>
+<p><a href="https://www.jackjasonb.com/2021/03/22/markdown-pdf-css/">このページ</a>を参考に、好みのスタイルシートを使って出力できるように設定する。
+GitHub のスタイルシートを <a href="https://github.com/sindresorhus/github-markdown-css">ここ</a> から手に入れて、<code>settings.json</code> に追記。</p>
+<pre class="hljs"><code><div><span class="hljs-comment">//デフォルトのCSSを無効にする</span>
 <span class="hljs-string">"markdown-pdf.includeDefaultStyles"</span>: <span class="hljs-literal">false</span>,
 <span class="hljs-comment">// 上記で編集したCSSを指定する</span>
 <span class="hljs-string">"markdown-pdf.styles"</span>: [<span class="hljs-string">"&lt;path-to-css&gt;"</span>],
 </div></code></pre>
-      <h3
-        id="%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88%E5%80%8B%E4%BA%BA%E8%A8%AD%E5%AE%9A%E5%90%AB%E3%82%80">
-        チートシート（個人設定含む）</h3>
-      <ul>
-        <li>プレビュー <code>Cmd + Alt + v</code></li>
-        <li>html 出力 <code>Cmd + Alt + e</code></li>
-        <li>インラインコード <code>Ctrl + q</code></li>
-        <li>コードブロック <code>Ctrl + Alt + q</code></li>
-        <li><strong>ボールド</strong> <code>Cmd + b</code></li>
-        <li><em>イタリック</em> <code>Cmd + i</code></li>
-        <li><s>打ち消し線</s> <code>Ctr + s</code></li>
-        <li>書式エラーの修正 <code>Cmd + .</code></li>
-      </ul>
-      <h2 id="html-%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">html 環境構築</h2>
-      <p>開発者ツールが使用できる優秀な html ビューアー、<code>Live Preview</code> を導入した。</p>
-      <h3 id="%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88%E5%80%8B%E4%BA%BA%E8%A8%AD%E5%AE%9A">チートシート（個人設定）
-      </h3>
-      <ul>
-        <li>プレビュー <code>Alt + k</code>（markdown preview と競合するようなのでショートカットを分けてある）</li>
-      </ul>
+<h3 id="%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88%E5%80%8B%E4%BA%BA%E8%A8%AD%E5%AE%9A%E5%90%AB%E3%82%80">チートシート（個人設定含む）</h3>
+<ul>
+<li>プレビュー <code>Cmd + Alt + v</code></li>
+<li>html 出力 <code>Cmd + Alt + e</code></li>
+<li>インラインコード <code>Ctrl + q</code></li>
+<li>コードブロック <code>Ctrl + Alt + q</code></li>
+<li><strong>ボールド</strong> <code>Cmd + b</code></li>
+<li><em>イタリック</em> <code>Cmd + i</code></li>
+<li><s>打ち消し線</s> <code>Ctr + s</code></li>
+<li>書式エラーの修正 <code>Cmd + .</code></li>
+</ul>
+<h2 id="html-%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">html 環境構築</h2>
+<p>開発者ツールが使用できる優秀な html ビューアー、<code>Live Preview</code> を導入した。</p>
+<h3 id="%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88%E5%80%8B%E4%BA%BA%E8%A8%AD%E5%AE%9A">チートシート（個人設定）</h3>
+<ul>
+<li>プレビュー <code>Alt + k</code>（markdown preview と競合するようなのでショートカットを分けてある）</li>
+</ul>
 
       <!-- Contents above -->
-    </div>
   </div>
+</div>
 
-  <!-- insertion below : footer.html -->
-  <footer>
-    <small>Copyright(C)2022 S. Chigusa, All Rights Reserved.</small>
-  </footer>
-  <!-- insertion above : footer.html -->
+<!-- insertion below : footer.html -->
+<footer>
+	<small>Copyright(C)2022 S. Chigusa, All Rights Reserved.</small>
+</footer>
+<!-- insertion above : footer.html -->
 
 </body>
-
 </html>

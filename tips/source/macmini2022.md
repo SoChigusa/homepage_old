@@ -74,7 +74,70 @@ python のバージョン管理、および JupyterLab などを使うために 
 
 ### Mathematica
 
-ライセンスが新しいコンピューターで利用可能か確認中。
+ライセンスさえ手に入れれば問題なく動く。
+
+### c++
+
+#### 数値計算ライブラリ gsl
+
+ナイーブなオプション指定 `-lgsl` が
+
+``` shell
+ld: warning: ignoring file /usr/local/lib/libgsl.dylib, building for macOS-arm64 but attempting to link with file built for macOS-x86_64
+```
+
+エラーを吐いたので対応した。
+[MacAppStore](https://macappstore.org/gsl/)にある通り
+
+``` shell
+brew install gsl
+```
+
+でライブラリをインストール。
+`Makefile` におけるオプション指定は
+
+``` makefile
+GSLFLAGS = $$(gsl-config --libs)
+```
+
+を用いるとラク。
+
+#### boost
+
+``` shell
+brew install boost
+```
+
+でインストールした Boost c++ ライブラリも上記と同様のライブラリエラーで動かなかったので対応。
+[このリポジトリ](https://github.com/apotocki/boost-iosx)から必要なファイルを引っ張ってきてライブラリをコンパイルし直す。
+`cocoapods`が必要だが、
+
+``` shell
+sudo gem install cocoapods
+```
+
+でインストールしたものは[ここにあるようなエラー](https://stackoverflow.com/questions/64901180/how-to-run-cocoapods-on-apple-silicon-m1)を吐いたので、代わりに
+
+``` shell
+brew install cocoapods
+```
+
+からの
+
+``` shell
+git clone https://github.com/apotocki/boost-iosx
+cd boost-iosx
+scripts/build.sh
+```
+
+でFA。
+`Makefile` には
+
+``` makefile
+BOOSTFLAGS = -I/<path_to_boost-iosx>/boost -L/<path_to_boost-iosx>/boost/stage/macosx/lib
+```
+
+としておく。
 
 ### VSCode
 
