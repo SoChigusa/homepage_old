@@ -311,40 +311,58 @@ box-shadow: 0 1px white;
 
     <div class="box" id="gfm">
       <!-- Contents below -->
-      <div class="mume markdown-preview  ">
-      <h1 class="mume-header" id="%E3%81%B2%E3%81%A8%E3%82%8A%E3%81%A7%E3%82%82git-%E3%81%BF%E3%82%93%E3%81%AA%E3%81%A7%E3%82%82git">&#x3072;&#x3068;&#x308A;&#x3067;&#x3082;git&#x3001;&#x307F;&#x3093;&#x306A;&#x3067;&#x3082;git</h1>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E3%81%B2%E3%81%A8%E3%82%8A%E3%81%A7%E3%82%82git%E3%81%BF%E3%82%93%E3%81%AA%E3%81%A7%E3%82%82git">ひとりでもgit、みんなでもgit</h1>
+<h2 id="latexdiff%E3%82%92%E4%BD%BF%E3%81%86">latexdiffを使う</h2>
+<p>gitに対応した<code>latexdiff-vc</code>を用いてgitレポジトリの任意のバージョンとのdiffが取れる。より詳しくは<a href="latexdiff.html">別記事</a>を参照のこと。</p>
+<h2 id="merge%E3%81%AE%E6%B4%BB%E7%94%A8">mergeの活用</h2>
+<p>gitを使用していない多人数プロジェクトで原稿を同時編集する際など、原稿の変更点を途中で合体させるためにmergeが活用できる。</p>
+<p>簡単のため、最初にローカルmasterの変更点は全てpushしておく。</p>
+<pre class="hljs"><code><div>git push origin master
+</div></code></pre>
+<p>次にmasterのバージョンを同時編集が始まった時期に戻す。</p>
+<pre class="hljs"><code><div>git reset --hard (commit)
+</div></code></pre>
+<p>ブランチを切って、新しいブランチ上に別の人が編集した原稿を更新する。</p>
+<pre class="hljs"><code><div>git branch (branch name)
+git checkout (branch name)
+cp (new draft) (old draft)
+</div></code></pre>
+<p>masterも最新のバージョンに戻し、変更点をmerge。</p>
+<pre class="hljs"><code><div>git checkout master
+git pull origin master
+git merge (branch name)
+</div></code></pre>
+<h2 id="%E3%82%B3%E3%83%9F%E3%83%83%E3%83%88%E5%B1%A5%E6%AD%B4%E3%82%92%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%8D%98%E4%BD%8D%E3%81%A7%E6%B6%88%E5%8E%BB%E3%83%BB%E4%BF%AE%E6%AD%A3%E3%81%99%E3%82%8B">コミット履歴をファイル単位で消去・修正する</h2>
+<h3 id="%E8%B5%B7%E3%81%8D%E3%81%9F%E3%81%93%E3%81%A8">起きたこと</h3>
+<p>リモートリポジトリとして最初は <a href="https://bitbucket.org/">bitbucket</a> を使っていたのだが、あるときに <a href="https://github.com/">github</a> に乗り換えて必要になったリポジトリから順次移行作業を行っていた。
+該当のリポジトリでは 100MB を超えるサイズのファイルをコミットしてしまっており、最新のコミットからはすでに削除済みではあるものの、コミット履歴中にそのファイルの情報が残っていた。
+この点が bitbucket では問題にならなかったのだが、github に移行した際に 100MB のファイルサイズ制限に引っかかってしまい、コミット履歴からこのデカいファイルの情報全てをコンシステントに消し去る必要が生じた。</p>
+<h3 id="%E3%82%84%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8">やったこと</h3>
+<p><a href="https://medium.com/eureka-engineering/git%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%8B%E3%82%89%E5%AE%B9%E9%87%8F%E3%81%AE%E5%A4%A7%E3%81%8D%E3%81%84%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E5%B1%A5%E6%AD%B4%E3%81%8B%E3%82%89%E6%8A%B9%E6%B6%88%E3%81%99%E3%82%8B-b6bb526d670f">こちら</a>の記事を参考にさせていただいた。
+履歴にあるサイズが大きいファイルは Atlassian が提供している <a href="https://confluence.atlassian.com/bitbucket/files/321848291/321979854/1/1360604134990/git_find_big.sh">git_find_big.sh</a> というシェルスクリプトで探し出せる。
+リポジトリの root で</p>
+<pre class="hljs"><code><div>./git_find_big.sh
+</div></code></pre>
+<p>消すべきファイルが特定できたら、以下を実行する。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span>
 
-<h2 class="mume-header" id="latexdiff%E3%82%92%E4%BD%BF%E3%81%86">latexdiff&#x3092;&#x4F7F;&#x3046;</h2>
+TARGETS=(
+  "[target file name]"
+)
+target=$(printf " %s" "${TARGETS[@]}")
+target=${target:1}
+git filter-branch --index-filter "git rm -r --cached --ignore-unmatch ${target}" -- --all
+</div></code></pre>
+<p>もちろんリポジトリのバックアップ（この場合は元のリモートリポジトリで十分）はしっかり取っておくこと！</p>
 
-<p>git&#x306B;&#x5BFE;&#x5FDC;&#x3057;&#x305F;<code>latexdiff-vc</code>&#x3092;&#x7528;&#x3044;&#x3066;git&#x30EC;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x306E;&#x4EFB;&#x610F;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3068;&#x306E;diff&#x304C;&#x53D6;&#x308C;&#x308B;&#x3002;&#x3088;&#x308A;&#x8A73;&#x3057;&#x304F;&#x306F;<a href="latexdiff.html">&#x5225;&#x8A18;&#x4E8B;</a>&#x3092;&#x53C2;&#x7167;&#x306E;&#x3053;&#x3068;&#x3002;</p>
-<h2 class="mume-header" id="merge%E3%81%AE%E6%B4%BB%E7%94%A8">merge&#x306E;&#x6D3B;&#x7528;</h2>
-
-<p>git&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x591A;&#x4EBA;&#x6570;&#x30D7;&#x30ED;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3067;&#x539F;&#x7A3F;&#x3092;&#x540C;&#x6642;&#x7DE8;&#x96C6;&#x3059;&#x308B;&#x969B;&#x306A;&#x3069;&#x3001;&#x539F;&#x7A3F;&#x306E;&#x5909;&#x66F4;&#x70B9;&#x3092;&#x9014;&#x4E2D;&#x3067;&#x5408;&#x4F53;&#x3055;&#x305B;&#x308B;&#x305F;&#x3081;&#x306B;merge&#x304C;&#x6D3B;&#x7528;&#x3067;&#x304D;&#x308B;&#x3002;</p>
-<p>&#x7C21;&#x5358;&#x306E;&#x305F;&#x3081;&#x3001;&#x6700;&#x521D;&#x306B;&#x30ED;&#x30FC;&#x30AB;&#x30EB;master&#x306E;&#x5909;&#x66F4;&#x70B9;&#x306F;&#x5168;&#x3066;push&#x3057;&#x3066;&#x304A;&#x304F;&#x3002;</p>
-<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">git</span> push origin master
-</pre><p>&#x6B21;&#x306B;master&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x540C;&#x6642;&#x7DE8;&#x96C6;&#x304C;&#x59CB;&#x307E;&#x3063;&#x305F;&#x6642;&#x671F;&#x306B;&#x623B;&#x3059;&#x3002;</p>
-<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">git</span> reset --hard <span class="token punctuation">(</span>commit<span class="token punctuation">)</span>
-</pre><p>&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3092;&#x5207;&#x3063;&#x3066;&#x3001;&#x65B0;&#x3057;&#x3044;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x4E0A;&#x306B;&#x5225;&#x306E;&#x4EBA;&#x304C;&#x7DE8;&#x96C6;&#x3057;&#x305F;&#x539F;&#x7A3F;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x3002;</p>
-<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">git</span> branch <span class="token punctuation">(</span>branch name<span class="token punctuation">)</span>
-<span class="token function">git</span> checkout <span class="token punctuation">(</span>branch name<span class="token punctuation">)</span>
-<span class="token function">cp</span> <span class="token punctuation">(</span>new draft<span class="token punctuation">)</span> <span class="token punctuation">(</span>old draft<span class="token punctuation">)</span>
-</pre><p>master&#x3082;&#x6700;&#x65B0;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x623B;&#x3057;&#x3001;&#x5909;&#x66F4;&#x70B9;&#x3092;merge&#x3002;</p>
-<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">git</span> checkout master
-<span class="token function">git</span> pull origin master
-<span class="token function">git</span> merge <span class="token punctuation">(</span>branch name<span class="token punctuation">)</span>
-</pre>
-      </div>
-      
-      
-    
-    
-    
-    
-    
-    
-    
-    
-  
       <!-- Contents above -->
   </div>
 </div>
