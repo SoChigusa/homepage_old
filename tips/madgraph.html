@@ -311,11 +311,16 @@ box-shadow: 0 1px white;
 
     <div class="box" id="gfm">
       <!-- Contents below -->
-      <div class="mume markdown-preview  ">
-      <h1 class="mume-header" id="madgraph-%E3%81%AE%E5%B0%8E%E5%85%A5%E3%81%8B%E3%82%89%E8%A8%88%E7%AE%97%E3%81%BE%E3%81%A7">Madgraph の導入から計算まで</h1>
-
-<h2 class="mume-header" id="%E5%B0%8E%E5%85%A5-%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A">導入、初期設定</h2>
-
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="madgraph-%E3%81%AE%E5%B0%8E%E5%85%A5%E3%81%8B%E3%82%89%E8%A8%88%E7%AE%97%E3%81%BE%E3%81%A7">Madgraph の導入から計算まで</h1>
+<h2 id="%E5%B0%8E%E5%85%A5%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A">導入、初期設定</h2>
 <p>何度くりかえしてもどこか違うエラーが出るので、今回の成功例を書いておく（2020/1/15）
 <s>まず、現在のところ gfortran-8 が Madgraph 周りの compile に対応していないので、
 <code>homebrew install gcc@7</code>
@@ -323,160 +328,170 @@ box-shadow: 0 1px white;
 （<strong>2020/1/15追記</strong>　最新版の<code>MadGraph v2.8.2</code>ではこの操作が不要なことを確認済み。
 確認は Mac OS BigSur (ARM), Mac OS Mojave (Intel) で行った。）</p>
 <p><code>input/mg5_configuration.txt</code>内のグローバル設定をいじる。</p>
-<pre data-role="codeBlock" data-info="shell" class="language-shell">	automatic_html_opening <span class="token operator">=</span> False
-</pre><p>これにより、<code>launch</code>時にブラウザが自動で立ち上がるのを防止する。
+<pre class="hljs"><code><div> automatic_html_opening = False
+</div></code></pre>
+<p>これにより、<code>launch</code>時にブラウザが自動で立ち上がるのを防止する。
 <s>fastjet が存在しないエラーが出るときは、<code>fastjet = None</code>でとりあえず動く。</s></p>
 <p>次に、<code>bin/mg5_aMC</code>から dependency のインストール</p>
-<pre data-role="codeBlock" data-info="shell" class="language-shell">	<span class="token function">install</span> boost
-	<span class="token function">install</span> lhapdf6
-	<span class="token function">install</span> zlib
-	<span class="token function">install</span> hepmc
-	<span class="token function">install</span> pythia8
-</pre><h2 class="mume-header" id="%E7%94%A8%E6%B3%95">用法</h2>
-
+<pre class="hljs"><code><div> install boost
+ install lhapdf6
+ install zlib
+ install hepmc
+ install pythia8
+</div></code></pre>
+<h2 id="%E7%94%A8%E6%B3%95">用法</h2>
 <p>あとは普通に使用する。
 <code>launch</code>時に要求される dependency code は基本的に何も考えず Enter を押す。</p>
 <ol>
 <li>LO Drell-Yan</li>
 </ol>
-<pre data-role="codeBlock" data-info="shell" class="language-shell">	p <span class="token operator">=</span> p b b~
-	generate p p <span class="token operator">&gt;</span> e+ e-
-	output pp2ee
-	launch
-</pre><ol start="2">
+<pre class="hljs"><code><div> p = p b b~
+ generate p p &gt; e+ e-
+ output pp2ee
+ launch
+</div></code></pre>
+<ol start="2">
 <li>NLO Drell-Yan</li>
 </ol>
-<pre data-role="codeBlock" data-info="shell" class="language-shell">	<span class="token function">import</span> model sm-no_b_mass
-	generate p p <span class="token operator">&gt;</span> e+ e- <span class="token punctuation">[</span>QCD<span class="token punctuation">]</span>
-	output pp2eeNLO
-	launch
-</pre><p>等々。</p>
-<h2 class="mume-header" id="20180819-systematics-module-%E3%82%92%E4%BD%BF%E3%81%86">(2018/08/19) Systematics module を使う</h2>
+<pre class="hljs"><code><div> import model sm-no_b_mass
+ generate p p &gt; e+ e- [QCD]
+ output pp2eeNLO
+ launch
+</div></code></pre>
+<p>等々。</p>
+<h2 id="2022818-delphes-on-mac-os-11-12">(2022/8/18) Delphes on Mac OS 11, 12</h2>
+<p>Mac (arm) OS 12 にて Delphes をインストールしようとしたところ、以下のエラーに遭遇した。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;</span><span class="bash">&gt; Building libDelphesNoFastJet.so</span>
+clang: error: no such file or directory: 'libDelphesNoFastJet.so'
+make: *** [libDelphesNoFastJet.so] Error 1
+</div></code></pre>
+<p><a href="https://cp3.irmp.ucl.ac.be/projects/delphes/ticket/1542">この Q&amp;A</a> にある通り、これは <code>&lt;Delphes installation&gt;/doc/Makefile.arch</code> が Mac OS &lt;=10 にしか対応していないことが問題らしい。</p>
+<p>問題は</p>
+<pre class="hljs"><code><div>wget http://cp3.irmp.ucl.ac.be/downloads/Delphes-3.5.0.tar.gz
+</div></code></pre>
+<p>とダウンロードした Delphes で起こり、最新版の</p>
+<pre class="hljs"><code><div>git clone https://github.com/delphes/delphes.git
+</div></code></pre>
+<p>では修正済みなので、後者を用いる。
+MadGraph と連携させる場合、前者が使用されるのでエラーが出るが、一度 <code>./bin/mg5_aMC</code> から抜け出して <code>&lt;MadGraph installation&gt;/Delphes/doc/</code> の中の <code>Makefile.arch</code> を github 上の最新版と置き換え、手動で <code>make</code> し直せばコンパイルが通る。
+実行ファイルが完成すれば通常通り MadGraph と連携させられることを確認済み。</p>
+<h2 id="2019626-jet-matching">(2019/6/26) jet matching</h2>
+<p>MadGraph のバージョンによって（？）jet matching の際に <code>run_card.dat</code> を弄る必要がある。</p>
+<pre class="hljs"><code><div>1 = ickkw            ! 0 no matching, 1 MLM
+</div></code></pre>
+<p>ちなみにヘルプを見ると（<a href="https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Matching">https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Matching</a>）、紛らわしいことにオプションの <code>2</code> が CKKW に対応するらしい。
+これが on の状態で jet の本数を変えたプロセスをいくつか merge して走らせると、個々のプロセスを独立に走らせて計算した断面積の和と比して、大きな断面積が parton level で出てきたりする。
+おそらくこれが matching に十分な overlap を含む phase space の取り方になっていて、その後 pythia が走ってきちんと matching してくれる。</p>
+<h2 id="2019426-%E4%BA%8B%E5%89%8D%E3%81%AB%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%97%E3%83%AA%E3%82%BF%E3%81%AB%E8%AA%AD%E3%81%BE%E3%81%9B%E3%82%8B">(2019/4/26) 事前にコードを書いてインタープリタに読ませる</h2>
+<p>簡単な例として、わかりやすい名前で複数回launchしたい場合、</p>
+<pre class="hljs"><code><div>launch pp2gogo2 -n 6TeV_0
+launch pp2gogo2 -n 6TeV_1
+launch pp2gogo2 -n 6TeV_2
+</div></code></pre>
+<p>などと書いたテキストファイル（<code>launch_several_times.txt</code>とする）を用意する。
+これを</p>
+<pre class="hljs"><code><div>./bin/mg5_aMC launch_several_times.txt
+</div></code></pre>
+<p>として読み込めば、その通りに実行してくれる。
+当然、モデル読み込み、multiparticle 定義等の記述も書いておける。</p>
+<h2 id="20190421-%E3%81%8A%E5%A5%BD%E3%81%BF%E3%81%AE%E6%A8%A1%E5%9E%8B%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%82%92%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E8%A8%AD%E5%AE%9A%E3%81%AB">(2019/04/21) お好みの模型パラメータをデフォルト設定に</h2>
+<p>例えばSMでb-quarkのPDFを考えたいとき、bはmasslessでなければいけないので、</p>
+<pre class="hljs"><code><div>import model SM-no_b_mass
+</div></code></pre>
+<p>とするところから始める。
+これは、<code>**MG5**/model/sm/restrict_no_b_mass.dat</code>というデータファイルの内容を<code>param_card.dat</code>として読み込んでいるだけである。
+同様に、例えばAMSBのベンチマークポイントをデフォルトとして計算を始めたい場合、<code>**MG5**/model/MSSM_SLHA2/</code>内に<code>restrict_AMSB.dat</code>などの名前で<code>param_card.dat</code>をコピペし、</p>
+<pre class="hljs"><code><div>import model MSSM_SLHA2-AMSB
+</div></code></pre>
+<p>でロードされる。
+さらに前段階として、崩壊幅の計算を前もってさせておいて<code>param_card.dat</code>をアップデートすると便利。
+これには、阿部様のページ <a href="http://tomohiro_abe.droppages.com/index.html">http://tomohiro_abe.droppages.com/index.html</a> のメモを参考、</p>
+<pre class="hljs"><code><div>compute_widths n2 go &lt;&lt;etc&gt;&gt; --body_decay=2.0025
+</div></code></pre>
+<p>とするなど。モデルディレクトリ内に<code>param_card.dat</code>が新しくできて、そこには崩壊幅の情報が追加されている。</p>
+<h2 id="20181120-user-defined-cuts">(2018/11/20) User defined cuts</h2>
+<p>イベント生成の際に、勝手なカットをかけたい。
+一番簡単に、fortran ソースに直接カットパラメータを書き込む方法を試した。
+各プロセスのディレクトリ内に存在する <code>SubProcesses/cuts.f</code> に、以下のように書く。</p>
+<pre class="hljs"><code><div>C***************************************************************
+C***************************************************************
+C PUT HERE YOUR USER-DEFINED CUTS
+C***************************************************************
+C***************************************************************
 
+      <span class="hljs-keyword">do</span> i=<span class="hljs-number">1</span>,nexternal          <span class="hljs-comment">! loop over all external particles</span>
+         <span class="hljs-keyword">if</span>(istatus(i).eq<span class="hljs-number">.1</span> .and. <span class="hljs-comment">! final state particle</span>
+     &amp;        (ipdg(i).eq<span class="hljs-number">.12</span> .or. ipdg(i).eq<span class="hljs-number">.14</span> .or. ipdg(i).eq<span class="hljs-number">.16</span>)) <span class="hljs-keyword">then</span> <span class="hljs-comment">! neutrino</span>
+            <span class="hljs-keyword">do</span> j=<span class="hljs-number">1</span>,nexternal       <span class="hljs-comment">! loop over all external particles</span>
+               <span class="hljs-keyword">if</span> (is_a_lp(j)) <span class="hljs-keyword">then</span> <span class="hljs-comment">! l+</span>
+                  <span class="hljs-keyword">if</span> (<span class="hljs-number">2d0</span> * <span class="hljs-built_in">sqrt</span>(p(<span class="hljs-number">1</span>,i)**<span class="hljs-number">2</span>+p(<span class="hljs-number">2</span>,i)**<span class="hljs-number">2</span>) * <span class="hljs-built_in">sqrt</span>(p(<span class="hljs-number">1</span>,j)**<span class="hljs-number">2</span>+p(<span class="hljs-number">2</span>,j)**<span class="hljs-number">2</span>)
+     &amp;                 - <span class="hljs-number">2d0</span>*(p(<span class="hljs-number">1</span>,i)*p(<span class="hljs-number">1</span>,j)+p(<span class="hljs-number">2</span>,i)*p(<span class="hljs-number">2</span>,j))
+     &amp;                 .lt. <span class="hljs-number">480d0</span>**<span class="hljs-number">2</span>) <span class="hljs-keyword">then</span> <span class="hljs-comment">! transverse mass cut at 480GeV</span>
+                     passcuts_user=.false.
+                     <span class="hljs-keyword">return</span>
+                  <span class="hljs-keyword">endif</span>
+               <span class="hljs-keyword">endif</span>
+            <span class="hljs-keyword">enddo</span>
+         <span class="hljs-keyword">endif</span>
+      <span class="hljs-keyword">enddo</span>
+
+      <span class="hljs-keyword">return</span>
+      <span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>上の例では、終状態の lepton と neutrino の transverse mass でカットをかけている。
+注意点として、このカット単体では条件を満たすデータ点が少なすぎてエラーを吐くので（下記リンクと同様の症状と思われる）、
+別個に <code>run_card.dat</code> で lepton pT cut（pT &gt; 100GeV）をかけておいた。
+おそらく <code>run_card.dat</code> の方の cut は、サンプル点を選び出す段階で既に適用されている。
+参考：<a href="https://answers.launchpad.net/mg5amcnlo/+question/446723">https://answers.launchpad.net/mg5amcnlo/+question/446723</a></p>
+<h2 id="20180824-amcatnloerror--some-tests-failed-run-cannot-continue">(2018/08/24) aMCatNLOError : Some tests failed, run cannot continue</h2>
+<p>エラーメッセージを見てエラーが出たテストを特定する。
+今回は Soft / Collinear test で失敗していたので、<code>SubProcesses/test_soft_col_limits.f</code> の中身を覗いてみる。
+<a href="https://answers.launchpad.net/mg5amcnlo/+question/255905">https://answers.launchpad.net/mg5amcnlo/+question/255905</a>
+に依ると、energy scale が複数ある場合、numerical instability が大きくてこの手のエラーが起きやすいらしい。
+そこで、テストの基準を緩めることにして、</p>
+<pre class="hljs"><code><div>      <span class="hljs-keyword">parameter</span>       (max_fail=(LARGE ENOUGH <span class="hljs-keyword">VALUE</span>))
+</div></code></pre>
+<h2 id="20180819-systematics-module-%E3%82%92%E4%BD%BF%E3%81%86">(2018/08/19) Systematics module を使う</h2>
 <p>Systematics module を使うためには、<em>LHAPDF</em> の python interface が必要。
 上記<code>install lhapdf6</code>で入れた <em>LHAPDF</em> ではライブラリのリンクが上手く貼られていなかった
 （brew ver. 等複数の <em>LHAPDF</em> が混在したせい？）ため、手動で入れなおした。</p>
+<!--https://github.com/davidchall/homebrew-hep/issues/39 を参考に、-->
 <p><code>configure CXX=g++-7</code>から<code>make</code>そして<code>make install</code>。
 正しくインストールできれば、<code>/usr/local/lib/python2.7/site-packages</code>で python モジュールを立ち上げ、
 <code>import lhapdf</code>で何も文句を言われずに <em>LHAPDF</em> を読み込めるはず。
 この変更に対応して、<code>input/mg5_configuration.txt</code>内の設定は<code>lhapdf = /usr/local/bin/lhapdf-config</code>
 （デフォルトのインストールパス）に。そして、<code>bin/mg5_aMC</code>から<code>install pythia8</code>で pythia も入れなおす。</p>
 <p>実際に<code>launch</code>する際には、特に QCD NLO オプションの場合、<code>run_card.dat</code>の書き換えが必要。</p>
-<pre data-role="codeBlock" data-info="shell" class="language-shell">	lhapdf <span class="token operator">=</span> pdlabel <span class="token operator">!</span> PDF <span class="token builtin class-name">set</span>
-	True   <span class="token operator">=</span> reweight_scale <span class="token operator">!</span> Reweight to get scale variation using the
-	True   <span class="token operator">=</span> reweight_pdf <span class="token operator">!</span> Reweight to get PDF uncertainty. Should be a
-	True   <span class="token operator">=</span> store_rwgt_info <span class="token operator">!</span> Store info <span class="token keyword">for</span> <span class="token for-or-select variable">reweighting</span> <span class="token keyword">in</span> LHE <span class="token function">file</span>
-	systematics	<span class="token operator">=</span> systematics_program
-	<span class="token punctuation">[</span><span class="token string">'--mur=0.5,1,2'</span>, <span class="token string">'--muf=0.5,1,2'</span>, <span class="token string">'--pdf=errorset'</span><span class="token punctuation">]</span> <span class="token operator">=</span> systematics_arguments <span class="token operator">!</span> see: https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Systematics<span class="token comment">#Systematicspythonmodule</span>
-</pre><p>これで、くりこみ点（結合定数とPDF）、および PDF choice のエラーを自動で計算してくれる。</p>
-<h2 class="mume-header" id="20180824-amcatnloerror-some-tests-failed-run-cannot-continue">(2018/08/24) aMCatNLOError : Some tests failed, run cannot continue.</h2>
-
-<p>エラーメッセージを見てエラーが出たテストを特定する。
-今回は Soft / Collinear test で失敗していたので、<code>SubProcesses/test_soft_col_limits.f</code> の中身を覗いてみる。
-<a href="https://answers.launchpad.net/mg5amcnlo/+question/255905">https://answers.launchpad.net/mg5amcnlo/+question/255905</a>
-に依ると、energy scale が複数ある場合、numerical instability が大きくてこの手のエラーが起きやすいらしい。
-そこで、テストの基準を緩めることにして、</p>
-<pre data-role="codeBlock" data-info="fortran" class="language-fortran">      <span class="token keyword">parameter</span>       <span class="token punctuation">(</span>max_fail<span class="token operator">=</span><span class="token punctuation">(</span>LARGE ENOUGH VALUE<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</pre><p>とすることで、無事動いた。</p>
-<h2 class="mume-header" id="20181120-user-defined-cuts">(2018/11/20) User defined cuts</h2>
-
-<p>イベント生成の際に、勝手なカットをかけたい。
-一番簡単に、fortran ソースに直接カットパラメータを書き込む方法を試した。
-各プロセスのディレクトリ内に存在する <code>SubProcesses/cuts.f</code> に、以下のように書く。</p>
-<pre data-role="codeBlock" data-info="fortran" class="language-fortran">C<span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
-C<span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
-C PUT HERE YOUR USER<span class="token operator">-</span>DEFINED CUTS
-C<span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
-C<span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
-
-      <span class="token keyword">do</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>nexternal          <span class="token comment">! loop over all external particles</span>
-         <span class="token keyword">if</span><span class="token punctuation">(</span>istatus<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">.eq.</span><span class="token number">1</span> <span class="token operator">.and.</span> <span class="token comment">! final state particle</span>
-     <span class="token punctuation">&amp;</span>        <span class="token punctuation">(</span>ipdg<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">.eq.</span><span class="token number">12</span> <span class="token operator">.or.</span> ipdg<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">.eq.</span><span class="token number">14</span> <span class="token operator">.or.</span> ipdg<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">.eq.</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">then</span> <span class="token comment">! neutrino</span>
-            <span class="token keyword">do</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>nexternal       <span class="token comment">! loop over all external particles</span>
-               <span class="token keyword">if</span> <span class="token punctuation">(</span>is_a_lp<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">then</span> <span class="token comment">! l+</span>
-                  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">2d0</span> <span class="token operator">*</span> sqrt<span class="token punctuation">(</span>p<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token operator">**</span><span class="token number">2</span><span class="token operator">+</span>p<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> sqrt<span class="token punctuation">(</span>p<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token operator">**</span><span class="token number">2</span><span class="token operator">+</span>p<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span>
-     <span class="token punctuation">&amp;</span>                 <span class="token operator">-</span> <span class="token number">2d0</span><span class="token operator">*</span><span class="token punctuation">(</span>p<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token operator">*</span>p<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token operator">+</span>p<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token operator">*</span>p<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
-     <span class="token punctuation">&amp;</span>                 <span class="token operator">.lt.</span> <span class="token number">480d0</span><span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">then</span> <span class="token comment">! transverse mass cut at 480GeV</span>
-                     passcuts_user<span class="token operator">=</span><span class="token boolean">.false.</span>
-                     <span class="token keyword">return</span>
-                  <span class="token keyword">endif</span>
-               <span class="token keyword">endif</span>
-            <span class="token keyword">enddo</span>
-         <span class="token keyword">endif</span>
-      <span class="token keyword">enddo</span>
-
-      <span class="token keyword">return</span>
-      <span class="token keyword">end</span>
-</pre><p>上の例では、終状態の lepton と neutrino の transverse mass でカットをかけている。
-注意点として、このカット単体では条件を満たすデータ点が少なすぎてエラーを吐くので（下記リンクと同様の症状と思われる）、
-別個に <code>run_card.dat</code> で lepton pT cut（pT &gt; 100GeV）をかけておいた。
-おそらく <code>run_card.dat</code> の方の cut は、サンプル点を選び出す段階で既に適用されている。
-参考：<a href="https://answers.launchpad.net/mg5amcnlo/+question/446723">https://answers.launchpad.net/mg5amcnlo/+question/446723</a></p>
-<h2 class="mume-header" id="20190421-%E3%81%8A%E5%A5%BD%E3%81%BF%E3%81%AE%E6%A8%A1%E5%9E%8B%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%82%92%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E8%A8%AD%E5%AE%9A%E3%81%AB">(2019/04/21) お好みの模型パラメータをデフォルト設定に</h2>
-
-<p>例えばSMでb-quarkのPDFを考えたいとき、bはmasslessでなければいけないので、</p>
-<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">import</span> model SM-no_b_mass
-</pre><p>とするところから始める。
-これは、<code>**MG5**/model/sm/restrict_no_b_mass.dat</code>というデータファイルの内容を<code>param_card.dat</code>として読み込んでいるだけである。
-同様に、例えばAMSBのベンチマークポイントをデフォルトとして計算を始めたい場合、<code>**MG5**/model/MSSM_SLHA2/</code>内に<code>restrict_AMSB.dat</code>などの名前で<code>param_card.dat</code>をコピペし、</p>
-<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">import</span> model MSSM_SLHA2-AMSB
-</pre><p>でロードされる。
-さらに前段階として、崩壊幅の計算を前もってさせておいて<code>param_card.dat</code>をアップデートすると便利。
-これには、阿部様のページ http://tomohiro_abe.droppages.com/index.html のメモを参考、</p>
-<pre data-role="codeBlock" data-info="shell" class="language-shell">compute_widths n2 go <span class="token operator">&lt;&lt;</span>etc<span class="token operator">&gt;&gt;</span> --body_decay<span class="token operator">=</span><span class="token number">2.0025</span>
-</pre><p>とするなど。モデルディレクトリ内に<code>param_card.dat</code>が新しくできて、そこには崩壊幅の情報が追加されている。</p>
-<h2 class="mume-header" id="2019426-%E4%BA%8B%E5%89%8D%E3%81%AB%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%97%E3%83%AA%E3%82%BF%E3%81%AB%E8%AA%AD%E3%81%BE%E3%81%9B%E3%82%8B">(2019/4/26) 事前にコードを書いてインタープリタに読ませる</h2>
-
-<p>簡単な例として、わかりやすい名前で複数回launchしたい場合、</p>
-<pre data-role="codeBlock" data-info="text" class="language-text"><code>launch pp2gogo2 -n 6TeV_0
-launch pp2gogo2 -n 6TeV_1
-launch pp2gogo2 -n 6TeV_2
-</code></pre><p>などと書いたテキストファイル（<code>launch_several_times.txt</code>とする）を用意する。
-これを</p>
-<pre data-role="codeBlock" data-info="shell" class="language-shell">./bin/mg5_aMC launch_several_times.txt
-</pre><p>として読み込めば、その通りに実行してくれる。
-当然、モデル読み込み、multiparticle 定義等の記述も書いておける。</p>
-<h2 class="mume-header" id="2019626-jet-matching">(2019/6/26) jet matching</h2>
-
-<p>MadGraph のバージョンによって（？）jet matching の際に <code>run_card.dat</code> を弄る必要がある。</p>
-<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token number">1</span> <span class="token operator">=</span> ickkw            <span class="token operator">!</span> <span class="token number">0</span> no matching, <span class="token number">1</span> MLM
-</pre><p>ちなみにヘルプを見ると（<a href="https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Matching%EF%BC%89%E3%80%81%E7%B4%9B%E3%82%89%E3%82%8F%E3%81%97%E3%81%84%E3%81%93%E3%81%A8%E3%81%AB%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE">https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Matching）、紛らわしいことにオプションの</a> <code>2</code> が CKKW に対応するらしい。
-これが on の状態で jet の本数を変えたプロセスをいくつか merge して走らせると、個々のプロセスを独立に走らせて計算した断面積の和と比して、大きな断面積が parton level で出てきたりする。
-おそらくこれが matching に十分な overlap を含む phase space の取り方になっていて、その後 pythia が走ってきちんと matching してくれる。</p>
+<pre class="hljs"><code><div> lhapdf = pdlabel ! PDF set
+ True   = reweight_scale ! Reweight to get scale variation using the
+ True   = reweight_pdf ! Reweight to get PDF uncertainty. Should be a
+ True   = store_rwgt_info ! Store info for reweighting in LHE file
+ systematics = systematics_program
+ ['--mur=0.5,1,2', '--muf=0.5,1,2', '--pdf=errorset'] = systematics_arguments ! see: https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Systematics#Systematicspythonmodule
+</div></code></pre>
+<p>これで、くりこみ点（結合定数とPDF）、および PDF choice のエラーを自動で計算してくれる。</p>
+<p>とすることで、無事動いた。</p>
 <hr>
-<h1 class="mume-header" id="%E4%BB%A5%E4%B8%8B-%E5%8F%A4%E3%81%84%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8Btips-%E3%81%82%E3%82%8B%E3%81%84%E3%81%AF%E5%8F%A4%E3%81%84%E8%AA%8D%E8%AD%98">以下、古いバージョンに対するtips、あるいは古い認識</h1>
-
-<h2 class="mume-header" id="20181206-madgraph-v264">(2018/12/06) MadGraph v2.6.4 ???</h2>
-
+<h1 id="%E4%BB%A5%E4%B8%8B%E5%8F%A4%E3%81%84%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8Btips%E3%81%82%E3%82%8B%E3%81%84%E3%81%AF%E5%8F%A4%E3%81%84%E8%AA%8D%E8%AD%98">以下、古いバージョンに対するtips、あるいは古い認識</h1>
+<h2 id="20181206-madgraph-v264">(2018/12/06) MadGraph v2.6.4 ???</h2>
 <p><strong>????</strong></p>
 <p>v2.6.3.2 では動いていた以下のプロセスが v2.6.4 では動かない。
 param_card.dat で指定している崩壊率の指定にミスがあるのか否か？</p>
-<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">import</span> model MSSM_SLHA2
-p p <span class="token operator">&gt;</span> go go, go <span class="token operator">&gt;</span> n1 j j, go <span class="token operator">&gt;</span> n1 j j
-</pre><h2 class="mume-header" id="20181206-madgraph-v2632">(2018/12/06) MadGraph v2.6.3.2 ???</h2>
-
+<pre class="hljs"><code><div>import model MSSM_SLHA2
+p p &gt; go go, go &gt; n1 j j, go &gt; n1 j j
+</div></code></pre>
+<h2 id="20181206-madgraph-v2632">(2018/12/06) MadGraph v2.6.3.2 ???</h2>
 <p><strong>v2.6.5で修正を確認</strong></p>
 <p>一方で、v2.6.3.2 では standalone pythia8 command が正しく動かない。
 <a href="https://answers.launchpad.net/mg5amcnlo/+question/671278">https://answers.launchpad.net/mg5amcnlo/+question/671278</a> にあるように、
 <code>KeyError : 'event_norm'</code> と怒られるので、作ったイベントを v2.6.4 のディレクトリ
 に丸ごとコピーして、そちらで standalone pythia8 を動かせばとりあえず shower できる。
 プロセスディレクトリ内の<code>./bin/madevent</code>から、</p>
-<pre data-role="codeBlock" data-info="shell" class="language-shell">pythia8 <span class="token punctuation">(</span>RUN NAME<span class="token punctuation">)</span>
-</pre><p>上の方法で一度動かしておくと、<code>run_shower.sh</code>および<code>tag_1_pythia8.cmd</code>というファイルが自動生成される。
+<pre class="hljs"><code><div>pythia8 (RUN NAME)
+</div></code></pre>
+<p>上の方法で一度動かしておくと、<code>run_shower.sh</code>および<code>tag_1_pythia8.cmd</code>というファイルが自動生成される。
 これをコピーして適宜編集し、イベント毎に使い回す方が効率は良さそう。</p>
 
-      </div>
-      
-      
-    
-    
-    
-    
-    
-    
-    
-    
-  
       <!-- Contents above -->
   </div>
 </div>
